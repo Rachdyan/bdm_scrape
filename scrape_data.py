@@ -28,7 +28,7 @@ website = os.environ['WEBSITE']
 site_email = os.environ['SITE_EMAIL']
 site_password = os.environ['SITE_PASSWORD']
 
-if __name__ == "__main__":
+if __name__ == "__main__":  
     with SB(uc=True, headless=True, xvfb=True,
             proxy=proxy_string,
             maximize=True,

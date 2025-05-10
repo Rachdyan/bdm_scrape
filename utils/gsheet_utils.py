@@ -17,4 +17,3 @@ def export_to_sheets(spreadsheet, sheet_name, df, mode='r'):
         return True
     else:
         return get_as_dataframe(worksheet=ws)
-
