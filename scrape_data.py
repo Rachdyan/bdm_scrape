@@ -215,7 +215,6 @@ async def main():
     await send_all_daily_messages(final_cummulative_df, bot, 'cummulative',
                                   TARGET_CHAT_ID)
 
-
 if __name__ == "__main__":
     asyncio.run(main())
 
