@@ -2,7 +2,7 @@ name: Detailed Scrape
 on:
   schedule:
     # At 7:30 PM Jakarta Time (08:45 UTC)
-    - cron: '30 12 * * *'
+    - cron: '30 12 * * 1-5'
   workflow_dispatch:
 #  // push:
 #     branches: [ master ]
