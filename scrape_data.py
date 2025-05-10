@@ -28,7 +28,7 @@ website = os.environ['WEBSITE']
 site_email = os.environ['SITE_EMAIL']
 site_password = os.environ['SITE_PASSWORD']
 
-if __name__ == "__main__":  
+if __name__ == "__main__":
     with SB(uc=True, headless=True, xvfb=True,
             proxy=proxy_string,
             maximize=True,
@@ -226,7 +226,7 @@ if __name__ == "__main__":
 
     private_key = private_key.replace('\\n', '\n')
     full_private_key = f"-----BEGIN PRIVATE KEY-----\n"\
-                    f"{private_key}\n-----END PRIVATE KEY-----\n"
+                       f"{private_key}\n-----END PRIVATE KEY-----\n"
 
     service_account_dict = {
         "type": "service_account",
@@ -274,7 +274,7 @@ if __name__ == "__main__":
 
     except gspread.exceptions.SpreadsheetNotFound:
         print("Error: Spreadsheet not found. \n"
-            "1. Check if the name/key/URL is correct.\n")
+              "1. Check if the name/key/URL is correct.\n")
         # Decide if you want to exit or continue without sheet access
         exit(1)
     except gspread.exceptions.APIError as e:
@@ -285,10 +285,9 @@ if __name__ == "__main__":
         print(f"An error occurred during Google Sheets setup: {e}")
         exit(1)
 
-
     print("Updating Google Sheet..")
     export_to_sheets(spreadsheet=spreadsheet, sheet_name='Daily',
-                    df=final_daily_df, mode='a')
+                     df=final_daily_df, mode='a')
 
     export_to_sheets(spreadsheet=spreadsheet, sheet_name='Cummulative',
-                    df=final_cummulative_df, mode='a')
+                     df=final_cummulative_df, mode='a')
