@@ -218,77 +218,77 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 
-private_key_id = os.environ['SA_PRIVKEY_ID']
-sa_client_email = os.environ['SA_CLIENTMAIL']
-sa_client_x509_url = os.environ['SA_CLIENT_X509_URL']
+    private_key_id = os.environ['SA_PRIVKEY_ID']
+    sa_client_email = os.environ['SA_CLIENTMAIL']
+    sa_client_x509_url = os.environ['SA_CLIENT_X509_URL']
 
-private_key = os.environ['SA_PRIVKEY']
+    private_key = os.environ['SA_PRIVKEY']
 
-private_key = private_key.replace('\\n', '\n')
-full_private_key = f"-----BEGIN PRIVATE KEY-----\n"\
-                   f"{private_key}\n-----END PRIVATE KEY-----\n"
+    private_key = private_key.replace('\\n', '\n')
+    full_private_key = f"-----BEGIN PRIVATE KEY-----\n"\
+                    f"{private_key}\n-----END PRIVATE KEY-----\n"
 
-service_account_dict = {
-    "type": "service_account",
-    "project_id": "keterbukaan-informasi-idx",
-    "private_key_id": private_key_id,
-    "private_key": full_private_key,
-    "client_email": sa_client_email,
-    "client_id": "116805150468350492730",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url":
-    "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": sa_client_x509_url,
-    "universe_domain": "googleapis.com"
-}
+    service_account_dict = {
+        "type": "service_account",
+        "project_id": "keterbukaan-informasi-idx",
+        "private_key_id": private_key_id,
+        "private_key": full_private_key,
+        "client_email": sa_client_email,
+        "client_id": "116805150468350492730",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url":
+        "https://www.googleapis.com/oauth2/v1/certs",
+        "client_x509_cert_url": sa_client_x509_url,
+        "universe_domain": "googleapis.com"
+    }
 
-scope = [
-    'https://www.googleapis.com/auth/drive',
-    'https://www.googleapis.com/auth/spreadsheets'
-]
+    scope = [
+        'https://www.googleapis.com/auth/drive',
+        'https://www.googleapis.com/auth/spreadsheets'
+    ]
 
-gauth = GoogleAuth()
+    gauth = GoogleAuth()
 
-try:
-    gauth.credentials = ServiceAccountCredentials.from_json_keyfile_dict(
-        service_account_dict, scope
-    )
-except Exception as e:
-    print(f"Error loading credentials from dictionary: {e}")
-    # Handle error appropriately, maybe exit
-    exit(1)
+    try:
+        gauth.credentials = ServiceAccountCredentials.from_json_keyfile_dict(
+            service_account_dict, scope
+        )
+    except Exception as e:
+        print(f"Error loading credentials from dictionary: {e}")
+        # Handle error appropriately, maybe exit
+        exit(1)
 
-creds = gauth.credentials
-gc = None
-spreadsheet = None
-worksheet = None
-try:
-    gc = gspread.authorize(creds)
-    print("Google Sheets client (gspread) initialized successfully.")
+    creds = gauth.credentials
+    gc = None
+    spreadsheet = None
+    worksheet = None
+    try:
+        gc = gspread.authorize(creds)
+        print("Google Sheets client (gspread) initialized successfully.")
 
-    sheet_key = "1z-46N5oUsMBwEufpV2uDdECHJetXy4DDe5PwTkozND0"
-    spreadsheet = gc.open_by_key(sheet_key)
+        sheet_key = "1z-46N5oUsMBwEufpV2uDdECHJetXy4DDe5PwTkozND0"
+        spreadsheet = gc.open_by_key(sheet_key)
 
-    print(f"Successfully opened spreadsheet: '{spreadsheet.title}'")
+        print(f"Successfully opened spreadsheet: '{spreadsheet.title}'")
 
-except gspread.exceptions.SpreadsheetNotFound:
-    print("Error: Spreadsheet not found. \n"
-          "1. Check if the name/key/URL is correct.\n")
-    # Decide if you want to exit or continue without sheet access
-    exit(1)
-except gspread.exceptions.APIError as e:
-    print(f"Google Sheets API Error: {e}")
-    exit(1)
-except Exception as e:
-    # Catch other potential errors during gspread initialization/opening
-    print(f"An error occurred during Google Sheets setup: {e}")
-    exit(1)
+    except gspread.exceptions.SpreadsheetNotFound:
+        print("Error: Spreadsheet not found. \n"
+            "1. Check if the name/key/URL is correct.\n")
+        # Decide if you want to exit or continue without sheet access
+        exit(1)
+    except gspread.exceptions.APIError as e:
+        print(f"Google Sheets API Error: {e}")
+        exit(1)
+    except Exception as e:
+        # Catch other potential errors during gspread initialization/opening
+        print(f"An error occurred during Google Sheets setup: {e}")
+        exit(1)
 
 
-print("Updating Google Sheet..")
-export_to_sheets(spreadsheet=spreadsheet, sheet_name='Daily',
-                 df=final_daily_df, mode='a')
+    print("Updating Google Sheet..")
+    export_to_sheets(spreadsheet=spreadsheet, sheet_name='Daily',
+                    df=final_daily_df, mode='a')
 
-export_to_sheets(spreadsheet=spreadsheet, sheet_name='Cummulative',
-                 df=final_cummulative_df, mode='a')
+    export_to_sheets(spreadsheet=spreadsheet, sheet_name='Cummulative',
+                    df=final_cummulative_df, mode='a')
