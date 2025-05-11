@@ -1,4 +1,4 @@
-name: Detailed Scrape
+name: Scrape NonReg
 on:
   schedule:
     # At 8:30 PM Jakarta Time (08:45 UTC)
