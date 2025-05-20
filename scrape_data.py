@@ -79,7 +79,7 @@ if __name__ == "__main__":
         sb.open(f"{website}/market_summary/")
         time.sleep(2)
         sb.click('button[id*="reset-button"]')
-        time.sleep(2)
+        time.sleep(4)
         summary_html = sb.get_page_source()
 
         soup = BeautifulSoup(summary_html, 'html5lib')
