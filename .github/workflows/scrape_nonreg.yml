@@ -2,7 +2,7 @@ name: Scrape NonReg
 on:
   schedule:
     # At 8:30 PM Jakarta Time (08:45 UTC)
-    - cron: '30 13 * * 1-5'
+    - cron: '30 13 * * *'
   workflow_dispatch:
 #  // push:
 #     branches: [ master ]

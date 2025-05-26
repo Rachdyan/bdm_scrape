@@ -95,7 +95,7 @@ if __name__ == "__main__":
 
         # GET DAILY NON RETAIL
         sb.hover_and_click("#method", '[value = "nr"]', timeout=1)
-        time.sleep(2)
+        time.sleep(5)
         sb.save_screenshot(f'screenshot/{date}_nr_daily.png')
         nr_daily_html = sb.get_page_source()
         nr_daily_summary_df = get_summary_table(nr_daily_html,
@@ -105,7 +105,7 @@ if __name__ == "__main__":
 
         # GET DAILY MARKET MAKER
         sb.hover_and_click("#method", '[value = "m"]', timeout=1)
-        time.sleep(2)
+        time.sleep(5)
         sb.save_screenshot(f'screenshot/{date}_m_daily.png')
         m_daily_html = sb.get_page_source()
         m_daily_summary_df = get_summary_table(m_daily_html,
@@ -124,9 +124,9 @@ if __name__ == "__main__":
 
         # GET CUMMULATIVE NON RETAIL
         sb.hover_and_click("#method", '[value = "nr"]', timeout=1)
-        time.sleep(2)
+        time.sleep(5)
         sb.hover_and_click("#summary-mode", '[value = "c"]', timeout=1)
-        time.sleep(2)
+        time.sleep(5)
         sb.save_screenshot(f'screenshot/{date}_nr_cummulative.png')
         nr_cummulative_html = sb.get_page_source()
         nr_cummulative_summary_df = get_summary_table(nr_cummulative_html,
@@ -136,9 +136,9 @@ if __name__ == "__main__":
 
         # GET CUMMULATIVE MARKET MAKER
         sb.hover_and_click("#method", '[value = "m"]', timeout=1)
-        time.sleep(2)
+        time.sleep(5)
         sb.hover_and_click("#summary-mode", '[value = "c"]', timeout=1)
-        time.sleep(2)
+        time.sleep(5)
         sb.save_screenshot(f'screenshot/{date}_m_cummulative.png')
         m_cummulative_html = sb.get_page_source()
         m_cummulative_summary_df = get_summary_table(m_cummulative_html,
