@@ -105,7 +105,7 @@ jobs:
         SB_WEBSITE: ${{ secrets.SB_WEBSITE }}
         SB_USER: ${{ secrets.SB_USER }}
         SB_PASSWORD: ${{ secrets.SB_PASSWORD }}
-        EMAIL_USER: ${{ secrets.EMAIL_USER }}
+        EMAIL_ACCOUNT: ${{ secrets.EMAIL_ACCOUNT }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       run: |
         python scrape_rt.py --debug
