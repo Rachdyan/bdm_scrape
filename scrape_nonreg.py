@@ -191,11 +191,16 @@ if __name__ == "__main__":
             {'Kode Saham': 'symbol', 'Tanggal Perdagangan Terakhir': 'date'},
             axis=1, inplace=True)
 
-        if raw_df['Nilai'] != 0:
-            raw_df['value_ratio'] = (raw_df['Non Regular Value'] /
-                                     raw_df['Nilai'])
-        else:
-            raw_df['value_ratio'] = 0
+        raw_df['value_ratio'] = raw_df.apply(
+            lambda x:
+            x['Non Regular Value'] / x['Nilai'] if x['Nilai'] != 0 else 0,
+            axis=1)
+
+        # if raw_df['Nilai'] != 0:
+        #     raw_df['value_ratio'] = (raw_df['Non Regular Value'] /
+        #                              raw_df['Nilai'])
+        # else:
+        #     raw_df['value_ratio'] = 0
 
         raw_df['avg_price'] = raw_df['Nilai'] / raw_df['Volume'] / 100
         raw_df['avg_nonreg_price'] = (raw_df['Non Regular Value']
