@@ -106,3 +106,96 @@ def get_individual_stock(sb, row):
     row['ss_directory'] = [tc_overview_pic_name, tc_detail_pic_name,
                            bp_overview_pic_name, pc_pic_name]
     return pd.DataFrame([row])
+
+
+def fetch_sb_rt_data(scraper, min_lot, price_from, headers, proxies):
+    """Fetches and paginates through trade data until no more results are
+    returned."""
+    print(f"Getting data for minimum lot: {min_lot}")
+    all_trades = []
+    last_trade_number = None
+
+    params = {
+        'limit': '100',
+        'order_by': 'ORDER_BY_TIME',
+        'action_type': 'ACTION_TYPE_ALL',
+        'minimum_lot': str(min_lot),
+        'price_range_from': str(price_from),
+    }
+
+    while True:
+        if last_trade_number:
+            params['trade_number'] = last_trade_number
+
+        time.sleep(2)
+        response = scraper.get(
+            'https://exodus.stockbit.com/company-price-feed/v2/running-trade',
+            params=params, headers=headers, proxies=proxies
+        )
+        response.raise_for_status()
+
+        trades = response.json().get('data', {}).get('running_trade', [])
+        if not trades:
+            print("Done fetching.")
+            break
+
+        current_df = pd.DataFrame(trades)
+        all_trades.append(current_df)
+        last_trade_number = current_df.iloc[-1]['trade_number']
+        print(f"Last Trade Number: {last_trade_number}")
+
+    return pd.concat(all_trades, ignore_index=True) if all_trades \
+        else pd.DataFrame()
+
+
+def process_and_filter_rt_data(df, website, today_date):
+    """Cleans, aggregates, and filters the raw trade data."""
+    if df.empty:
+        return df
+
+    # --- Vectorized Cleaning & Feature Engineering ---
+    df['price'] = pd.to_numeric(df['price'].str.replace(',', ''))
+    df['lot'] = pd.to_numeric(df['lot'].str.replace(',', ''))
+    df['value'] = df['price'] * df['lot']
+
+    is_buy = df['action'] == 'buy'
+    df['buy_lot'] = df['lot'].where(is_buy)
+    df['sell_lot'] = df['lot'].where(~is_buy)
+    df['buy_value'] = df['value'].where(is_buy)
+    df['sell_value'] = df['value'].where(~is_buy)
+
+    # --- Aggregation ---
+    agg_df = df.groupby('code').agg(
+        price=('price', 'first'),
+        change=('change', 'first'),
+        total_count=('code', 'size'),
+        total_lot=('lot', 'sum'),
+        total_value=('value', 'sum'),
+        buy_count=('buy_lot', 'count'),
+        sell_count=('sell_lot', 'count'),
+        buy_lot=('buy_lot', 'sum'),
+        sell_lot=('sell_lot', 'sum'),
+        buy_value=('buy_value', 'sum'),
+        sell_value=('sell_value', 'sum')
+    )
+
+    # --- Filtering and Combining ---
+    buy_higher_than_sell = agg_df[
+        (agg_df['buy_count'] > agg_df['sell_count']) &
+        (agg_df['change'].str.contains("-")) &
+        (agg_df['total_count'] > 10)
+    ]
+    top_15_count = agg_df.nlargest(15, 'total_count')
+    top_15_lot = agg_df.nlargest(15, 'total_lot')
+
+    filtered_df = pd.concat([
+        top_15_count, top_15_lot, buy_higher_than_sell
+    ]).drop_duplicates().reset_index()
+
+    # --- Final Touches ---
+    filtered_df = filtered_df.rename(columns={'code': 'symbol'})
+    filtered_df['link'] = filtered_df['symbol']\
+        .apply(lambda x: f"{website}/stock_detail/{x}")
+    filtered_df.insert(0, 'date', today_date)
+
+    return filtered_df

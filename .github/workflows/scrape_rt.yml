@@ -1,8 +1,8 @@
-name: Scrape NonReg
+name: Scrape RT
 on:
   schedule:
     # At 8:30 PM Jakarta Time (08:45 UTC)
-    - cron: '30 13 * * 1-5'
+    - cron: '00 13 * * 1-5'
   workflow_dispatch:
 #  // push:
 #     branches: [ master ]
@@ -46,7 +46,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install --upgrade pip
         pip install --upgrade wheel
-        pip install -r requirements.txt
+        pip install -r requirements2.txt
         pip install --upgrade pyautogui
     - name: Install extra dependencies
       if: runner.os == 'Linux'
@@ -86,7 +86,7 @@ jobs:
       run: |
         echo "def test_0(sb): pass" > verify_sb.py
         pytest verify_sb.py
-    - name: Run python scrape_nonreg.py --debug
+    - name: Run python scrape_rt.py --debug
       env:
         PROXY_USER: ${{ secrets.PROXY_USER }}
         PROXY_PASSWORD: ${{ secrets.PROXY_PASSWORD }}
@@ -101,5 +101,9 @@ jobs:
         SA_PRIVKEY: ${{ secrets.SA_PRIVKEY }}
         SA_CLIENTMAIL: ${{ secrets.SA_CLIENTMAIL }}
         SA_CLIENT_X509_URL: ${{ secrets.SA_CLIENT_X509_URL }}
+        CAPTCHA_KEY: ${{ secrets.CAPTCHA_KEY }}
+        SB_WEBSITE: ${{ secrets.SB_WEBSITE }}
+        SB_USER: ${{ secrets.SB_USER }}
+        SB_PASSWORD: ${{ secrets.SB_PASSWORD }}
       run: |
-        python scrape_nonreg.py --debug
+        python scrape_rt.py --debug

@@ -1,6 +1,7 @@
 import os
 from telegram import InputMediaPhoto, InputFile
 from telegram.error import BadRequest
+import asyncio
 
 
 def generate_high_level_summary_str(df, type):
@@ -295,3 +296,122 @@ async def send_non_reg_message(row, bot, TARGET_CHAT_ID):
         # Step 6: Cleanup - close all files
         for f in file_handles:
             f.close()
+
+
+def generate_order_book_summary_str(df, type):
+    if type == '5000':
+        summary_str = f'<b>{df.date.unique()[0]}'\
+            ' - TOP MIN 5000 LOT FILTERED</b>'
+    if type == '1000':
+        summary_str = f'<b>{df.date.unique()[0]}'\
+            ' - TOP MIN 1000 LOT PRICE > 1000 FILTERED</b>'
+
+    summary_str += '\n\n'
+    all_stock = df.symbol.to_list()
+    summary_str += ', '.join(all_stock)
+
+    return summary_str
+
+
+async def send_order_book_summary_message(df, bot, type, TARGET_CHAT_ID):
+    # Store open file handles to prevent premature closing
+    msg_str = generate_order_book_summary_str(df, type)
+    try:
+        await bot.send_message(chat_id=TARGET_CHAT_ID,
+                               text=msg_str,
+                               parse_mode='HTML')
+        print("Media group sent successfully!")
+
+    except BadRequest as e:
+        print(f"💥 Telegram API Error: {e.message}")
+
+
+def generate_orderbook_str(row):
+    msg_str = f"<a href = '{row['link']}'>{row['symbol']}</a>"
+    msg_str += '\n\n'
+    msg_str += f"<b>Price</b>: {row['price']} ({row['change']})"
+    msg_str += '\n'
+    msg_str += f"<b>Total Count</b>: {row['total_count']}"
+    msg_str += '\n'
+    msg_str += f"<b>Total Lot</b>: {row['total_lot']:,.0f} Lot"
+    msg_str += '\n'
+    msg_str += f"<b>Total Value</b>: Rp{row['total_value']:,.0f} Ribu"
+    msg_str += '\n\n'
+    msg_str += f"<b>Buy Count</b>: {row['buy_count']}"
+    msg_str += '\n'
+    msg_str += f"<b>Sell Count</b>: {row['sell_count']}"
+    msg_str += '\n\n'
+    msg_str += f"<b>Buy Lot</b>: {row['buy_lot']:,.0f} Lot"
+    msg_str += '\n'
+    msg_str += f"<b>Sell Lot</b>: {row['sell_lot']:,.0f} Lot"
+    msg_str += '\n\n'
+    msg_str += f"<b>Buy Value</b>: Rp{row['buy_value']:,.0f} Ribu"
+    msg_str += '\n'
+    msg_str += f"<b>Sell Value</b>: Rp{row['sell_value']:,.0f} Ribu"
+
+    return msg_str
+
+
+async def send_orderbook_message(row, bot, TARGET_CHAT_ID):
+    # Store open file handles to prevent premature closing
+    file_handles = []
+    media_group = []
+
+    message_str = generate_orderbook_str(row)
+
+    try:
+        for idx, file_path in enumerate(row['ss_directory']):
+            # Step 1: Validate absolute path
+            abs_path = os.path.abspath(file_path)
+            if not os.path.exists(abs_path):
+                print(f"🚫 File not found: {abs_path}")
+                continue
+
+            # Step 2: Normalize path (critical for Windows)
+            abs_path = abs_path.replace("\\", "/")  # Force forward slashes
+
+            # Step 3: Open file and retain handle
+            file = open(abs_path, "rb")
+            file_handles.append(file)  # Keep track of open files
+
+            # Step 4: Create media with HTML caption parsing
+            media = InputMediaPhoto(
+                media=InputFile(file, filename=os.path.basename(abs_path),
+                                attach=True),
+                caption=message_str if idx == 0 else None,
+                parse_mode='HTML' if idx == 0 else None
+            )
+            media_group.append(media)
+            print(f"✅ Added {abs_path} to media group")
+
+        # Step 5: Send media group (await inside async function)
+        await bot.send_media_group(chat_id=TARGET_CHAT_ID, media=media_group)
+        print("Media group sent successfully!")
+
+    except BadRequest as e:
+        print(f"💥 Telegram API Error: {e.message}")
+        print("Debug Checklist:")
+        print("1. File paths: ",
+              [os.path.abspath(p) for p in row['ss_directory']])
+        print("2. File sizes: ",
+              [f"{os.path.getsize(p)/1e6:.2f} MB"
+               for p in row['ss_directory']])
+
+    finally:
+        # Step 6: Cleanup - close all files
+        for f in file_handles:
+            f.close()
+
+
+async def send_all_orderbook_messages(df, bot, TARGET_CHAT_ID):
+    for index, row in df.iterrows():
+        try:
+            print(f"Processing {type} row {index}...")
+            await send_orderbook_message(
+                row=row,
+                bot=bot,
+                TARGET_CHAT_ID=TARGET_CHAT_ID
+            )
+            await asyncio.sleep(1)  # Add delay between messages
+        except Exception as e:
+            print(f"❌ Failed for {type} row {index}: {e}")
