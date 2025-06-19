@@ -262,7 +262,7 @@ with SB(uc=True, headless=False,
 
         IMAP_SERVER = "imappro.zoho.com"
         IMAP_PORT = 993
-        EMAIL_ACCOUNT = os.environ['EMAIL_USER']
+        EMAIL_ACCOUNT = os.environ['EMAIL_ACCOUNT']
         EMAIL_PASSWORD = os.environ['EMAIL_PASSWORD']
 
         print(f"Connecting to {IMAP_SERVER}...")
