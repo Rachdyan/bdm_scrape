@@ -3,7 +3,7 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, JavascriptException
+# from selenium.common.exceptions import TimeoutException, JavascriptException
 
 
 class PageActions:
@@ -91,56 +91,56 @@ class PageActions:
         self.get_clickable_element(locator).click()
         print("Pressed the Check button")
 
-    # def check_for_image_updates(self):
-    #     """
-    #     Checks if captcha images have been updated using JavaScript.
-
-    #     :return: Returns True if the images have been updated, False otherwise. # NOQA
-    #     """
-    #     print("Checking for Images updated")
-    #     return self.browser.execute_script("return monitorRequests();")
-
     def check_for_image_updates(self):
         """
         Checks if captcha images have been updated using JavaScript.
 
-        :return: True if images were updated within 10 seconds, False otherwise
+        :return: Returns True if the images have been updated, False otherwise. # NOQA
         """
         print("Checking for Images updated")
+        return self.browser.execute_script("return monitorRequests();")
 
-        try:
-            # Use execute_async_script to handle the Promise
-            return self.browser.execute_async_script(
-                """
-                const callback = arguments[arguments.length - 1];
-                monitorRequests()
-                    .then(result => callback(result))
-                    .catch(error => {
-                        console.error('monitorRequests error:', error);
-                        callback(false);
-                    });
-                """
-            )
-        except JavascriptException as e:
-            if "monitorRequests is not defined" in str(e):
-                try:
-                    # Wait for function to be defined
-                    WebDriverWait(self.browser, 10).until(
-                        lambda d: d.execute_script(
-                            "return typeof monitorRequests === 'function';"
-                        )
-                    )
-                    # Retry after successful wait
-                    return self.check_for_image_updates()
-                except TimeoutException:
-                    print("JavaScript function 'monitorRequests'"
-                          "not available after waiting")
-                    return False
-            print(f"JavaScript error: {str(e)}")
-            return False
-        except Exception as e:
-            print(f"Unexpected error: {str(e)}")
-            return False
+    # def check_for_image_updates(self):
+    #     """
+    #     Checks if captcha images have been updated using JavaScript.
+
+    #     :return: True if images were updated within 10 seconds, False
+    #     """
+    #     print("Checking for Images updated")
+
+    #     try:
+    #         # Use execute_async_script to handle the Promise
+    #         return self.browser.execute_async_script(
+    #             """
+    #             const callback = arguments[arguments.length - 1];
+    #             monitorRequests()
+    #                 .then(result => callback(result))
+    #                 .catch(error => {
+    #                     console.error('monitorRequests error:', error);
+    #                     callback(false);
+    #                 });
+    #             """
+    #         )
+    #     except JavascriptException as e:
+    #         if "monitorRequests is not defined" in str(e):
+    #             try:
+    #                 # Wait for function to be defined
+    #                 WebDriverWait(self.browser, 10).until(
+    #                     lambda d: d.execute_script(
+    #                         "return typeof monitorRequests === 'function';"
+    #                     )
+    #                 )
+    #                 # Retry after successful wait
+    #                 return self.check_for_image_updates()
+    #             except TimeoutException:
+    #                 print("JavaScript function 'monitorRequests'"
+    #                       "not available after waiting")
+    #                 return False
+    #         print(f"JavaScript error: {str(e)}")
+    #         return False
+    #     except Exception as e:
+    #         print(f"Unexpected error: {str(e)}")
+    #         return False
 
 
 class CaptchaHelper:
@@ -197,23 +197,50 @@ class CaptchaHelper:
         print("Parsed the response to a list of cell numbers")
         return new_number_list
 
-    def is_message_visible(self, locator):
-        """Checks the visibility of an element with a captcha error message
+    # def is_message_visible(self, locator):
+    #     """Checks the visibility of an element with a captcha error message
 
-        :param locator: XPath locator of the element to check.
-        :return: True if the element is visible, otherwise False.
-        """
-        try:
-            element = self.page_actions.get_presence_element(locator)
-            is_visible = self.browser.execute_script("""
-                var elem = arguments[0];
-                var style = window.getComputedStyle(elem);
-                return !(style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0'); # NOQA
-            """, element)
-            return is_visible
-        except Exception as e:
-            print(f"Error: {e}")
-            return False
+    #     :param locator: XPath locator of the element to check.
+    #     :return: True if the element is visible, otherwise False.
+    #     """
+    #     try:
+    #         element = self.page_actions.get_presence_element(locator)
+    #         is_visible = self.browser.execute_script("""
+    #             var elem = arguments[0];
+    #             var style = window.getComputedStyle(elem);
+    #             return !(style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0'); # NOQA
+    #         """, element)
+    #         return is_visible
+    #     except Exception as e:
+    #         print(f"Error in is message visible: {e}")
+    #         return False
+
+    # def handle_error_messages(
+    #         self,
+    #         l_try_again,
+    #         l_select_more,
+    #         l_dynamic_more,
+    #         l_select_something):
+    #     """
+    #     Checks for error messages on the captcha and returns True if they are visible. # NOQA
+
+    #     :param l_try_again: Locator for the "Try again" message.
+    #     :param l_select_more: Locator for the "Select more" message.
+    #     :param l_dynamic_more: Locator for dynamic error.
+    #     :param l_select_something: Locator for the "Select something".
+    #     :return: True if any of the error messages are visible, other False.
+    #     """
+    #     time.sleep(1)
+    #     if self.is_message_visible(l_try_again):
+    #         return True
+    #     elif self.is_message_visible(l_select_more):
+    #         return True
+    #     elif self.is_message_visible(l_dynamic_more):
+    #         return True
+    #     elif self.is_message_visible(l_select_something):
+    #         return True
+    #     print("No error messages")
+    #     return False
 
     def handle_error_messages(
             self,
@@ -222,25 +249,35 @@ class CaptchaHelper:
             l_dynamic_more,
             l_select_something):
         """
-        Checks for error messages on the captcha and returns True if they are visible. # NOQA
-
-        :param l_try_again: Locator for the "Try again" message.
-        :param l_select_more: Locator for the "Select more" message.
-        :param l_dynamic_more: Locator for dynamic error.
-        :param l_select_something: Locator for the "Select something" message.
-        :return: True if any of the error messages are visible, otherwise False. 
+        Checks for error messages using SeleniumBase's visibility checks
         """
-        time.sleep(1)
-        if self.is_message_visible(l_try_again):
-            return True
-        elif self.is_message_visible(l_select_more):
-            return True
-        elif self.is_message_visible(l_dynamic_more):
-            return True
-        elif self.is_message_visible(l_select_something):
-            return True
-        print("No error messages")
-        return False
+        # Optional: Add brief wait for UI updates (adjust as needed)
+        time.sleep(0.5)
+
+        # Check all error conditions with proper element existence verification
+        errors_detected = (
+            self._is_visible_sb(l_try_again) or
+            self._is_visible_sb(l_select_more) or
+            self._is_visible_sb(l_dynamic_more) or
+            self._is_visible_sb(l_select_something)
+        )
+
+        if errors_detected:
+            print("Captcha error message detected")
+        return errors_detected
+
+    def _is_visible_sb(self, selector):
+        """Safe visibility check with SeleniumBase"""
+        try:
+            # Uses SeleniumBase's is_element_visible which handles:
+            # - Element presence
+            # - Visibility
+            # - Stale element retries
+            print(f"Checking {selector} visibility..")
+            return self.browser.is_element_visible(selector)
+        except Exception as e:
+            print(f"Visibility check error for {selector}: {str(e)}")
+            return False
 
     def load_js_script(self, file_path):
         """
