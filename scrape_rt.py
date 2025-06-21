@@ -137,6 +137,13 @@ with SB(uc=True, headless=False,
             while True:
                 # Get captcha data by calling the JS function directly
                 captcha_data = sb.execute_script("return getCaptchaData();")
+                print(f"Captcha Data: {captcha_data}")
+
+                if captcha_data is None:
+                    print("Popup Not Found. Clicking Continue...")
+                    page_actions.switch_to_default_content()
+                    sb.uc_click('button[id*="email-login-button"]')
+                    break
 
                 # Forming parameters for solving captcha
                 params = {
@@ -251,6 +258,7 @@ with SB(uc=True, headless=False,
 
         except Exception as e:
             print(f"No Popup. Clicking Continue...: {e} ")
+            page_actions.switch_to_default_content()
             sb.uc_click('button[id*="email-login-button"]')
 
     current_url = sb.get_current_url()

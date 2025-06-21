@@ -3,6 +3,7 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException, JavascriptException
 
 
 class PageActions:
@@ -90,14 +91,56 @@ class PageActions:
         self.get_clickable_element(locator).click()
         print("Pressed the Check button")
 
+    # def check_for_image_updates(self):
+    #     """
+    #     Checks if captcha images have been updated using JavaScript.
+
+    #     :return: Returns True if the images have been updated, False otherwise. # NOQA
+    #     """
+    #     print("Checking for Images updated")
+    #     return self.browser.execute_script("return monitorRequests();")
+
     def check_for_image_updates(self):
         """
         Checks if captcha images have been updated using JavaScript.
 
-        :return: Returns True if the images have been updated, False otherwise.
+        :return: True if images were updated within 10 seconds, False otherwise
         """
         print("Checking for Images updated")
-        return self.browser.execute_script("return monitorRequests();")
+
+        try:
+            # Use execute_async_script to handle the Promise
+            return self.browser.execute_async_script(
+                """
+                const callback = arguments[arguments.length - 1];
+                monitorRequests()
+                    .then(result => callback(result))
+                    .catch(error => {
+                        console.error('monitorRequests error:', error);
+                        callback(false);
+                    });
+                """
+            )
+        except JavascriptException as e:
+            if "monitorRequests is not defined" in str(e):
+                try:
+                    # Wait for function to be defined
+                    WebDriverWait(self.browser, 10).until(
+                        lambda d: d.execute_script(
+                            "return typeof monitorRequests === 'function';"
+                        )
+                    )
+                    # Retry after successful wait
+                    return self.check_for_image_updates()
+                except TimeoutException:
+                    print("JavaScript function 'monitorRequests'"
+                          "not available after waiting")
+                    return False
+            print(f"JavaScript error: {str(e)}")
+            return False
+        except Exception as e:
+            print(f"Unexpected error: {str(e)}")
+            return False
 
 
 class CaptchaHelper:
