@@ -215,6 +215,7 @@ with SB(uc=True,
                                       f"previousID: {id}")
                                 continue  # Continue the loop
 
+                            print("Clicking Verify button 3x3")
                             page_actions.click_check_button(c_verify_button)
 
                             # Press the check button after clicks
@@ -241,6 +242,9 @@ with SB(uc=True,
                                       "continuing without previousID")
                                 continue  # Continue the loop
 
+                            print("Clicking Verify button 4x4")
+                            page_actions.click_check_button(c_verify_button)
+
                         # If the images are not updated, check the error
                         print("Checking Error message..")
                         is_error_message = captcha_helper\
@@ -251,7 +255,8 @@ with SB(uc=True,
                         if is_error_message:
                             continue  # If error, restart the loop
 
-                        page_actions.click_check_button(c_verify_button)
+                        # print("Clicking Verify button..")
+                        # page_actions.click_check_button(c_verify_button)
 
                         # If there are no errors, send the captcha
                         # page_actions.switch_to_default_content()
@@ -275,10 +280,11 @@ with SB(uc=True,
                             break  # Exit loop
                 # sb.switch_to_frame('iframe[title="reCAPTCHA"]')
                 page_actions.switch_to_default_content()
+                print("Clicking Continue button...")
                 sb.uc_click('button[id*="email-login-button"]')
             except Exception as e:
-                print(f"No Popup. Clicking Continue...: {e} ")
-                page_actions.switch_to_default_content()
+                print(f"Error in the process. Clicking Continue...: {e} ")
+                # page_actions.switch_to_default_content()
                 sb.uc_click('button[id*="email-login-button"]')
         else:
             print("No Captcha Grid")
