@@ -73,7 +73,8 @@ async def send_handler(event: mycdp.network.RequestWillBeSent):
     # print(c2 + "*** ==> ResponseReceived <== ***" + cr)
 #    print(event.response)
 
-with SB(uc=True, headless=False,
+with SB(uc=True,
+        # headless=False,
         xvfb=True,
         proxy=proxy_string,
         maximize=True,
@@ -129,6 +130,7 @@ with SB(uc=True, headless=False,
         print("Switching to Popup Captcha iframe..")
         try:
             sb.switch_to_frame(c_popup_captcha)
+            sb.sleep(2)
             captcha_helper.execute_js(script_get_data_captcha)
             captcha_helper.execute_js(script_change_tracking)
 
