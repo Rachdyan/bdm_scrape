@@ -398,7 +398,7 @@ with SB(uc=True,
                             print("Breaking Loop 2")
                             break  # Exit loop
                 # sb.switch_to_frame('iframe[title="reCAPTCHA"]')
-                breakpoint()
+                # breakpoint()
                 sb.switch_to_parent_frame()
                 print("Clicking Continue button...")
                 # sb.uc_click('button[id*="email-login-button"]')
