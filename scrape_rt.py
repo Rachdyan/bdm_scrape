@@ -22,6 +22,9 @@ import imaplib
 import email
 from email.header import decode_header
 import cloudscraper
+import time
+# import ast
+# import colorama
 
 load_dotenv(override=True)
 
@@ -69,9 +72,55 @@ async def send_handler(event: mycdp.network.RequestWillBeSent):
     # print(s)
 
 
-# async def receive_handler(event: mycdp.network.ResponseReceived):
+async def receive_handler(event: mycdp.network.ResponseReceived):
     # print(c2 + "*** ==> ResponseReceived <== ***" + cr)
-#    print(event.response)
+    print(event.response)
+
+
+xhr_requests = []
+last_xhr_request = None
+
+
+def listenXHR(page):
+    async def handler(evt):
+        # Get AJAX requests
+        if evt.type_ is mycdp.network.ResourceType.XHR:
+            xhr_requests.append([evt.response.url, evt.request_id])
+            global last_xhr_request
+            last_xhr_request = time.time()
+    page.add_handler(mycdp.network.ResponseReceived, handler)
+
+
+async def receiveXHR(page, requests):
+    responses = []
+    retries = 0
+    max_retries = 5
+    # Wait at least 2 seconds after last XHR request for more
+    while True:
+        if last_xhr_request is None or retries > max_retries:
+            break
+        if time.time() - last_xhr_request <= 2:
+            retries = retries + 1
+            time.sleep(2)
+            continue
+        else:
+            break
+    await page
+    # Loop through gathered requests and get response body
+    for request in requests:
+        try:
+            res = await page.send(mycdp.network.get_response_body(request[1]))
+            if res is None:
+                continue
+            responses.append({
+                "url": request[0],
+                "body": res[0],
+                "is_base64": res[1],
+            })
+        except Exception as e:
+            print("Error getting response:", e)
+    return responses
+
 
 with SB(uc=True,
         # headless=False,
@@ -81,13 +130,23 @@ with SB(uc=True,
         ) as sb:
 
     sb.activate_cdp_mode(f"{sb_website}/login")
+    sb.execute_cdp_cmd(
+            'Target.setAutoAttach',
+            {'autoAttach': True, 'waitForDebuggerOnStart': False,
+             'flatten': True}
+        )
+    sb.execute_cdp_cmd('Network.enable', {})
+    sb.execute_cdp_cmd('Page.enable', {})
     sb.sleep(5)
 
     sb.type("input[id='username']", sb_user)
     sb.sleep(3)
     sb.type("input[id='password']", sb_pass)
     sb.sleep(3)
-
+    tab = sb.cdp.page
+    listenXHR(tab)
+    # sb.cdp.add_handler(mycdp.network.RequestWillBeSent, send_handler)
+    # sb.cdp.add_handler(mycdp.network.ResponseReceived, receive_handler)
     # sb.uc_click('button[id*="email-login-button"]')
     sb.cdp.click('button[id*="email-login-button"]')
     sb.sleep(3)
@@ -141,6 +200,7 @@ with SB(uc=True,
                 id = None  # Initialize the id variable for captcha
 
                 while True:
+                    sb.sleep(2)
                     print("Starting Loop..")
                     # Get captcha data by calling the JS function directly
                     captcha_data = sb\
@@ -194,9 +254,32 @@ with SB(uc=True,
                         if params['cols'] == 3:
                             # Click on the answers found
                             page_actions.clicks(number_list)
+                            sb.sleep(2)
+
+                            print("Clicking Verify button 3x3")
+                            page_actions.click_check_button(c_verify_button)
+                            sb.sleep(2)
+
+                            print("Checking error")
+                            errors_detected = (
+                                # sb.is_element_visible(c_verify_button) or
+                                sb.is_element_visible(c_try_again) or
+                                sb.is_element_visible(c_select_more) or
+                                sb.is_element_visible(c_dynamic_more) or
+                                sb.is_element_visible(c_select_something)
+                            )
+                            print(f"Error Detected: {errors_detected}")
+                            if errors_detected:
+                                continue
 
                             # page_actions.click_check_button(c_verify_button)
+                            loop = sb.cdp.get_event_loop()
+                            xhr_responses = loop\
+                                .run_until_complete(
+                                    receiveXHR(tab, xhr_requests))
+                            print(xhr_responses)
 
+                            # breakpoint()
                             # sb.sleep(2)
 
                             # if captcha_helper.handle_error_messages(
@@ -206,17 +289,20 @@ with SB(uc=True,
 
                             # Check if the images have been updated
                             # current_url = sb.driver.current_url
-                            image_update = page_actions\
-                                .check_for_image_updates()
-                            print(f"Image Update: {image_update}")
+                            # image_update = page_actions\
+                            #    .check_for_image_updates()
+                            # if xhr_responses is not None:
+                            #     image_update = "INVALID" in \
+                            # xhr_responses[0]['body']
+                            #     xhr_responses = []
+                            # else:
+                            #     image_update = False
+                            # print(f"Image Update: {image_update}")
 
-                            if image_update:
-                                print(f"Images updated, continuing with "
-                                      f"previousID: {id}")
-                                continue  # Continue the loop
-
-                            print("Clicking Verify button 3x3")
-                            page_actions.click_check_button(c_verify_button)
+                            # if image_update:
+                            #     print(f"Images updated, continuing with "
+                            #           f"previousID: {id}")
+                            #     continue  # Continue the loop
 
                             # Press the check button after clicks
                             # page_actions.click_check_button(c_verify_button)
@@ -224,35 +310,68 @@ with SB(uc=True,
 
                         # Processing for 4x4
                         elif params['cols'] == 4:
-                            page_actions.clicks(number_list)
+                            # tab = sb.cdp.page
+                            # listenXHR(tab)
 
+                            page_actions.clicks(number_list)
                             sb.sleep(2)
+
+                            print("Clicking Verify button 4x4")
+                            # page_actions.click_check_button(c_verify_button)
+                            page_actions.click_check_button(c_verify_button)
+
+                            print("Checking error")
+                            errors_detected = (
+                                # sb.is_element_visible(c_verify_button) or
+                                sb.is_element_visible(c_try_again) or
+                                sb.is_element_visible(c_select_more) or
+                                sb.is_element_visible(c_dynamic_more) or
+                                sb.is_element_visible(c_select_something)
+                            )
+                            print(f"Error Detected: {errors_detected}")
+                            if errors_detected:
+                                continue
+
+                            # loop = sb.cdp.get_event_loop()
+                            # xhr_responses = loop\
+                            # .run_until_complete(
+                            # receiveXHR(tab, xhr_requests))
+                            # print(xhr_responses)
+
+                            # breakpoint()
                             # if captcha_helper.handle_error_messages(
                             #         c_try_again, c_select_more,
                             #         c_dynamic_more, c_select_something):
                             #     continue
                             # current_url = sb.driver.current_url
-
                             # After clicking, check for image updates
-                            image_update = page_actions\
-                                .check_for_image_updates()
-                            print(f"Image Update: {image_update}")
-                            if image_update:
-                                print("Images updated, "
-                                      "continuing without previousID")
-                                continue  # Continue the loop
+                            # image_update = page_actions\
+                            #    .check_for_image_updates()
+                            # if xhr_responses is not None:
+                            #     image_update = "INVALID" in \
+                            # xhr_responses[0]['body']
+                            #     xhr_responses = []
+                            # else:
+                            #     image_update = False
 
-                            print("Clicking Verify button 4x4")
-                            page_actions.click_check_button(c_verify_button)
+                            # print(f"Image Update: {image_update}")
+                            # if image_update:
+                            #     print("Images updated, "
+                            #           "continuing without previousID")
+                            #     continue  # Continue the loop
 
                         # If the images are not updated, check the error
-                        print("Checking Error message..")
-                        is_error_message = captcha_helper\
-                            .handle_error_messages(c_try_again, c_select_more,
-                                                   c_dynamic_more,
-                                                   c_select_something)
-                        print(f"Is Error: {is_error_message}")
-                        if is_error_message:
+                        sb.sleep(3)
+                        print("Checking error lastt")
+                        errors_detected = (
+                                # sb.is_element_visible(c_verify_button) or
+                                sb.is_element_visible(c_try_again) or
+                                sb.is_element_visible(c_select_more) or
+                                sb.is_element_visible(c_dynamic_more) or
+                                sb.is_element_visible(c_select_something)
+                            )
+                        print(f"Error Detected: {errors_detected}")
+                        if errors_detected:
                             continue  # If error, restart the loop
 
                         # print("Clicking Verify button..")
@@ -279,13 +398,22 @@ with SB(uc=True,
                             print("Breaking Loop 2")
                             break  # Exit loop
                 # sb.switch_to_frame('iframe[title="reCAPTCHA"]')
-                page_actions.switch_to_default_content()
+                breakpoint()
+                sb.switch_to_parent_frame()
                 print("Clicking Continue button...")
-                sb.uc_click('button[id*="email-login-button"]')
+                # sb.uc_click('button[id*="email-login-button"]')
+                sb.cdp.click('button[id*="email-login-button"]')
             except Exception as e:
                 print(f"Error in the process. Clicking Continue...: {e} ")
                 # page_actions.switch_to_default_content()
-                sb.uc_click('button[id*="email-login-button"]')
+                try:
+                    sb.cdp.click('button[id*="email-login-button"]')
+                except Exception as e:
+                    print("Except Part 2,"
+                          f"Switching to default content first {e}")
+                    sb.switch_to_parent_frame()
+                    sb.cdp.click('button[id*="email-login-button"]')
+
         else:
             print("No Captcha Grid")
             sb.uc_click('button[id*="email-login-button"]')

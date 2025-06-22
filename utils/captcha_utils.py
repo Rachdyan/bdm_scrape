@@ -97,7 +97,7 @@ class PageActions:
 
         :return: Returns True if the images have been updated, False otherwise. # NOQA
         """
-        print("Checking for Images updated")
+        print("Checking for Images updated ORI")
         return self.browser.execute_script("return monitorRequests();")
 
     # def check_for_image_updates(self):
@@ -106,7 +106,7 @@ class PageActions:
 
     #     :return: True if images were updated within 10 seconds, False
     #     """
-    #     print("Checking for Images updated")
+    #     print("Checking for Images updated NEW")
 
     #     try:
     #         # Use execute_async_script to handle the Promise
@@ -256,7 +256,7 @@ class CaptchaHelper:
 
         # Check all error conditions with proper element existence verification
         errors_detected = (
-            self._is_visible_sb(l_try_again) or
+            self.is_element_visible(l_try_again) or
             self._is_visible_sb(l_select_more) or
             self._is_visible_sb(l_dynamic_more) or
             self._is_visible_sb(l_select_something)
