@@ -125,7 +125,7 @@ async def receiveXHR(page, requests):
 with SB(uc=True,
         # headless=False,
         xvfb=True,
-        proxy=proxy_string,
+        # proxy=proxy_string,
         maximize=True,
         ) as sb:
 
@@ -200,6 +200,7 @@ with SB(uc=True,
                 id = None  # Initialize the id variable for captcha
 
                 while True:
+                    breakpoint()
                     sb.sleep(2)
                     print("Starting Loop..")
                     # Get captcha data by calling the JS function directly
