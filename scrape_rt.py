@@ -200,7 +200,7 @@ with SB(uc=True,
                 id = None  # Initialize the id variable for captcha
 
                 while True:
-                    breakpoint()
+                    # breakpoint()
                     sb.sleep(2)
                     print("Starting Loop..")
                     # Get captcha data by calling the JS function directly
