@@ -123,34 +123,44 @@ async def receiveXHR(page, requests):
 
 
 with SB(uc=True,
-        # headless=False,
-        xvfb=True,
+        headless=False,
+        xvfb=False,
         # proxy=proxy_string,
         maximize=True,
         ) as sb:
 
-    sb.activate_cdp_mode(f"{sb_website}/login")
-    sb.execute_cdp_cmd(
-            'Target.setAutoAttach',
-            {'autoAttach': True, 'waitForDebuggerOnStart': False,
-             'flatten': True}
-        )
-    sb.execute_cdp_cmd('Network.enable', {})
-    sb.execute_cdp_cmd('Page.enable', {})
+    # sb.activate_cdp_mode(f"{sb_website}/login")
+    sb.activate_cdp_mode("https://google.com")
+    sb.sleep(3)
+    # breakpoint()
+    sb.uc_open_with_reconnect(f"{sb_website}/login", 5)
+    # sb.open("https://www.google.com/search?q=stockbit")
+    sb.sleep(3)
+
+    # sb.open(f"{sb_website}/login")
+    # sb.execute_cdp_cmd(
+    #         'Target.setAutoAttach',
+    #         {'autoAttach': True, 'waitForDebuggerOnStart': False,
+    #          'flatten': True}
+    #     )
+    # sb.execute_cdp_cmd('Network.enable', {})
+    # sb.execute_cdp_cmd('Page.enable', {})
     sb.sleep(5)
 
     sb.type("input[id='username']", sb_user)
     sb.sleep(3)
     sb.type("input[id='password']", sb_pass)
     sb.sleep(3)
-    tab = sb.cdp.page
-    listenXHR(tab)
+    # tab = sb.cdp.page
+    # listenXHR(tab)
     # sb.cdp.add_handler(mycdp.network.RequestWillBeSent, send_handler)
     # sb.cdp.add_handler(mycdp.network.ResponseReceived, receive_handler)
-    # sb.uc_click('button[id*="email-login-button"]')
-    sb.cdp.click('button[id*="email-login-button"]')
-    sb.sleep(3)
 
+    sb.uc_click('button[id*="email-login-button"]')
+    # sb.cdp.click('button[id*="email-login-button"]')
+    # sb.click('button[id*="email-login-button"]')
+    sb.sleep(3)
+    # breakpoint()
     current_url = sb.get_current_url()
     # current_url
     if 'verification' in current_url:
@@ -198,7 +208,8 @@ with SB(uc=True,
                 captcha_helper.execute_js(script_change_tracking)
 
                 id = None  # Initialize the id variable for captcha
-
+                parent_frame = False
+                attempt = 0
                 while True:
                     # breakpoint()
                     sb.sleep(2)
@@ -261,9 +272,11 @@ with SB(uc=True,
                             page_actions.click_check_button(c_verify_button)
                             sb.sleep(2)
 
+                            sb.is_element_clickable(c_verify_button)
+
                             print("Checking error")
                             errors_detected = (
-                                # sb.is_element_visible(c_verify_button) or
+                                sb.is_element_clickable(c_verify_button) or
                                 sb.is_element_visible(c_try_again) or
                                 sb.is_element_visible(c_select_more) or
                                 sb.is_element_visible(c_dynamic_more) or
@@ -274,11 +287,11 @@ with SB(uc=True,
                                 continue
 
                             # page_actions.click_check_button(c_verify_button)
-                            loop = sb.cdp.get_event_loop()
-                            xhr_responses = loop\
-                                .run_until_complete(
-                                    receiveXHR(tab, xhr_requests))
-                            print(xhr_responses)
+                            # loop = sb.cdp.get_event_loop()
+                            # xhr_responses = loop\
+                            #    .run_until_complete(
+                            #        receiveXHR(tab, xhr_requests))
+                            # print(xhr_responses)
 
                             # breakpoint()
                             # sb.sleep(2)
@@ -323,7 +336,7 @@ with SB(uc=True,
 
                             print("Checking error")
                             errors_detected = (
-                                # sb.is_element_visible(c_verify_button) or
+                                sb.is_element_clickable(c_verify_button) or
                                 sb.is_element_visible(c_try_again) or
                                 sb.is_element_visible(c_select_more) or
                                 sb.is_element_visible(c_dynamic_more) or
@@ -365,7 +378,7 @@ with SB(uc=True,
                         sb.sleep(3)
                         print("Checking error lastt")
                         errors_detected = (
-                                # sb.is_element_visible(c_verify_button) or
+                                sb.is_element_clickable(c_verify_button) or
                                 sb.is_element_visible(c_try_again) or
                                 sb.is_element_visible(c_select_more) or
                                 sb.is_element_visible(c_dynamic_more) or
@@ -375,14 +388,58 @@ with SB(uc=True,
                         if errors_detected:
                             continue  # If error, restart the loop
 
-                        # print("Clicking Verify button..")
-                        # page_actions.click_check_button(c_verify_button)
-
-                        # If there are no errors, send the captcha
-                        # page_actions.switch_to_default_content()
+                        sb.switch_to_parent_frame()
+                        print("Clicking Continue butto inside loop...")
                         # sb.uc_click('button[id*="email-login-button"]')
-                        # page_actions.click_check_button(p_submit_button_captcha)
-                        print("Breaking Loop 1")
+                        sb.click('button[id*="email-login-button"]')
+                        sb.sleep(3)
+
+                        current_url = sb.get_current_url()
+                        if 'verification' in current_url:
+                            print("Continue clicked but still in verification "
+                                  "page... retrying login")
+
+                            sb.open(f"{sb_website}/login")
+                            # sb.driver.refresh()
+                            sb.sleep(3)
+                            sb.type("input[id='username']", sb_user)
+                            sb.sleep(3)
+                            sb.type("input[id='password']", sb_pass)
+                            sb.sleep(3)
+
+                            sb.uc_click('button[id*="email-login-button"]')
+                            sb.sleep(3)
+                            current_url = sb.get_current_url()
+                            if 'verification' not in current_url:
+                                print("Successfully logged in after captcha ")
+                                break
+
+                            # sb.switch_to_frame('iframe[title="reCAPTCHA"]')
+                            # sb.sleep(3)
+                            # print("Clicking Checkbox..")
+                            # sb.uc_click("span[class*='recaptcha-checkbox']")
+                            # captcha_grid_visible = sb\
+                            # .is_element_visible(c_popup_captcha)
+                            # if captcha_grid_visible:
+                            #     try:
+                            #         print("Captcha Grid Visible...")
+                            #         sb.switch_to_frame(c_popup_captcha)
+                            #         sb.sleep(2)
+                            #         captcha_helper.execute_js(script_get_data_captcha)
+                            #         captcha_helper.execute_js(script_change_tracking)
+
+                            #         id = None
+                            #         parent_frame = False
+                            #         attempt = 0
+                            #     except Exception as e:
+                            #         print
+                            # (f"Error switching to captcha frame: {e}")
+                            #         page_actions.switch_to_default_content()
+                            #         sb.uc_click('button[id*="email-login-button"]')
+                            #         break
+                            continue
+
+                        print("Breaking loop 2")
                         break  # Exit the loop if the captcha is solved
 
                     elif 'No_matching_images' in result['code']:
@@ -398,29 +455,34 @@ with SB(uc=True,
                                 .click_check_button(p_submit_button_captcha)
                             print("Breaking Loop 2")
                             break  # Exit loop
+
                 # sb.switch_to_frame('iframe[title="reCAPTCHA"]')
                 # breakpoint()
-                sb.switch_to_parent_frame()
-                print("Clicking Continue button...")
-                # sb.uc_click('button[id*="email-login-button"]')
-                sb.cdp.click('button[id*="email-login-button"]')
+                # sb.switch_to_parent_frame()
+                # print("Clicking Continue button...")
+                # b.uc_click('button[id*="email-login-button"]')
+
+                # sb.cdp.click('button[id*="email-login-button"]')
             except Exception as e:
                 print(f"Error in the process. Clicking Continue...: {e} ")
                 # page_actions.switch_to_default_content()
                 try:
-                    sb.cdp.click('button[id*="email-login-button"]')
+                    # sb.cdp.click('button[id*="email-login-button"]')
+                    sb.uc_click('button[id*="email-login-button"]')
                 except Exception as e:
                     print("Except Part 2,"
                           f"Switching to default content first {e}")
                     sb.switch_to_parent_frame()
-                    sb.cdp.click('button[id*="email-login-button"]')
-
+                    # sb.cdp.click('button[id*="email-login-button"]')
+                    sb.uc_click('button[id*="email-login-button"]')
         else:
             print("No Captcha Grid")
             sb.uc_click('button[id*="email-login-button"]')
 
+    sb.sleep(3)
+    print("Finished solving captcha")
     current_url = sb.get_current_url()
-    # current_url
+    print(f"current_url:{current_url}")
 
     if "otp" in current_url:
         print("Email Verification Page..")
