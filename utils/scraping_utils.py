@@ -65,7 +65,18 @@ def get_individual_stock(sb, row):
     time.sleep(0.5)
     sb.execute_script("document.body.style.zoom='80%'")
     time.sleep(1)
-    sb.scroll_to('#balance-position-chart')
+
+    # sb.scroll_to('#balance-position-chart')
+    if sb.is_element_present('#balance-position-chart'):
+        sb.scroll_to('#balance-position-chart')
+        time.sleep(1)
+        sb.execute_script("window.scrollBy(0, -120);")
+        time.sleep(1)
+        bp_overview_pic_name = (f"screenshot/"
+                                f"{row['date']}_{row['symbol']}_bp.png")
+        sb.save_screenshot(bp_overview_pic_name)
+        time.sleep(0.5)
+
     time.sleep(1)
     sb.execute_script("window.scrollBy(0, -120);")
     time.sleep(1)
