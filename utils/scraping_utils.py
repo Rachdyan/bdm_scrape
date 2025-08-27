@@ -25,9 +25,9 @@ def get_summary_table(raw_html, today_date, method):
                 # Handle markdown cells with <p> tags
                 p_tag = cell_div.find('p')
                 if p_tag:
-                    text = p_tag.get_text(strip=True)
+                    text = p_tag.get_text(strip=True).replace('⭐', '')
                 else:
-                    text = cell_div.get_text(strip=True)
+                    text = cell_div.get_text(strip=True).replace('⭐', '')
             else:
                 text = ''
             row_data.append(text)

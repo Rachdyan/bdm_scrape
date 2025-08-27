@@ -1,8 +1,8 @@
 name: Scrape RT Windows
 on:
   # schedule:
-    # At 8:30 PM Jakarta Time (08:45 UTC)
-  #  - cron: '00 13 * * 1-5'
+  #   # At 8:30 PM Jakarta Time (08:45 UTC)
+  #   - cron: '00 13 * * 1-5'
   workflow_dispatch:
 #  // push:
 #     branches: [ master ]
