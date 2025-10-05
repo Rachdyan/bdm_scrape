@@ -542,8 +542,9 @@ with SB(uc=True,
                                     "div[style*='background-color:#f5f5f5']")
                                 otp_code = raw_div.get_text(strip=True)
                                 print(f"Otp Code is: {otp_code}")
-                                first_otp_box = ("input[id*='input-"
-                                                 "email-otp-verify-1']")
+                                # breakpoint()
+                                first_otp_box = ("input[data-cy*='confirm-"
+                                                 "otp-input-box']")
                                 sb.type(first_otp_box, otp_code)
                                 sb.sleep(2)
                                 # sb.click("button[class*='ant-btn-primary'][2]")
