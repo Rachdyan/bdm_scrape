@@ -262,6 +262,7 @@ with SB(uc=True,
                         number_list = captcha_helper.pars_answer(answer)
                         print(f"Number list: {number_list}")
 
+                        # breakpoint()
                         # Processing for 3x3
                         if params['cols'] == 3:
                             # Click on the answers found
