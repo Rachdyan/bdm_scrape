@@ -30,7 +30,7 @@ site_password = os.environ['SITE_PASSWORD']
 
 if __name__ == "__main__":
     with SB(uc=True,
-            headless=True,
+            headless=False,
             xvfb=True,
             proxy=proxy_string,
             maximize=True,
@@ -115,14 +115,19 @@ if __name__ == "__main__":
                                                method='market maker')
         # m_daily_summary_df
 
-        comnbined_daily_df = pd.concat(
+        combined_daily_df = pd.concat(
             [nr_daily_summary_df, m_daily_summary_df]).reset_index(drop=True)
-        comnbined_daily_df['link'] = comnbined_daily_df['symbol']\
-            .apply(lambda x: f"{website}/stock_detail/{x}")
-        comnbined_daily_df['price'] = comnbined_daily_df['price'].astype(int)
-        comnbined_daily_df = comnbined_daily_df[comnbined_daily_df.price > 50]\
+        print(f"Combined Daily DataFrame Length: {len(combined_daily_df)}")
+        print("Removing duplicates based on 'symbol' column...")
+        combined_daily_df = combined_daily_df.drop_duplicates('symbol')\
             .reset_index(drop=True)
-        comnbined_daily_df
+        print(f"Length after removing duplicates: {len(combined_daily_df)}")
+        combined_daily_df['link'] = combined_daily_df['symbol']\
+            .apply(lambda x: f"{website}/stock_detail/{x}")
+        combined_daily_df['price'] = combined_daily_df['price'].astype(int)
+        combined_daily_df = combined_daily_df[combined_daily_df.price > 50]\
+            .reset_index(drop=True)
+        combined_daily_df
 
         # GET CUMMULATIVE NON RETAIL
         sb.hover_and_click("#method", '[value = "nr"]', timeout=1)
@@ -163,7 +168,7 @@ if __name__ == "__main__":
         final_daily_df = pd.concat([
             get_individual_stock(
                 sb=sb, row=row)
-            for index, row in comnbined_daily_df.iterrows()
+            for index, row in combined_daily_df.iterrows()
         ], ignore_index=True)
 
         final_cummulative_df = pd.concat([
