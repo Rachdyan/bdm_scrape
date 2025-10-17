@@ -175,6 +175,30 @@ class CaptchaHelper:
         """
         print("DEBUG: Executing JS")
         try:
+            # First check if we're in the right context
+            current_url = self.browser.current_url
+            print(f"DEBUG: Current URL when executing JS: {current_url}")
+            # Check if the script contains getCaptchaData function
+            if "getCaptchaData" in script:
+                print("DEBUG: Loading getCaptchaData function")
+                # Execute the script to load the function
+                self.browser.execute_script(script)
+                # Wait a moment for the function to be available
+                import time
+                time.sleep(1)
+
+                # Verify the function is now available
+                function_check = self.browser.execute_script(
+                    "return typeof getCaptchaData === 'function';"
+                )
+                print(f"DEBUG: getCaptchaData function available: "
+                      f"{function_check}")
+
+                if not function_check:
+                    print("DEBUG: getCaptchaData function is not "
+                          "available after loading")
+                    return None
+
             result = self.browser.execute_script(script)
             print(f"DEBUG: JS execution result: {result}")
             return result

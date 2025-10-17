@@ -204,8 +204,19 @@ with SB(uc=True,
                 print("DEBUG: Captcha Grid Visible...")
                 sb.switch_to_frame(c_popup_captcha)
                 sb.sleep(2)
-                captcha_helper.execute_js(script_get_data_captcha)
-                captcha_helper.execute_js(script_change_tracking)
+                # Load the JavaScript functions
+                print("DEBUG: Loading JavaScript functions")
+                try:
+                    captcha_helper.execute_js(script_get_data_captcha)
+                    print("DEBUG: getCaptchaData script loaded")
+                except Exception as e:
+                    print(f"DEBUG: Error loading getCaptchaData script: {e}")
+
+                try:
+                    captcha_helper.execute_js(script_change_tracking)
+                    print("DEBUG: monitorRequests script loaded")
+                except Exception as e:
+                    print(f"DEBUG: Error loading monitorRequests script: {e}")
 
                 id = None  # Initialize the id variable for captcha
                 parent_frame = False
@@ -216,9 +227,26 @@ with SB(uc=True,
                     print("DEBUG: Starting Loop..")
                     # Get captcha data by calling the JS function directly
                     try:
-                        captcha_data = sb\
-                            .execute_script("return getCaptchaData();")
-                        print(f"DEBUG: Captcha Data: {captcha_data}")
+                        # First verify the function is available
+                        function_available = sb.execute_script(
+                            "return typeof getCaptchaData === 'function';"
+                        )
+                        print(f"DEBUG: getCaptchaData function available: "
+                              f"{function_available}")
+
+                        if function_available:
+                            captcha_data = sb\
+                                .execute_script("return getCaptchaData();")
+                            print(f"DEBUG: Captcha Data: {captcha_data}")
+                        else:
+                            print("DEBUG: getCaptchaData function not "
+                                  "available, reloading script")
+                            captcha_helper.execute_js(script_get_data_captcha)
+                            sb.sleep(1)
+                            captcha_data = sb\
+                                .execute_script("return getCaptchaData();")
+                            print(f"DEBUG: Captcha Data after reload: "
+                                  f"{captcha_data}")
                     except Exception as e:
                         print(f"DEBUG: Error getting captcha data: {e}")
                         captcha_data = None
