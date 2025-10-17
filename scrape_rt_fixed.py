@@ -345,16 +345,8 @@ with SB(uc=True,
                                       "solving captcha")
                                 attempt += 1
                                 if attempt < 5:
-                                    # Switch back to captcha frame for next
-                                    sb.switch_to_frame(c_popup_captcha)
-                                    sb.sleep(2)
-                                    captcha_helper.execute_js(
-                                        script_get_data_captcha)
-                                    captcha_helper.execute_js(
-                                        script_change_tracking)
-                                else:
                                     print("Continue clicked but still in " \
-                                          "verification page... retrying login")
+                                            "verification page... retrying login")
 
                                     sb.open(f"{sb_website}/login")
                                     # sb.driver.refresh()
@@ -370,6 +362,19 @@ with SB(uc=True,
                                     if 'verification' not in current_url:
                                         print("Successfully logged in after captcha ")
                                         break
+                                    else:
+                                        print("Still on verification page, retrying...")
+                                        attempt += 1
+                                        sb.switch_to_frame(c_popup_captcha)
+                                        sb.sleep(2)
+                                        captcha_helper.execute_js(
+                                            script_get_data_captcha)
+                                        captcha_helper.execute_js(
+                                            script_change_tracking)
+
+                                else:
+                                    print("Max attempts reached. Exiting...")
+                                    break
 
                         elif 'No_matching_images' in result['code']:
                             page_actions.click_check_button(c_verify_button)
