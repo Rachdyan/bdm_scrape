@@ -384,7 +384,7 @@ with SB(uc=True,
                             except Exception:
                                 pass
 
-                if not captcha_solved and attempt >= 5:
+                if not captcha_solved and attempt >= 10:
                     print("Max attempts reached. Trying to continue anyway...")
                     page_actions.switch_to_default_content()
                     sb.uc_click('button[id*="email-login-button"]')
