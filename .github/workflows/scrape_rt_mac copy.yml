@@ -87,7 +87,7 @@ jobs:
       run: |
         echo "def test_0(sb): pass" > verify_sb.py
         pytest verify_sb.py
-    - name: Run python scrape_rt_debug.py --debug
+    - name: Run python scrape_rt_fixed.py --debug
       env:
         PROXY_USER: ${{ secrets.PROXY_USER }}
         PROXY_PASSWORD: ${{ secrets.PROXY_PASSWORD }}
@@ -109,4 +109,4 @@ jobs:
         EMAIL_ACCOUNT: ${{ secrets.EMAIL_ACCOUNT }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       run: |
-        python scrape_rt_debug.py --debug
+        python scrape_rt_fixed.py --debug
