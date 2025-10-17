@@ -17,7 +17,7 @@ from datetime import datetime as dt
 import pytz
 import mycdp
 from twocaptcha import TwoCaptcha
-from utils.captcha_utils import PageActions, CaptchaHelper
+from utils.captcha_utils_debug import PageActions, CaptchaHelper
 import imaplib
 import email
 from email.header import decode_header
@@ -173,7 +173,7 @@ with SB(uc=True,
         captcha_helper = CaptchaHelper(sb.driver, solver)
 
         script_get_data_captcha = captcha_helper\
-            .load_js_script('./js_scripts/get_captcha_data.js')
+            .load_js_script('./js_scripts/get_captcha_data_debug.js')
         script_change_tracking = captcha_helper\
             .load_js_script('./js_scripts/track_image_updates.js')
 
