@@ -352,6 +352,24 @@ with SB(uc=True,
                                         script_get_data_captcha)
                                     captcha_helper.execute_js(
                                         script_change_tracking)
+                                else:
+                                    print("Continue clicked but still in " \
+                                          "verification page... retrying login")
+
+                                    sb.open(f"{sb_website}/login")
+                                    # sb.driver.refresh()
+                                    sb.sleep(3)
+                                    sb.type("input[id='username']", sb_user)
+                                    sb.sleep(3)
+                                    sb.type("input[id='password']", sb_pass)
+                                    sb.sleep(3)
+
+                                    sb.uc_click('button[id*="email-login-button"]')
+                                    sb.sleep(3)
+                                    current_url = sb.get_current_url()
+                                    if 'verification' not in current_url:
+                                        print("Successfully logged in after captcha ")
+                                        break
 
                         elif 'No_matching_images' in result['code']:
                             page_actions.click_check_button(c_verify_button)
