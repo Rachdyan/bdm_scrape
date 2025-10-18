@@ -1,4 +1,5 @@
 from seleniumbase import SB
+from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import pandas as pd
 import telegram
@@ -184,21 +185,14 @@ with SB(uc=True,
 
         print("Solving captcha...")
         solver = RecaptchaSolver(driver=sb.driver)
-        print(f"c_iframe_captcha: {c_iframe_captcha}")
-        solver.click_recaptcha_v2(iframe=c_iframe_captcha)
+        recaptcha_iframe = sb.driver.find_element(By.XPATH, '//iframe[@title="reCAPTCHA"]')
+
+        print(f"recaptcha_iframe: {recaptcha_iframe}")
+
+        solver.click_recaptcha_v2(iframe=recaptcha_iframe)
 
         sb.uc_click('button[id*="email-login-button"]')
 
-
-       sb.sleep(3)
-       print("Finished solving captcha")
-       current_url = sb.get_current_url()
-       print(f"current_url:{current_url}")
-
-       # Check if we need to handle OTP
-       if "otp" in current_url:
-           print("Email Verification Page..")
-           sb.sleep(20)
 
     sb.sleep(3)
     print("Finished solving captcha")

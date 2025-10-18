@@ -133,7 +133,7 @@ with SB(uc=False,
         ) as sb:
 
     # sb.activate_cdp_mode(f"{sb_website}/login")
-    sb.activate_cdp_mode("https://google.com")
+    sb.open("https://google.com")
     sb.sleep(3)
     # breakpoint()
     sb.uc_open_with_reconnect(f"{sb_website}/login", 5)
