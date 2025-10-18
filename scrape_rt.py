@@ -125,7 +125,7 @@ async def receiveXHR(page, requests):
 with SB(uc=True,
         headless=False,
         xvfb=False,
-        proxy=proxy_string,
+        # proxy=proxy_string,
         maximize=True,
         is_mobile=True,
         # locale="id"
@@ -403,6 +403,10 @@ with SB(uc=True,
                                                 except Exception as e:
                                                     print(f"Error switching frame: {e}")
                                                     continue
+                                            else:
+                                                print("No Captcha Grid")
+                                                sb.click('button[id*="email-login-button"]')
+                                                break
 
                                 else:
                                     print("Max attempts reached. Exiting...")

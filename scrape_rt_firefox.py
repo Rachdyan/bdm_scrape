@@ -125,7 +125,7 @@ async def receiveXHR(page, requests):
 with SB(uc=False,
         headless=False,
         xvfb=False,
-        proxy=proxy_string,
+        # proxy=proxy_string,
         maximize=True,
         # is_mobile=True,
         browser="edge",

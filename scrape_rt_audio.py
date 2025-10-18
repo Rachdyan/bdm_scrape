@@ -185,17 +185,17 @@ with SB(uc=True,
 
         print("Solving captcha...")
         try:
-            # Check if reCAPTCHA iframe is present before interacting
+            # Check if the reCAPTCHA iframe is present before trying to interact with it
             if sb.is_element_visible(c_iframe_captcha):
                 solver = RecaptchaSolver(driver=sb.driver)
-                iframe = sb.driver.find_element(By.XPATH, c_iframe_captcha)
-                print(f"recaptcha_iframe: {iframe}")
-                solver.click_recaptcha_v2(iframe=iframe)
+                recaptcha_iframe = sb.driver.find_element(By.XPATH, c_iframe_captcha)
+                print(f"recaptcha_iframe: {recaptcha_iframe}")
+                solver.click_recaptcha_v2(iframe=recaptcha_iframe)
             else:
-                print("reCAPTCHA iframe not found, continuing...")
+                print("reCAPTCHA iframe not found, continuing without solving...")
         except Exception as e:
             print(f"Error solving reCAPTCHA: {e}")
-            print("Continuing without solving...")
+            print("Continuing without solving reCAPTCHA...")
 
         sb.uc_click('button[id*="email-login-button"]')
 
