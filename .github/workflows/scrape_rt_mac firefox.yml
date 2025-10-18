@@ -78,10 +78,10 @@ jobs:
       run: |
         python -c "import os; print(os.path.exists('/usr/bin/firefox'))"
         python -c "import os; print(os.path.exists('/bin/firefox'))"
-    - name: Display Firefox binary that's used
-      run: |
-        python -c "from seleniumbase.core import detect_b_ver; print(detect_b_ver.get_binary_location('firefox'))"
-        python -c "from seleniumbase import undetected; print(undetected.find_firefox_executable())"
+    # - name: Display Firefox binary that's used
+    #   run: |
+    #     python -c "from seleniumbase.core import detect_b_ver; print(detect_b_ver.get_binary_location('firefox'))"
+    #     python -c "from seleniumbase import undetected; print(undetected.find_firefox_executable())"
     - name: Make sure pytest with sb is working
       run: |
         echo "def test_0(sb): pass" > verify_sb.py
