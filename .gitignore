@@ -3,3 +3,5 @@ test_script
 screenshot_backup
 latest_logs
 .env
+*cron*
+*local*

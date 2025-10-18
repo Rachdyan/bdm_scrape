@@ -125,9 +125,9 @@ async def receiveXHR(page, requests):
 with SB(uc=True,
         headless=False,
         xvfb=False,
-        proxy=proxy_string,
+        # proxy=proxy_string,
         maximize=True,
-        is_mobile=True,
+        is_mobile=False,
         # locale="id"
         ) as sb:
 
@@ -269,7 +269,15 @@ with SB(uc=True,
                         if params['cols'] == 3 and id:
                             params["previousID"] = id
 
-                        print("Params before solving captcha:", params)
+                        # Create a truncated version of params for printing
+                        print_params = params.copy()
+                        if ('body' in print_params and
+                                len(str(print_params['body'])) > 100):
+                            print_params['body'] = (
+                                "..." + str(print_params['body'])[-100:] +
+                                "[truncated]"
+                            )
+                        print("Params before solving captcha:", print_params)
 
                         # Send captcha for solution
                         result = captcha_helper.solver_captcha(
@@ -297,6 +305,32 @@ with SB(uc=True,
                                 page_actions.clicks(number_list)
                                 sb.sleep(2)
 
+                                # Check if the images have been updated
+                                image_update = (
+                                    page_actions.check_for_image_updates()
+                                )
+
+                                # Maximum number of image updates to check
+                                max_image_updates = 2
+                                update_count = 0
+
+                                while (image_update and
+                                       update_count < max_image_updates):
+                                    # If updated, continue with the saved id
+                                    print(
+                                        f"Images updated ({update_count + 1}/"
+                                        f"{max_image_updates}), "
+                                        f"continuing with ID: {id}"
+                                    )
+                                    update_count += 1
+                                    image_update = (
+                                        page_actions.check_for_image_updates()
+                                    )
+                                
+                                if update_count > 0:
+                                    # Continue the loop if updates were found
+                                    continue
+
                                 print("Clicking Verify button 3x3")
                                 page_actions.click_check_button(
                                     c_verify_button)
@@ -322,6 +356,32 @@ with SB(uc=True,
                             elif params['cols'] == 4:
                                 page_actions.clicks(number_list)
                                 sb.sleep(2)
+
+                                # Check if the images have been updated
+                                image_update = (
+                                    page_actions.check_for_image_updates()
+                                )
+
+                                # Maximum number of image updates to check
+                                max_image_updates = 2
+                                update_count = 0
+
+                                while (image_update and
+                                       update_count < max_image_updates):
+                                    # If updated, continue with the saved id
+                                    print(
+                                        f"Images updated ({update_count + 1}/"
+                                        f"{max_image_updates}), "
+                                        f"continuing with ID: {id}"
+                                    )
+                                    update_count += 1
+                                    image_update = (
+                                        page_actions.check_for_image_updates()
+                                    )
+                                
+                                if update_count > 0:
+                                    # Continue the loop if updates were found
+                                    continue
 
                                 print("Clicking Verify button 4x4")
                                 page_actions.click_check_button(
@@ -368,7 +428,9 @@ with SB(uc=True,
                                     sb.type("input[id='password']", sb_pass)
                                     sb.sleep(3)
 
-                                    login_btn = 'button[id*="email-login-button"]'
+                                    login_btn = (
+                                        'button[id*="email-login-button"]'
+                                    )
                                     sb.uc_click(login_btn)
                                     sb.sleep(3)
                                     current_url = sb.get_current_url()
@@ -382,30 +444,45 @@ with SB(uc=True,
                                         current_url = sb.get_current_url()
                                         if 'verification' in current_url:
                                             # Re-initialize captcha after relogin
-                                            recaptcha_frame = 'iframe[title="reCAPTCHA"]'
+                                            recaptcha_frame = (
+                                                'iframe[title="reCAPTCHA"]'
+                                            )
                                             sb.switch_to_frame(recaptcha_frame)
                                             sb.sleep(2)
-                                            print("Clicking Checkbox after relogin")
-                                            checkbox = "span[class*='recaptcha-checkbox']"
+                                            print(
+                                                "Clicking Checkbox after relogin"
+                                            )
+                                            checkbox = (
+                                                "span[class*='recaptcha-checkbox']"
+                                            )
                                             sb.uc_click(checkbox)
                                             
                                             sb.switch_to_default_content()
                                             print("Checking for Popup Captcha")
-                                            captcha_visible = sb.is_element_visible(c_popup_captcha)
+                                            captcha_visible = (
+                                                sb.is_element_visible(c_popup_captcha)
+                                            )
                                             if captcha_visible:
                                                 try:
-                                                    sb.switch_to_frame(c_popup_captcha)
+                                                    sb.switch_to_frame(
+                                                        c_popup_captcha
+                                                    )
                                                     sb.sleep(2)
                                                     captcha_helper.execute_js(
-                                                        script_get_data_captcha)
+                                                        script_get_data_captcha
+                                                    )
                                                     captcha_helper.execute_js(
                                                         script_change_tracking)
                                                 except Exception as e:
-                                                    print(f"Error switching frame: {e}")
+                                                    print(
+                                                        f"Error switching frame: {e}"
+                                                    )
                                                     continue
                                             else:
                                                 print("No Captcha Grid")
-                                                sb.click('button[id*="email-login-button"]')
+                                                sb.click(
+                                                    'button[id*="email-login-button"]'
+                                                )
                                                 break
 
                                 else:
@@ -438,7 +515,9 @@ with SB(uc=True,
                                 sb.sleep(2)
                                 
                                 # Check if JS functions are defined
-                                js_check = "return typeof getCaptchaData !== 'undefined';"
+                                js_check = (
+                                    "return typeof getCaptchaData !== 'undefined';"
+                                )
                                 js_func_defined = sb.execute_script(js_check)
                                 
                                 if not js_func_defined:

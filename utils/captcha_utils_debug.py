@@ -133,15 +133,22 @@ class PageActions:
             print(f"DEBUG: Failed to click check button {locator}: {e}")
             raise
 
-    def check_for_image_updates(self):
+    def check_for_image_updates(self, timeout=5):
         """
         Checks if captcha images have been updated using JavaScript.
 
+        :param timeout: Timeout in seconds to wait for image updates
         :return: Returns True if the images have been updated, False otherwise. # NOQA
         """
         print("DEBUG: Checking for Images updated ORI")
         try:
-            result = self.browser.execute_script("return monitorRequests();")
+            # Use async/await pattern to handle Promise from monitorRequests
+            script = """
+            return (async function() {
+                return await monitorRequests();
+            })().catch(e => false);
+            """
+            result = self.browser.execute_script(script)
             print(f"DEBUG: Image update check result: {result}")
             return result
         except Exception as e:
