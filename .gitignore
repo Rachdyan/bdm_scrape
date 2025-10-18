@@ -5,3 +5,6 @@ latest_logs
 .env
 *cron*
 *local*
+*audio*
+*firefox*
+
