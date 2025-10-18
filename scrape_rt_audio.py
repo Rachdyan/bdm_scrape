@@ -184,12 +184,18 @@ with SB(uc=True,
         c_iframe_captcha = "//iframe[@title='reCAPTCHA']"
 
         print("Solving captcha...")
-        solver = RecaptchaSolver(driver=sb.driver)
-        recaptcha_iframe = sb.driver.find_element(By.XPATH, '//iframe[@title="reCAPTCHA"]')
-
-        print(f"recaptcha_iframe: {recaptcha_iframe}")
-
-        solver.click_recaptcha_v2(iframe=recaptcha_iframe)
+        try:
+            # Check if the reCAPTCHA iframe is present before trying to interact with it
+            if sb.is_element_visible(c_iframe_captcha):
+                solver = RecaptchaSolver(driver=sb.driver)
+                recaptcha_iframe = sb.driver.find_element(By.XPATH, c_iframe_captcha)
+                print(f"recaptcha_iframe: {recaptcha_iframe}")
+                solver.click_recaptcha_v2(iframe=recaptcha_iframe)
+            else:
+                print("reCAPTCHA iframe not found, continuing without solving...")
+        except Exception as e:
+            print(f"Error solving reCAPTCHA: {e}")
+            print("Continuing without solving reCAPTCHA...")
 
         sb.uc_click('button[id*="email-login-button"]')
 
