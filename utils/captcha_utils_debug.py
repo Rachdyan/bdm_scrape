@@ -219,7 +219,10 @@ class CaptchaHelper:
         :param kwargs: Additional parameters for 2Captcha (for example, base64 image). # NOQA
         :return: The result of solving the captcha or None in case of an error.
         """
-        print(f"DEBUG: Solving captcha with params: {kwargs}")
+        kwargs_copy = kwargs.copy()
+        kwargs_copy.pop('file', None)  # Remove image for logging
+        print(f"DEBUG: Solving captcha with params: {kwargs_copy}")
+
         try:
             result = self.solver.grid(**kwargs)
             print("DEBUG: Captcha solved")
