@@ -122,11 +122,13 @@ async def receiveXHR(page, requests):
     return responses
 
 
-with SB(uc=False,
+with SB(uc=True,
         headless=False,
         xvfb=False,
         proxy=proxy_string,
         maximize=True,
+        is_mobile=True,
+        locale = "id"
         ) as sb:
 
     # sb.activate_cdp_mode(f"{sb_website}/login")
