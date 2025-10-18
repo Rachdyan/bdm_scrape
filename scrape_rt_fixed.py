@@ -122,7 +122,7 @@ async def receiveXHR(page, requests):
     return responses
 
 
-with SB(uc=True,
+with SB(uc=False,
         headless=False,
         xvfb=False,
         proxy=proxy_string,

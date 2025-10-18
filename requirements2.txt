@@ -1,6 +1,8 @@
 2captcha_python
-beautifulsoup4==4.13.4
-cloudscraper==1.2.71
+beautifulsoup4
+html5lib
+lxml
+cloudscraper
 gspread==6.2.1
 gspread_dataframe==4.0.0
 mycdp==1.2.0
@@ -10,8 +12,5 @@ PyDrive2==1.21.3
 python-dotenv==1.1.0
 python-telegram-bot==22.1
 pytz
-Requests
 selenium
 seleniumbase
-html5lib
-lxml
