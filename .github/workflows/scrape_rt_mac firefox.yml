@@ -59,7 +59,7 @@ jobs:
     #     # Stop the build if there are flake8 issues
     #     flake8 . --count --show-source --statistics --exclude=temp
     - name: Install Firefox
-      if: matrix.os == 'ubuntu-22.04'
+      # if: matrix.os == 'ubuntu-22.04'
       run: |
         sudo apt update
         sudo apt install -y firefox
@@ -86,7 +86,7 @@ jobs:
       run: |
         echo "def test_0(sb): pass" > verify_sb.py
         pytest verify_sb.py
-    - name: Run python scrape_rt.py --debug with retry
+    - name: Run python scrape_rt_firefox.py --debug with retry
       env:
         PROXY_USER: ${{ secrets.PROXY_USER }}
         PROXY_PASSWORD: ${{ secrets.PROXY_PASSWORD }}
@@ -121,7 +121,7 @@ jobs:
           log_file="scrape_attempt_${attempt}.log"
           
           # Run the script and capture output and exit code
-          python scrape_rt.py --debug 2>&1 | tee $log_file
+          python scrape_rt_firefox.py --debug 2>&1 | tee $log_file
           exit_code=${PIPESTATUS[0]}
           
           # Check if the script succeeded
