@@ -122,7 +122,7 @@ async def receiveXHR(page, requests):
     return responses
 
 
-with SB(uc=True,
+with SB(uc=False,
         headless=False,
         xvfb=False,
         proxy=proxy_string,
@@ -366,8 +366,8 @@ with SB(uc=True,
                                     sb.type("input[id='password']", sb_pass)
                                     sb.sleep(3)
 
-                                    login_btn = 'button[id*="email-login-button"]'
-                                    sb.uc_click(login_btn)
+                                    btn = 'button[id*="email-login-button"]'
+                                    sb.uc_click(btn)
                                     sb.sleep(3)
                                     current_url = sb.get_current_url()
                                     if 'verification' not in current_url:
@@ -379,17 +379,28 @@ with SB(uc=True,
                                         # Check if still on verification page
                                         current_url = sb.get_current_url()
                                         if 'verification' in current_url:
-                                            try:
-                                                sb.switch_to_frame(c_popup_captcha)
-                                                sb.sleep(2)
-                                                captcha_helper.execute_js(
-                                                    script_get_data_captcha)
-                                                captcha_helper.execute_js(
-                                                    script_change_tracking)
-                                            except Exception as e:
-                                                print(f"Error switching frame: {e}")
-                                                # Continue with the loop to retry
-                                                continue
+                                            # Re-initialize captcha after relogin
+                                            frame = 'iframe[title="reCAPTCHA"]'
+                                            sb.switch_to_frame(frame)
+                                            sb.sleep(2)
+                                            print("Clicking Checkbox after relogin")
+                                            check = "span[class*='recaptcha-checkbox']"
+                                            sb.uc_click(check)
+                                            
+                                            sb.switch_to_default_content()
+                                            print("Checking for Popup Captcha")
+                                            visible = sb.is_element_visible(c_popup_captcha)
+                                            if visible:
+                                                try:
+                                                    sb.switch_to_frame(c_popup_captcha)
+                                                    sb.sleep(2)
+                                                    captcha_helper.execute_js(
+                                                        script_get_data_captcha)
+                                                    captcha_helper.execute_js(
+                                                        script_change_tracking)
+                                                except Exception as e:
+                                                    print(f"Error switching frame: {e}")
+                                                    continue
 
                                 else:
                                     print("Max attempts reached. Exiting...")
