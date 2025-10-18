@@ -87,7 +87,7 @@ jobs:
       run: |
         echo "def test_0(sb): pass" > verify_sb.py
         pytest verify_sb.py
-    - name: Run python scrape_rt.py --debug
+    - name: Run python scrape_rt.py --debug with retry
       env:
         PROXY_USER: ${{ secrets.PROXY_USER }}
         PROXY_PASSWORD: ${{ secrets.PROXY_PASSWORD }}
@@ -109,4 +109,65 @@ jobs:
         EMAIL_ACCOUNT: ${{ secrets.EMAIL_ACCOUNT }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       run: |
-        python scrape_rt.py --debug
+        max_attempts=3
+        attempt=1
+        success=false
+        
+        echo "Starting scraping process with retry logic (max attempts: $max_attempts)"
+        
+        while [ $attempt -le $max_attempts ] && [ $success = false ]; do
+          echo "Attempt $attempt of $max_attempts"
+          
+          # Create a log file for this attempt
+          log_file="scrape_attempt_${attempt}.log"
+          
+          # Run the script and capture output and exit code
+          python scrape_rt.py --debug 2>&1 | tee $log_file
+          exit_code=${PIPESTATUS[0]}
+          
+          # Check if the script succeeded
+          if [ $exit_code -eq 0 ]; then
+            echo "Script completed successfully on attempt $attempt"
+            success=true
+          else
+            echo "Script failed on attempt $attempt with exit code $exit_code"
+            
+            if [ $attempt -lt $max_attempts ]; then
+              echo "Waiting 30 seconds before retrying..."
+              sleep 30
+              
+              # Check for common error patterns in the log
+              if grep -q "Authorization header not found" $log_file; then
+                echo "Error detected: Authorization header not found"
+              elif grep -q "Error in captcha solving" $log_file; then
+                echo "Error detected: Captcha solving failed"
+              elif grep -q "No matching images" $log_file; then
+                echo "Error detected: No matching images in captcha"
+              elif grep -q "Google Sheets API Error" $log_file; then
+                echo "Error detected: Google Sheets API error"
+              elif grep -q "Still not logged in" $log_file; then
+                echo "Error detected: Login failed"
+              elif grep -q "Network error\|Connection error\|Timeout" $log_file; then
+                echo "Error detected: Network/Connection issue"
+              else
+                echo "Unknown error occurred, check the log file for details"
+              fi
+            else
+              echo "Maximum retry attempts ($max_attempts) reached. Giving up."
+              echo "Last attempt log file: $log_file"
+            fi
+          fi
+          
+          attempt=$((attempt + 1))
+        done
+        
+        # Exit with the appropriate status
+        if [ $success = true ]; then
+          echo "Scraping completed successfully!"
+          # Clean up log files on success
+          rm -f scrape_attempt_*.log
+          exit 0
+        else
+          echo "Scraping failed after $max_attempts attempts"
+          exit 1
+        fi

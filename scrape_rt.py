@@ -214,7 +214,7 @@ with SB(uc=False,
                 attempt = 0
                 captcha_solved = False
 
-                while attempt < 20:  # Limit attempts to prevent infinite loop
+                while attempt < 30:  # Limit attempts to prevent infinite loop
                     sb.sleep(2)
                     print("Starting Loop..")
 
@@ -344,7 +344,7 @@ with SB(uc=False,
                                 print("Still on verification page after "
                                       "solving captcha")
                                 attempt += 1
-                                if attempt < 5:
+                                if attempt < 15:
                                     print("Continue clicked but still in " \
                                             "verification page... retrying login")
 
@@ -407,7 +407,7 @@ with SB(uc=False,
                             except Exception:
                                 pass
 
-                if not captcha_solved and attempt >= 10:
+                if not captcha_solved and attempt >= 25:
                     print("Max attempts reached. Trying to continue anyway...")
                     page_actions.switch_to_default_content()
                     sb.uc_click('button[id*="email-login-button"]')
