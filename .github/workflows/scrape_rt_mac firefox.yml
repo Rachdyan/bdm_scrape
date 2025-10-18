@@ -59,7 +59,7 @@ jobs:
     #     # Stop the build if there are flake8 issues
     #     flake8 . --count --show-source --statistics --exclude=temp
     - name: Install Firefox
-      # if: matrix.os == 'ubuntu-22.04'
+      if: matrix.os == 'ubuntu-22.04'
       run: |
         sudo apt update
         sudo apt install -y firefox
