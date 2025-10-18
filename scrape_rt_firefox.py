@@ -159,7 +159,7 @@ with SB(uc=False,
     # sb.cdp.add_handler(mycdp.network.RequestWillBeSent, send_handler)
     # sb.cdp.add_handler(mycdp.network.ResponseReceived, receive_handler)
 
-    sb.uc_click('button[id*="email-login-button"]')
+    sb.click('button[id*="email-login-button"]')
     # sb.cdp.click('button[id*="email-login-button"]')
     # sb.click('button[id*="email-login-button"]')
     sb.sleep(3)
@@ -197,7 +197,7 @@ with SB(uc=False,
         sb.switch_to_frame('iframe[title="reCAPTCHA"]')
         sb.sleep(2)
         print("Clicking Checkbox..")
-        sb.uc_click("span[class*='recaptcha-checkbox']")
+        sb.click("span[class*='recaptcha-checkbox']")
 
         sb.switch_to_default_content()
         print("Checking to Popup Captcha iframe..")
@@ -249,7 +249,7 @@ with SB(uc=False,
                             else:
                                 print("Still on verification page, clicking "
                                       "continue...")
-                                sb.uc_click('button[id*="email-login-button"]')
+                                sb.click('button[id*="email-login-button"]')
                                 sb.sleep(3)
                                 attempt += 1
                                 continue
@@ -345,7 +345,7 @@ with SB(uc=False,
                             sb.sleep(3)
                             sb.switch_to_parent_frame()
                             print("Clicking Continue button...")
-                            sb.uc_click('button[id*="email-login-button"]')
+                            sb.click('button[id*="email-login-button"]')
                             sb.sleep(3)
 
                             current_url = sb.get_current_url()
@@ -370,7 +370,7 @@ with SB(uc=False,
                                     sb.sleep(3)
 
                                     login_btn = 'button[id*="email-login-button"]'
-                                    sb.uc_click(login_btn)
+                                    sb.click(login_btn)
                                     sb.sleep(3)
                                     current_url = sb.get_current_url()
                                     if 'verification' not in current_url:
@@ -388,7 +388,7 @@ with SB(uc=False,
                                             sb.sleep(2)
                                             print("Clicking Checkbox after relogin")
                                             checkbox = "span[class*='recaptcha-checkbox']"
-                                            sb.uc_click(checkbox)
+                                            sb.click(checkbox)
                                             
                                             sb.switch_to_default_content()
                                             print("Checking for Popup Captcha")
@@ -450,21 +450,21 @@ with SB(uc=False,
                 if not captcha_solved and attempt >= 25:
                     print("Max attempts reached. Trying to continue anyway...")
                     page_actions.switch_to_default_content()
-                    sb.uc_click('button[id*="email-login-button"]')
+                    sb.click('button[id*="email-login-button"]')
                     sb.sleep(3)
 
             except Exception as e:
                 print(f"Error in the process. Clicking Continue...: {e} ")
                 try:
-                    sb.uc_click('button[id*="email-login-button"]')
+                    sb.click('button[id*="email-login-button"]')
                 except Exception as e:
                     print("Except Part 2,"
                           f"Switching to default content first {e}")
                     sb.switch_to_parent_frame()
-                    sb.uc_click('button[id*="email-login-button"]')
+                    sb.click('button[id*="email-login-button"]')
         else:
             print("No Captcha Grid")
-            sb.uc_click('button[id*="email-login-button"]')
+            sb.click('button[id*="email-login-button"]')
 
     sb.sleep(3)
     print("Finished solving captcha")
