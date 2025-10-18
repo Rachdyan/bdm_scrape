@@ -122,7 +122,7 @@ async def receiveXHR(page, requests):
     return responses
 
 
-with SB(uc=False,
+with SB(uc=True,
         headless=False,
         xvfb=False,
         proxy=proxy_string,
@@ -219,17 +219,17 @@ with SB(uc=False,
                     print("Starting Loop..")
 
                     try:
-                        # Check if getCaptchaData function is defined before calling it
-                        js_function_defined = sb.execute_script(
+                        # Check if getCaptchaData function is defined
+                        js_func_defined = sb.execute_script(
                             "return typeof getCaptchaData !== 'undefined';")
                         
-                        if not js_function_defined:
-                            print("JavaScript functions not loaded, reloading...")
+                        if not js_func_defined:
+                            print("JS functions not loaded, reloading...")
                             captcha_helper.execute_js(script_get_data_captcha)
                             captcha_helper.execute_js(script_change_tracking)
                             sb.sleep(2)
                         
-                        # Get captcha data by calling the JS function directly
+                        # Get captcha data by calling the JS function
                         captcha_data = sb\
                             .execute_script("return getCaptchaData();")
 
@@ -356,7 +356,7 @@ with SB(uc=False,
                                 attempt += 1
                                 if attempt < 15:
                                     print("Continue clicked but still in "
-                                          "verification page... retrying login")
+                                          "verification page... retrying")
 
                                     sb.open(f"{sb_website}/login")
                                     # sb.driver.refresh()
@@ -366,14 +366,15 @@ with SB(uc=False,
                                     sb.type("input[id='password']", sb_pass)
                                     sb.sleep(3)
 
-                                    sb.uc_click('button[id*="email-login-button"]')
+                                    login_btn = 'button[id*="email-login-button"]'
+                                    sb.uc_click(login_btn)
                                     sb.sleep(3)
                                     current_url = sb.get_current_url()
                                     if 'verification' not in current_url:
-                                        print("Successfully logged in after captcha")
+                                        print("Logged in after captcha")
                                         break
                                     else:
-                                        print("Still on verification page, retrying...")
+                                        print("Still on verification page")
                                         attempt += 1
                                         # Check if still on verification page
                                         current_url = sb.get_current_url()
@@ -386,7 +387,7 @@ with SB(uc=False,
                                                 captcha_helper.execute_js(
                                                     script_change_tracking)
                                             except Exception as e:
-                                                print(f"Error switching to frame: {e}")
+                                                print(f"Error switching frame: {e}")
                                                 # Continue with the loop to retry
                                                 continue
 
@@ -418,10 +419,17 @@ with SB(uc=False,
                             try:
                                 sb.switch_to_frame(c_popup_captcha)
                                 sb.sleep(2)
-                                captcha_helper.execute_js(
-                                    script_get_data_captcha)
-                                captcha_helper.execute_js(
-                                    script_change_tracking)
+                                
+                                # Check if JS functions are defined
+                                js_check = "return typeof getCaptchaData !== 'undefined';"
+                                js_func_defined = sb.execute_script(js_check)
+                                
+                                if not js_func_defined:
+                                    captcha_helper.execute_js(
+                                        script_get_data_captcha)
+                                    captcha_helper.execute_js(
+                                        script_change_tracking)
+                                    sb.sleep(2)
                             except Exception:
                                 pass
 
