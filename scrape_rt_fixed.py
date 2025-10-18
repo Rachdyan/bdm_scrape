@@ -214,7 +214,7 @@ with SB(uc=True,
                 attempt = 0
                 captcha_solved = False
 
-                while attempt < 5:  # Limit attempts to prevent infinite loop
+                while attempt < 20:  # Limit attempts to prevent infinite loop
                     sb.sleep(2)
                     print("Starting Loop..")
 
