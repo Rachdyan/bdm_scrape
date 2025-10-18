@@ -128,7 +128,7 @@ with SB(uc=True,
         proxy=proxy_string,
         maximize=True,
         is_mobile=True,
-        locale = "id"
+        locale="id"
         ) as sb:
 
     # sb.activate_cdp_mode(f"{sb_website}/login")
