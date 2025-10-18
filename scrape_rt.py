@@ -365,12 +365,20 @@ with SB(uc=False,
                                     else:
                                         print("Still on verification page, retrying...")
                                         attempt += 1
-                                        sb.switch_to_frame(c_popup_captcha)
-                                        sb.sleep(2)
-                                        captcha_helper.execute_js(
-                                            script_get_data_captcha)
-                                        captcha_helper.execute_js(
-                                            script_change_tracking)
+                                        # Check if we're still on verification page before switching frames
+                                        current_url = sb.get_current_url()
+                                        if 'verification' in current_url:
+                                            try:
+                                                sb.switch_to_frame(c_popup_captcha)
+                                                sb.sleep(2)
+                                                captcha_helper.execute_js(
+                                                    script_get_data_captcha)
+                                                captcha_helper.execute_js(
+                                                    script_change_tracking)
+                                            except Exception as e:
+                                                print(f"Error switching to captcha frame: {e}")
+                                                # Continue with the loop to retry login
+                                                continue
 
                                 else:
                                     print("Max attempts reached. Exiting...")

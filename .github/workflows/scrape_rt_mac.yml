@@ -155,6 +155,9 @@ jobs:
             else
               echo "Maximum retry attempts ($max_attempts) reached. Giving up."
               echo "Last attempt log file: $log_file"
+              
+              # Upload all log files as artifacts for debugging
+              echo "Uploading log files for debugging..."
             fi
           fi
           
