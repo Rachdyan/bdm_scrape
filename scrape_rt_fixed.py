@@ -173,7 +173,7 @@ with SB(uc=False,
         captcha_helper = CaptchaHelper(sb.driver, solver)
 
         script_get_data_captcha = captcha_helper\
-            .load_js_script('./js_scripts/get_captcha_data_debug.js')
+            .load_js_script('./js_scripts/get_captcha_data.js')
         script_change_tracking = captcha_helper\
             .load_js_script('./js_scripts/track_image_updates.js')
 
