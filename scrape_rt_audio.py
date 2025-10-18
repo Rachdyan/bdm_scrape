@@ -134,7 +134,7 @@ with SB(uc=True,
         ) as sb:
 
     # sb.activate_cdp_mode(f"{sb_website}/login")
-    sb.activate_cdp_mode("https://google.com")
+    sb.uc_open_with_reconnect("https://google.com")
     sb.sleep(3)
     # breakpoint()
     sb.uc_open_with_reconnect(f"{sb_website}/login", 5)
@@ -170,11 +170,11 @@ with SB(uc=True,
     if 'verification' in current_url:
         captcha_api_key = os.environ['CAPTCHA_KEY']
         print("Recaptcha detected")
-        solver = TwoCaptcha(captcha_api_key,
-                            defaultTimeout=120,
-                            recaptchaTimeout=600)
-        page_actions = PageActions(sb.driver)
-        captcha_helper = CaptchaHelper(sb.driver, solver)
+        # solver = TwoCaptcha(captcha_api_key,
+        #                     defaultTimeout=120,
+        #                     recaptchaTimeout=600)
+        # page_actions = PageActions(sb.driver)
+        # captcha_helper = CaptchaHelper(sb.driver, solver)
 
         # script_get_data_captcha = captcha_helper\
         #     .load_js_script('./js_scripts/get_captcha_data.js')
@@ -185,17 +185,17 @@ with SB(uc=True,
 
         print("Solving captcha...")
         try:
-            # Check if the reCAPTCHA iframe is present before trying to interact with it
+            # Check if reCAPTCHA iframe is present before interacting
             if sb.is_element_visible(c_iframe_captcha):
                 solver = RecaptchaSolver(driver=sb.driver)
-                recaptcha_iframe = sb.driver.find_element(By.XPATH, c_iframe_captcha)
-                print(f"recaptcha_iframe: {recaptcha_iframe}")
-                solver.click_recaptcha_v2(iframe=recaptcha_iframe)
+                iframe = sb.driver.find_element(By.XPATH, c_iframe_captcha)
+                print(f"recaptcha_iframe: {iframe}")
+                solver.click_recaptcha_v2(iframe=iframe)
             else:
-                print("reCAPTCHA iframe not found, continuing without solving...")
+                print("reCAPTCHA iframe not found, continuing...")
         except Exception as e:
             print(f"Error solving reCAPTCHA: {e}")
-            print("Continuing without solving reCAPTCHA...")
+            print("Continuing without solving...")
 
         sb.uc_click('button[id*="email-login-button"]')
 

@@ -136,7 +136,7 @@ with SB(uc=False,
     sb.open("https://google.com")
     sb.sleep(3)
     # breakpoint()
-    sb.open(f"{sb_website}/login", 5)
+    sb.open(f"{sb_website}/login")
     # sb.open("https://www.google.com/search?q=stockbit")
     sb.sleep(3)
 
