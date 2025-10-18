@@ -122,13 +122,12 @@ async def receiveXHR(page, requests):
     return responses
 
 
-with SB(uc=False,
+with SB(uc=True,
         headless=False,
         xvfb=False,
         proxy=proxy_string,
         maximize=True,
-        # is_mobile=True,
-        browser="edge",
+        is_mobile=True,
         # locale="id"
         ) as sb:
 
