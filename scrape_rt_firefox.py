@@ -128,7 +128,7 @@ with SB(uc=False,
         proxy=proxy_string,
         maximize=True,
         # is_mobile=True,
-        browser="microsoft-edge",
+        browser="edge",
         # locale="id"
         ) as sb:
 

@@ -25,6 +25,7 @@ import cloudscraper
 import time
 # import ast
 # import colorama
+from selenium_recaptcha_solver import RecaptchaSolver
 
 load_dotenv(override=True)
 
@@ -174,296 +175,30 @@ with SB(uc=True,
         page_actions = PageActions(sb.driver)
         captcha_helper = CaptchaHelper(sb.driver, solver)
 
-        script_get_data_captcha = captcha_helper\
-            .load_js_script('./js_scripts/get_captcha_data.js')
-        script_change_tracking = captcha_helper\
-            .load_js_script('./js_scripts/track_image_updates.js')
+        # script_get_data_captcha = captcha_helper\
+        #     .load_js_script('./js_scripts/get_captcha_data.js')
+        # script_change_tracking = captcha_helper\
+        #     .load_js_script('./js_scripts/track_image_updates.js')
 
         c_iframe_captcha = "//iframe[@title='reCAPTCHA']"
-        c_checkbox_captcha = "//span[@role='checkbox']"
-        c_popup_captcha = ("//iframe[contains(@title, 'two minutes') or "
-                           "contains(@title, 'dua menit')]")
 
-        c_verify_button = "//button[@id='recaptcha-verify-button']"
-        c_try_again = "//div[@class='rc-imageselect-incorrect-response']"
-        c_select_more = "//div[@class='rc-imageselect-error-select-more']"
-        c_dynamic_more = "//div[@class='rc-imageselect-error-dynamic-more']"
-        c_select_something = ("//div[@class"
-                              "='rc-imageselect-error-select-something']")
+        print("Solving captcha...")
+        solver = RecaptchaSolver(driver=sb.driver)
+        print(f"c_iframe_captcha: {c_iframe_captcha}")
+        solver.click_recaptcha_v2(iframe=c_iframe_captcha)
 
-        p_submit_button_captcha = "//button[@type='submit']"
+        sb.uc_click('button[id*="email-login-button"]')
 
-        sb.switch_to_frame('iframe[title="reCAPTCHA"]')
-        sb.sleep(2)
-        print("Clicking Checkbox..")
-        sb.uc_click("span[class*='recaptcha-checkbox']")
 
-        sb.switch_to_default_content()
-        print("Checking to Popup Captcha iframe..")
-        captcha_grid_visible = sb.is_element_visible(c_popup_captcha)
-        if captcha_grid_visible:
-            try:
-                print("Captcha Grid Visible...")
-                sb.switch_to_frame(c_popup_captcha)
-                sb.sleep(2)
+       sb.sleep(3)
+       print("Finished solving captcha")
+       current_url = sb.get_current_url()
+       print(f"current_url:{current_url}")
 
-                # Load and execute the JavaScript functions
-                captcha_helper.execute_js(script_get_data_captcha)
-                captcha_helper.execute_js(script_change_tracking)
-
-                id = None  # Initialize the id variable for captcha
-                parent_frame = False
-                attempt = 0
-                captcha_solved = False
-
-                while attempt < 30:  # Limit attempts to prevent infinite loop
-                    sb.sleep(2)
-                    print("Starting Loop..")
-
-                    try:
-                        # Check if getCaptchaData function is defined
-                        js_func_defined = sb.execute_script(
-                            "return typeof getCaptchaData !== 'undefined';")
-                        
-                        if not js_func_defined:
-                            print("JS functions not loaded, reloading...")
-                            captcha_helper.execute_js(script_get_data_captcha)
-                            captcha_helper.execute_js(script_change_tracking)
-                            sb.sleep(2)
-                        
-                        # Get captcha data by calling the JS function
-                        captcha_data = sb\
-                            .execute_script("return getCaptchaData();")
-
-                        if captcha_data is None:
-                            print("Popup Not Found. Checking if login was "
-                                  "successful...")
-                            page_actions.switch_to_default_content()
-                            current_url = sb.get_current_url()
-
-                            if 'verification' not in current_url:
-                                print("Successfully bypassed verification!")
-                                captcha_solved = True
-                                break
-                            else:
-                                print("Still on verification page, clicking "
-                                      "continue...")
-                                sb.uc_click('button[id*="email-login-button"]')
-                                sb.sleep(3)
-                                attempt += 1
-                                continue
-
-                        # Forming parameters for solving captcha
-                        params = {
-                            "method": "base64",
-                            "img_type": "recaptcha",
-                            "recaptcha": 1,
-                            "cols": captcha_data['columns'],
-                            "rows": captcha_data['rows'],
-                            "textinstructions": captcha_data['comment'],
-                            "lang": "en",
-                            "can_no_answer": 1
-                        }
-
-                        # If the 3x3 captcha is an id, add previousID to param
-                        if params['cols'] == 3 and id:
-                            params["previousID"] = id
-
-                        print("Params before solving captcha:", params)
-
-                        # Send captcha for solution
-                        result = captcha_helper.solver_captcha(
-                            file=captcha_data['body'], **params)
-
-                        if result is None:
-                            print("Captcha solving failed or timed out. "
-                                  "Stopping the process.")
-                            break
-
-                        # Check if the captcha was solved successfully
-                        elif (result and
-                              'No_matching_images' not in result['code']):
-                            if id is None and params['cols'] == 3 and result[
-                             'captchaId']:
-                                id = result['captchaId']
-
-                            answer = result['code']
-                            number_list = captcha_helper.pars_answer(answer)
-                            print(f"Number list: {number_list}")
-
-                            # Processing for 3x3
-                            if params['cols'] == 3:
-                                # Click on the answers found
-                                page_actions.clicks(number_list)
-                                sb.sleep(2)
-
-                                print("Clicking Verify button 3x3")
-                                page_actions.click_check_button(
-                                    c_verify_button)
-                                sb.sleep(2)
-
-                                sb.is_element_clickable(c_verify_button)
-
-                                print("Checking error")
-                                errors_detected = (
-                                    sb.is_element_clickable(c_verify_button) or
-                                    sb.is_element_visible(c_try_again) or
-                                    sb.is_element_visible(c_select_more) or
-                                    sb.is_element_visible(c_dynamic_more) or
-                                    sb.is_element_visible(c_select_something)
-                                )
-                                print(f"Error Detected: {errors_detected}")
-
-                                if errors_detected:
-                                    attempt += 1
-                                    continue
-
-                            # Processing for 4x4
-                            elif params['cols'] == 4:
-                                page_actions.clicks(number_list)
-                                sb.sleep(2)
-
-                                print("Clicking Verify button 4x4")
-                                page_actions.click_check_button(
-                                    c_verify_button)
-
-                                print("Checking error")
-                                errors_detected = (
-                                    sb.is_element_clickable(c_verify_button) or
-                                    sb.is_element_visible(c_try_again) or
-                                    sb.is_element_visible(c_select_more) or
-                                    sb.is_element_visible(c_dynamic_more) or
-                                    sb.is_element_visible(c_select_something)
-                                )
-                                print(f"Error Detected: {errors_detected}")
-                                if errors_detected:
-                                    attempt += 1
-                                    continue
-
-                            # Check if we're still on verification after
-                            sb.sleep(3)
-                            sb.switch_to_parent_frame()
-                            print("Clicking Continue button...")
-                            sb.uc_click('button[id*="email-login-button"]')
-                            sb.sleep(3)
-
-                            current_url = sb.get_current_url()
-                            if 'verification' not in current_url:
-                                print("Successfully bypassed verification!")
-                                captcha_solved = True
-                                break
-                            else:
-                                print("Still on verification page after "
-                                      "solving captcha")
-                                attempt += 1
-                                if attempt < 15:
-                                    print("Continue clicked but still in "
-                                          "verification page... retrying")
-
-                                    sb.open(f"{sb_website}/login")
-                                    # sb.driver.refresh()
-                                    sb.sleep(3)
-                                    sb.type("input[id='username']", sb_user)
-                                    sb.sleep(3)
-                                    sb.type("input[id='password']", sb_pass)
-                                    sb.sleep(3)
-
-                                    login_btn = 'button[id*="email-login-button"]'
-                                    sb.uc_click(login_btn)
-                                    sb.sleep(3)
-                                    current_url = sb.get_current_url()
-                                    if 'verification' not in current_url:
-                                        print("Logged in after captcha")
-                                        break
-                                    else:
-                                        print("Still on verification page")
-                                        attempt += 1
-                                        # Check if still on verification page
-                                        current_url = sb.get_current_url()
-                                        if 'verification' in current_url:
-                                            # Re-initialize captcha after relogin
-                                            recaptcha_frame = 'iframe[title="reCAPTCHA"]'
-                                            sb.switch_to_frame(recaptcha_frame)
-                                            sb.sleep(2)
-                                            print("Clicking Checkbox after relogin")
-                                            checkbox = "span[class*='recaptcha-checkbox']"
-                                            sb.uc_click(checkbox)
-                                            
-                                            sb.switch_to_default_content()
-                                            print("Checking for Popup Captcha")
-                                            captcha_visible = sb.is_element_visible(c_popup_captcha)
-                                            if captcha_visible:
-                                                try:
-                                                    sb.switch_to_frame(c_popup_captcha)
-                                                    sb.sleep(2)
-                                                    captcha_helper.execute_js(
-                                                        script_get_data_captcha)
-                                                    captcha_helper.execute_js(
-                                                        script_change_tracking)
-                                                except Exception as e:
-                                                    print(f"Error switching frame: {e}")
-                                                    continue
-
-                                else:
-                                    print("Max attempts reached. Exiting...")
-                                    break
-
-                        elif 'No_matching_images' in result['code']:
-                            page_actions.click_check_button(c_verify_button)
-                            if (captcha_helper.handle_error_messages(
-                                    c_try_again, c_select_more,
-                                    c_dynamic_more,
-                                    c_select_something)):
-                                attempt += 1
-                                continue  # Restart loop if error is visible
-                            else:
-                                page_actions.switch_to_default_content()
-                                page_actions\
-                                    .click_check_button(
-                                        p_submit_button_captcha)
-                                print("Breaking Loop 2")
-                                break  # Exit loop
-
-                    except Exception as e:
-                        print(f"Error in captcha solving loop: {e}")
-                        attempt += 1
-                        if attempt < 5:
-                            # Try to recover by switching back to captcha frame
-                            try:
-                                sb.switch_to_frame(c_popup_captcha)
-                                sb.sleep(2)
-                                
-                                # Check if JS functions are defined
-                                js_check = "return typeof getCaptchaData !== 'undefined';"
-                                js_func_defined = sb.execute_script(js_check)
-                                
-                                if not js_func_defined:
-                                    captcha_helper.execute_js(
-                                        script_get_data_captcha)
-                                    captcha_helper.execute_js(
-                                        script_change_tracking)
-                                    sb.sleep(2)
-                            except Exception:
-                                pass
-
-                if not captcha_solved and attempt >= 25:
-                    print("Max attempts reached. Trying to continue anyway...")
-                    page_actions.switch_to_default_content()
-                    sb.uc_click('button[id*="email-login-button"]')
-                    sb.sleep(3)
-
-            except Exception as e:
-                print(f"Error in the process. Clicking Continue...: {e} ")
-                try:
-                    sb.uc_click('button[id*="email-login-button"]')
-                except Exception as e:
-                    print("Except Part 2,"
-                          f"Switching to default content first {e}")
-                    sb.switch_to_parent_frame()
-                    sb.uc_click('button[id*="email-login-button"]')
-        else:
-            print("No Captcha Grid")
-            sb.uc_click('button[id*="email-login-button"]')
+       # Check if we need to handle OTP
+       if "otp" in current_url:
+           print("Email Verification Page..")
+           sb.sleep(20)
 
     sb.sleep(3)
     print("Finished solving captcha")
