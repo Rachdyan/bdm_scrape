@@ -122,12 +122,11 @@ async def receiveXHR(page, requests):
     return responses
 
 
-with SB(uc=True,
+with SB(uc=False,
         headless=False,
         xvfb=False,
         proxy=proxy_string,
         maximize=True,
-        is_mobile=True,
         ) as sb:
 
     # sb.activate_cdp_mode(f"{sb_website}/login")
@@ -355,7 +354,7 @@ with SB(uc=True,
                                 print("Still on verification page after "
                                       "solving captcha")
                                 attempt += 1
-                                if attempt < 5:
+                                if attempt < 15:
                                     print("Continue clicked but still in "
                                           "verification page... retrying")
 
@@ -367,8 +366,8 @@ with SB(uc=True,
                                     sb.type("input[id='password']", sb_pass)
                                     sb.sleep(3)
 
-                                    btn = 'button[id*="email-login-button"]'
-                                    sb.uc_click(btn)
+                                    login_btn = 'button[id*="email-login-button"]'
+                                    sb.uc_click(login_btn)
                                     sb.sleep(3)
                                     current_url = sb.get_current_url()
                                     if 'verification' not in current_url:
@@ -381,17 +380,17 @@ with SB(uc=True,
                                         current_url = sb.get_current_url()
                                         if 'verification' in current_url:
                                             # Re-initialize captcha after relogin
-                                            frame = 'iframe[title="reCAPTCHA"]'
-                                            sb.switch_to_frame(frame)
+                                            recaptcha_frame = 'iframe[title="reCAPTCHA"]'
+                                            sb.switch_to_frame(recaptcha_frame)
                                             sb.sleep(2)
                                             print("Clicking Checkbox after relogin")
-                                            check = "span[class*='recaptcha-checkbox']"
-                                            sb.uc_click(check)
+                                            checkbox = "span[class*='recaptcha-checkbox']"
+                                            sb.uc_click(checkbox)
                                             
                                             sb.switch_to_default_content()
                                             print("Checking for Popup Captcha")
-                                            visible = sb.is_element_visible(c_popup_captcha)
-                                            if visible:
+                                            captcha_visible = sb.is_element_visible(c_popup_captcha)
+                                            if captcha_visible:
                                                 try:
                                                     sb.switch_to_frame(c_popup_captcha)
                                                     sb.sleep(2)
@@ -445,7 +444,7 @@ with SB(uc=True,
                             except Exception:
                                 pass
 
-                if not captcha_solved and attempt >= 20:
+                if not captcha_solved and attempt >= 25:
                     print("Max attempts reached. Trying to continue anyway...")
                     page_actions.switch_to_default_content()
                     sb.uc_click('button[id*="email-login-button"]')
