@@ -219,6 +219,16 @@ with SB(uc=False,
                     print("Starting Loop..")
 
                     try:
+                        # Check if getCaptchaData function is defined before calling it
+                        js_function_defined = sb.execute_script(
+                            "return typeof getCaptchaData !== 'undefined';")
+                        
+                        if not js_function_defined:
+                            print("JavaScript functions not loaded, reloading...")
+                            captcha_helper.execute_js(script_get_data_captcha)
+                            captcha_helper.execute_js(script_change_tracking)
+                            sb.sleep(2)
+                        
                         # Get captcha data by calling the JS function directly
                         captcha_data = sb\
                             .execute_script("return getCaptchaData();")
@@ -345,8 +355,8 @@ with SB(uc=False,
                                       "solving captcha")
                                 attempt += 1
                                 if attempt < 15:
-                                    print("Continue clicked but still in " \
-                                            "verification page... retrying login")
+                                    print("Continue clicked but still in "
+                                          "verification page... retrying login")
 
                                     sb.open(f"{sb_website}/login")
                                     # sb.driver.refresh()
@@ -360,12 +370,12 @@ with SB(uc=False,
                                     sb.sleep(3)
                                     current_url = sb.get_current_url()
                                     if 'verification' not in current_url:
-                                        print("Successfully logged in after captcha ")
+                                        print("Successfully logged in after captcha")
                                         break
                                     else:
                                         print("Still on verification page, retrying...")
                                         attempt += 1
-                                        # Check if we're still on verification page before switching frames
+                                        # Check if still on verification page
                                         current_url = sb.get_current_url()
                                         if 'verification' in current_url:
                                             try:
@@ -376,8 +386,8 @@ with SB(uc=False,
                                                 captcha_helper.execute_js(
                                                     script_change_tracking)
                                             except Exception as e:
-                                                print(f"Error switching to captcha frame: {e}")
-                                                # Continue with the loop to retry login
+                                                print(f"Error switching to frame: {e}")
+                                                # Continue with the loop to retry
                                                 continue
 
                                 else:
