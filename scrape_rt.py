@@ -122,11 +122,12 @@ async def receiveXHR(page, requests):
     return responses
 
 
-with SB(uc=False,
+with SB(uc=True,
         headless=False,
         xvfb=False,
         proxy=proxy_string,
         maximize=True,
+        is_mobile=True,
         ) as sb:
 
     # sb.activate_cdp_mode(f"{sb_website}/login")
@@ -354,7 +355,7 @@ with SB(uc=False,
                                 print("Still on verification page after "
                                       "solving captcha")
                                 attempt += 1
-                                if attempt < 15:
+                                if attempt < 5:
                                     print("Continue clicked but still in "
                                           "verification page... retrying")
 
@@ -444,7 +445,7 @@ with SB(uc=False,
                             except Exception:
                                 pass
 
-                if not captcha_solved and attempt >= 25:
+                if not captcha_solved and attempt >= 20:
                     print("Max attempts reached. Trying to continue anyway...")
                     page_actions.switch_to_default_content()
                     sb.uc_click('button[id*="email-login-button"]')
