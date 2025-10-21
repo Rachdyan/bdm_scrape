@@ -55,8 +55,11 @@ def get_individual_stock(sb, row):
     # print(f"sidebar condition: {sidebar_condition}")
     # sidebar_mini = body.get('class')[0]
     # print(f"sidebar mini: {sidebar_mini}")
-    if sidebar_condition in ['sidebar-open', 'dark-mode']:
-        sb.click('a[id*="collapse-burger"]')
+    try:
+        if sidebar_condition in ['sidebar-open', 'dark-mode']:
+            sb.click('a[id*="collapse-burger"]')
+    except Exception as e:
+        print(f"Error while collapsing sidebar: {e}")
 
     time.sleep(1)
     tc_overview_pic_name = f"screenshot/{row['date']}_{row['symbol']}"\
