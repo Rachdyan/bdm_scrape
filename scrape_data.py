@@ -75,18 +75,18 @@ if __name__ == "__main__":
         # sb.wait_for_element(selector)
         print("Logging in...")
         sb.click('[href*="accounts/login"]')
-        sb.sleep(2)
+        sb.sleep(5)
         sb.type('[name="login"]', f"{site_email}")
         sb.type('[name="password"]', f"{site_password}")
-        sb.sleep(2)
+        sb.sleep(5)
 
         sb.click('button[type*="submit"]')
 
         print("Login submitted, waiting for redirect...")
-        time.sleep(2)
+        time.sleep(5)
         print("Login successful. Opening market summary page...")
         sb.open(f"{website}/market_summary/")
-        time.sleep(4)
+        time.sleep(10)
         sb.click('button[id*="reset-button"]')
         time.sleep(10)
         summary_html = sb.get_page_source()
@@ -103,6 +103,7 @@ if __name__ == "__main__":
             print(f"Current Data Date: {date}")
 
         # GET DAILY NON RETAIL
+        print("Getting daily non-retail summary...")
         sb.hover_and_click("#method", '[value = "nr"]', timeout=1)
         time.sleep(10)
         sb.save_screenshot(f'screenshot/{date}_nr_daily.png')
@@ -121,14 +122,14 @@ if __name__ == "__main__":
         try:
             likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
             sb.type(likuid_filter_selector, 'v\n')
-            time.sleep(2)
+            time.sleep(5)
             nr_daily_liquid_html = sb.get_page_source()
             print("Getting liquid filtered daily non-retail summary...")
             nr_daily_summary_liquid_df = get_summary_table(nr_daily_liquid_html,
                                                             today_date=date,
                                                             method='non-retail')
             sb.click('button[id*="reset-button"]')
-            time.sleep(2)
+            time.sleep(5)
         except Exception as e:
             print(f"Error applying liquid filter: {e}")
             nr_daily_summary_liquid_df = None
@@ -148,14 +149,14 @@ if __name__ == "__main__":
         try:
             likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
             sb.type(likuid_filter_selector, 'v\n')
-            time.sleep(2)
+            time.sleep(5)
             m_daily_liquid_html = sb.get_page_source()
             print("Getting liquid filtered daily market maker summary...")
             m_daily_summary_liquid_df = get_summary_table(m_daily_liquid_html,
                                                             today_date=date,
                                                             method='market maker')
             sb.click('button[id*="reset-button"]')
-            time.sleep(2)
+            time.sleep(5)
         except Exception as e:
             print(f"Error applying liquid filter: {e}")
             m_daily_summary_liquid_df = None
@@ -193,14 +194,14 @@ if __name__ == "__main__":
         try:
             likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
             sb.type(likuid_filter_selector, 'v\n')
-            time.sleep(2)
+            time.sleep(5)
             nr_cummulative_liquid_html = sb.get_page_source()
             print("Getting liquid filtered nr cummulative summary...")
             nr_cummulative_summary_liquid_df = get_summary_table(nr_cummulative_liquid_html,
                                                                  today_date=date,
                                                                  method='non-retail')
             sb.click('button[id*="reset-button"]')
-            time.sleep(2)
+            time.sleep(5)
         except Exception as e:
             print(f"Error applying liquid filter: {e}")
             nr_cummulative_summary_liquid_df = None
@@ -220,14 +221,14 @@ if __name__ == "__main__":
         try:
             likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
             sb.type(likuid_filter_selector, 'v\n')
-            time.sleep(2)
+            time.sleep(5)
             m_cummulative_liquid_html = sb.get_page_source()
             print("Getting liquid filtered m cummulative summary...")
             m_cummulative_summary_liquid_df = get_summary_table(m_cummulative_liquid_html,
                                                                  today_date=date,
                                                                  method='market maker')
             sb.click('button[id*="reset-button"]')
-            time.sleep(2)
+            time.sleep(5)
         except Exception as e:
             print(f"Error applying liquid filter: {e}")
             m_cummulative_summary_liquid_df = None
