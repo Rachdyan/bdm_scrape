@@ -75,9 +75,13 @@ if __name__ == "__main__":
         # sb.wait_for_element(selector)
         print("Logging in...")
         sb.click('[href*="accounts/login"]')
+        sb.sleep(2)
         sb.type('[name="login"]', f"{site_email}")
         sb.type('[name="password"]', f"{site_password}")
+        sb.sleep(2)
+
         sb.click('button[type*="submit"]')
+
         print("Login submitted, waiting for redirect...")
         time.sleep(2)
         print("Login successful. Opening market summary page...")

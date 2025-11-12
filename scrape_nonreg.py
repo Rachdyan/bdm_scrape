@@ -235,8 +235,10 @@ if __name__ == "__main__":
 
         sb.open(website)
         sb.click('[href*="accounts/login"]')
+        sb.sleep(2)
         sb.type('[name="login"]', f"{site_email}")
         sb.type('[name="password"]', f"{site_password}")
+        sb.sleep(2)
         sb.click('button[type*="submit"]')
         sb.sleep(2)
 
