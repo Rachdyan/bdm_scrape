@@ -254,17 +254,23 @@ if __name__ == "__main__":
             combined_cummulative_df.price > 50].reset_index(drop=True)
         combined_cummulative_df
 
+        print("Final Daily DataFrames Preparation...")
         final_daily_df = pd.concat([
             get_individual_stock(
                 sb=sb, row=row)
             for index, row in combined_daily_df.iterrows()
         ], ignore_index=True)
 
-        final_cummulative_df = pd.concat([
-            get_individual_stock(
-                sb=sb, row=row)
-            for index, row in combined_cummulative_df.iterrows()
-        ], ignore_index=True)
+        print("Final Cummulative DataFrame Preparation...")
+        try:
+            final_cummulative_df = pd.concat([
+                get_individual_stock(
+                    sb=sb, row=row)
+                for index, row in combined_cummulative_df.iterrows()
+            ], ignore_index=True)
+        except Exception as e:
+            print(f"Error preparing final cummulative DataFrame: {e}")
+            final_cummulative_df = pd.DataFrame()
 
 
 # BOT_TOKEN = "8057278135:AAFdbJmz5bgiIOaE6MjVsCBXMmKp__NYGko"
