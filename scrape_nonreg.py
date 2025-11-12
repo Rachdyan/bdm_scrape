@@ -32,9 +32,9 @@ stock_website = os.environ['STOCK_WEBSITE']
 
 raw_today_data = dt.now(pytz.timezone('Asia/Jakarta'))
 today_date = raw_today_data.strftime("%Y-%m-%d")
-# today_date = '2025-05-09'
+#today_date = '2025-10-24'
 today_month_year = raw_today_data.strftime("%b %Y")
-today_date
+
 
 if __name__ == "__main__":
     with SB(uc=True, headless=False, xvfb=True,
@@ -220,6 +220,8 @@ if __name__ == "__main__":
             (raw_df['Bid Volume'] > 0)]\
             .sort_values('value_ratio', ascending=False)\
             .reset_index(drop=True)
+        
+        print(f"Filtered DF count: {len(filtered_df)}")
 
         high_nonreg_price_df = raw_df[
             (raw_df['avg_nonreg_diff_tertinggi'] >= 1) &
@@ -229,6 +231,7 @@ if __name__ == "__main__":
             (raw_df['Bid Volume'] > 0)]\
             .sort_values('avg_nonreg_diff_tertinggi', ascending=False)\
             .reset_index(drop=True)
+        print(f"High Non-Reg Price DF count: {len(high_nonreg_price_df)}")
 
         sb.open(website)
         sb.click('[href*="accounts/login"]')
@@ -237,17 +240,25 @@ if __name__ == "__main__":
         sb.click('button[type*="submit"]')
         sb.sleep(2)
 
-        final_high_nonreg_price_df = pd.concat([
-            get_individual_stock(
-                sb=sb, row=row)
-            for index, row in high_nonreg_price_df.iterrows()
-        ], ignore_index=True)
+        try:
+            final_high_nonreg_price_df = pd.concat([
+                get_individual_stock(
+                    sb=sb, row=row)
+                for index, row in high_nonreg_price_df.iterrows()
+            ], ignore_index=True)
+        except Exception as e:
+            print(f"Error processing high non-reg price df: {e}")
+            final_high_nonreg_price_df = None
 
-        final_filtered_df = pd.concat([
-            get_individual_stock(
-                sb=sb, row=row)
-            for index, row in filtered_df.iterrows()
-        ], ignore_index=True)
+        try:
+            final_filtered_df = pd.concat([
+                get_individual_stock(
+                    sb=sb, row=row)
+                for index, row in filtered_df.iterrows()
+            ], ignore_index=True)
+        except Exception as e:
+            print(f"Error processing filtered df: {e}")
+            final_filtered_df = None
 
 
 BOT_TOKEN = os.environ['BOT_TOKEN']
@@ -271,28 +282,34 @@ async def send_all_nonreg_messages(df, bot, TARGET_CHAT_ID):
 
 async def main():
     # 1. Send daily summary
-    await send_nonreg_summary_message(
-        df=final_high_nonreg_price_df,
-        bot=bot,
-        type='higher price',
-        TARGET_CHAT_ID=TARGET_CHAT_ID
-    )
+    try:
+        await send_nonreg_summary_message(
+            df=final_high_nonreg_price_df,
+            bot=bot,
+            type='higher price',
+            TARGET_CHAT_ID=TARGET_CHAT_ID
+        )
 
-    # 2. Send daily individual messages
-    await send_all_nonreg_messages(final_high_nonreg_price_df,
-                                   bot, TARGET_CHAT_ID)
+        # 2. Send daily individual messages
+        await send_all_nonreg_messages(final_high_nonreg_price_df,
+                                    bot, TARGET_CHAT_ID)
+    except Exception as e:
+        print(f"Error sending higher price messages: {e}")
 
     # 3. Send cumulative summary
-    await send_nonreg_summary_message(
-        df=final_filtered_df,
-        bot=bot,
-        type='non regular',
-        TARGET_CHAT_ID=TARGET_CHAT_ID
-    )
+    try:
+        await send_nonreg_summary_message(
+            df=final_filtered_df,
+            bot=bot,
+            type='non regular',
+            TARGET_CHAT_ID=TARGET_CHAT_ID
+        )
 
-    # 4. Send cumulative individual messages
-    await send_all_nonreg_messages(final_filtered_df, bot,
-                                   TARGET_CHAT_ID)
+        # 4. Send cumulative individual messages
+        await send_all_nonreg_messages(final_filtered_df, bot,
+                                    TARGET_CHAT_ID)
+    except Exception as e:
+        print(f"Error sending non regular messages: {e}")
 
 if __name__ == "__main__":
     asyncio.run(main())

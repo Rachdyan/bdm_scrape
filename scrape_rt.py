@@ -8,7 +8,6 @@ import asyncio
 from utils.scraping_utils import fetch_sb_rt_data, \
     process_and_filter_rt_data, get_individual_stock
 from dotenv import load_dotenv
-import os
 from pydrive2.auth import GoogleAuth
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
@@ -25,6 +24,11 @@ import cloudscraper
 import time
 # import ast
 # import colorama
+
+# Set up WebDriver Manager cache to avoid repeated downloads
+import os
+os.environ['WDM_CACHE_DIR'] = os.path.expanduser('~/.wdm')
+os.environ['WDM_LOCAL'] = 'True'
 
 load_dotenv(override=True)
 

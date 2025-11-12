@@ -322,7 +322,7 @@ async def send_order_book_summary_message(df, bot, type, TARGET_CHAT_ID):
                                parse_mode='HTML')
         print("Media group sent successfully!")
 
-    except BadRequest as e:
+    except Exception as e:
         print(f"💥 Telegram API Error: {e.message}")
 
 
@@ -385,10 +385,10 @@ async def send_orderbook_message(row, bot, TARGET_CHAT_ID):
             print(f"✅ Added {abs_path} to media group")
 
         # Step 5: Send media group (await inside async function)
-        await bot.send_media_group(chat_id=TARGET_CHAT_ID, media=media_group)
+        await bot.send_media_group(chat_id=TARGET_CHAT_ID, media=media_group, write_timeout=35)
         print("Media group sent successfully!")
 
-    except BadRequest as e:
+    except Exception as e:
         print(f"💥 Telegram API Error: {e.message}")
         print("Debug Checklist:")
         print("1. File paths: ",
