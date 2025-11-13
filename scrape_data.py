@@ -35,46 +35,47 @@ if __name__ == "__main__":
             proxy=proxy_string,
             maximize=True,
             ) as sb:
-        sb.driver.execute_cdp_cmd(
-                "Network.setExtraHTTPHeaders",
-                {
-                    "headers": {
-                        'Accept': 'text/html,application/xhtml+xml,application\
-                            /xml;q=0.9,image/avif,image/webp,image/apng,*/*;\
-                                q=0.8,application/signed-exchange;v=b3;q=0.7',
-                        'Accept-Encoding': 'gzip, deflate, br, zstd',
-                        'Accept-Language': 'en-US,en;q=0.9',
-                        'Cache-Control': "no-cache",
-                        'Pragma': "no-cache",
-                        'Priority': "u=0, i",
-                        'Sec-Ch-Ua': '"Chromium";v="134", \
-                            "Not:A-Brand";v="24","Google Chrome";v="134"',
-                        'Sec-Ch-Mobile': "?0",
-                        'Sec-Ch-Ua-Platform': '"macOS"',
-                        'Sec-Fetch-Dest': "document",
-                        'Sec-Fetch-Mode': "navigate",
-                        'Sec-Fetch-User': "?1",
-                        'Upgrade-Insecure-Requests': '1',
-                    }
-                }
-            )
+        # sb.driver.execute_cdp_cmd(
+        #         "Network.setExtraHTTPHeaders",
+        #         {
+        #             "headers": {
+        #                 'Accept': 'text/html,application/xhtml+xml,application\
+        #                     /xml;q=0.9,image/avif,image/webp,image/apng,*/*;\
+        #                         q=0.8,application/signed-exchange;v=b3;q=0.7',
+        #                 'Accept-Encoding': 'gzip, deflate, br, zstd',
+        #                 'Accept-Language': 'en-US,en;q=0.9',
+        #                 'Cache-Control': "no-cache",
+        #                 'Pragma': "no-cache",
+        #                 'Priority': "u=0, i",
+        #                 'Sec-Ch-Ua': '"Chromium";v="134", \
+        #                     "Not:A-Brand";v="24","Google Chrome";v="134"',
+        #                 'Sec-Ch-Mobile': "?0",
+        #                 'Sec-Ch-Ua-Platform': '"macOS"',
+        #                 'Sec-Fetch-Dest': "document",
+        #                 'Sec-Fetch-Mode': "navigate",
+        #                 'Sec-Fetch-User': "?1",
+        #                 'Upgrade-Insecure-Requests': '1',
+        #             }
+        #         }
+        #     )
 
-        sb.driver.execute_cdp_cmd(
-                "Network.setUserAgentOverride",
-                {
-                    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X \
-                        10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) \
-                            Chrome/134.0.0.0 Safari/537.36"
-                },
-            )
+        # sb.driver.execute_cdp_cmd(
+        #         "Network.setUserAgentOverride",
+        #         {
+        #             "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X \
+        #                 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) \
+        #                     Chrome/134.0.0.0 Safari/537.36"
+        #         },
+        #     )
 
-        sb.driver.execute_script("Object.defineProperty(navigator, \
-                                 'webdriver',{get: () => undefined})")
+        # sb.driver.execute_script("Object.defineProperty(navigator, \
+        #                          'webdriver',{get: () => undefined})")
 
         sb.open(website)
         # sb.wait_for_element(selector)
         print("Logging in...")
-        sb.click('[href*="accounts/login"]')
+       # sb.click('[href*="accounts/login"]')
+        sb.open(f"{website}/accounts/login/")
         sb.sleep(5)
         sb.type('[name="login"]', f"{site_email}")
         sb.type('[name="password"]', f"{site_password}")
@@ -88,7 +89,7 @@ if __name__ == "__main__":
         sb.open(f"{website}/market_summary/")
         time.sleep(10)
         sb.click('button[id*="reset-button"]')
-        time.sleep(10)
+        time.sleep(30)
         summary_html = sb.get_page_source()
 
         soup = BeautifulSoup(summary_html, 'html5lib')
@@ -104,7 +105,9 @@ if __name__ == "__main__":
 
         # GET DAILY NON RETAIL
         print("Getting daily non-retail summary...")
-        sb.hover_and_click("#method", '[value = "nr"]', timeout=1)
+        #breakpoint()
+        #sb.hover_and_click("#method", '[value = "nr"]', timeout=3)
+        sb.select_option_by_text('#method', 'Non-Retail Flow')
         time.sleep(10)
         sb.save_screenshot(f'screenshot/{date}_nr_daily.png')
         nr_daily_html = sb.get_page_source()
@@ -138,7 +141,8 @@ if __name__ == "__main__":
         # nr_daily_summary_df
 
         # GET DAILY MARKET MAKER
-        sb.hover_and_click("#method", '[value = "m"]', timeout=1)
+        #sb.hover_and_click("#method", '[value = "m"]', timeout=1)
+        sb.select_option_by_text('#method', 'Market Maker Analysis')
         time.sleep(10)
         sb.save_screenshot(f'screenshot/{date}_m_daily.png')
         m_daily_html = sb.get_page_source()
@@ -181,9 +185,11 @@ if __name__ == "__main__":
         symbol_set = set(combined_daily_df['symbol'].tolist())
 
         # GET CUMMULATIVE NON RETAIL
-        sb.hover_and_click("#method", '[value = "nr"]', timeout=1)
+        #sb.hover_and_click("#method", '[value = "nr"]', timeout=1)
+        sb.select_option_by_text('#method', 'Non-Retail Flow')
         time.sleep(10)
-        sb.hover_and_click("#summary-mode", '[value = "c"]', timeout=1)
+        #sb.hover_and_click("#summary-mode", '[value = "c"]', timeout=1)
+        sb.select_option_by_text('#summary-mode', 'Cumulative')
         time.sleep(10)
         sb.save_screenshot(f'screenshot/{date}_nr_cummulative.png')
         nr_cummulative_html = sb.get_page_source()
@@ -208,9 +214,11 @@ if __name__ == "__main__":
         # nr_cummulative_summary_df
 
         # GET CUMMULATIVE MARKET MAKER
-        sb.hover_and_click("#method", '[value = "m"]', timeout=1)
+        #sb.hover_and_click("#method", '[value = "m"]', timeout=1)
+        sb.select_option_by_text('#method', 'Market Maker Analysis')
         time.sleep(10)
-        sb.hover_and_click("#summary-mode", '[value = "c"]', timeout=1)
+        #sb.hover_and_click("#summary-mode", '[value = "c"]', timeout=1)
+        sb.select_option_by_text('#summary-mode', 'Cumulative')
         time.sleep(10)
         sb.save_screenshot(f'screenshot/{date}_m_cummulative.png')
         m_cummulative_html = sb.get_page_source()
