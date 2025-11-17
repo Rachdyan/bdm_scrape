@@ -14,6 +14,7 @@ from pydrive2.auth import GoogleAuth
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 from utils.gsheet_utils import export_to_sheets
+from selenium.webdriver.common.keys import Keys
 
 load_dotenv(override=True)
 
@@ -31,8 +32,8 @@ site_password = os.environ['SITE_PASSWORD']
 if __name__ == "__main__":
     with SB(uc=True,
             headless=False,
-            xvfb=True,
-            proxy=proxy_string,
+            xvfb=False,
+            #proxy=proxy_string,
             maximize=True,
             ) as sb:
         # sb.driver.execute_cdp_cmd(
@@ -71,12 +72,14 @@ if __name__ == "__main__":
         # sb.driver.execute_script("Object.defineProperty(navigator, \
         #                          'webdriver',{get: () => undefined})")
 
+        sb.open("https://www.google.com")
+
         sb.open(website)
         # sb.wait_for_element(selector)
         print("Logging in...")
        # sb.click('[href*="accounts/login"]')
         sb.open(f"{website}/accounts/login/")
-        sb.sleep(5)
+        sb.sleep(15)
         sb.type('[name="login"]', f"{site_email}")
         sb.type('[name="password"]', f"{site_password}")
         sb.sleep(5)
@@ -84,12 +87,19 @@ if __name__ == "__main__":
         sb.click('button[type*="submit"]')
 
         print("Login submitted, waiting for redirect...")
-        time.sleep(5)
+        sb.sleep(30)
+        
+        sb.open(f"{website}/home/")
+        sb.sleep(10)
         print("Login successful. Opening market summary page...")
         sb.open(f"{website}/market_summary/")
-        time.sleep(10)
+        sb.sleep(60)
+
+        #sb.refresh()
+        #sb.sleep(30)
+
         sb.click('button[id*="reset-button"]')
-        time.sleep(30)
+        sb.sleep(60)
         summary_html = sb.get_page_source()
 
         soup = BeautifulSoup(summary_html, 'html5lib')
@@ -108,7 +118,8 @@ if __name__ == "__main__":
         #breakpoint()
         #sb.hover_and_click("#method", '[value = "nr"]', timeout=3)
         sb.select_option_by_text('#method', 'Non-Retail Flow')
-        time.sleep(10)
+        sb.send_keys('#method', Keys.RETURN)
+        sb.sleep(40)
         sb.save_screenshot(f'screenshot/{date}_nr_daily.png')
         nr_daily_html = sb.get_page_source()
         nr_daily_summary_df = get_summary_table(nr_daily_html,
@@ -125,14 +136,15 @@ if __name__ == "__main__":
         try:
             likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
             sb.type(likuid_filter_selector, 'v\n')
-            time.sleep(5)
+            sb.send_keys(likuid_filter_selector, Keys.RETURN)
+            sb.sleep(10)
             nr_daily_liquid_html = sb.get_page_source()
             print("Getting liquid filtered daily non-retail summary...")
             nr_daily_summary_liquid_df = get_summary_table(nr_daily_liquid_html,
                                                             today_date=date,
                                                             method='non-retail')
             sb.click('button[id*="reset-button"]')
-            time.sleep(5)
+            sb.sleep(60)
         except Exception as e:
             print(f"Error applying liquid filter: {e}")
             nr_daily_summary_liquid_df = None
@@ -141,9 +153,11 @@ if __name__ == "__main__":
         # nr_daily_summary_df
 
         # GET DAILY MARKET MAKER
+        print("Getting daily market maker summary...")
         #sb.hover_and_click("#method", '[value = "m"]', timeout=1)
         sb.select_option_by_text('#method', 'Market Maker Analysis')
-        time.sleep(10)
+        sb.send_keys('#method', Keys.RETURN)
+        sb.sleep(40)
         sb.save_screenshot(f'screenshot/{date}_m_daily.png')
         m_daily_html = sb.get_page_source()
         m_daily_summary_df = get_summary_table(m_daily_html,
@@ -153,14 +167,15 @@ if __name__ == "__main__":
         try:
             likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
             sb.type(likuid_filter_selector, 'v\n')
-            time.sleep(5)
+            sb.send_keys(likuid_filter_selector, Keys.RETURN)
+            sb.sleep(10)
             m_daily_liquid_html = sb.get_page_source()
             print("Getting liquid filtered daily market maker summary...")
             m_daily_summary_liquid_df = get_summary_table(m_daily_liquid_html,
                                                             today_date=date,
                                                             method='market maker')
             sb.click('button[id*="reset-button"]')
-            time.sleep(5)
+            time.sleep(40)
         except Exception as e:
             print(f"Error applying liquid filter: {e}")
             m_daily_summary_liquid_df = None
@@ -185,12 +200,15 @@ if __name__ == "__main__":
         symbol_set = set(combined_daily_df['symbol'].tolist())
 
         # GET CUMMULATIVE NON RETAIL
+        print("Getting cummulative non-retail summary...")
         #sb.hover_and_click("#method", '[value = "nr"]', timeout=1)
         sb.select_option_by_text('#method', 'Non-Retail Flow')
-        time.sleep(10)
+        sb.send_keys('#method', Keys.RETURN)
+        sb.sleep(40)
         #sb.hover_and_click("#summary-mode", '[value = "c"]', timeout=1)
         sb.select_option_by_text('#summary-mode', 'Cumulative')
-        time.sleep(10)
+        sb.send_keys('#summary-mode', Keys.RETURN)
+        sb.sleep(40)
         sb.save_screenshot(f'screenshot/{date}_nr_cummulative.png')
         nr_cummulative_html = sb.get_page_source()
         nr_cummulative_summary_df = get_summary_table(nr_cummulative_html,
@@ -200,26 +218,30 @@ if __name__ == "__main__":
         try:
             likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
             sb.type(likuid_filter_selector, 'v\n')
-            time.sleep(5)
+            sb.send_keys(likuid_filter_selector, Keys.RETURN)
+            sb.sleep(10)
             nr_cummulative_liquid_html = sb.get_page_source()
             print("Getting liquid filtered nr cummulative summary...")
             nr_cummulative_summary_liquid_df = get_summary_table(nr_cummulative_liquid_html,
                                                                  today_date=date,
                                                                  method='non-retail')
             sb.click('button[id*="reset-button"]')
-            time.sleep(5)
+            sb.sleep(40)
         except Exception as e:
             print(f"Error applying liquid filter: {e}")
             nr_cummulative_summary_liquid_df = None
         # nr_cummulative_summary_df
 
         # GET CUMMULATIVE MARKET MAKER
+        print("Getting cummulative market maker summary...")
         #sb.hover_and_click("#method", '[value = "m"]', timeout=1)
         sb.select_option_by_text('#method', 'Market Maker Analysis')
-        time.sleep(10)
+        sb.send_keys('#method', Keys.RETURN)
+        sb.sleep(40)
         #sb.hover_and_click("#summary-mode", '[value = "c"]', timeout=1)
         sb.select_option_by_text('#summary-mode', 'Cumulative')
-        time.sleep(10)
+        sb.send_keys('#summary-mode', Keys.RETURN)
+        sb.sleep(40)
         sb.save_screenshot(f'screenshot/{date}_m_cummulative.png')
         m_cummulative_html = sb.get_page_source()
         m_cummulative_summary_df = get_summary_table(m_cummulative_html,
@@ -229,14 +251,15 @@ if __name__ == "__main__":
         try:
             likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
             sb.type(likuid_filter_selector, 'v\n')
-            time.sleep(5)
+            sb.send_keys(likuid_filter_selector, Keys.RETURN)
+            sb.sleep(10)
             m_cummulative_liquid_html = sb.get_page_source()
             print("Getting liquid filtered m cummulative summary...")
             m_cummulative_summary_liquid_df = get_summary_table(m_cummulative_liquid_html,
                                                                  today_date=date,
                                                                  method='market maker')
             sb.click('button[id*="reset-button"]')
-            time.sleep(5)
+            sb.sleep(40)
         except Exception as e:
             print(f"Error applying liquid filter: {e}")
             m_cummulative_summary_liquid_df = None
