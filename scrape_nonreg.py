@@ -32,7 +32,7 @@ stock_website = os.environ['STOCK_WEBSITE']
 
 raw_today_data = dt.now(pytz.timezone('Asia/Jakarta'))
 today_date = raw_today_data.strftime("%Y-%m-%d")
-#today_date = '2025-10-24'
+today_date = '2025-11-18'
 today_month_year = raw_today_data.strftime("%b %Y")
 
 
@@ -78,7 +78,7 @@ if __name__ == "__main__":
                                  'webdriver',{get: () => undefined})")
 
         sb.open(f"{stock_website}")
-        sb.sleep(2)
+        sb.sleep(5)
 
         sb.wait_for_element_present("span[class='bzi-bars']")
         sb.click("span[class='bzi-bars']")
@@ -106,20 +106,27 @@ if __name__ == "__main__":
         if today_month_year != first_calendar_header:
             sb.click("button[class='mx-btn mx-btn-text mx-btn-icon-left']")
 
-        sb.sleep(2)
+        sb.sleep(5)
 
         print("Clicking Date")
         sb.wait_for_element_present(f"td[title = '{today_date}']")
         today_date_button = sb.find_element(f"td[title = '{today_date}']")
         today_date_button.click()
 
-        sb.sleep(1)
+        sb.sleep(5)
 
         sb.wait_for_element_present("select[name='perPageSelect']")
-        sb.click("select[name='perPageSelect']")
-        sb.sleep(1)
-        sb.click("option[value='-1']")
-        sb.sleep(2)
+        #sb.click("select[name='perPageSelect']")
+        #sb.sleep(5)
+        #breakpoint()
+        #sb.click("option[value='-1']")
+        sb.select_option_by_value("select[name='perPageSelect']", "-1")
+        sb.execute_script("""
+            var select = document.querySelector("select[name='perPageSelect']");
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+        """)
+        sb.sleep(5)  # Wait for table to reload
+        #sb.sleep(5)
 
         raw_html = sb.get_page_source()
         soup = BeautifulSoup(raw_html, 'html5lib')
@@ -154,6 +161,9 @@ if __name__ == "__main__":
                      'Non Regular Frequency', 'Listed Shares',
                      'Tradeble Shares', 'Offer', 'Offer Volume',
                      'Bid', 'Bid Volume']].copy()
+
+        print(f"Raw DF count: {len(raw_df)}")
+        print(raw_df.head())
 
         month_map = {'Januari': '01', 'Februari': '02', 'Maret': '03',
                      'April': '04', 'Mei': '05', 'Juni': '06',

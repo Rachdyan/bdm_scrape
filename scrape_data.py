@@ -119,6 +119,12 @@ if __name__ == "__main__":
         #sb.hover_and_click("#method", '[value = "nr"]', timeout=3)
         sb.select_option_by_text('#method', 'Non-Retail Flow')
         sb.send_keys('#method', Keys.RETURN)
+        sb.execute_script("""
+            var select = document.querySelector('#method');
+            if (select) {
+                select.dispatchEvent(new Event('change', {bubbles: true}));
+            }
+        """)
         sb.sleep(40)
         sb.save_screenshot(f'screenshot/{date}_nr_daily.png')
         nr_daily_html = sb.get_page_source()
@@ -137,6 +143,12 @@ if __name__ == "__main__":
             likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
             sb.type(likuid_filter_selector, 'v\n')
             sb.send_keys(likuid_filter_selector, Keys.RETURN)
+            sb.execute_script(f"""
+                var input = document.querySelector('{likuid_filter_selector}');
+                if (input) {{
+                    input.dispatchEvent(new Event('change', {{bubbles: true}}));
+                }}
+            """)
             sb.sleep(10)
             nr_daily_liquid_html = sb.get_page_source()
             print("Getting liquid filtered daily non-retail summary...")
@@ -157,6 +169,12 @@ if __name__ == "__main__":
         #sb.hover_and_click("#method", '[value = "m"]', timeout=1)
         sb.select_option_by_text('#method', 'Market Maker Analysis')
         sb.send_keys('#method', Keys.RETURN)
+        sb.execute_script("""
+            var select = document.querySelector('#method');
+            if (select) {
+                select.dispatchEvent(new Event('change', {bubbles: true}));
+            }
+        """)
         sb.sleep(40)
         sb.save_screenshot(f'screenshot/{date}_m_daily.png')
         m_daily_html = sb.get_page_source()
@@ -168,6 +186,12 @@ if __name__ == "__main__":
             likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
             sb.type(likuid_filter_selector, 'v\n')
             sb.send_keys(likuid_filter_selector, Keys.RETURN)
+            sb.execute_script(f"""
+                var input = document.querySelector('{likuid_filter_selector}');
+                if (input) {{
+                    input.dispatchEvent(new Event('change', {{bubbles: true}}));
+                }}
+            """)
             sb.sleep(10)
             m_daily_liquid_html = sb.get_page_source()
             print("Getting liquid filtered daily market maker summary...")
@@ -219,6 +243,12 @@ if __name__ == "__main__":
             likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
             sb.type(likuid_filter_selector, 'v\n')
             sb.send_keys(likuid_filter_selector, Keys.RETURN)
+            sb.execute_script(f"""
+                var input = document.querySelector('{likuid_filter_selector}');
+                if (input) {{
+                    input.dispatchEvent(new Event('change', {{bubbles: true}}));
+                }}
+            """)
             sb.sleep(10)
             nr_cummulative_liquid_html = sb.get_page_source()
             print("Getting liquid filtered nr cummulative summary...")
@@ -252,6 +282,12 @@ if __name__ == "__main__":
             likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
             sb.type(likuid_filter_selector, 'v\n')
             sb.send_keys(likuid_filter_selector, Keys.RETURN)
+            sb.execute_script(f"""
+                var input = document.querySelector('{likuid_filter_selector}');
+                if (input) {{
+                    input.dispatchEvent(new Event('change', {{bubbles: true}}));
+                }}
+            """)
             sb.sleep(10)
             m_cummulative_liquid_html = sb.get_page_source()
             print("Getting liquid filtered m cummulative summary...")
