@@ -32,7 +32,7 @@ stock_website = os.environ['STOCK_WEBSITE']
 
 raw_today_data = dt.now(pytz.timezone('Asia/Jakarta'))
 today_date = raw_today_data.strftime("%Y-%m-%d")
-today_date = '2025-11-18'
+# today_date = '2025-11-24'
 today_month_year = raw_today_data.strftime("%b %Y")
 
 
@@ -78,9 +78,10 @@ if __name__ == "__main__":
                                  'webdriver',{get: () => undefined})")
 
         sb.open(f"{stock_website}")
-        sb.sleep(5)
+        sb.sleep(10)
 
         sb.wait_for_element_present("span[class='bzi-bars']")
+        sb.sleep(3)
         sb.click("span[class='bzi-bars']")
         sb.sleep(1)
         sb.click("label[for='fltrAll']")

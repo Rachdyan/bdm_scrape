@@ -267,10 +267,22 @@ if __name__ == "__main__":
         #sb.hover_and_click("#method", '[value = "m"]', timeout=1)
         sb.select_option_by_text('#method', 'Market Maker Analysis')
         sb.send_keys('#method', Keys.RETURN)
+        sb.execute_script("""
+            var select = document.querySelector('#method');
+            if (select) {
+                select.dispatchEvent(new Event('change', {bubbles: true}));
+            }
+        """)
         sb.sleep(40)
         #sb.hover_and_click("#summary-mode", '[value = "c"]', timeout=1)
         sb.select_option_by_text('#summary-mode', 'Cumulative')
         sb.send_keys('#summary-mode', Keys.RETURN)
+        sb.execute_script("""
+            var select = document.querySelector('#summary-mode');
+            if (select) {
+                select.dispatchEvent(new Event('change', {bubbles: true}));
+            }
+        """)
         sb.sleep(40)
         sb.save_screenshot(f'screenshot/{date}_m_cummulative.png')
         m_cummulative_html = sb.get_page_source()
