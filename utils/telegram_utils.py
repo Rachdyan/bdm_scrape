@@ -1,7 +1,17 @@
 import os
+import sys
 from telegram import InputMediaPhoto, InputFile
 from telegram.error import BadRequest
 import asyncio
+
+
+def safe_print(msg):
+    """Print message with fallback for encoding issues on Windows."""
+    try:
+        print(msg)
+    except UnicodeEncodeError:
+        # Replace problematic characters for Windows console
+        print(msg.encode(sys.stdout.encoding, errors='replace').decode(sys.stdout.encoding))
 
 
 def generate_high_level_summary_str(df, type):
@@ -43,7 +53,7 @@ async def send_high_level_summary_message(df, bot, type, TARGET_CHAT_ID):
             # Step 1: Validate absolute path
             abs_path = os.path.abspath(file_path)
             if not os.path.exists(abs_path):
-                print(f"🚫 File not found: {abs_path}")
+                safe_print(f"[NOT FOUND] File not found: {abs_path}")
                 continue
 
             # Step 2: Normalize path (critical for Windows)
@@ -61,14 +71,14 @@ async def send_high_level_summary_message(df, bot, type, TARGET_CHAT_ID):
                 parse_mode='HTML' if idx == 0 else None
             )
             media_group.append(media)
-            print(f"✅ Added {abs_path} to media group")
+            safe_print(f"[OK] Added {abs_path} to media group")
 
         # Step 5: Send media group (await inside async function)
         await bot.send_media_group(chat_id=TARGET_CHAT_ID, media=media_group)
         print("Media group sent successfully!")
 
     except BadRequest as e:
-        print(f"💥 Telegram API Error: {e.message}")
+        safe_print(f"[ERROR] Telegram API Error: {e.message}")
         print("Debug Checklist:")
         print("1. File paths: ", [os.path.abspath(p) for p in files_path])
         print("2. File sizes: ",
@@ -149,7 +159,7 @@ async def send_daily_message(row, bot, type, TARGET_CHAT_ID):
             # Step 1: Validate absolute path
             abs_path = os.path.abspath(file_path)
             if not os.path.exists(abs_path):
-                print(f"🚫 File not found: {abs_path}")
+                safe_print(f"[NOT FOUND] File not found: {abs_path}")
                 continue
 
             # Step 2: Normalize path (critical for Windows)
@@ -167,14 +177,14 @@ async def send_daily_message(row, bot, type, TARGET_CHAT_ID):
                 parse_mode='HTML' if idx == 0 else None
             )
             media_group.append(media)
-            print(f"✅ Added {abs_path} to media group")
+            safe_print(f"[OK] Added {abs_path} to media group")
 
         # Step 5: Send media group (await inside async function)
         await bot.send_media_group(chat_id=TARGET_CHAT_ID, media=media_group)
         print("Media group sent successfully!")
 
     except BadRequest as e:
-        print(f"💥 Telegram API Error: {e.message}")
+        safe_print(f"[ERROR] Telegram API Error: {e.message}")
         print("Debug Checklist:")
         print("1. File paths: ",
               [os.path.abspath(p) for p in row['ss_directory']])
@@ -213,7 +223,7 @@ async def send_nonreg_summary_message(df, bot, type, TARGET_CHAT_ID):
         print("Media group sent successfully!")
 
     except BadRequest as e:
-        print(f"💥 Telegram API Error: {e.message}")
+        safe_print(f"[ERROR] Telegram API Error: {e.message}")
 
 
 def generate_non_reg_str(row):
@@ -259,7 +269,7 @@ async def send_non_reg_message(row, bot, TARGET_CHAT_ID):
             # Step 1: Validate absolute path
             abs_path = os.path.abspath(file_path)
             if not os.path.exists(abs_path):
-                print(f"🚫 File not found: {abs_path}")
+                safe_print(f"[NOT FOUND] File not found: {abs_path}")
                 continue
 
             # Step 2: Normalize path (critical for Windows)
@@ -277,14 +287,14 @@ async def send_non_reg_message(row, bot, TARGET_CHAT_ID):
                 parse_mode='HTML' if idx == 0 else None
             )
             media_group.append(media)
-            print(f"✅ Added {abs_path} to media group")
+            safe_print(f"[OK] Added {abs_path} to media group")
 
         # Step 5: Send media group (await inside async function)
         await bot.send_media_group(chat_id=TARGET_CHAT_ID, media=media_group)
         print("Media group sent successfully!")
 
     except BadRequest as e:
-        print(f"💥 Telegram API Error: {e.message}")
+        safe_print(f"[ERROR] Telegram API Error: {e.message}")
         print("Debug Checklist:")
         print("1. File paths: ",
               [os.path.abspath(p) for p in row['ss_directory']])
@@ -323,7 +333,7 @@ async def send_order_book_summary_message(df, bot, type, TARGET_CHAT_ID):
         print("Media group sent successfully!")
 
     except Exception as e:
-        print(f"💥 Telegram API Error: {e.message}")
+        safe_print(f"[ERROR] Telegram API Error: {e}")
 
 
 def generate_orderbook_str(row):
@@ -364,7 +374,7 @@ async def send_orderbook_message(row, bot, TARGET_CHAT_ID):
             # Step 1: Validate absolute path
             abs_path = os.path.abspath(file_path)
             if not os.path.exists(abs_path):
-                print(f"🚫 File not found: {abs_path}")
+                safe_print(f"[NOT FOUND] File not found: {abs_path}")
                 continue
 
             # Step 2: Normalize path (critical for Windows)
@@ -382,14 +392,14 @@ async def send_orderbook_message(row, bot, TARGET_CHAT_ID):
                 parse_mode='HTML' if idx == 0 else None
             )
             media_group.append(media)
-            print(f"✅ Added {abs_path} to media group")
+            safe_print(f"[OK] Added {abs_path} to media group")
 
         # Step 5: Send media group (await inside async function)
         await bot.send_media_group(chat_id=TARGET_CHAT_ID, media=media_group, write_timeout=35)
         print("Media group sent successfully!")
 
     except Exception as e:
-        print(f"💥 Telegram API Error: {e.message}")
+        safe_print(f"[ERROR] Telegram API Error: {e}")
         print("Debug Checklist:")
         print("1. File paths: ",
               [os.path.abspath(p) for p in row['ss_directory']])
@@ -414,4 +424,4 @@ async def send_all_orderbook_messages(df, bot, TARGET_CHAT_ID):
             )
             await asyncio.sleep(1)  # Add delay between messages
         except Exception as e:
-            print(f"❌ Failed for {type} row {index}: {e}")
+            safe_print(f"[FAILED] Failed for {type} row {index}: {e}")
