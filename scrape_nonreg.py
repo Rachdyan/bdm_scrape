@@ -32,8 +32,9 @@ stock_website = os.environ['STOCK_WEBSITE']
 
 raw_today_data = dt.now(pytz.timezone('Asia/Jakarta'))
 today_date = raw_today_data.strftime("%Y-%m-%d")
-# today_date = '2025-11-24'
+# today_date = '2025-11-28'
 today_month_year = raw_today_data.strftime("%b %Y")
+# today_month_year = 'Nov 2025'
 
 
 if __name__ == "__main__":
@@ -41,48 +42,50 @@ if __name__ == "__main__":
             proxy=proxy_string,
             maximize=True,
             ) as sb:
-        sb.driver.execute_cdp_cmd(
-                "Network.setExtraHTTPHeaders",
-                {
-                    "headers": {
-                        'Accept': 'text/html,application/xhtml+xml,application\
-                            /xml;q=0.9,image/avif,image/webp,image/apng,*/*;\
-                                q=0.8,application/signed-exchange;v=b3;q=0.7',
-                        'Accept-Encoding': 'gzip, deflate, br, zstd',
-                        'Accept-Language': 'en-US,en;q=0.9',
-                        'Cache-Control': "no-cache",
-                        'Pragma': "no-cache",
-                        'Priority': "u=0, i",
-                        'Sec-Ch-Ua': '"Chromium";v="134", \
-                            "Not:A-Brand";v="24","Google Chrome";v="134"',
-                        'Sec-Ch-Mobile': "?0",
-                        'Sec-Ch-Ua-Platform': '"macOS"',
-                        'Sec-Fetch-Dest': "document",
-                        'Sec-Fetch-Mode': "navigate",
-                        'Sec-Fetch-User': "?1",
-                        'Upgrade-Insecure-Requests': '1',
-                    }
-                }
-            )
+        # sb.driver.execute_cdp_cmd(
+        #         "Network.setExtraHTTPHeaders",
+        #         {
+        #             "headers": {
+        #                 'Accept': 'text/html,application/xhtml+xml,application\
+        #                     /xml;q=0.9,image/avif,image/webp,image/apng,*/*;\
+        #                         q=0.8,application/signed-exchange;v=b3;q=0.7',
+        #                 'Accept-Encoding': 'gzip, deflate, br, zstd',
+        #                 'Accept-Language': 'en-US,en;q=0.9',
+        #                 'Cache-Control': "no-cache",
+        #                 'Pragma': "no-cache",
+        #                 'Priority': "u=0, i",
+        #                 'Sec-Ch-Ua': '"Chromium";v="134", \
+        #                     "Not:A-Brand";v="24","Google Chrome";v="134"',
+        #                 'Sec-Ch-Mobile': "?0",
+        #                 'Sec-Ch-Ua-Platform': '"macOS"',
+        #                 'Sec-Fetch-Dest': "document",
+        #                 'Sec-Fetch-Mode': "navigate",
+        #                 'Sec-Fetch-User': "?1",
+        #                 'Upgrade-Insecure-Requests': '1',
+        #             }
+        #         }
+        #     )
 
-        sb.driver.execute_cdp_cmd(
-                "Network.setUserAgentOverride",
-                {
-                    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X \
-                        10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) \
-                            Chrome/134.0.0.0 Safari/537.36"
-                },
-            )
+        # sb.driver.execute_cdp_cmd(
+        #         "Network.setUserAgentOverride",
+        #         {
+        #             "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X \
+        #                 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) \
+        #                     Chrome/134.0.0.0 Safari/537.36"
+        #         },
+        #     )
 
-        sb.driver.execute_script("Object.defineProperty(navigator, \
-                                 'webdriver',{get: () => undefined})")
+        # sb.driver.execute_script("Object.defineProperty(navigator, \
+        #                          'webdriver',{get: () => undefined})")
 
         sb.open(f"{stock_website}")
         sb.sleep(10)
 
         sb.wait_for_element_present("span[class='bzi-bars']")
         sb.sleep(3)
-        sb.click("span[class='bzi-bars']")
+
+        sb.execute_script("document.querySelector(\"span[class='bzi-bars']\").click()")
+        
         sb.sleep(1)
         sb.click("label[for='fltrAll']")
         sb.sleep(1)
