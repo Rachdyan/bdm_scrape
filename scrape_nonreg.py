@@ -249,15 +249,21 @@ if __name__ == "__main__":
             .sort_values('avg_nonreg_diff_tertinggi', ascending=False)\
             .reset_index(drop=True)
         print(f"High Non-Reg Price DF count: {len(high_nonreg_price_df)}")
-
+        
         sb.open(website)
-        sb.click('[href*="accounts/login"]')
-        sb.sleep(2)
+        # sb.wait_for_element(selector)
+        print("Logging in...")
+       # sb.click('[href*="accounts/login"]')
+        sb.open(f"{website}/accounts/login/")
+        sb.sleep(15)
         sb.type('[name="login"]', f"{site_email}")
         sb.type('[name="password"]', f"{site_password}")
-        sb.sleep(2)
+        sb.sleep(5)
+
         sb.click('button[type*="submit"]')
-        sb.sleep(2)
+
+        print("Login submitted, waiting for redirect...")
+        sb.sleep(30)
 
         try:
             final_high_nonreg_price_df = pd.concat([
