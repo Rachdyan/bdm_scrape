@@ -140,13 +140,15 @@ if __name__ == "__main__":
         print(f"Liquid Index Column Position: {liquid_index}")
         # APPLY LIQUID FILTER
         try:
-            likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
-            sb.type(likuid_filter_selector, 'v\n')
-            sb.send_keys(likuid_filter_selector, Keys.RETURN)
+            # Use JavaScript for more reliable filtering on Windows
             sb.execute_script(f"""
-                var input = document.querySelector('{likuid_filter_selector}');
-                if (input) {{
+                var filterInputs = document.querySelectorAll('th.dash-filter.column-{str(liquid_index)} input[type=text]');
+                if (filterInputs.length > 0) {{
+                    var input = filterInputs[0];
+                    input.value = 'v';
+                    input.dispatchEvent(new Event('input', {{bubbles: true}}));
                     input.dispatchEvent(new Event('change', {{bubbles: true}}));
+                    input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13}}));
                 }}
             """)
             sb.sleep(10)
@@ -183,13 +185,15 @@ if __name__ == "__main__":
                                                method='market maker')
         
         try:
-            likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
-            sb.type(likuid_filter_selector, 'v\n')
-            sb.send_keys(likuid_filter_selector, Keys.RETURN)
+            # Use JavaScript for more reliable filtering on Windows
             sb.execute_script(f"""
-                var input = document.querySelector('{likuid_filter_selector}');
-                if (input) {{
+                var filterInputs = document.querySelectorAll('th.dash-filter.column-{str(liquid_index)} input[type=text]');
+                if (filterInputs.length > 0) {{
+                    var input = filterInputs[0];
+                    input.value = 'v';
+                    input.dispatchEvent(new Event('input', {{bubbles: true}}));
                     input.dispatchEvent(new Event('change', {{bubbles: true}}));
+                    input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13}}));
                 }}
             """)
             sb.sleep(10)
@@ -240,13 +244,15 @@ if __name__ == "__main__":
                                                       method='non-retail')
 
         try:
-            likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
-            sb.type(likuid_filter_selector, 'v\n')
-            sb.send_keys(likuid_filter_selector, Keys.RETURN)
+            # Use JavaScript for more reliable filtering on Windows
             sb.execute_script(f"""
-                var input = document.querySelector('{likuid_filter_selector}');
-                if (input) {{
+                var filterInputs = document.querySelectorAll('th.dash-filter.column-{str(liquid_index)} input[type=text]');
+                if (filterInputs.length > 0) {{
+                    var input = filterInputs[0];
+                    input.value = 'v';
+                    input.dispatchEvent(new Event('input', {{bubbles: true}}));
                     input.dispatchEvent(new Event('change', {{bubbles: true}}));
+                    input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13}}));
                 }}
             """)
             sb.sleep(10)
@@ -291,13 +297,15 @@ if __name__ == "__main__":
                                                      method='market maker')
 
         try:
-            likuid_filter_selector = f'#market-summary-table > div.dash-spreadsheet-container.dash-spreadsheet.dash-freeze-left.dash-empty-01.dash-fill-width > div > div.dt-table-container__row.dt-table-container__row-1 > div.cell.cell-1-1.dash-fixed-content > table > tbody > tr:nth-child(2) > th.dash-filter.column-{str(liquid_index)} > div > input[type=text]:nth-child(1)'
-            sb.type(likuid_filter_selector, 'v\n')
-            sb.send_keys(likuid_filter_selector, Keys.RETURN)
+            # Use JavaScript for more reliable filtering on Windows
             sb.execute_script(f"""
-                var input = document.querySelector('{likuid_filter_selector}');
-                if (input) {{
+                var filterInputs = document.querySelectorAll('th.dash-filter.column-{str(liquid_index)} input[type=text]');
+                if (filterInputs.length > 0) {{
+                    var input = filterInputs[0];
+                    input.value = 'v';
+                    input.dispatchEvent(new Event('input', {{bubbles: true}}));
                     input.dispatchEvent(new Event('change', {{bubbles: true}}));
+                    input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13}}));
                 }}
             """)
             sb.sleep(10)
