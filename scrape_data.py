@@ -15,6 +15,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 from utils.gsheet_utils import export_to_sheets
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 
 load_dotenv(override=True)
 
@@ -115,7 +116,6 @@ if __name__ == "__main__":
 
         # GET DAILY NON RETAIL
         print("Getting daily non-retail summary...")
-        #breakpoint()
         #sb.hover_and_click("#method", '[value = "nr"]', timeout=3)
         sb.select_option_by_text('#method', 'Non-Retail Flow')
         sb.send_keys('#method', Keys.RETURN)
@@ -140,18 +140,23 @@ if __name__ == "__main__":
         print(f"Liquid Index Column Position: {liquid_index}")
         # APPLY LIQUID FILTER
         try:
-            # Use JavaScript for more reliable filtering on Windows
-            sb.execute_script(f"""
-                var filterInputs = document.querySelectorAll('th.dash-filter.column-{str(liquid_index)} input[type=text]');
-                if (filterInputs.length > 0) {{
-                    var input = filterInputs[0];
-                    input.value = 'v';
-                    input.dispatchEvent(new Event('input', {{bubbles: true}}));
-                    input.dispatchEvent(new Event('change', {{bubbles: true}}));
-                    input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13}}));
-                }}
+            filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
+            sb.wait_for_element_present(filter_selector, timeout=10)
+            
+            # Scroll the table to make the column visible
+            sb.execute_script("""
+                var table = document.querySelector('table');
+                if (table) {
+                    table.scrollLeft = 9999;
+                }
             """)
-            sb.sleep(10)
+            sb.sleep(2)
+            
+            # Use SeleniumBase's native type method which handles events properly
+            element = sb.driver.find_element("css selector", filter_selector)
+            ActionChains(sb.driver).move_to_element(element).click().send_keys('v').send_keys(Keys.RETURN).perform()
+            
+            sb.sleep(15)
             nr_daily_liquid_html = sb.get_page_source()
             print("Getting liquid filtered daily non-retail summary...")
             nr_daily_summary_liquid_df = get_summary_table(nr_daily_liquid_html,
@@ -163,6 +168,7 @@ if __name__ == "__main__":
             print(f"Error applying liquid filter: {e}")
             nr_daily_summary_liquid_df = None
 
+       #breakpoint()
 
         # nr_daily_summary_df
 
@@ -185,18 +191,25 @@ if __name__ == "__main__":
                                                method='market maker')
         
         try:
-            # Use JavaScript for more reliable filtering on Windows
-            sb.execute_script(f"""
-                var filterInputs = document.querySelectorAll('th.dash-filter.column-{str(liquid_index)} input[type=text]');
-                if (filterInputs.length > 0) {{
-                    var input = filterInputs[0];
-                    input.value = 'v';
-                    input.dispatchEvent(new Event('input', {{bubbles: true}}));
-                    input.dispatchEvent(new Event('change', {{bubbles: true}}));
-                    input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13}}));
-                }}
+            filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
+            sb.wait_for_element_present(filter_selector, timeout=10)
+            
+            # Scroll the table to make the column visible
+            sb.execute_script("""
+                var table = document.querySelector('table');
+                if (table) {
+                    table.scrollLeft = 9999;
+                }
             """)
-            sb.sleep(10)
+            sb.sleep(2)
+            
+            # Use SeleniumBase's native type method which handles events properly
+            from selenium.webdriver.common.action_chains import ActionChains
+            element = sb.driver.find_element("css selector", filter_selector)
+            ActionChains(sb.driver).move_to_element(element).click().send_keys('v').send_keys(Keys.RETURN).perform()
+            
+            sb.sleep(15)
+            #breakpoint()
             m_daily_liquid_html = sb.get_page_source()
             print("Getting liquid filtered daily market maker summary...")
             m_daily_summary_liquid_df = get_summary_table(m_daily_liquid_html,
@@ -244,18 +257,24 @@ if __name__ == "__main__":
                                                       method='non-retail')
 
         try:
-            # Use JavaScript for more reliable filtering on Windows
-            sb.execute_script(f"""
-                var filterInputs = document.querySelectorAll('th.dash-filter.column-{str(liquid_index)} input[type=text]');
-                if (filterInputs.length > 0) {{
-                    var input = filterInputs[0];
-                    input.value = 'v';
-                    input.dispatchEvent(new Event('input', {{bubbles: true}}));
-                    input.dispatchEvent(new Event('change', {{bubbles: true}}));
-                    input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13}}));
-                }}
+            filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
+            sb.wait_for_element_present(filter_selector, timeout=10)
+            
+            # Scroll the table to make the column visible
+            sb.execute_script("""
+                var table = document.querySelector('table');
+                if (table) {
+                    table.scrollLeft = 9999;
+                }
             """)
-            sb.sleep(10)
+            sb.sleep(2)
+            
+            # Use SeleniumBase's native type method which handles events properly
+
+            element = sb.driver.find_element("css selector", filter_selector)
+            ActionChains(sb.driver).move_to_element(element).click().send_keys('v').send_keys(Keys.RETURN).perform()
+            
+            sb.sleep(15)
             nr_cummulative_liquid_html = sb.get_page_source()
             print("Getting liquid filtered nr cummulative summary...")
             nr_cummulative_summary_liquid_df = get_summary_table(nr_cummulative_liquid_html,
@@ -297,18 +316,24 @@ if __name__ == "__main__":
                                                      method='market maker')
 
         try:
-            # Use JavaScript for more reliable filtering on Windows
-            sb.execute_script(f"""
-                var filterInputs = document.querySelectorAll('th.dash-filter.column-{str(liquid_index)} input[type=text]');
-                if (filterInputs.length > 0) {{
-                    var input = filterInputs[0];
-                    input.value = 'v';
-                    input.dispatchEvent(new Event('input', {{bubbles: true}}));
-                    input.dispatchEvent(new Event('change', {{bubbles: true}}));
-                    input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13}}));
-                }}
+            filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
+            sb.wait_for_element_present(filter_selector, timeout=10)
+            
+            # Scroll the table to make the column visible
+            sb.execute_script("""
+                var table = document.querySelector('table');
+                if (table) {
+                    table.scrollLeft = 9999;
+                }
             """)
-            sb.sleep(10)
+            sb.sleep(2)
+            
+            # Use SeleniumBase's native type method which handles events properly
+            from selenium.webdriver.common.action_chains import ActionChains
+            element = sb.driver.find_element("css selector", filter_selector)
+            ActionChains(sb.driver).move_to_element(element).click().send_keys('v').send_keys(Keys.RETURN).perform()
+            
+            sb.sleep(15)
             m_cummulative_liquid_html = sb.get_page_source()
             print("Getting liquid filtered m cummulative summary...")
             m_cummulative_summary_liquid_df = get_summary_table(m_cummulative_liquid_html,
