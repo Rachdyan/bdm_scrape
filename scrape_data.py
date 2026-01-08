@@ -152,24 +152,43 @@ if __name__ == "__main__":
             """)
             sb.sleep(2)
             
+            # Give driver more time to stabilize in cloud environments
+            sb.sleep(3)
+            
             # Use SeleniumBase's native type method which handles events properly
-            try:
-                element = sb.driver.find_element("css selector", filter_selector)
-                ActionChains(sb.driver).move_to_element(element).click().send_keys('v').send_keys(Keys.RETURN).perform()
-            except Exception as driver_error:
-                print(f"ActionChains failed ({driver_error}), falling back to JavaScript")
-                # Fallback to JavaScript if driver connection fails
-                js_selector = filter_selector.replace('"', '\\"')
-                sb.execute_script(f"""
-                    var input = document.querySelector("{js_selector}");
-                    if (input) {{
-                        input.focus();
-                        input.value = 'v';
-                        input.dispatchEvent(new Event('input', {{bubbles: true}}));
-                        input.dispatchEvent(new Event('change', {{bubbles: true}}));
-                        input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true}}));
-                    }}
-                """)
+            max_retries = 3
+            for attempt in range(max_retries):
+                try:
+                    # Test if driver is responsive
+                    sb.driver.current_url
+                    element = sb.driver.find_element("css selector", filter_selector)
+                    action = ActionChains(sb.driver)
+                    action.move_to_element(element)
+                    action.click()
+                    action.send_keys('v')
+                    action.send_keys(Keys.RETURN)
+                    action.perform()
+                    print(f"Filter applied successfully via ActionChains (attempt {attempt + 1})")
+                    break
+                except Exception as driver_error:
+                    print(f"ActionChains attempt {attempt + 1} failed: {driver_error}")
+                    if attempt < max_retries - 1:
+                        print(f"Retrying... ({attempt + 2}/{max_retries})")
+                        sb.sleep(2)
+                    else:
+                        print("All ActionChains attempts failed, falling back to JavaScript")
+                        # Fallback to JavaScript if all attempts fail
+                        js_selector = filter_selector.replace('"', '\\"')
+                        sb.execute_script(f"""
+                            var input = document.querySelector("{js_selector}");
+                            if (input) {{
+                                input.focus();
+                                input.value = 'v';
+                                input.dispatchEvent(new Event('input', {{bubbles: true}}));
+                                input.dispatchEvent(new Event('change', {{bubbles: true}}));
+                                input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true}}));
+                            }}
+                        """)
             
             sb.sleep(15)
             nr_daily_liquid_html = sb.get_page_source()
@@ -208,35 +227,50 @@ if __name__ == "__main__":
         try:
             filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
             sb.wait_for_element_present(filter_selector, timeout=10)
+            # Give driver more time to stabilize in cloud environments
+            sb.sleep(3)
             
-            # Scroll the table to make the column visible
-            sb.execute_script("""
-                var table = document.querySelector('table');
-                if (table) {
-                    table.scrollLeft = 9999;
-                }
-            """)
-            sb.sleep(2)
-            
-            # Use SeleniumBase's native type method which handles events properly
-            from selenium.webdriver.common.action_chains import ActionChains
-            try:
-                element = sb.driver.find_element("css selector", filter_selector)
-                ActionChains(sb.driver).move_to_element(element).click().send_keys('v').send_keys(Keys.RETURN).perform()
-            except Exception as driver_error:
-                print(f"ActionChains failed ({driver_error}), falling back to JavaScript")
-                # Fallback to JavaScript if driver connection fails
-                js_selector = filter_selector.replace('"', '\\"')
-                sb.execute_script(f"""
-                    var input = document.querySelector("{js_selector}");
-                    if (input) {{
-                        input.focus();
-                        input.value = 'v';
-                        input.dispatchEvent(new Event('input', {{bubbles: true}}));
-                        input.dispatchEvent(new Event('change', {{bubbles: true}}));
-                        input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true}}));
-                    }}
-                """)
+            max_retries = 3
+            for attempt in range(max_retries):
+                try:
+                    # Test if driver is responsive
+                    sb.driver.current_url
+                    print(f"[DEBUG] Driver is responsive (attempt {attempt + 1})")
+                    element = sb.driver.find_element("css selector", filter_selector)
+                    print(f"[DEBUG] Element found: {element}")
+                    action = ActionChains(sb.driver)
+                    print(f"[DEBUG] ActionChains created")
+                    action.move_to_element(element)
+                    print(f"[DEBUG] Moved to element")
+                    action.click()
+                    print(f"[DEBUG] Click action added")
+                    action.send_keys('v')
+                    print(f"[DEBUG] Send keys 'v' action added")
+                    action.send_keys(Keys.RETURN)
+                    print(f"[DEBUG] Send keys RETURN action added")
+                    action.perform()
+                    print(f"[DEBUG] ActionChains performed successfully")
+                    print(f"Filter applied successfully via ActionChains (attempt {attempt + 1})")
+                    break
+                except Exception as driver_error:
+                    print(f"ActionChains attempt {attempt + 1} failed: {driver_error}")
+                    if attempt < max_retries - 1:
+                        print(f"Retrying... ({attempt + 2}/{max_retries})")
+                        sb.sleep(2)
+                    else:
+                        print("All ActionChains attempts failed, falling back to JavaScript")
+                        # Fallback to JavaScript if all attempts fail
+                        js_selector = filter_selector.replace('"', '\\"')
+                        sb.execute_script(f"""
+                            var input = document.querySelector("{js_selector}");
+                            if (input) {{
+                                input.focus();
+                                input.value = 'v';
+                                input.dispatchEvent(new Event('input', {{bubbles: true}}));
+                                input.dispatchEvent(new Event('change', {{bubbles: true}}));
+                                input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true}}));
+                            }}
+                        """)
             
             sb.sleep(15)
             #breakpoint()
@@ -290,33 +324,51 @@ if __name__ == "__main__":
             filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
             sb.wait_for_element_present(filter_selector, timeout=10)
             
-            # Scroll the table to make the column visible
-            sb.execute_script("""
-                var table = document.querySelector('table');
-                if (table) {
-                    table.scrollLeft = 9999;
-                }
-            """)
-            sb.sleep(2)
+            # Give driver more time to stabilize in cloud environments
+            sb.sleep(3)
             
             # Use SeleniumBase's native type method which handles events properly
-            try:
-                element = sb.driver.find_element("css selector", filter_selector)
-                ActionChains(sb.driver).move_to_element(element).click().send_keys('v').send_keys(Keys.RETURN).perform()
-            except Exception as driver_error:
-                print(f"ActionChains failed ({driver_error}), falling back to JavaScript")
-                # Fallback to JavaScript if driver connection fails
-                js_selector = filter_selector.replace('"', '\\"')
-                sb.execute_script(f"""
-                    var input = document.querySelector("{js_selector}");
-                    if (input) {{
-                        input.focus();
-                        input.value = 'v';
-                        input.dispatchEvent(new Event('input', {{bubbles: true}}));
-                        input.dispatchEvent(new Event('change', {{bubbles: true}}));
-                        input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true}}));
-                    }}
-                """)
+            max_retries = 3
+            for attempt in range(max_retries):
+                try:
+                    # Test if driver is responsive
+                    sb.driver.current_url
+                    print(f"[DEBUG] Driver is responsive (attempt {attempt + 1})")
+                    element = sb.driver.find_element("css selector", filter_selector)
+                    print(f"[DEBUG] Element found: {element}")
+                    action = ActionChains(sb.driver)
+                    print(f"[DEBUG] ActionChains created")
+                    action.move_to_element(element)
+                    print(f"[DEBUG] Moved to element")
+                    action.click()
+                    print(f"[DEBUG] Click action added")
+                    action.send_keys('v')
+                    print(f"[DEBUG] Send keys 'v' action added")
+                    action.send_keys(Keys.RETURN)
+                    print(f"[DEBUG] Send keys RETURN action added")
+                    action.perform()
+                    print(f"[DEBUG] ActionChains performed successfully")
+                    print(f"Filter applied successfully via ActionChains (attempt {attempt + 1})")
+                    break
+                except Exception as driver_error:
+                    print(f"ActionChains attempt {attempt + 1} failed: {driver_error}")
+                    if attempt < max_retries - 1:
+                        print(f"Retrying... ({attempt + 2}/{max_retries})")
+                        sb.sleep(2)
+                    else:
+                        print("All ActionChains attempts failed, falling back to JavaScript")
+                        # Fallback to JavaScript if all attempts fail
+                        js_selector = filter_selector.replace('"', '\\"')
+                        sb.execute_script(f"""
+                            var input = document.querySelector("{js_selector}");
+                            if (input) {{
+                                input.focus();
+                                input.value = 'v';
+                                input.dispatchEvent(new Event('input', {{bubbles: true}}));
+                                input.dispatchEvent(new Event('change', {{bubbles: true}}));
+                                input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true}}));
+                            }}
+                        """)
             
             sb.sleep(15)
             nr_cummulative_liquid_html = sb.get_page_source()
@@ -363,33 +415,54 @@ if __name__ == "__main__":
             filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
             sb.wait_for_element_present(filter_selector, timeout=10)
             
-            # Scroll the table to make the column visible
-            sb.execute_script("""
-                var table = document.querySelector('table');
-                if (table) {
-                    table.scrollLeft = 9999;
-                }
-            """)
+
             sb.sleep(2)
             
+            # Give driver more time to stabilize in cloud environments
+            sb.sleep(3)
+            
             # Use SeleniumBase's native type method which handles events properly
-            from selenium.webdriver.common.action_chains import ActionChains
-            try:
-                element = sb.driver.find_element("css selector", filter_selector)
-                ActionChains(sb.driver).move_to_element(element).click().send_keys('v').send_keys(Keys.RETURN).perform()
-            except Exception as driver_error:
-                print(f"ActionChains failed ({driver_error}), falling back to JavaScript")
-                js_selector = filter_selector.replace('"', '\\"')
-                sb.execute_script(f"""
-                    var input = document.querySelector("{js_selector}");
-                    if (input) {{
-                        input.focus();
-                        input.value = 'v';
-                        input.dispatchEvent(new Event('input', {{bubbles: true}}));
-                        input.dispatchEvent(new Event('change', {{bubbles: true}}));
-                        input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true}}));
-                    }}
-                """)
+            max_retries = 3
+            for attempt in range(max_retries):
+                try:
+                    # Test if driver is responsive
+                    sb.driver.current_url
+                    print(f"[DEBUG] Driver is responsive (attempt {attempt + 1})")
+                    element = sb.driver.find_element("css selector", filter_selector)
+                    print(f"[DEBUG] Element found: {element}")
+                    action = ActionChains(sb.driver)
+                    print(f"[DEBUG] ActionChains created")
+                    action.move_to_element(element)
+                    print(f"[DEBUG] Moved to element")
+                    action.click()
+                    print(f"[DEBUG] Click action added")
+                    action.send_keys('v')
+                    print(f"[DEBUG] Send keys 'v' action added")
+                    action.send_keys(Keys.RETURN)
+                    print(f"[DEBUG] Send keys RETURN action added")
+                    action.perform()
+                    print(f"[DEBUG] ActionChains performed successfully")
+                    print(f"Filter applied successfully via ActionChains (attempt {attempt + 1})")
+                    break
+                except Exception as driver_error:
+                    print(f"ActionChains attempt {attempt + 1} failed: {driver_error}")
+                    if attempt < max_retries - 1:
+                        print(f"Retrying... ({attempt + 2}/{max_retries})")
+                        sb.sleep(2)
+                    else:
+                        print("All ActionChains attempts failed, falling back to JavaScript")
+                        # Fallback to JavaScript if all attempts fail
+                        js_selector = filter_selector.replace('"', '\\"')
+                        sb.execute_script(f"""
+                            var input = document.querySelector("{js_selector}");
+                            if (input) {{
+                                input.focus();
+                                input.value = 'v';
+                                input.dispatchEvent(new Event('input', {{bubbles: true}}));
+                                input.dispatchEvent(new Event('change', {{bubbles: true}}));
+                                input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true}}));
+                            }}
+                        """)
             
             sb.sleep(15)
             m_cummulative_liquid_html = sb.get_page_source()
