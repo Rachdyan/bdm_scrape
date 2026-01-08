@@ -141,27 +141,29 @@ if __name__ == "__main__":
         # APPLY LIQUID FILTER
         try:
             filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
-            sb.wait_for_element_present(filter_selector, timeout=10)
             
-            # Scroll the table to make the column visible
-            sb.execute_script("""
-                var table = document.querySelector('table');
-                if (table) {
-                    table.scrollLeft = 9999;
-                }
-            """)
-            sb.sleep(2)
+            # Give driver more time to stabilize before checking element
+            print("[DEBUG] Waiting for page to stabilize...")
+            sb.sleep(5)
             
-            # Give driver more time to stabilize in cloud environments
-            sb.sleep(3)
+            # Check if element is present before attempting ActionChains
+            sb.wait_for_element_present(filter_selector, timeout=15)
+            print("[DEBUG] Filter element is present in DOM")
             
             # Use SeleniumBase's native type method which handles events properly
             max_retries = 3
             for attempt in range(max_retries):
                 try:
-                    # Test if driver is responsive
-                    sb.driver.current_url
-                    print(f"[DEBUG] Driver is responsive (attempt {attempt + 1})")
+                    # Test if driver is responsive - catch connection errors specifically
+                    try:
+                        current_url = sb.driver.current_url
+                        print(f"[DEBUG] Driver is responsive, current URL: {current_url[:50]}... (attempt {attempt + 1})")
+                    except Exception as health_error:
+                        print(f"[DEBUG] Driver health check failed: {health_error}")
+                        # Try to refresh the connection
+                        sb.sleep(3)
+                        raise health_error
+                    
                     element = sb.driver.find_element("css selector", filter_selector)
                     print(f"[DEBUG] Element found: {element}")
                     action = ActionChains(sb.driver)
@@ -182,7 +184,7 @@ if __name__ == "__main__":
                     print(f"ActionChains attempt {attempt + 1} failed: {driver_error}")
                     if attempt < max_retries - 1:
                         print(f"Retrying... ({attempt + 2}/{max_retries})")
-                        sb.sleep(2)
+                        sb.sleep(5)  # Increased sleep time between retries
                     else:
                         print("All ActionChains attempts failed, falling back to JavaScript")
                         # Fallback to JavaScript if all attempts fail
@@ -234,9 +236,14 @@ if __name__ == "__main__":
         
         try:
             filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
-            sb.wait_for_element_present(filter_selector, timeout=10)
-            # Give driver more time to stabilize in cloud environments
-            sb.sleep(3)
+            
+            # Give driver more time to stabilize before checking element
+            print("[DEBUG] Waiting for page to stabilize...")
+            sb.sleep(5)
+            
+            # Check if element is present before attempting ActionChains
+            sb.wait_for_element_present(filter_selector, timeout=15)
+            print("[DEBUG] Filter element is present in DOM")
             
             max_retries = 3
             for attempt in range(max_retries):
@@ -330,18 +337,28 @@ if __name__ == "__main__":
 
         try:
             filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
-            sb.wait_for_element_present(filter_selector, timeout=10)
             
-            # Give driver more time to stabilize in cloud environments
-            sb.sleep(3)
+            # Give driver more time to stabilize before checking element
+            print("[DEBUG] Waiting for page to stabilize...")
+            sb.sleep(5)
+            
+            # Check if element is present before attempting ActionChains
+            sb.wait_for_element_present(filter_selector, timeout=15)
+            print("[DEBUG] Filter element is present in DOM")
             
             # Use SeleniumBase's native type method which handles events properly
             max_retries = 3
             for attempt in range(max_retries):
                 try:
-                    # Test if driver is responsive
-                    sb.driver.current_url
-                    print(f"[DEBUG] Driver is responsive (attempt {attempt + 1})")
+                    # Test if driver is responsive - catch connection errors specifically
+                    try:
+                        current_url = sb.driver.current_url
+                        print(f"[DEBUG] Driver is responsive, current URL: {current_url[:50]}... (attempt {attempt + 1})")
+                    except Exception as health_error:
+                        print(f"[DEBUG] Driver health check failed: {health_error}")
+                        # Try to refresh the connection
+                        sb.sleep(3)
+                        raise health_error
                     element = sb.driver.find_element("css selector", filter_selector)
                     print(f"[DEBUG] Element found: {element}")
                     action = ActionChains(sb.driver)
@@ -421,21 +438,28 @@ if __name__ == "__main__":
 
         try:
             filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
-            sb.wait_for_element_present(filter_selector, timeout=10)
             
-
-            sb.sleep(2)
+            # Give driver more time to stabilize before checking element
+            print("[DEBUG] Waiting for page to stabilize...")
+            sb.sleep(5)
             
-            # Give driver more time to stabilize in cloud environments
-            sb.sleep(3)
+            # Check if element is present before attempting ActionChains
+            sb.wait_for_element_present(filter_selector, timeout=15)
+            print("[DEBUG] Filter element is present in DOM")
             
             # Use SeleniumBase's native type method which handles events properly
             max_retries = 3
             for attempt in range(max_retries):
                 try:
-                    # Test if driver is responsive
-                    sb.driver.current_url
-                    print(f"[DEBUG] Driver is responsive (attempt {attempt + 1})")
+                    # Test if driver is responsive - catch connection errors specifically
+                    try:
+                        current_url = sb.driver.current_url
+                        print(f"[DEBUG] Driver is responsive, current URL: {current_url[:50]}... (attempt {attempt + 1})")
+                    except Exception as health_error:
+                        print(f"[DEBUG] Driver health check failed: {health_error}")
+                        # Try to refresh the connection
+                        sb.sleep(3)
+                        raise health_error
                     element = sb.driver.find_element("css selector", filter_selector)
                     print(f"[DEBUG] Element found: {element}")
                     action = ActionChains(sb.driver)
