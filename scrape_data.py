@@ -150,6 +150,7 @@ if __name__ == "__main__":
             sb.wait_for_element_present(filter_selector, timeout=15)
             print("[DEBUG] Filter element is present in DOM")
             
+            breakpoint()
             # Use SeleniumBase's native type method which handles events properly
             max_retries = 3
             for attempt in range(max_retries):
@@ -183,13 +184,56 @@ if __name__ == "__main__":
                         sb.execute_script(f"""
                             var input = document.querySelector("{js_selector}");
                             if (input) {{
+                                // Focus the input
                                 input.focus();
-                                input.value = 'v';
-                                input.dispatchEvent(new Event('input', {{bubbles: true}}));
-                                input.dispatchEvent(new Event('change', {{bubbles: true}}));
-                                input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true}}));
+                                input.click();
+                                
+                                // Use React's internal setter to bypass controlled input
+                                var nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+                                nativeInputValueSetter.call(input, 'v');
+                                
+                                // Dispatch input event (React listens to this)
+                                var inputEvent = new Event('input', {{ bubbles: true, cancelable: true }});
+                                input.dispatchEvent(inputEvent);
+                                
+                                // Also dispatch change event
+                                var changeEvent = new Event('change', {{ bubbles: true, cancelable: true }});
+                                input.dispatchEvent(changeEvent);
+                                
+                                // Simulate full Enter key sequence
+                                var keydownEvent = new KeyboardEvent('keydown', {{
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    which: 13,
+                                    bubbles: true,
+                                    cancelable: true
+                                }});
+                                input.dispatchEvent(keydownEvent);
+                                
+                                var keypressEvent = new KeyboardEvent('keypress', {{
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    which: 13,
+                                    charCode: 13,
+                                    bubbles: true,
+                                    cancelable: true
+                                }});
+                                input.dispatchEvent(keypressEvent);
+                                
+                                var keyupEvent = new KeyboardEvent('keyup', {{
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    which: 13,
+                                    bubbles: true,
+                                    cancelable: true
+                                }});
+                                input.dispatchEvent(keyupEvent);
                             }}
                         """)
+                        print("JavaScript fallback executed")
             
             sb.sleep(15)
             nr_daily_liquid_html = sb.get_page_source()
@@ -268,13 +312,56 @@ if __name__ == "__main__":
                         sb.execute_script(f"""
                             var input = document.querySelector("{js_selector}");
                             if (input) {{
+                                // Focus the input
                                 input.focus();
-                                input.value = 'v';
-                                input.dispatchEvent(new Event('input', {{bubbles: true}}));
-                                input.dispatchEvent(new Event('change', {{bubbles: true}}));
-                                input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true}}));
+                                input.click();
+                                
+                                // Use React's internal setter to bypass controlled input
+                                var nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+                                nativeInputValueSetter.call(input, 'v');
+                                
+                                // Dispatch input event (React listens to this)
+                                var inputEvent = new Event('input', {{ bubbles: true, cancelable: true }});
+                                input.dispatchEvent(inputEvent);
+                                
+                                // Also dispatch change event
+                                var changeEvent = new Event('change', {{ bubbles: true, cancelable: true }});
+                                input.dispatchEvent(changeEvent);
+                                
+                                // Simulate full Enter key sequence
+                                var keydownEvent = new KeyboardEvent('keydown', {{
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    which: 13,
+                                    bubbles: true,
+                                    cancelable: true
+                                }});
+                                input.dispatchEvent(keydownEvent);
+                                
+                                var keypressEvent = new KeyboardEvent('keypress', {{
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    which: 13,
+                                    charCode: 13,
+                                    bubbles: true,
+                                    cancelable: true
+                                }});
+                                input.dispatchEvent(keypressEvent);
+                                
+                                var keyupEvent = new KeyboardEvent('keyup', {{
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    which: 13,
+                                    bubbles: true,
+                                    cancelable: true
+                                }});
+                                input.dispatchEvent(keyupEvent);
                             }}
                         """)
+                        print("JavaScript fallback executed")
             
             sb.sleep(15)
             #breakpoint()
@@ -368,13 +455,56 @@ if __name__ == "__main__":
                         sb.execute_script(f"""
                             var input = document.querySelector("{js_selector}");
                             if (input) {{
+                                // Focus the input
                                 input.focus();
-                                input.value = 'v';
-                                input.dispatchEvent(new Event('input', {{bubbles: true}}));
-                                input.dispatchEvent(new Event('change', {{bubbles: true}}));
-                                input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true}}));
+                                input.click();
+                                
+                                // Use React's internal setter to bypass controlled input
+                                var nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+                                nativeInputValueSetter.call(input, 'v');
+                                
+                                // Dispatch input event (React listens to this)
+                                var inputEvent = new Event('input', {{ bubbles: true, cancelable: true }});
+                                input.dispatchEvent(inputEvent);
+                                
+                                // Also dispatch change event
+                                var changeEvent = new Event('change', {{ bubbles: true, cancelable: true }});
+                                input.dispatchEvent(changeEvent);
+                                
+                                // Simulate full Enter key sequence
+                                var keydownEvent = new KeyboardEvent('keydown', {{
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    which: 13,
+                                    bubbles: true,
+                                    cancelable: true
+                                }});
+                                input.dispatchEvent(keydownEvent);
+                                
+                                var keypressEvent = new KeyboardEvent('keypress', {{
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    which: 13,
+                                    charCode: 13,
+                                    bubbles: true,
+                                    cancelable: true
+                                }});
+                                input.dispatchEvent(keypressEvent);
+                                
+                                var keyupEvent = new KeyboardEvent('keyup', {{
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    which: 13,
+                                    bubbles: true,
+                                    cancelable: true
+                                }});
+                                input.dispatchEvent(keyupEvent);
                             }}
                         """)
+                        print("JavaScript fallback executed")
             
             sb.sleep(15)
             nr_cummulative_liquid_html = sb.get_page_source()
@@ -461,13 +591,56 @@ if __name__ == "__main__":
                         sb.execute_script(f"""
                             var input = document.querySelector("{js_selector}");
                             if (input) {{
+                                // Focus the input
                                 input.focus();
-                                input.value = 'v';
-                                input.dispatchEvent(new Event('input', {{bubbles: true}}));
-                                input.dispatchEvent(new Event('change', {{bubbles: true}}));
-                                input.dispatchEvent(new KeyboardEvent('keydown', {{key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true}}));
+                                input.click();
+                                
+                                // Use React's internal setter to bypass controlled input
+                                var nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+                                nativeInputValueSetter.call(input, 'v');
+                                
+                                // Dispatch input event (React listens to this)
+                                var inputEvent = new Event('input', {{ bubbles: true, cancelable: true }});
+                                input.dispatchEvent(inputEvent);
+                                
+                                // Also dispatch change event
+                                var changeEvent = new Event('change', {{ bubbles: true, cancelable: true }});
+                                input.dispatchEvent(changeEvent);
+                                
+                                // Simulate full Enter key sequence
+                                var keydownEvent = new KeyboardEvent('keydown', {{
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    which: 13,
+                                    bubbles: true,
+                                    cancelable: true
+                                }});
+                                input.dispatchEvent(keydownEvent);
+                                
+                                var keypressEvent = new KeyboardEvent('keypress', {{
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    which: 13,
+                                    charCode: 13,
+                                    bubbles: true,
+                                    cancelable: true
+                                }});
+                                input.dispatchEvent(keypressEvent);
+                                
+                                var keyupEvent = new KeyboardEvent('keyup', {{
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    which: 13,
+                                    bubbles: true,
+                                    cancelable: true
+                                }});
+                                input.dispatchEvent(keyupEvent);
                             }}
                         """)
+                        print("JavaScript fallback executed")
             
             sb.sleep(15)
             m_cummulative_liquid_html = sb.get_page_source()
