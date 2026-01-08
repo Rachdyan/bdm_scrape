@@ -20,8 +20,8 @@ jobs:
       fail-fast: false
       max-parallel: 1
       matrix:
-        ##os: [ubuntu-22.04]
-        os: [windows-latest]
+        os: [ubuntu-22.04]
+        ##os: [windows-latest]
         ##os: [macos-latest]
         python-version: ["3.13"]
 
