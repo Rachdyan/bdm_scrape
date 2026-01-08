@@ -161,13 +161,21 @@ if __name__ == "__main__":
                 try:
                     # Test if driver is responsive
                     sb.driver.current_url
+                    print(f"[DEBUG] Driver is responsive (attempt {attempt + 1})")
                     element = sb.driver.find_element("css selector", filter_selector)
+                    print(f"[DEBUG] Element found: {element}")
                     action = ActionChains(sb.driver)
+                    print(f"[DEBUG] ActionChains created")
                     action.move_to_element(element)
+                    print(f"[DEBUG] Moved to element")
                     action.click()
+                    print(f"[DEBUG] Click action added")
                     action.send_keys('v')
+                    print(f"[DEBUG] Send keys 'v' action added")
                     action.send_keys(Keys.RETURN)
+                    print(f"[DEBUG] Send keys RETURN action added")
                     action.perform()
+                    print(f"[DEBUG] ActionChains performed successfully")
                     print(f"Filter applied successfully via ActionChains (attempt {attempt + 1})")
                     break
                 except Exception as driver_error:
