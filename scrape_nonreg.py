@@ -32,9 +32,9 @@ stock_website = os.environ['STOCK_WEBSITE']
 
 raw_today_data = dt.now(pytz.timezone('Asia/Jakarta'))
 today_date = raw_today_data.strftime("%Y-%m-%d")
-# today_date = '2025-11-28'
+#today_date = '2026-01-30'
 today_month_year = raw_today_data.strftime("%b %Y")
-# today_month_year = 'Nov 2025'
+#today_month_year = 'Jan 2026'
 
 
 if __name__ == "__main__":
@@ -79,11 +79,18 @@ if __name__ == "__main__":
         #                          'webdriver',{get: () => undefined})")
 
         sb.open(f"{stock_website}")
+        print("Opened stock website")
+        sb.sleep(15)
+
+        print("Refreshing page")
+        sb.refresh()
         sb.sleep(10)
 
+        print("Waiting for filter button")
         sb.wait_for_element_present("span[class='bzi-bars']")
         sb.sleep(3)
 
+        print("Clicking filter button")
         sb.execute_script("document.querySelector(\"span[class='bzi-bars']\").click()")
         
         sb.sleep(1)
@@ -253,17 +260,38 @@ if __name__ == "__main__":
         sb.open(website)
         # sb.wait_for_element(selector)
         print("Logging in...")
-       # sb.click('[href*="accounts/login"]')
+        #sb.click('[href*="accounts/login"]')
         sb.open(f"{website}/accounts/login/")
-        sb.sleep(15)
-        sb.type('[name="login"]', f"{site_email}")
-        sb.type('[name="password"]', f"{site_password}")
+        
+        # Wait for login form to be ready
+        print("Waiting for login form...")
+        sb.wait_for_element_present('[name="login"]', timeout=30)
         sb.sleep(5)
+        
+        print("Typing email...")
+        sb.type('[name="login"]', f"{site_email}")
+        
+        print("Typing password...")
+        sb.type('[name="password"]', f"{site_password}")
+        sb.sleep(3)
 
+        print("Clicking submit button...")
+        sb.wait_for_element_present('button[type*="submit"]', timeout=10)
         sb.click('button[type*="submit"]')
 
         print("Login submitted, waiting for redirect...")
         sb.sleep(30)
+        
+        # Check if login was successful
+        current_url = sb.get_current_url()
+        print(f"Current URL after login: {current_url}")
+        
+        # Take screenshot for debugging
+        try:
+            sb.save_screenshot("screenshot/login_result.png")
+            print("Screenshot saved to screenshot/login_result.png")
+        except Exception as e:
+            print(f"Could not save screenshot: {e}")
 
         try:
             final_high_nonreg_price_df = pd.concat([
