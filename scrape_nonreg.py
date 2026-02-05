@@ -39,11 +39,11 @@ today_month_year = raw_today_data.strftime("%b %Y")
 
 if __name__ == "__main__":
     with SB(uc=True, headless=False, xvfb=True,
-            #proxy=proxy_string,
+            proxy=proxy_string,
             maximize=True,
             ) as sb:
         # sb.driver.execute_cdp_cmd(
-        #         "Network.setExtraHTTPHeaders",
+        #         "Network.setExtraHTTPHeaders",x
         #         {
         #             "headers": {
         #                 'Accept': 'text/html,application/xhtml+xml,application\
@@ -78,7 +78,8 @@ if __name__ == "__main__":
         # sb.driver.execute_script("Object.defineProperty(navigator, \
         #                          'webdriver',{get: () => undefined})")
 
-        sb.open(f"{stock_website}")
+        # sb.open(f"{stock_website}")
+        sb.activate_cdp_mode(f"{stock_website}")
         print("Opened stock website")
         sb.sleep(15)
 
