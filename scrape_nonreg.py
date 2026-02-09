@@ -78,8 +78,8 @@ if __name__ == "__main__":
         # sb.driver.execute_script("Object.defineProperty(navigator, \
         #                          'webdriver',{get: () => undefined})")
 
-        sb.open(f"{stock_website}")
-        # sb.activate_cdp_mode(f"{stock_website}")
+        #sb.open(f"{stock_website}")
+        sb.activate_cdp_mode(f"{stock_website}")
         print("Opened stock website")
         sb.sleep(15)
 
@@ -270,11 +270,11 @@ if __name__ == "__main__":
             .reset_index(drop=True)
         print(f"High Non-Reg Price DF count: {len(high_nonreg_price_df)}")
         
-        sb.open(website)
+        sb.cdp.open(website)
         # sb.wait_for_element(selector)
         print("Logging in...")
         #sb.click('[href*="accounts/login"]')
-        sb.open(f"{website}/accounts/login/")
+        sb.cdp.open(f"{website}/accounts/login/")
         
         # Wait for login form to be ready
         print("Waiting for login form...")
