@@ -78,8 +78,8 @@ if __name__ == "__main__":
         # sb.driver.execute_script("Object.defineProperty(navigator, \
         #                          'webdriver',{get: () => undefined})")
 
-        # sb.open(f"{stock_website}")
-        sb.activate_cdp_mode(f"{stock_website}")
+        sb.open(f"{stock_website}")
+        # sb.activate_cdp_mode(f"{stock_website}")
         print("Opened stock website")
         sb.sleep(15)
 
