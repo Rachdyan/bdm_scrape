@@ -32,7 +32,7 @@ stock_website = os.environ['STOCK_WEBSITE']
 
 raw_today_data = dt.now(pytz.timezone('Asia/Jakarta'))
 today_date = raw_today_data.strftime("%Y-%m-%d")
-#today_date = '2026-01-30'
+#today_date = '2026-02-06'
 today_month_year = raw_today_data.strftime("%b %Y")
 #today_month_year = 'Jan 2026'
 
@@ -85,16 +85,28 @@ if __name__ == "__main__":
 
         print("Refreshing page")
         sb.refresh()
-        sb.sleep(10)
+        print("Waiting for page to be ready after refresh")
+        sb.sleep(20)  # Increased wait time for GitHub Actions
+        
+        # Wait for document ready state
+        sb.wait_for_ready_state_complete()
+        sb.sleep(5)
 
         print("Waiting for filter button")
-        sb.wait_for_element_present("span[class='bzi-bars']")
+        # Increased timeout to 30 seconds for GitHub Actions environment
+        sb.wait_for_element_present("span[class='bzi-bars']", timeout=30)
         sb.sleep(3)
 
         print("Clicking filter button")
-        sb.execute_script("document.querySelector(\"span[class='bzi-bars']\").click()")
+        try:
+            # Try JavaScript click first
+            sb.execute_script("document.querySelector(\"span[class='bzi-bars']\").click()")
+        except Exception as e:
+            print(f"JavaScript click failed, trying direct click: {e}")
+            sb.click("span[class='bzi-bars']")
         
-        sb.sleep(1)
+        sb.sleep(2)  # Increased wait for filter modal to appear
+        sb.wait_for_element_present("label[for='fltrAll']", timeout=10)
         sb.click("label[for='fltrAll']")
         sb.sleep(1)
         sb.click("div.actions.text-right.text-caps > button.btn--primary")
