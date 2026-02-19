@@ -105,3 +105,13 @@ jobs:
         SA_CLIENT_X509_URL: ${{ secrets.SA_CLIENT_X509_URL }}
       run: |
         python scrape_nonreg.py --debug
+    - name: Upload debug artifacts on failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: debug-artifacts
+        path: |
+          screenshot/
+          html_dumps/
+          debug_*_artifacts.zip
+        retention-days: 7

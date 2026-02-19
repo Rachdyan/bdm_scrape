@@ -8,6 +8,8 @@ import asyncio
 from utils.scraping_utils import get_individual_stock
 from dotenv import load_dotenv
 import os
+import zipfile
+import traceback
 from pydrive2.auth import GoogleAuth
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
@@ -37,11 +39,54 @@ today_month_year = raw_today_data.strftime("%b %Y")
 #today_month_year = 'Jan 2026'
 
 
+def save_debug_artifacts(sb, step_name):
+    """Save screenshot + prettified HTML into a zip for debugging."""
+    timestamp = dt.now(pytz.timezone('Asia/Jakarta')).strftime("%Y%m%d_%H%M%S")
+    label = f"{step_name}_{timestamp}"
+
+    os.makedirs("screenshot", exist_ok=True)
+    os.makedirs("html_dumps", exist_ok=True)
+
+    screenshot_path = f"screenshot/debug_{label}.png"
+    html_path = f"html_dumps/debug_{label}.html"
+    zip_path = f"debug_{label}_artifacts.zip"
+
+    saved_files = []
+
+    try:
+        sb.save_screenshot(screenshot_path)
+        print(f"Screenshot saved: {screenshot_path}")
+        saved_files.append(screenshot_path)
+    except Exception as e:
+        print(f"Could not save screenshot: {e}")
+
+    try:
+        raw_html = sb.get_page_source()
+        soup = BeautifulSoup(raw_html, 'html5lib')
+        pretty_html = soup.prettify()
+        with open(html_path, 'w', encoding='utf-8') as f:
+            f.write(pretty_html)
+        print(f"HTML saved: {html_path}")
+        saved_files.append(html_path)
+    except Exception as e:
+        print(f"Could not save HTML: {e}")
+
+    try:
+        with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zf:
+            for filepath in saved_files:
+                if os.path.exists(filepath):
+                    zf.write(filepath)
+        print(f"Debug artifacts zipped: {zip_path}")
+    except Exception as e:
+        print(f"Could not create zip: {e}")
+
+
 if __name__ == "__main__":
-    with SB(uc=True, headless=False, xvfb=False,
-            proxy=proxy_string,
-            maximize=True,
-            ) as sb:
+    try:
+      with SB(uc=True, headless=False, xvfb=False,
+              proxy=proxy_string,
+              maximize=True,
+              ) as sb:
         # sb.driver.execute_cdp_cmd(
         #         "Network.setExtraHTTPHeaders",x
         #         {
@@ -325,6 +370,15 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"Error processing filtered df: {e}")
             final_filtered_df = None
+
+    except Exception as sb_error:
+        print(f"Unhandled error inside SB block: {sb_error}")
+        print(traceback.format_exc())
+        try:
+            save_debug_artifacts(sb, "unhandled_error")
+        except Exception as artifact_error:
+            print(f"Could not save debug artifacts: {artifact_error}")
+        raise
 
 
 BOT_TOKEN = os.environ['BOT_TOKEN']
