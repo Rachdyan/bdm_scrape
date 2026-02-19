@@ -84,9 +84,9 @@ if __name__ == "__main__":
         sb.sleep(15)
 
         print("Refreshing page")
-        sb.refresh()
-        print("Waiting for page to be ready after refresh")
-        sb.sleep(10)  # Increased wait time for GitHub Actions
+        #sb.refresh()
+        #print("Waiting for page to be ready after refresh")
+        sb.sleep(20)  # Increased wait time for GitHub Actions
         
         # Wait for document ready state
         sb.wait_for_ready_state_complete()
