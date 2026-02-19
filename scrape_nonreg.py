@@ -38,7 +38,7 @@ today_month_year = raw_today_data.strftime("%b %Y")
 
 
 if __name__ == "__main__":
-    with SB(uc=True, headless=False, xvfb=True,
+    with SB(uc=True, headless=False, xvfb=False,
             proxy=proxy_string,
             maximize=True,
             ) as sb:
