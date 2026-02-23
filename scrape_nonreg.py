@@ -184,7 +184,10 @@ if __name__ == "__main__":
 
         sb.sleep(5)
 
-        sb.wait_for_element_present("select[name='perPageSelect']")
+        print("Saving debug artifacts after clicking date")
+        save_debug_artifacts(sb, "after_clicking_date")
+
+        sb.wait_for_element_present("select[name='perPageSelect']", timeout=30)
         #sb.click("select[name='perPageSelect']")
         #sb.sleep(5)
         #breakpoint()
