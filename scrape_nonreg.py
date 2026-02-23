@@ -185,8 +185,8 @@ if __name__ == "__main__":
 
         sb.sleep(25)
 
-        print("Saving debug artifacts after clicking date")
-        save_debug_artifacts(sb, "after_clicking_date")
+        #print("Saving debug artifacts after clicking date")
+        #save_debug_artifacts(sb, "after_clicking_date")
 
         sb.wait_for_element_present("select[name='perPageSelect']", timeout=30)
         #sb.click("select[name='perPageSelect']")
@@ -329,15 +329,21 @@ if __name__ == "__main__":
         sb.cdp.refresh()
         sb.sleep(20)
         # Wait for login form to be ready
+        print("Saving debug artifacts before login")
+        save_debug_artifacts(sb, "before_login")
+
         print("Waiting for login form...")
+
         sb.wait_for_element_present('[name="login"]', timeout=30)
         sb.sleep(5)
         
         print("Typing email...")
-        sb.type('[name="login"]', f"{site_email}")
+        #sb.type('[name="login"]', f"{site_email}")
+        sb.cdp.type('[name="login"]', f"{site_email}")
         
         print("Typing password...")
-        sb.type('[name="password"]', f"{site_password}")
+        #sb.type('[name="password"]', f"{site_password}")
+        sb.cdp.type('[name="password"]', f"{site_password}")
         sb.sleep(3)
 
         print("Clicking submit button...")
