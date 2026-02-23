@@ -182,7 +182,7 @@ if __name__ == "__main__":
         today_date_button = sb.find_element(f"td[title = '{today_date}']")
         today_date_button.click()
 
-        sb.sleep(5)
+        sb.sleep(25)
 
         print("Saving debug artifacts after clicking date")
         save_debug_artifacts(sb, "after_clicking_date")
