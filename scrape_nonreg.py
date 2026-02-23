@@ -129,7 +129,7 @@ if __name__ == "__main__":
         sb.sleep(15)
 
         print("Refreshing page")
-        #sb.refresh()
+        sb.cdp.refresh()
         #print("Waiting for page to be ready after refresh")
         sb.sleep(20)  # Increased wait time for GitHub Actions
         
