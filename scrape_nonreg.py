@@ -129,6 +129,7 @@ if __name__ == "__main__":
         sb.sleep(15)
 
         print("Refreshing page")
+        #sb.refresh()
         sb.cdp.refresh()
         #print("Waiting for page to be ready after refresh")
         sb.sleep(20)  # Increased wait time for GitHub Actions
@@ -323,7 +324,10 @@ if __name__ == "__main__":
         print("Logging in...")
         #sb.click('[href*="accounts/login"]')
         sb.cdp.open(f"{website}/accounts/login/")
-        
+
+        sb.sleep(10)
+        sb.cdp.refresh()
+        sb.sleep(20)
         # Wait for login form to be ready
         print("Waiting for login form...")
         sb.wait_for_element_present('[name="login"]', timeout=30)
