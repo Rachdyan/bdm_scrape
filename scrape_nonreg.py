@@ -16,8 +16,11 @@ import gspread
 from utils.gsheet_utils import export_to_sheets
 from datetime import datetime as dt
 import pytz
+from utils.logging_utils import get_logger
 
 load_dotenv(override=True)
+
+logger = get_logger("scrape_nonreg")
 
 user = os.environ['PROXY_USER']
 password = os.environ['PROXY_PASSWORD']
@@ -55,32 +58,28 @@ def save_debug_artifacts(sb, step_name):
 
     try:
         sb.save_screenshot(screenshot_path)
-        print(f"Screenshot saved: {screenshot_path}")
+        logger.info("Screenshot saved: %s", screenshot_path)
         saved_files.append(screenshot_path)
     except Exception as e:
-        print(f"Could not save screenshot: {e}")
-
+        logger.info("Could not save screenshot: %s", e)
     try:
         raw_html = sb.get_page_source()
         soup = BeautifulSoup(raw_html, 'html5lib')
         pretty_html = soup.prettify()
         with open(html_path, 'w', encoding='utf-8') as f:
             f.write(pretty_html)
-        print(f"HTML saved: {html_path}")
+        logger.info("HTML saved: %s", html_path)
         saved_files.append(html_path)
     except Exception as e:
-        print(f"Could not save HTML: {e}")
-
+        logger.info("Could not save HTML: %s", e)
     try:
         with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zf:
             for filepath in saved_files:
                 if os.path.exists(filepath):
                     zf.write(filepath)
-        print(f"Debug artifacts zipped: {zip_path}")
+        logger.info("Debug artifacts zipped: %s", zip_path)
     except Exception as e:
-        print(f"Could not create zip: {e}")
-
-
+        logger.info("Could not create zip: %s", e)
 if __name__ == "__main__":
     try:
       with SB(uc=True, headless=False, xvfb=False,
@@ -125,10 +124,10 @@ if __name__ == "__main__":
 
         #sb.open(f"{stock_website}")
         sb.activate_cdp_mode(f"{stock_website}")
-        print("Opened stock website")
+        logger.info("Opened stock website")
         sb.sleep(15)
 
-        print("Refreshing page")
+        logger.info("Refreshing page")
         #sb.refresh()
         sb.cdp.refresh()
         #print("Waiting for page to be ready after refresh")
@@ -138,17 +137,17 @@ if __name__ == "__main__":
         sb.wait_for_ready_state_complete()
         sb.sleep(5)
 
-        print("Waiting for filter button")
+        logger.info("Waiting for filter button")
         # Increased timeout to 30 seconds for GitHub Actions environment
         sb.wait_for_element_present("span[class='bzi-bars']", timeout=30)
         sb.sleep(3)
 
-        print("Clicking filter button")
+        logger.info("Clicking filter button")
         try:
             # Try JavaScript click first
             sb.execute_script("document.querySelector(\"span[class='bzi-bars']\").click()")
         except Exception as e:
-            print(f"JavaScript click failed, trying direct click: {e}")
+            logger.error("JavaScript click failed, trying direct click: %s", e)
             sb.click("span[class='bzi-bars']")
         
         sb.sleep(2)  # Increased wait for filter modal to appear
@@ -171,14 +170,14 @@ if __name__ == "__main__":
         # Remove all whitespace variations and normalize
         first_calendar_header = ' '.join(first_calendar_header.split())
 
-        print(f"Today month year: {today_month_year}")
-        print(f"First calendar header: {first_calendar_header}")
+        logger.info("Today month year: %s", today_month_year)
+        logger.info("First calendar header: %s", first_calendar_header)
         if today_month_year != first_calendar_header:
             sb.click("button[class='mx-btn mx-btn-text mx-btn-icon-left']")
 
         sb.sleep(5)
 
-        print("Clicking Date")
+        logger.info("Clicking Date")
         sb.wait_for_element_present(f"td[title = '{today_date}']")
         today_date_button = sb.find_element(f"td[title = '{today_date}']")
         today_date_button.click()
@@ -235,9 +234,8 @@ if __name__ == "__main__":
                      'Tradeble Shares', 'Offer', 'Offer Volume',
                      'Bid', 'Bid Volume']].copy()
 
-        print(f"Raw DF count: {len(raw_df)}")
-        print(raw_df.head())
-
+        logger.info("Raw DF count: %s", len(raw_df))
+        logger.info(raw_df.head())
         month_map = {'Januari': '01', 'Februari': '02', 'Maret': '03',
                      'April': '04', 'Mei': '05', 'Juni': '06',
                      'Juli': '07', 'Agustus': '08', 'September': '9',
@@ -307,8 +305,7 @@ if __name__ == "__main__":
             .sort_values('value_ratio', ascending=False)\
             .reset_index(drop=True)
         
-        print(f"Filtered DF count: {len(filtered_df)}")
-
+        logger.info("Filtered DF count: %s", len(filtered_df))
         high_nonreg_price_df = raw_df[
             (raw_df['avg_nonreg_diff_tertinggi'] >= 1) &
             (raw_df['value_ratio'] >= 1) &
@@ -317,11 +314,10 @@ if __name__ == "__main__":
             (raw_df['Bid Volume'] > 0)]\
             .sort_values('avg_nonreg_diff_tertinggi', ascending=False)\
             .reset_index(drop=True)
-        print(f"High Non-Reg Price DF count: {len(high_nonreg_price_df)}")
-        
+        logger.info("High Non-Reg Price DF count: %s", len(high_nonreg_price_df))
         sb.cdp.open(website)
         # sb.wait_for_element(selector)
-        print("Logging in...")
+        logger.info("Logging in...")
         #sb.click('[href*="accounts/login"]')
         sb.cdp.open(f"{website}/accounts/login/")
 
@@ -329,41 +325,38 @@ if __name__ == "__main__":
         sb.cdp.refresh()
         sb.sleep(20)
         # Wait for login form to be ready
-        print("Saving debug artifacts before login")
+        logger.info("Saving debug artifacts before login")
         save_debug_artifacts(sb, "before_login")
 
-        print("Waiting for login form...")
-
+        logger.info("Waiting for login form...")
         sb.wait_for_element_present('[name="login"]', timeout=30)
         sb.sleep(5)
         
-        print("Typing email...")
+        logger.info("Typing email...")
         #sb.type('[name="login"]', f"{site_email}")
         sb.cdp.type('[name="login"]', f"{site_email}")
         
-        print("Typing password...")
+        logger.info("Typing password...")
         #sb.type('[name="password"]', f"{site_password}")
         sb.cdp.type('[name="password"]', f"{site_password}")
         sb.sleep(3)
 
-        print("Clicking submit button...")
+        logger.info("Clicking submit button...")
         sb.wait_for_element_present('button[type*="submit"]', timeout=10)
         sb.click('button[type*="submit"]')
 
-        print("Login submitted, waiting for redirect...")
+        logger.info("Login submitted, waiting for redirect...")
         sb.sleep(30)
         
         # Check if login was successful
         current_url = sb.get_current_url()
-        print(f"Current URL after login: {current_url}")
-        
+        logger.info("Current URL after login: %s", current_url)
         # Take screenshot for debugging
         try:
             sb.save_screenshot("screenshot/login_result.png")
-            print("Screenshot saved to screenshot/login_result.png")
+            logger.info("Screenshot saved to screenshot/login_result.png")
         except Exception as e:
-            print(f"Could not save screenshot: {e}")
-
+            logger.info("Could not save screenshot: %s", e)
         try:
             final_high_nonreg_price_df = pd.concat([
                 get_individual_stock(
@@ -371,7 +364,7 @@ if __name__ == "__main__":
                 for index, row in high_nonreg_price_df.iterrows()
             ], ignore_index=True)
         except Exception as e:
-            print(f"Error processing high non-reg price df: {e}")
+            logger.error("Error processing high non-reg price df: %s", e)
             final_high_nonreg_price_df = None
 
         try:
@@ -381,16 +374,16 @@ if __name__ == "__main__":
                 for index, row in filtered_df.iterrows()
             ], ignore_index=True)
         except Exception as e:
-            print(f"Error processing filtered df: {e}")
+            logger.error("Error processing filtered df: %s", e)
             final_filtered_df = None
 
     except Exception as sb_error:
-        print(f"Unhandled error inside SB block: {sb_error}")
-        print(traceback.format_exc())
+        logger.error("Unhandled error inside SB block: %s", sb_error)
+        logger.info(traceback.format_exc())
         try:
             save_debug_artifacts(sb, "unhandled_error")
         except Exception as artifact_error:
-            print(f"Could not save debug artifacts: {artifact_error}")
+            logger.info("Could not save debug artifacts: %s", artifact_error)
         raise
 
 
@@ -402,7 +395,7 @@ bot = telegram.Bot(token=BOT_TOKEN)
 async def send_all_nonreg_messages(df, bot, TARGET_CHAT_ID):
     for index, row in df.iterrows():
         try:
-            print(f"Processing {type} row {index}...")
+            logger.info("Processing %s row %s...", type, index)
             await send_non_reg_message(
                 row=row,
                 bot=bot,
@@ -410,9 +403,7 @@ async def send_all_nonreg_messages(df, bot, TARGET_CHAT_ID):
             )
             await asyncio.sleep(1)  # Add delay between messages
         except Exception as e:
-            print(f"❌ Failed for {type} row {index}: {e}")
-
-
+            logger.error("❌ Failed for %s row %s: %s", type, index, e)
 async def main():
     # 1. Send daily summary
     try:
@@ -427,8 +418,7 @@ async def main():
         await send_all_nonreg_messages(final_high_nonreg_price_df,
                                     bot, TARGET_CHAT_ID)
     except Exception as e:
-        print(f"Error sending higher price messages: {e}")
-
+        logger.error("Error sending higher price messages: %s", e)
     # 3. Send cumulative summary
     try:
         await send_nonreg_summary_message(
@@ -442,8 +432,7 @@ async def main():
         await send_all_nonreg_messages(final_filtered_df, bot,
                                     TARGET_CHAT_ID)
     except Exception as e:
-        print(f"Error sending non regular messages: {e}")
-
+        logger.error("Error sending non regular messages: %s", e)
 if __name__ == "__main__":
     asyncio.run(main())
 
@@ -484,7 +473,7 @@ if __name__ == "__main__":
             service_account_dict, scope
         )
     except Exception as e:
-        print(f"Error loading credentials from dictionary: {e}")
+        logger.error("Error loading credentials from dictionary: %s", e)
         # Handle error appropriately, maybe exit
         exit(1)
 
@@ -494,27 +483,23 @@ if __name__ == "__main__":
     worksheet = None
     try:
         gc = gspread.authorize(creds)
-        print("Google Sheets client (gspread) initialized successfully.")
-
+        logger.info("Google Sheets client (gspread) initialized successfully.")
         sheet_key = "1hZYjUl_ADkBgziBg6QALp7oOBPAr1pbTS9WVP_m4uKI"
         spreadsheet = gc.open_by_key(sheet_key)
 
-        print(f"Successfully opened spreadsheet: '{spreadsheet.title}'")
-
+        logger.info("Successfully opened spreadsheet: '%s'", spreadsheet.title)
     except gspread.exceptions.SpreadsheetNotFound:
-        print("Error: Spreadsheet not found. \n"
-              "1. Check if the name/key/URL is correct.\n")
-        # Decide if you want to exit or continue without sheet access
+        logger.error("Error: Spreadsheet not found. Check if the name/key/URL is correct.")
         exit(1)
     except gspread.exceptions.APIError as e:
-        print(f"Google Sheets API Error: {e}")
+        logger.error("Google Sheets API Error: %s", e)
         exit(1)
     except Exception as e:
         # Catch other potential errors during gspread initialization/opening
-        print(f"An error occurred during Google Sheets setup: {e}")
+        logger.error("An error occurred during Google Sheets setup: %s", e)
         exit(1)
 
-    print("Updating Google Sheet..")
+    logger.info("Updating Google Sheet..")
     export_to_sheets(spreadsheet=spreadsheet, sheet_name='Higher Price',
                      df=final_high_nonreg_price_df, mode='a')
 

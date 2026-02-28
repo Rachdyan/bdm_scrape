@@ -14,6 +14,7 @@ import gspread
 from utils.gsheet_utils import export_to_sheets
 from datetime import datetime as dt
 import pytz
+from utils.logging_utils import get_logger
 import mycdp
 from twocaptcha import TwoCaptcha
 from utils.captcha_utils_debug import PageActions, CaptchaHelper
@@ -31,6 +32,8 @@ os.environ['WDM_CACHE_DIR'] = os.path.expanduser('~/.wdm')
 os.environ['WDM_LOCAL'] = 'True'
 
 load_dotenv(override=True)
+
+logger = get_logger("scrape_rt")
 
 user = os.environ['PROXY_USER']
 password = os.environ['PROXY_PASSWORD']
@@ -78,9 +81,7 @@ async def send_handler(event: mycdp.network.RequestWillBeSent):
 
 async def receive_handler(event: mycdp.network.ResponseReceived):
     # print(c2 + "*** ==> ResponseReceived <== ***" + cr)
-    print(event.response)
-
-
+    logger.info(event.response)
 xhr_requests = []
 last_xhr_request = None
 
@@ -122,7 +123,7 @@ async def receiveXHR(page, requests):
                 "is_base64": res[1],
             })
         except Exception as e:
-            print("Error getting response:", e)
+            logger.error("Error getting response:", e)
     return responses
 
 
@@ -171,7 +172,7 @@ with SB(uc=True,
     # current_url
     if 'verification' in current_url:
         captcha_api_key = os.environ['CAPTCHA_KEY']
-        print("Recaptcha detected")
+        logger.info("Recaptcha detected")
         solver = TwoCaptcha(captcha_api_key,
                             defaultTimeout=120,
                             recaptchaTimeout=600)
@@ -199,15 +200,15 @@ with SB(uc=True,
 
         sb.switch_to_frame('iframe[title="reCAPTCHA"]')
         sb.sleep(2)
-        print("Clicking Checkbox..")
+        logger.info("Clicking Checkbox..")
         sb.uc_click("span[class*='recaptcha-checkbox']")
 
         sb.switch_to_default_content()
-        print("Checking to Popup Captcha iframe..")
+        logger.info("Checking to Popup Captcha iframe..")
         captcha_grid_visible = sb.is_element_visible(c_popup_captcha)
         if captcha_grid_visible:
             try:
-                print("Captcha Grid Visible...")
+                logger.info("Captcha Grid Visible...")
                 sb.switch_to_frame(c_popup_captcha)
                 sb.sleep(2)
 
@@ -222,15 +223,14 @@ with SB(uc=True,
 
                 while attempt < 30:  # Limit attempts to prevent infinite loop
                     sb.sleep(2)
-                    print("Starting Loop..")
-
+                    logger.info("Starting Loop..")
                     try:
                         # Check if getCaptchaData function is defined
                         js_func_defined = sb.execute_script(
                             "return typeof getCaptchaData !== 'undefined';")
                         
                         if not js_func_defined:
-                            print("JS functions not loaded, reloading...")
+                            logger.info("JS functions not loaded, reloading...")
                             captcha_helper.execute_js(script_get_data_captcha)
                             captcha_helper.execute_js(script_change_tracking)
                             sb.sleep(2)
@@ -240,18 +240,16 @@ with SB(uc=True,
                             .execute_script("return getCaptchaData();")
 
                         if captcha_data is None:
-                            print("Popup Not Found. Checking if login was "
-                                  "successful...")
+                            logger.warning("Popup Not Found. Checking if login was successful...")
                             page_actions.switch_to_default_content()
                             current_url = sb.get_current_url()
 
                             if 'verification' not in current_url:
-                                print("Successfully bypassed verification!")
+                                logger.info("Successfully bypassed verification!")
                                 captcha_solved = True
                                 break
                             else:
-                                print("Still on verification page, clicking "
-                                      "continue...")
+                                logger.info("Still on verification page, clicking continue...")
                                 sb.uc_click('button[id*="email-login-button"]')
                                 sb.sleep(3)
                                 attempt += 1
@@ -281,15 +279,13 @@ with SB(uc=True,
                                 "..." + str(print_params['body'])[-100:] +
                                 "[truncated]"
                             )
-                        print("Params before solving captcha:", print_params)
-
+                        logger.info("Params before solving captcha:", print_params)
                         # Send captcha for solution
                         result = captcha_helper.solver_captcha(
                             file=captcha_data['body'], **params)
 
                         if result is None:
-                            print("Captcha solving failed or timed out. "
-                                  "Stopping the process.")
+                            logger.warning("Captcha solving failed or timed out. Stopping the process.")
                             break
 
                         # Check if the captcha was solved successfully
@@ -301,8 +297,7 @@ with SB(uc=True,
 
                             answer = result['code']
                             number_list = captcha_helper.pars_answer(answer)
-                            print(f"Number list: {number_list}")
-
+                            logger.info("Number list: %s", number_list)
                             # Processing for 3x3
                             if params['cols'] == 3:
                                 # Click on the answers found
@@ -321,11 +316,8 @@ with SB(uc=True,
                                 while (image_update and
                                        update_count < max_image_updates):
                                     # If updated, continue with the saved id
-                                    print(
-                                        f"Images updated ({update_count + 1}/"
-                                        f"{max_image_updates}), "
-                                        f"continuing with ID: {id}"
-                                    )
+                                    logger.info("Images updated (%s/%s), continuing with ID: %s",
+                                                update_count + 1, max_image_updates, id)
                                     update_count += 1
                                     image_update = (
                                         page_actions.check_for_image_updates()
@@ -335,14 +327,14 @@ with SB(uc=True,
                                     # Continue the loop if updates were found
                                     continue
 
-                                print("Clicking Verify button 3x3")
+                                logger.info("Clicking Verify button 3x3")
                                 page_actions.click_check_button(
                                     c_verify_button)
                                 sb.sleep(2)
 
                                 sb.is_element_clickable(c_verify_button)
 
-                                print("Checking error")
+                                logger.error("Checking error")
                                 errors_detected = (
                                     sb.is_element_clickable(c_verify_button) or
                                     sb.is_element_visible(c_try_again) or
@@ -350,8 +342,7 @@ with SB(uc=True,
                                     sb.is_element_visible(c_dynamic_more) or
                                     sb.is_element_visible(c_select_something)
                                 )
-                                print(f"Error Detected: {errors_detected}")
-
+                                logger.error("Error Detected: %s", errors_detected)
                                 if errors_detected:
                                     attempt += 1
                                     continue
@@ -373,11 +364,8 @@ with SB(uc=True,
                                 while (image_update and
                                        update_count < max_image_updates):
                                     # If updated, continue with the saved id
-                                    print(
-                                        f"Images updated ({update_count + 1}/"
-                                        f"{max_image_updates}), "
-                                        f"continuing with ID: {id}"
-                                    )
+                                    logger.info("Images updated (%s/%s), continuing with ID: %s",
+                                                update_count + 1, max_image_updates, id)
                                     update_count += 1
                                     image_update = (
                                         page_actions.check_for_image_updates()
@@ -387,11 +375,11 @@ with SB(uc=True,
                                     # Continue the loop if updates were found
                                     continue
 
-                                print("Clicking Verify button 4x4")
+                                logger.info("Clicking Verify button 4x4")
                                 page_actions.click_check_button(
                                     c_verify_button)
 
-                                print("Checking error")
+                                logger.error("Checking error")
                                 errors_detected = (
                                     sb.is_element_clickable(c_verify_button) or
                                     sb.is_element_visible(c_try_again) or
@@ -399,7 +387,7 @@ with SB(uc=True,
                                     sb.is_element_visible(c_dynamic_more) or
                                     sb.is_element_visible(c_select_something)
                                 )
-                                print(f"Error Detected: {errors_detected}")
+                                logger.error("Error Detected: %s", errors_detected)
                                 if errors_detected:
                                     attempt += 1
                                     continue
@@ -407,22 +395,20 @@ with SB(uc=True,
                             # Check if we're still on verification after
                             sb.sleep(3)
                             sb.switch_to_parent_frame()
-                            print("Clicking Continue button...")
+                            logger.info("Clicking Continue button...")
                             sb.uc_click('button[id*="email-login-button"]')
                             sb.sleep(3)
 
                             current_url = sb.get_current_url()
                             if 'verification' not in current_url:
-                                print("Successfully bypassed verification!")
+                                logger.info("Successfully bypassed verification!")
                                 captcha_solved = True
                                 break
                             else:
-                                print("Still on verification page after "
-                                      "solving captcha")
+                                logger.warning("Still on verification page after solving captcha")
                                 attempt += 1
                                 if attempt < 15:
-                                    print("Continue clicked but still in "
-                                          "verification page... retrying")
+                                    logger.info("Continue clicked but still in verification page... retrying")
 
                                     sb.open(f"{sb_website}/login")
                                     # sb.driver.refresh()
@@ -439,10 +425,10 @@ with SB(uc=True,
                                     sb.sleep(3)
                                     current_url = sb.get_current_url()
                                     if 'verification' not in current_url:
-                                        print("Logged in after captcha")
+                                        logger.info("Logged in after captcha")
                                         break
                                     else:
-                                        print("Still on verification page")
+                                        logger.info("Still on verification page")
                                         attempt += 1
                                         # Check if still on verification page
                                         current_url = sb.get_current_url()
@@ -453,16 +439,14 @@ with SB(uc=True,
                                             )
                                             sb.switch_to_frame(recaptcha_frame)
                                             sb.sleep(2)
-                                            print(
-                                                "Clicking Checkbox after relogin"
-                                            )
+                                            logger.info("Clicking Checkbox after relogin")
                                             checkbox = (
                                                 "span[class*='recaptcha-checkbox']"
                                             )
                                             sb.uc_click(checkbox)
                                             
                                             sb.switch_to_default_content()
-                                            print("Checking for Popup Captcha")
+                                            logger.info("Checking for Popup Captcha")
                                             captcha_visible = (
                                                 sb.is_element_visible(c_popup_captcha)
                                             )
@@ -478,19 +462,17 @@ with SB(uc=True,
                                                     captcha_helper.execute_js(
                                                         script_change_tracking)
                                                 except Exception as e:
-                                                    print(
-                                                        f"Error switching frame: {e}"
-                                                    )
+                                                    logger.error("Error switching frame: %s", e)
                                                     continue
                                             else:
-                                                print("No Captcha Grid")
+                                                logger.info("No Captcha Grid")
                                                 sb.click(
                                                     'button[id*="email-login-button"]'
                                                 )
                                                 break
 
                                 else:
-                                    print("Max attempts reached. Exiting...")
+                                    logger.info("Max attempts reached. Exiting...")
                                     break
 
                         elif 'No_matching_images' in result['code']:
@@ -506,11 +488,11 @@ with SB(uc=True,
                                 page_actions\
                                     .click_check_button(
                                         p_submit_button_captcha)
-                                print("Breaking Loop 2")
+                                logger.info("Breaking Loop 2")
                                 break  # Exit loop
 
                     except Exception as e:
-                        print(f"Error in captcha solving loop: {e}")
+                        logger.error("Error in captcha solving loop: %s", e)
                         attempt += 1
                         if attempt < 5:
                             # Try to recover by switching back to captcha frame
@@ -534,32 +516,30 @@ with SB(uc=True,
                                 pass
 
                 if not captcha_solved and attempt >= 25:
-                    print("Max attempts reached. Trying to continue anyway...")
+                    logger.info("Max attempts reached. Trying to continue anyway...")
                     page_actions.switch_to_default_content()
                     sb.uc_click('button[id*="email-login-button"]')
                     sb.sleep(3)
 
             except Exception as e:
-                print(f"Error in the process. Clicking Continue...: {e} ")
+                logger.error("Error in the process. Clicking Continue...: %s ", e)
                 try:
                     sb.uc_click('button[id*="email-login-button"]')
                 except Exception as e:
-                    print("Except Part 2,"
-                          f"Switching to default content first {e}")
+                    logger.error("Except Part 2, Switching to default content first: %s", e)
                     sb.switch_to_parent_frame()
                     sb.uc_click('button[id*="email-login-button"]')
         else:
-            print("No Captcha Grid")
+            logger.info("No Captcha Grid")
             sb.uc_click('button[id*="email-login-button"]')
 
     sb.sleep(3)
-    print("Finished solving captcha")
+    logger.info("Finished solving captcha")
     current_url = sb.get_current_url()
-    print(f"current_url:{current_url}")
-
+    logger.info("current_url:%s", current_url)
     # Check if we need to handle OTP
     if "otp" in current_url:
-        print("Email Verification Page..")
+        logger.info("Email Verification Page..")
         sb.sleep(20)
 
         IMAP_SERVER = "imappro.zoho.com"
@@ -567,15 +547,13 @@ with SB(uc=True,
         EMAIL_ACCOUNT = os.environ['EMAIL_ACCOUNT']
         EMAIL_PASSWORD = os.environ['EMAIL_PASSWORD']
 
-        print(f"Connecting to {IMAP_SERVER}...")
-
+        logger.info("Connecting to %s...", IMAP_SERVER)
         imap = imaplib.IMAP4_SSL(IMAP_SERVER, IMAP_PORT)
         imap.login(EMAIL_ACCOUNT, EMAIL_PASSWORD)
 
         status, messages = imap.select("INBOX")
 
-        print("Successfully connected and selected INBOX.")
-
+        logger.info("Successfully connected and selected INBOX.")
         N = 1
         # total number of emails
         messages = int(messages[0])
@@ -596,8 +574,8 @@ with SB(uc=True,
                     From, encoding = decode_header(msg.get("From"))[0]
                     if isinstance(From, bytes):
                         From = From.decode(encoding)
-                    print("Subject:", subject)
-                    print("From:", From)
+                    logger.info("Subject:", subject)
+                    logger.info("From:", From)
                     # if the email message is multipart
 
                     if "stockbit" in From:
@@ -615,7 +593,7 @@ with SB(uc=True,
                                 raw_div = email_soup.select_one(
                                     "div[style*='background-color:#f5f5f5']")
                                 otp_code = raw_div.get_text(strip=True)
-                                print(f"Otp Code is: {otp_code}")
+                                logger.info("Otp Code is: %s", otp_code)
                                 # breakpoint()
                                 first_otp_box = ("input[data-cy*='confirm-"
                                                  "otp-input-box']")
@@ -627,22 +605,22 @@ with SB(uc=True,
                                     mycdp.network.RequestWillBeSent,
                                     send_handler)
                             except Exception as e:
-                                print(e)
+                                logger.info(e)
                                 pass
 
                             if content_type == "text/plain" and \
                                "attachment" not in content_disposition:
                                 # print text/plain emails and skip attachments
-                                print(body)
-                                print("="*100)
+                                logger.info(body)
+                                logger.info("="*100)
                     else:
-                        print("No stockbit email..")
+                        logger.info("No stockbit email..")
                         break
 
     # Check if we're logged in successfully
     current_url = sb.get_current_url()
     if 'verification' in current_url or 'login' in current_url:
-        print("Still not logged in after captcha/OTP. Exiting...")
+        logger.info("Still not logged in after captcha/OTP. Exiting...")
         exit(1)
 
     sb.sleep(4)
@@ -656,7 +634,7 @@ with SB(uc=True,
 
     # Check if we captured any requests
     if not captured_requests:
-        print("No requests captured. Trying to navigate again...")
+        logger.info("No requests captured. Trying to navigate again...")
         sb.cdp.open(url)
         sb.sleep(10)
 
@@ -665,28 +643,26 @@ with SB(uc=True,
 
     # Check if Authorization header exists
     if 'Authorization' not in df_headers.columns:
-        print("Authorization header not found in captured requests")
-        print("Available columns:", df_headers.columns.tolist())
-        print("Trying to find authorization in other headers...")
-
+        logger.warning("Authorization header not found in captured requests")
+        logger.info("Available columns:", df_headers.columns.tolist())
+        logger.info("Trying to find authorization in other headers...")
         # Try to find authorization in lowercase or other variations
         auth_header = None
         for col in df_headers.columns:
             if 'auth' in col.lower():
                 auth_header = col
-                print(f"Found potential auth header: {col}")
+                logger.info("Found potential auth header: %s", col)
                 break
 
         if auth_header:
             bearer_token = df_headers[auth_header].dropna().unique()[0]
         else:
-            print("No authorization header found. Exiting...")
+            logger.info("No authorization header found. Exiting...")
             exit(1)
     else:
         bearer_token = df_headers['Authorization'].dropna().unique()[0]
 
-    print(f"Bearer Token: {bearer_token}")
-
+    logger.info("Bearer Token: %s", bearer_token)
     headers = {
         'accept': 'application/json',
         'accept-language': 'en-US,en;q=0.9',
@@ -726,9 +702,8 @@ with SB(uc=True,
     # one_thousands_filtered_df = process_and_filter_rt_data(
     #    one_thousand_raw_df, website, today_date)
 
-    print("\n--- Filtered 5000+ Lot Data ---")
-    print(five_thousands_filtered_df.head())
-
+    logger.info("\n--- Filtered 5000+ Lot Data ---")
+    logger.info(five_thousands_filtered_df.head())
     # print("\n--- Filtered 1000+ Lot Data ---")
     # print(one_thousands_filtered_df.head())
 
@@ -810,7 +785,7 @@ try:
         service_account_dict, scope
     )
 except Exception as e:
-    print(f"Error loading credentials from dictionary: {e}")
+    logger.error("Error loading credentials from dictionary: %s", e)
     # Handle error appropriately, maybe exit
     exit(1)
 
@@ -820,26 +795,22 @@ spreadsheet = None
 worksheet = None
 try:
     gc = gspread.authorize(creds)
-    print("Google Sheets client (gspread) initialized successfully.")
-
+    logger.info("Google Sheets client (gspread) initialized successfully.")
     sheet_key = "1hZCPCVf6xw0w9LS_8Cr1i_VXp6bZfw7gAK255srhvi4"
     spreadsheet = gc.open_by_key(sheet_key)
 
-    print(f"Successfully opened spreadsheet: '{spreadsheet.title}'")
-
+    logger.info("Successfully opened spreadsheet: '%s'", spreadsheet.title)
 except gspread.exceptions.SpreadsheetNotFound:
-    print("Error: Spreadsheet not found. \n"
-          "1. Check if the name/key/URL is correct.\n")
-    # Decide if you want to exit or continue without sheet access
+    logger.error("Error: Spreadsheet not found. Check if the name/key/URL is correct.")
     exit(1)
 except gspread.exceptions.APIError as e:
-    print(f"Google Sheets API Error: {e}")
+    logger.error("Google Sheets API Error: %s", e)
     exit(1)
 except Exception as e:
     # Catch other potential errors during gspread initialization/opening
-    print(f"An error occurred during Google Sheets setup: {e}")
+    logger.error("An error occurred during Google Sheets setup: %s", e)
     exit(1)
 
-print("Updating Google Sheet..")
+logger.info("Updating Google Sheet..")
 export_to_sheets(spreadsheet=spreadsheet, sheet_name='> 5000 Lot',
                  df=final_five_thousand_df, mode='a')

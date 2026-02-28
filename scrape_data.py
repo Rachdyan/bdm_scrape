@@ -16,8 +16,11 @@ import gspread
 from utils.gsheet_utils import export_to_sheets
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from utils.logging_utils import get_logger
 
 load_dotenv(override=True)
+
+logger = get_logger("scrape_data")
 
 user = os.environ['PROXY_USER']
 password = os.environ['PROXY_PASSWORD']
@@ -77,7 +80,7 @@ if __name__ == "__main__":
 
         sb.open(website)
         # sb.wait_for_element(selector)
-        print("Logging in...")
+        logger.info("Logging in...")
        # sb.click('[href*="accounts/login"]')
         sb.open(f"{website}/accounts/login/")
         sb.sleep(15)
@@ -87,12 +90,12 @@ if __name__ == "__main__":
 
         sb.click('button[type*="submit"]')
 
-        print("Login submitted, waiting for redirect...")
+        logger.info("Login submitted, waiting for redirect...")
         sb.sleep(30)
         
         sb.open(f"{website}/home/")
         sb.sleep(10)
-        print("Login successful. Opening market summary page...")
+        logger.info("Login successful. Opening market summary page...")
         sb.open(f"{website}/market_summary/")
         sb.sleep(60)
 
@@ -112,10 +115,9 @@ if __name__ == "__main__":
 
         if match:
             date = match.group(1)
-            print(f"Current Data Date: {date}")
-
+            logger.info("Current Data Date: %s", date)
         # GET DAILY NON RETAIL
-        print("Getting daily non-retail summary...")
+        logger.info("Getting daily non-retail summary...")
         #sb.hover_and_click("#method", '[value = "nr"]', timeout=3)
         sb.select_option_by_text('#method', 'Non-Retail Flow')
         sb.send_keys('#method', Keys.RETURN)
@@ -137,48 +139,47 @@ if __name__ == "__main__":
         headers = [th.get('data-dash-column', '') for th in
                    first_tr.find_all('th')]
         liquid_index = headers.index('likuid')
-        print(f"Liquid Index Column Position: {liquid_index}")
+        logger.info("Liquid Index Column Position: %s", liquid_index)
         # APPLY LIQUID FILTER
         try:
             filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
             
             # Give driver more time to stabilize before checking element
-            print("[DEBUG] Waiting for page to stabilize...")
+            logger.debug("Waiting for page to stabilize...")
             sb.sleep(5)
             
             # Check if element is present before attempting ActionChains
             sb.wait_for_element_present(filter_selector, timeout=15)
-            print("[DEBUG] Filter element is present in DOM")
-            
-            breakpoint()
+            logger.debug("Filter element is present in DOM")
+            # breakpoint()
             # Use SeleniumBase's native type method which handles events properly
             max_retries = 3
             for attempt in range(max_retries):
                 try:
-                    print(f"[DEBUG] Starting ActionChains attempt {attempt + 1}")
+                    logger.debug("Starting ActionChains attempt %s", attempt + 1)
                     element = sb.driver.find_element("css selector", filter_selector)
-                    print(f"[DEBUG] Element found: {element}")
+                    logger.debug("Element found: %s", element)
                     action = ActionChains(sb.driver)
-                    print(f"[DEBUG] ActionChains created")
+                    logger.debug("ActionChains created")
                     action.move_to_element(element)
-                    print(f"[DEBUG] Moved to element")
+                    logger.debug("Moved to element")
                     action.click()
-                    print(f"[DEBUG] Click action added")
+                    logger.debug("Click action added")
                     action.send_keys('v')
-                    print(f"[DEBUG] Send keys 'v' action added")
+                    logger.debug("Send keys 'v' action added")
                     action.send_keys(Keys.RETURN)
-                    print(f"[DEBUG] Send keys RETURN action added")
+                    logger.debug("Send keys RETURN action added")
                     action.perform()
-                    print(f"[DEBUG] ActionChains performed successfully")
-                    print(f"Filter applied successfully via ActionChains (attempt {attempt + 1})")
+                    logger.debug("ActionChains performed successfully")
+                    logger.info("Filter applied successfully via ActionChains (attempt %s)", attempt + 1)
                     break
                 except Exception as driver_error:
-                    print(f"ActionChains attempt {attempt + 1} failed: {driver_error}")
+                    logger.error("ActionChains attempt %s failed: %s", attempt + 1, driver_error)
                     if attempt < max_retries - 1:
-                        print(f"Retrying... ({attempt + 2}/{max_retries})")
+                        logger.info("Retrying... (%s/%s)", attempt + 2, max_retries)
                         sb.sleep(5)  # Increased sleep time between retries
                     else:
-                        print("All ActionChains attempts failed, falling back to JavaScript")
+                        logger.error("All ActionChains attempts failed, falling back to JavaScript")
                         # Fallback to JavaScript if all attempts fail
                         js_selector = filter_selector.replace('"', '\\"')
                         sb.execute_script(f"""
@@ -233,18 +234,17 @@ if __name__ == "__main__":
                                 input.dispatchEvent(keyupEvent);
                             }}
                         """)
-                        print("JavaScript fallback executed")
-            
+                        logger.info("JavaScript fallback executed")
             sb.sleep(15)
             nr_daily_liquid_html = sb.get_page_source()
-            print("Getting liquid filtered daily non-retail summary...")
+            logger.info("Getting liquid filtered daily non-retail summary...")
             nr_daily_summary_liquid_df = get_summary_table(nr_daily_liquid_html,
                                                             today_date=date,
                                                             method='non-retail')
             sb.click('button[id*="reset-button"]')
             sb.sleep(60)
         except Exception as e:
-            print(f"Error applying liquid filter: {e}")
+            logger.error("Error applying liquid filter: %s", e)
             nr_daily_summary_liquid_df = None
 
        #breakpoint()
@@ -252,7 +252,7 @@ if __name__ == "__main__":
         # nr_daily_summary_df
 
         # GET DAILY MARKET MAKER
-        print("Getting daily market maker summary...")
+        logger.info("Getting daily market maker summary...")
         #sb.hover_and_click("#method", '[value = "m"]', timeout=1)
         sb.select_option_by_text('#method', 'Market Maker Analysis')
         sb.send_keys('#method', Keys.RETURN)
@@ -273,40 +273,39 @@ if __name__ == "__main__":
             filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
             
             # Give driver more time to stabilize before checking element
-            print("[DEBUG] Waiting for page to stabilize...")
+            logger.debug("Waiting for page to stabilize...")
             sb.sleep(5)
             
             # Check if element is present before attempting ActionChains
             sb.wait_for_element_present(filter_selector, timeout=15)
-            print("[DEBUG] Filter element is present in DOM")
-            
+            logger.debug("Filter element is present in DOM")
             max_retries = 3
             for attempt in range(max_retries):
                 try:
-                    print(f"[DEBUG] Starting ActionChains attempt {attempt + 1}")
+                    logger.debug("Starting ActionChains attempt %s", attempt + 1)
                     element = sb.driver.find_element("css selector", filter_selector)
-                    print(f"[DEBUG] Element found: {element}")
+                    logger.debug("Element found: %s", element)
                     action = ActionChains(sb.driver)
-                    print(f"[DEBUG] ActionChains created")
+                    logger.debug("ActionChains created")
                     action.move_to_element(element)
-                    print(f"[DEBUG] Moved to element")
+                    logger.debug("Moved to element")
                     action.click()
-                    print(f"[DEBUG] Click action added")
+                    logger.debug("Click action added")
                     action.send_keys('v')
-                    print(f"[DEBUG] Send keys 'v' action added")
+                    logger.debug("Send keys 'v' action added")
                     action.send_keys(Keys.RETURN)
-                    print(f"[DEBUG] Send keys RETURN action added")
+                    logger.debug("Send keys RETURN action added")
                     action.perform()
-                    print(f"[DEBUG] ActionChains performed successfully")
-                    print(f"Filter applied successfully via ActionChains (attempt {attempt + 1})")
+                    logger.debug("ActionChains performed successfully")
+                    logger.info("Filter applied successfully via ActionChains (attempt %s)", attempt + 1)
                     break
                 except Exception as driver_error:
-                    print(f"ActionChains attempt {attempt + 1} failed: {driver_error}")
+                    logger.error("ActionChains attempt %s failed: %s", attempt + 1, driver_error)
                     if attempt < max_retries - 1:
-                        print(f"Retrying... ({attempt + 2}/{max_retries})")
+                        logger.info("Retrying... (%s/%s)", attempt + 2, max_retries)
                         sb.sleep(2)
                     else:
-                        print("All ActionChains attempts failed, falling back to JavaScript")
+                        logger.error("All ActionChains attempts failed, falling back to JavaScript")
                         # Fallback to JavaScript if all attempts fail
                         js_selector = filter_selector.replace('"', '\\"')
                         sb.execute_script(f"""
@@ -361,19 +360,18 @@ if __name__ == "__main__":
                                 input.dispatchEvent(keyupEvent);
                             }}
                         """)
-                        print("JavaScript fallback executed")
-            
+                        logger.info("JavaScript fallback executed")
             sb.sleep(15)
             #breakpoint()
             m_daily_liquid_html = sb.get_page_source()
-            print("Getting liquid filtered daily market maker summary...")
+            logger.info("Getting liquid filtered daily market maker summary...")
             m_daily_summary_liquid_df = get_summary_table(m_daily_liquid_html,
                                                             today_date=date,
                                                             method='market maker')
             sb.click('button[id*="reset-button"]')
             time.sleep(40)
         except Exception as e:
-            print(f"Error applying liquid filter: {e}")
+            logger.error("Error applying liquid filter: %s", e)
             m_daily_summary_liquid_df = None
 
         #breakpoint()
@@ -381,11 +379,11 @@ if __name__ == "__main__":
 
         combined_daily_df = pd.concat(
             [nr_daily_summary_df, nr_daily_summary_liquid_df, m_daily_summary_df, m_daily_summary_liquid_df]).reset_index(drop=True)
-        print(f"Combined Daily DataFrame Length: {len(combined_daily_df)}")
-        print("Removing duplicates based on 'symbol' column...")
+        logger.info("Combined Daily DataFrame Length: %s", len(combined_daily_df))
+        logger.info("Removing duplicates based on 'symbol' column...")
         combined_daily_df = combined_daily_df.drop_duplicates('symbol')\
             .reset_index(drop=True)
-        print(f"Length after removing duplicates: {len(combined_daily_df)}")
+        logger.info("Length after removing duplicates: %s", len(combined_daily_df))
         combined_daily_df['link'] = combined_daily_df['symbol']\
             .apply(lambda x: f"{website}/stock_detail/{x}")
         combined_daily_df['price'] = combined_daily_df['price'].astype(int)
@@ -396,7 +394,7 @@ if __name__ == "__main__":
         symbol_set = set(combined_daily_df['symbol'].tolist())
 
         # GET CUMMULATIVE NON RETAIL
-        print("Getting cummulative non-retail summary...")
+        logger.info("Getting cummulative non-retail summary...")
         #sb.hover_and_click("#method", '[value = "nr"]', timeout=1)
         sb.select_option_by_text('#method', 'Non-Retail Flow')
         sb.send_keys('#method', Keys.RETURN)
@@ -415,41 +413,40 @@ if __name__ == "__main__":
             filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
             
             # Give driver more time to stabilize before checking element
-            print("[DEBUG] Waiting for page to stabilize...")
+            logger.debug("Waiting for page to stabilize...")
             sb.sleep(5)
             
             # Check if element is present before attempting ActionChains
             sb.wait_for_element_present(filter_selector, timeout=15)
-            print("[DEBUG] Filter element is present in DOM")
-            
+            logger.debug("Filter element is present in DOM")
             # Use SeleniumBase's native type method which handles events properly
             max_retries = 3
             for attempt in range(max_retries):
                 try:
-                    print(f"[DEBUG] Starting ActionChains attempt {attempt + 1}")
+                    logger.debug("Starting ActionChains attempt %s", attempt + 1)
                     element = sb.driver.find_element("css selector", filter_selector)
-                    print(f"[DEBUG] Element found: {element}")
+                    logger.debug("Element found: %s", element)
                     action = ActionChains(sb.driver)
-                    print(f"[DEBUG] ActionChains created")
+                    logger.debug("ActionChains created")
                     action.move_to_element(element)
-                    print(f"[DEBUG] Moved to element")
+                    logger.debug("Moved to element")
                     action.click()
-                    print(f"[DEBUG] Click action added")
+                    logger.debug("Click action added")
                     action.send_keys('v')
-                    print(f"[DEBUG] Send keys 'v' action added")
+                    logger.debug("Send keys 'v' action added")
                     action.send_keys(Keys.RETURN)
-                    print(f"[DEBUG] Send keys RETURN action added")
+                    logger.debug("Send keys RETURN action added")
                     action.perform()
-                    print(f"[DEBUG] ActionChains performed successfully")
-                    print(f"Filter applied successfully via ActionChains (attempt {attempt + 1})")
+                    logger.debug("ActionChains performed successfully")
+                    logger.info("Filter applied successfully via ActionChains (attempt %s)", attempt + 1)
                     break
                 except Exception as driver_error:
-                    print(f"ActionChains attempt {attempt + 1} failed: {driver_error}")
+                    logger.error("ActionChains attempt %s failed: %s", attempt + 1, driver_error)
                     if attempt < max_retries - 1:
-                        print(f"Retrying... ({attempt + 2}/{max_retries})")
+                        logger.info("Retrying... (%s/%s)", attempt + 2, max_retries)
                         sb.sleep(5)  # Increased sleep time between retries
                     else:
-                        print("All ActionChains attempts failed, falling back to JavaScript")
+                        logger.error("All ActionChains attempts failed, falling back to JavaScript")
                         # Fallback to JavaScript if all attempts fail
                         js_selector = filter_selector.replace('"', '\\"')
                         sb.execute_script(f"""
@@ -504,23 +501,22 @@ if __name__ == "__main__":
                                 input.dispatchEvent(keyupEvent);
                             }}
                         """)
-                        print("JavaScript fallback executed")
-            
+                        logger.info("JavaScript fallback executed")
             sb.sleep(15)
             nr_cummulative_liquid_html = sb.get_page_source()
-            print("Getting liquid filtered nr cummulative summary...")
+            logger.info("Getting liquid filtered nr cummulative summary...")
             nr_cummulative_summary_liquid_df = get_summary_table(nr_cummulative_liquid_html,
                                                                  today_date=date,
                                                                  method='non-retail')
             sb.click('button[id*="reset-button"]')
             sb.sleep(40)
         except Exception as e:
-            print(f"Error applying liquid filter: {e}")
+            logger.error("Error applying liquid filter: %s", e)
             nr_cummulative_summary_liquid_df = None
         # nr_cummulative_summary_df
 
         # GET CUMMULATIVE MARKET MAKER
-        print("Getting cummulative market maker summary...")
+        logger.info("Getting cummulative market maker summary...")
         #sb.hover_and_click("#method", '[value = "m"]', timeout=1)
         sb.select_option_by_text('#method', 'Market Maker Analysis')
         sb.send_keys('#method', Keys.RETURN)
@@ -551,41 +547,40 @@ if __name__ == "__main__":
             filter_selector = f'th.dash-filter.column-{str(liquid_index)} div input[type="text"]'
             
             # Give driver more time to stabilize before checking element
-            print("[DEBUG] Waiting for page to stabilize...")
+            logger.debug("Waiting for page to stabilize...")
             sb.sleep(5)
             
             # Check if element is present before attempting ActionChains
             sb.wait_for_element_present(filter_selector, timeout=15)
-            print("[DEBUG] Filter element is present in DOM")
-            
+            logger.debug("Filter element is present in DOM")
             # Use SeleniumBase's native type method which handles events properly
             max_retries = 3
             for attempt in range(max_retries):
                 try:
-                    print(f"[DEBUG] Starting ActionChains attempt {attempt + 1}")
+                    logger.debug("Starting ActionChains attempt %s", attempt + 1)
                     element = sb.driver.find_element("css selector", filter_selector)
-                    print(f"[DEBUG] Element found: {element}")
+                    logger.debug("Element found: %s", element)
                     action = ActionChains(sb.driver)
-                    print(f"[DEBUG] ActionChains created")
+                    logger.debug("ActionChains created")
                     action.move_to_element(element)
-                    print(f"[DEBUG] Moved to element")
+                    logger.debug("Moved to element")
                     action.click()
-                    print(f"[DEBUG] Click action added")
+                    logger.debug("Click action added")
                     action.send_keys('v')
-                    print(f"[DEBUG] Send keys 'v' action added")
+                    logger.debug("Send keys 'v' action added")
                     action.send_keys(Keys.RETURN)
-                    print(f"[DEBUG] Send keys RETURN action added")
+                    logger.debug("Send keys RETURN action added")
                     action.perform()
-                    print(f"[DEBUG] ActionChains performed successfully")
-                    print(f"Filter applied successfully via ActionChains (attempt {attempt + 1})")
+                    logger.debug("ActionChains performed successfully")
+                    logger.info("Filter applied successfully via ActionChains (attempt %s)", attempt + 1)
                     break
                 except Exception as driver_error:
-                    print(f"ActionChains attempt {attempt + 1} failed: {driver_error}")
+                    logger.error("ActionChains attempt %s failed: %s", attempt + 1, driver_error)
                     if attempt < max_retries - 1:
-                        print(f"Retrying... ({attempt + 2}/{max_retries})")
+                        logger.info("Retrying... (%s/%s)", attempt + 2, max_retries)
                         sb.sleep(5)  # Increased sleep time between retries
                     else:
-                        print("All ActionChains attempts failed, falling back to JavaScript")
+                        logger.error("All ActionChains attempts failed, falling back to JavaScript")
                         # Fallback to JavaScript if all attempts fail
                         js_selector = filter_selector.replace('"', '\\"')
                         sb.execute_script(f"""
@@ -640,33 +635,30 @@ if __name__ == "__main__":
                                 input.dispatchEvent(keyupEvent);
                             }}
                         """)
-                        print("JavaScript fallback executed")
-            
+                        logger.info("JavaScript fallback executed")
             sb.sleep(15)
             m_cummulative_liquid_html = sb.get_page_source()
-            print("Getting liquid filtered m cummulative summary...")
+            logger.info("Getting liquid filtered m cummulative summary...")
             m_cummulative_summary_liquid_df = get_summary_table(m_cummulative_liquid_html,
                                                                  today_date=date,
                                                                  method='market maker')
             sb.click('button[id*="reset-button"]')
             sb.sleep(40)
         except Exception as e:
-            print(f"Error applying liquid filter: {e}")
+            logger.error("Error applying liquid filter: %s", e)
             m_cummulative_summary_liquid_df = None
         # m_cummulative_summary_df
 
         combined_cummulative_df = pd.concat(
             [nr_cummulative_summary_df, nr_cummulative_summary_liquid_df, m_cummulative_summary_df, m_cummulative_summary_liquid_df])\
             .reset_index(drop=True)
-        print(f"Cummulative DataFrame Length before filtering: {len(combined_cummulative_df)}")
-        
+        logger.info("Cummulative DataFrame Length before filtering: %s", len(combined_cummulative_df))
         combined_cummulative_df = combined_cummulative_df.drop_duplicates('symbol')\
             .reset_index(drop=True)
         
         combined_cummulative_df = combined_cummulative_df[
             ~combined_cummulative_df.symbol.isin(symbol_set)].reset_index(drop=True)
-        print(f"Cummulative DataFrame Length after filtering: {len(combined_cummulative_df)}")
-        
+        logger.info("Cummulative DataFrame Length after filtering: %s", len(combined_cummulative_df))
         combined_cummulative_df['link'] = combined_cummulative_df['symbol']\
             .apply(lambda x: f"{website}/stock_detail/{x}")
         
@@ -676,14 +668,14 @@ if __name__ == "__main__":
             combined_cummulative_df.price > 50].reset_index(drop=True)
         combined_cummulative_df
 
-        print("Final Daily DataFrames Preparation...")
+        logger.info("Final Daily DataFrames Preparation...")
         final_daily_df = pd.concat([
             get_individual_stock(
                 sb=sb, row=row)
             for index, row in combined_daily_df.iterrows()
         ], ignore_index=True)
 
-        print("Final Cummulative DataFrame Preparation...")
+        logger.info("Final Cummulative DataFrame Preparation...")
         try:
             final_cummulative_df = pd.concat([
                 get_individual_stock(
@@ -691,7 +683,7 @@ if __name__ == "__main__":
                 for index, row in combined_cummulative_df.iterrows()
             ], ignore_index=True)
         except Exception as e:
-            print(f"Error preparing final cummulative DataFrame: {e}")
+            logger.error("Error preparing final cummulative DataFrame: %s", e)
             final_cummulative_df = pd.DataFrame()
 
 
@@ -704,7 +696,7 @@ bot = telegram.Bot(token=BOT_TOKEN)
 async def send_all_daily_messages(df, bot, type, TARGET_CHAT_ID):
     for index, row in df.iterrows():
         try:
-            print(f"Processing {type} row {index}...")
+            logger.info("Processing %s row %s...", type, index)
             await send_daily_message(
                 row=row,
                 bot=bot,
@@ -713,9 +705,7 @@ async def send_all_daily_messages(df, bot, type, TARGET_CHAT_ID):
             )
             await asyncio.sleep(1)  # Add delay between messages
         except Exception as e:
-            print(f"❌ Failed for {type} row {index}: {e}")
-
-
+            logger.error("❌ Failed for %s row %s: %s", type, index, e)
 async def main():
     # 1. Send daily summary
     await send_high_level_summary_message(
@@ -780,7 +770,7 @@ if __name__ == "__main__":
             service_account_dict, scope
         )
     except Exception as e:
-        print(f"Error loading credentials from dictionary: {e}")
+        logger.error("Error loading credentials from dictionary: %s", e)
         # Handle error appropriately, maybe exit
         exit(1)
 
@@ -790,27 +780,23 @@ if __name__ == "__main__":
     worksheet = None
     try:
         gc = gspread.authorize(creds)
-        print("Google Sheets client (gspread) initialized successfully.")
-
+        logger.info("Google Sheets client (gspread) initialized successfully.")
         sheet_key = "1z-46N5oUsMBwEufpV2uDdECHJetXy4DDe5PwTkozND0"
         spreadsheet = gc.open_by_key(sheet_key)
 
-        print(f"Successfully opened spreadsheet: '{spreadsheet.title}'")
-
+        logger.info("Successfully opened spreadsheet: '%s'", spreadsheet.title)
     except gspread.exceptions.SpreadsheetNotFound:
-        print("Error: Spreadsheet not found. \n"
-              "1. Check if the name/key/URL is correct.\n")
-        # Decide if you want to exit or continue without sheet access
+        logger.error("Error: Spreadsheet not found. Check if the name/key/URL is correct.")
         exit(1)
     except gspread.exceptions.APIError as e:
-        print(f"Google Sheets API Error: {e}")
+        logger.error("Google Sheets API Error: %s", e)
         exit(1)
     except Exception as e:
         # Catch other potential errors during gspread initialization/opening
-        print(f"An error occurred during Google Sheets setup: {e}")
+        logger.error("An error occurred during Google Sheets setup: %s", e)
         exit(1)
 
-    print("Updating Google Sheet..")
+    logger.info("Updating Google Sheet..")
     export_to_sheets(spreadsheet=spreadsheet, sheet_name='Daily',
                      df=final_daily_df, mode='a')
 

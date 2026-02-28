@@ -2,10 +2,13 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import time
 from selenium.webdriver.common.keys import Keys
+from utils.logging_utils import get_logger
+
+logger = get_logger("scraping_utils")
 
 
 def get_summary_table(raw_html, today_date, method):
-    print(f"Getting {method} summary table for {today_date}")
+    logger.info("Getting %s summary table for %s", method, today_date)
     soup = BeautifulSoup(raw_html, 'html5lib')
     # html_table = soup.find('table')
     header_row = soup.find('tr')
@@ -44,7 +47,7 @@ def get_summary_table(raw_html, today_date, method):
 def get_individual_stock(sb, row):
     try:
         link = row['link']
-        print(f"Opening {row['symbol']}...")
+        logger.info("Opening %s...", row['symbol'])
         sb.open(link)
         # sb.execute_script("document.body.style.zoom='50%'")
 
@@ -60,7 +63,7 @@ def get_individual_stock(sb, row):
             if sidebar_condition in ['sidebar-open', 'dark-mode']:
                 sb.click('a[id*="collapse-burger"]')
         except Exception as e:
-            print(f"Error while collapsing sidebar: {e}")
+            logger.warning("Error while collapsing sidebar: %s", e)
 
         time.sleep(1)
         tc_overview_pic_name = f"screenshot/{row['date']}_{row['symbol']}"\
@@ -112,7 +115,7 @@ def get_individual_stock(sb, row):
             last_submit_button = submit_buttons[-1]
             last_submit_button.click()  # Click it
         else:
-            print("No submit buttons found!")
+            logger.warning("No submit buttons found!")
 
         time.sleep(1)
         pc_pic_name = f"screenshot/{row['date']}_{row['symbol']}_pc.png"
@@ -122,14 +125,15 @@ def get_individual_stock(sb, row):
                             bp_overview_pic_name, pc_pic_name]
         return pd.DataFrame([row])
     except Exception as e:
-        print(f"Error processing {row['symbol']}: {e}")
+        logger.error("Error processing %s: %s", row['symbol'], e)
         return pd.DataFrame()
 
 
-def fetch_sb_rt_data(scraper, min_lot, price_from, headers, proxies):
+def fetch_sb_rt_data(scraper, min_lot, price_from, headers, proxies,
+                     max_retries=3, retry_delay=5):
     """Fetches and paginates through trade data until no more results are
-    returned."""
-    print(f"Getting data for minimum lot: {min_lot}")
+    returned. Retries each page request up to max_retries times on failure."""
+    logger.info("Getting data for minimum lot: %s", min_lot)
     all_trades = []
     last_trade_number = None
 
@@ -146,21 +150,35 @@ def fetch_sb_rt_data(scraper, min_lot, price_from, headers, proxies):
             params['trade_number'] = last_trade_number
 
         time.sleep(2)
-        response = scraper.get(
-            'https://exodus.stockbit.com/company-price-feed/v2/running-trade',
-            params=params, headers=headers, proxies=proxies
-        )
-        response.raise_for_status()
+
+        # Retry logic for each page request
+        for attempt in range(1, max_retries + 1):
+            try:
+                response = scraper.get(
+                    'https://exodus.stockbit.com/company-price-feed/v2/running-trade',
+                    params=params, headers=headers, proxies=proxies
+                )
+                response.raise_for_status()
+                break  # Success — exit retry loop
+            except Exception as e:
+                logger.warning("Request failed (attempt %d/%d): %s", attempt, max_retries, e)
+                if attempt == max_retries:
+                    logger.error("Max retries reached. Stopping pagination.")
+                    return pd.concat(all_trades, ignore_index=True) if all_trades \
+                        else pd.DataFrame()
+                wait = retry_delay * attempt  # Exponential-ish backoff: 5s, 10s, 15s
+                logger.info("Retrying in %ds...", wait)
+                time.sleep(wait)
 
         trades = response.json().get('data', {}).get('running_trade', [])
         if not trades:
-            print("Done fetching.")
+            logger.info("Done fetching.")
             break
 
         current_df = pd.DataFrame(trades)
         all_trades.append(current_df)
         last_trade_number = current_df.iloc[-1]['trade_number']
-        print(f"Last Trade Number: {last_trade_number}")
+        logger.info("Last Trade Number: %s", last_trade_number)
 
     return pd.concat(all_trades, ignore_index=True) if all_trades \
         else pd.DataFrame()
