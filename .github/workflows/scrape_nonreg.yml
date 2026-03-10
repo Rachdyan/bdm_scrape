@@ -89,6 +89,7 @@ jobs:
         echo "def test_0(sb): pass" > verify_sb.py
         pytest verify_sb.py
     - name: Run python scrape_nonreg.py --debug
+      uses: nick-fields/retry@v3
       env:
         PROXY_USER: ${{ secrets.PROXY_USER }}
         PROXY_PASSWORD: ${{ secrets.PROXY_PASSWORD }}
@@ -103,8 +104,10 @@ jobs:
         SA_PRIVKEY: ${{ secrets.SA_PRIVKEY }}
         SA_CLIENTMAIL: ${{ secrets.SA_CLIENTMAIL }}
         SA_CLIENT_X509_URL: ${{ secrets.SA_CLIENT_X509_URL }}
-      run: |
-        python scrape_nonreg.py --debug
+      with:
+        timeout_minutes: 30
+        max_attempts: 3
+        command: python scrape_nonreg.py --debug
     - name: Upload debug artifacts on failure
       if: failure()
       uses: actions/upload-artifact@v4

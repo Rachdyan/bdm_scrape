@@ -1,0 +1,1809 @@
+[2026-03-01 22:39:52] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-01 22:39:54] [INFO ] [scraping_utils] Last Trade Number: 38184
+[2026-03-01 22:39:56] [INFO ] [scraping_utils] Last Trade Number: 65854
+[2026-03-01 22:39:59] [INFO ] [scraping_utils] Last Trade Number: 75476
+[2026-03-01 22:40:01] [INFO ] [scraping_utils] Last Trade Number: 77135
+[2026-03-01 22:40:03] [INFO ] [scraping_utils] Last Trade Number: 77955
+[2026-03-01 22:40:05] [INFO ] [scraping_utils] Last Trade Number: 91211
+[2026-03-01 22:40:07] [INFO ] [scraping_utils] Last Trade Number: 113248
+[2026-03-01 22:40:10] [INFO ] [scraping_utils] Last Trade Number: 138472
+[2026-03-01 22:40:12] [INFO ] [scraping_utils] Last Trade Number: 160646
+[2026-03-01 22:40:14] [INFO ] [scraping_utils] Last Trade Number: 178881
+[2026-03-01 22:40:17] [INFO ] [scraping_utils] Last Trade Number: 192011
+[2026-03-01 22:40:19] [INFO ] [scraping_utils] Last Trade Number: 213421
+[2026-03-01 22:40:22] [INFO ] [scraping_utils] Last Trade Number: 231485
+[2026-03-01 22:40:24] [INFO ] [scraping_utils] Last Trade Number: 252319
+[2026-03-01 22:40:26] [INFO ] [scraping_utils] Last Trade Number: 266447
+[2026-03-01 22:40:28] [INFO ] [scraping_utils] Last Trade Number: 283749
+[2026-03-01 22:40:30] [INFO ] [scraping_utils] Last Trade Number: 297232
+[2026-03-01 22:40:33] [INFO ] [scraping_utils] Last Trade Number: 311740
+[2026-03-01 22:40:35] [INFO ] [scraping_utils] Last Trade Number: 324610
+[2026-03-01 22:40:37] [INFO ] [scraping_utils] Last Trade Number: 352345
+[2026-03-01 22:40:39] [INFO ] [scraping_utils] Last Trade Number: 370104
+[2026-03-01 22:40:41] [INFO ] [scraping_utils] Last Trade Number: 385598
+[2026-03-01 22:40:43] [INFO ] [scraping_utils] Last Trade Number: 401627
+[2026-03-01 22:40:45] [INFO ] [scraping_utils] Last Trade Number: 422342
+[2026-03-01 22:40:48] [INFO ] [scraping_utils] Last Trade Number: 437540
+[2026-03-01 22:40:50] [INFO ] [scraping_utils] Last Trade Number: 457357
+[2026-03-01 22:40:52] [INFO ] [scraping_utils] Last Trade Number: 483942
+[2026-03-01 22:40:54] [INFO ] [scraping_utils] Last Trade Number: 503414
+[2026-03-01 22:40:57] [INFO ] [scraping_utils] Last Trade Number: 531919
+[2026-03-01 22:40:59] [INFO ] [scraping_utils] Last Trade Number: 561914
+[2026-03-01 22:41:01] [INFO ] [scraping_utils] Last Trade Number: 582255
+[2026-03-01 22:41:04] [INFO ] [scraping_utils] Last Trade Number: 605530
+[2026-03-01 22:41:06] [INFO ] [scraping_utils] Last Trade Number: 621444
+[2026-03-01 22:41:08] [INFO ] [scraping_utils] Last Trade Number: 640444
+[2026-03-01 22:41:10] [INFO ] [scraping_utils] Last Trade Number: 665436
+[2026-03-01 22:41:13] [INFO ] [scraping_utils] Last Trade Number: 686408
+[2026-03-01 22:41:15] [INFO ] [scraping_utils] Last Trade Number: 722398
+[2026-03-01 22:41:17] [INFO ] [scraping_utils] Last Trade Number: 741846
+[2026-03-01 22:41:19] [INFO ] [scraping_utils] Last Trade Number: 779131
+[2026-03-01 22:41:23] [INFO ] [scraping_utils] Last Trade Number: 823161
+[2026-03-01 22:41:25] [INFO ] [scraping_utils] Last Trade Number: 860840
+[2026-03-01 22:41:27] [INFO ] [scraping_utils] Last Trade Number: 892978
+[2026-03-01 22:41:30] [INFO ] [scraping_utils] Last Trade Number: 919220
+[2026-03-01 22:41:32] [INFO ] [scraping_utils] Last Trade Number: 937079
+[2026-03-01 22:41:34] [INFO ] [scraping_utils] Last Trade Number: 974252
+[2026-03-01 22:41:36] [INFO ] [scraping_utils] Last Trade Number: 1009761
+[2026-03-01 22:41:39] [INFO ] [scraping_utils] Last Trade Number: 1047026
+[2026-03-01 22:41:41] [INFO ] [scraping_utils] Last Trade Number: 1073540
+[2026-03-01 22:41:43] [INFO ] [scraping_utils] Last Trade Number: 1101510
+[2026-03-01 22:41:46] [INFO ] [scraping_utils] Last Trade Number: 1136656
+[2026-03-01 22:41:48] [INFO ] [scraping_utils] Last Trade Number: 1163977
+[2026-03-01 22:41:50] [INFO ] [scraping_utils] Last Trade Number: 1202520
+[2026-03-01 22:41:52] [INFO ] [scraping_utils] Last Trade Number: 1228791
+[2026-03-01 22:41:55] [INFO ] [scraping_utils] Last Trade Number: 1250061
+[2026-03-01 22:41:57] [INFO ] [scraping_utils] Last Trade Number: 1261691
+[2026-03-01 22:41:59] [INFO ] [scraping_utils] Last Trade Number: 1291789
+[2026-03-01 22:42:01] [INFO ] [scraping_utils] Last Trade Number: 1306931
+[2026-03-01 22:42:03] [INFO ] [scraping_utils] Last Trade Number: 1320235
+[2026-03-01 22:42:06] [INFO ] [scraping_utils] Last Trade Number: 1343825
+[2026-03-01 22:42:08] [INFO ] [scraping_utils] Last Trade Number: 1382414
+[2026-03-01 22:42:10] [INFO ] [scraping_utils] Last Trade Number: 1408939
+[2026-03-01 22:42:12] [INFO ] [scraping_utils] Last Trade Number: 1440982
+[2026-03-01 22:42:15] [INFO ] [scraping_utils] Last Trade Number: 1474558
+[2026-03-01 22:42:17] [INFO ] [scraping_utils] Last Trade Number: 1504468
+[2026-03-01 22:42:19] [INFO ] [scraping_utils] Last Trade Number: 1539992
+[2026-03-01 22:42:22] [INFO ] [scraping_utils] Last Trade Number: 1566436
+[2026-03-01 22:42:25] [INFO ] [scraping_utils] Last Trade Number: 1599604
+[2026-03-01 22:42:27] [INFO ] [scraping_utils] Last Trade Number: 1627691
+[2026-03-01 22:42:30] [INFO ] [scraping_utils] Last Trade Number: 1654702
+[2026-03-01 22:42:32] [INFO ] [scraping_utils] Last Trade Number: 1696012
+[2026-03-01 22:42:35] [INFO ] [scraping_utils] Last Trade Number: 1718666
+[2026-03-01 22:42:37] [INFO ] [scraping_utils] Last Trade Number: 1742222
+[2026-03-01 22:42:39] [INFO ] [scraping_utils] Last Trade Number: 1775341
+[2026-03-01 22:42:41] [INFO ] [scraping_utils] Last Trade Number: 1796647
+[2026-03-01 22:42:44] [INFO ] [scraping_utils] Last Trade Number: 1835929
+[2026-03-01 22:42:46] [INFO ] [scraping_utils] Last Trade Number: 1873775
+[2026-03-01 22:42:48] [INFO ] [scraping_utils] Last Trade Number: 1898849
+[2026-03-01 22:42:51] [INFO ] [scraping_utils] Last Trade Number: 1919902
+[2026-03-01 22:42:53] [INFO ] [scraping_utils] Last Trade Number: 1944699
+[2026-03-01 22:42:55] [INFO ] [scraping_utils] Last Trade Number: 1975078
+[2026-03-01 22:42:57] [INFO ] [scraping_utils] Last Trade Number: 1995497
+[2026-03-01 22:43:00] [INFO ] [scraping_utils] Last Trade Number: 2012203
+[2026-03-01 22:43:02] [INFO ] [scraping_utils] Last Trade Number: 2031364
+[2026-03-01 22:43:04] [INFO ] [scraping_utils] Last Trade Number: 2045666
+[2026-03-01 22:43:07] [INFO ] [scraping_utils] Last Trade Number: 2064388
+[2026-03-01 22:43:09] [INFO ] [scraping_utils] Last Trade Number: 2064573
+[2026-03-01 22:43:12] [INFO ] [scraping_utils] Last Trade Number: 2064844
+[2026-03-01 22:43:14] [INFO ] [scraping_utils] Last Trade Number: 2067369
+[2026-03-01 22:43:16] [INFO ] [scraping_utils] Last Trade Number: 2093674
+[2026-03-01 22:43:18] [INFO ] [scraping_utils] Last Trade Number: 2126032
+[2026-03-01 22:43:21] [INFO ] [scraping_utils] Last Trade Number: 2153759
+[2026-03-01 22:43:24] [INFO ] [scraping_utils] Last Trade Number: 2165593
+[2026-03-01 22:43:26] [INFO ] [scraping_utils] Last Trade Number: 2190503
+[2026-03-01 22:43:28] [INFO ] [scraping_utils] Last Trade Number: 2227079
+[2026-03-01 22:43:31] [INFO ] [scraping_utils] Last Trade Number: 2249395
+[2026-03-01 22:43:33] [INFO ] [scraping_utils] Last Trade Number: 2276667
+[2026-03-01 22:43:36] [INFO ] [scraping_utils] Last Trade Number: 2302342
+[2026-03-01 22:43:38] [INFO ] [scraping_utils] Last Trade Number: 2331409
+[2026-03-01 22:43:40] [INFO ] [scraping_utils] Last Trade Number: 2349283
+[2026-03-01 22:43:43] [INFO ] [scraping_utils] Last Trade Number: 2372523
+[2026-03-01 22:43:45] [INFO ] [scraping_utils] Last Trade Number: 2379756
+[2026-03-01 22:43:48] [INFO ] [scraping_utils] Last Trade Number: 2380677
+[2026-03-01 22:43:51] [INFO ] [scraping_utils] Last Trade Number: 2390799
+[2026-03-01 22:43:53] [INFO ] [scraping_utils] Last Trade Number: 2420878
+[2026-03-01 22:43:57] [INFO ] [scraping_utils] Last Trade Number: 2442409
+[2026-03-01 22:44:00] [INFO ] [scraping_utils] Last Trade Number: 2445798
+[2026-03-01 22:44:03] [INFO ] [scraping_utils] Last Trade Number: 2462283
+[2026-03-01 22:44:06] [INFO ] [scraping_utils] Last Trade Number: 2463726
+[2026-03-01 22:44:08] [INFO ] [scraping_utils] Last Trade Number: 2463839
+[2026-03-01 22:44:10] [INFO ] [scraping_utils] Last Trade Number: 2463951
+[2026-03-01 22:44:13] [INFO ] [scraping_utils] Last Trade Number: 2457585
+[2026-03-01 22:44:15] [INFO ] [scraping_utils] Last Trade Number: 2494908
+[2026-03-01 22:44:18] [INFO ] [scraping_utils] Last Trade Number: 2476564
+[2026-03-01 22:44:20] [INFO ] [scraping_utils] Last Trade Number: 2464096
+[2026-03-01 22:44:22] [INFO ] [scraping_utils] Last Trade Number: 2464212
+[2026-03-01 22:44:25] [INFO ] [scraping_utils] Last Trade Number: 2472597
+[2026-03-01 22:44:27] [INFO ] [scraping_utils] Last Trade Number: 2476470
+[2026-03-01 22:44:29] [INFO ] [scraping_utils] Last Trade Number: 2469044
+[2026-03-01 22:44:31] [INFO ] [scraping_utils] Last Trade Number: 2499054
+[2026-03-01 22:44:34] [INFO ] [scraping_utils] Last Trade Number: 2505227
+[2026-03-01 22:44:36] [INFO ] [scraping_utils] Last Trade Number: 2520692
+[2026-03-01 22:44:38] [INFO ] [scraping_utils] Last Trade Number: 2526914
+[2026-03-01 22:44:41] [INFO ] [scraping_utils] Done fetching.
+[2026-03-01 22:45:03] [INFO ] [scraping_utils] Opening BUMI...
+[2026-03-01 22:45:12] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-01 22:45:20] [ERROR] [scraping_utils] Error processing BUMI: Could not take screenshot. Most possible cause is the page has not finished loading yet.
+[2026-03-01 22:45:20] [INFO ] [scraping_utils] Opening GOTO...
+[2026-03-01 22:51:35] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-01 22:51:37] [INFO ] [scraping_utils] Last Trade Number: 38184
+[2026-03-01 22:51:39] [INFO ] [scraping_utils] Last Trade Number: 65854
+[2026-03-01 22:51:42] [INFO ] [scraping_utils] Last Trade Number: 75476
+[2026-03-01 22:51:44] [INFO ] [scraping_utils] Last Trade Number: 77135
+[2026-03-01 22:51:46] [INFO ] [scraping_utils] Last Trade Number: 77955
+[2026-03-01 22:51:48] [INFO ] [scraping_utils] Last Trade Number: 91211
+[2026-03-01 22:51:50] [INFO ] [scraping_utils] Last Trade Number: 113248
+[2026-03-01 22:51:52] [INFO ] [scraping_utils] Last Trade Number: 138472
+[2026-03-01 22:51:55] [INFO ] [scraping_utils] Last Trade Number: 160646
+[2026-03-01 22:51:57] [INFO ] [scraping_utils] Last Trade Number: 178881
+[2026-03-01 22:52:00] [INFO ] [scraping_utils] Last Trade Number: 192011
+[2026-03-01 22:52:02] [INFO ] [scraping_utils] Last Trade Number: 213421
+[2026-03-01 22:52:04] [INFO ] [scraping_utils] Last Trade Number: 231485
+[2026-03-01 22:52:07] [INFO ] [scraping_utils] Last Trade Number: 252319
+[2026-03-01 22:52:09] [INFO ] [scraping_utils] Last Trade Number: 266447
+[2026-03-01 22:52:11] [INFO ] [scraping_utils] Last Trade Number: 283749
+[2026-03-01 22:52:13] [INFO ] [scraping_utils] Last Trade Number: 297232
+[2026-03-01 22:52:16] [INFO ] [scraping_utils] Last Trade Number: 311740
+[2026-03-01 22:52:18] [INFO ] [scraping_utils] Last Trade Number: 324610
+[2026-03-01 22:52:20] [INFO ] [scraping_utils] Last Trade Number: 352345
+[2026-03-01 22:52:22] [INFO ] [scraping_utils] Last Trade Number: 370104
+[2026-03-01 22:52:24] [INFO ] [scraping_utils] Last Trade Number: 385598
+[2026-03-01 22:52:26] [INFO ] [scraping_utils] Last Trade Number: 401627
+[2026-03-01 22:52:29] [INFO ] [scraping_utils] Last Trade Number: 422342
+[2026-03-01 22:52:31] [INFO ] [scraping_utils] Last Trade Number: 437540
+[2026-03-01 22:52:33] [INFO ] [scraping_utils] Last Trade Number: 457357
+[2026-03-01 22:52:35] [INFO ] [scraping_utils] Last Trade Number: 483942
+[2026-03-01 22:52:37] [INFO ] [scraping_utils] Last Trade Number: 503414
+[2026-03-01 22:52:39] [INFO ] [scraping_utils] Last Trade Number: 531919
+[2026-03-01 22:52:42] [INFO ] [scraping_utils] Last Trade Number: 561914
+[2026-03-01 22:52:44] [INFO ] [scraping_utils] Last Trade Number: 582255
+[2026-03-01 22:52:46] [INFO ] [scraping_utils] Last Trade Number: 605530
+[2026-03-01 22:52:48] [INFO ] [scraping_utils] Last Trade Number: 621444
+[2026-03-01 22:52:51] [INFO ] [scraping_utils] Last Trade Number: 640444
+[2026-03-01 22:52:53] [INFO ] [scraping_utils] Last Trade Number: 665436
+[2026-03-01 22:52:55] [INFO ] [scraping_utils] Last Trade Number: 686408
+[2026-03-01 22:52:57] [INFO ] [scraping_utils] Last Trade Number: 722398
+[2026-03-01 22:53:00] [INFO ] [scraping_utils] Last Trade Number: 741846
+[2026-03-01 22:53:02] [INFO ] [scraping_utils] Last Trade Number: 779131
+[2026-03-01 22:53:04] [INFO ] [scraping_utils] Last Trade Number: 823161
+[2026-03-01 22:53:06] [INFO ] [scraping_utils] Last Trade Number: 860840
+[2026-03-01 22:53:09] [INFO ] [scraping_utils] Last Trade Number: 892978
+[2026-03-01 22:53:11] [INFO ] [scraping_utils] Last Trade Number: 919220
+[2026-03-01 22:53:13] [INFO ] [scraping_utils] Last Trade Number: 937079
+[2026-03-01 22:53:15] [INFO ] [scraping_utils] Last Trade Number: 974252
+[2026-03-01 22:53:17] [INFO ] [scraping_utils] Last Trade Number: 1009761
+[2026-03-01 22:53:20] [INFO ] [scraping_utils] Last Trade Number: 1047026
+[2026-03-01 22:53:22] [INFO ] [scraping_utils] Last Trade Number: 1073540
+[2026-03-01 22:53:25] [INFO ] [scraping_utils] Last Trade Number: 1101510
+[2026-03-01 22:53:27] [INFO ] [scraping_utils] Last Trade Number: 1136656
+[2026-03-01 22:53:30] [INFO ] [scraping_utils] Last Trade Number: 1163977
+[2026-03-01 22:53:32] [INFO ] [scraping_utils] Last Trade Number: 1202520
+[2026-03-01 22:53:35] [INFO ] [scraping_utils] Last Trade Number: 1228791
+[2026-03-01 22:53:37] [INFO ] [scraping_utils] Last Trade Number: 1250061
+[2026-03-01 22:53:40] [INFO ] [scraping_utils] Last Trade Number: 1261691
+[2026-03-01 22:53:42] [INFO ] [scraping_utils] Last Trade Number: 1291789
+[2026-03-01 22:53:45] [INFO ] [scraping_utils] Last Trade Number: 1306931
+[2026-03-01 22:53:47] [INFO ] [scraping_utils] Last Trade Number: 1320235
+[2026-03-01 22:53:49] [INFO ] [scraping_utils] Last Trade Number: 1343825
+[2026-03-01 22:53:54] [INFO ] [scraping_utils] Last Trade Number: 1382414
+[2026-03-01 22:53:56] [INFO ] [scraping_utils] Last Trade Number: 1408939
+[2026-03-01 22:53:58] [INFO ] [scraping_utils] Last Trade Number: 1440982
+[2026-03-01 22:54:00] [INFO ] [scraping_utils] Last Trade Number: 1474558
+[2026-03-01 22:54:03] [INFO ] [scraping_utils] Last Trade Number: 1504468
+[2026-03-01 22:54:05] [INFO ] [scraping_utils] Last Trade Number: 1539992
+[2026-03-01 22:54:08] [INFO ] [scraping_utils] Last Trade Number: 1566436
+[2026-03-01 22:54:10] [INFO ] [scraping_utils] Last Trade Number: 1599604
+[2026-03-01 22:54:13] [INFO ] [scraping_utils] Last Trade Number: 1627691
+[2026-03-01 22:54:15] [INFO ] [scraping_utils] Last Trade Number: 1654702
+[2026-03-01 22:54:17] [INFO ] [scraping_utils] Last Trade Number: 1696012
+[2026-03-01 22:54:19] [INFO ] [scraping_utils] Last Trade Number: 1718666
+[2026-03-01 22:54:21] [INFO ] [scraping_utils] Last Trade Number: 1742222
+[2026-03-01 22:54:24] [INFO ] [scraping_utils] Last Trade Number: 1775341
+[2026-03-01 22:54:26] [INFO ] [scraping_utils] Last Trade Number: 1796647
+[2026-03-01 22:54:29] [INFO ] [scraping_utils] Last Trade Number: 1835929
+[2026-03-01 22:54:32] [INFO ] [scraping_utils] Last Trade Number: 1873775
+[2026-03-01 22:54:34] [INFO ] [scraping_utils] Last Trade Number: 1898849
+[2026-03-01 22:54:37] [INFO ] [scraping_utils] Last Trade Number: 1919902
+[2026-03-01 22:54:39] [INFO ] [scraping_utils] Last Trade Number: 1944699
+[2026-03-01 22:54:42] [INFO ] [scraping_utils] Last Trade Number: 1975078
+[2026-03-01 22:54:44] [INFO ] [scraping_utils] Last Trade Number: 1995497
+[2026-03-01 22:54:47] [INFO ] [scraping_utils] Last Trade Number: 2012203
+[2026-03-01 22:54:50] [INFO ] [scraping_utils] Last Trade Number: 2031364
+[2026-03-01 22:54:52] [INFO ] [scraping_utils] Last Trade Number: 2045666
+[2026-03-01 22:54:56] [INFO ] [scraping_utils] Last Trade Number: 2064388
+[2026-03-01 22:54:59] [INFO ] [scraping_utils] Last Trade Number: 2064573
+[2026-03-01 22:55:07] [INFO ] [scraping_utils] Last Trade Number: 2064844
+[2026-03-01 22:55:09] [INFO ] [scraping_utils] Last Trade Number: 2067369
+[2026-03-01 22:55:11] [INFO ] [scraping_utils] Last Trade Number: 2093674
+[2026-03-01 22:55:13] [INFO ] [scraping_utils] Last Trade Number: 2126032
+[2026-03-01 22:55:15] [INFO ] [scraping_utils] Last Trade Number: 2153759
+[2026-03-01 22:55:18] [INFO ] [scraping_utils] Last Trade Number: 2165593
+[2026-03-01 22:55:20] [INFO ] [scraping_utils] Last Trade Number: 2190503
+[2026-03-01 22:55:22] [INFO ] [scraping_utils] Last Trade Number: 2227079
+[2026-03-01 22:55:24] [INFO ] [scraping_utils] Last Trade Number: 2249395
+[2026-03-01 22:55:27] [INFO ] [scraping_utils] Last Trade Number: 2276667
+[2026-03-01 22:55:29] [INFO ] [scraping_utils] Last Trade Number: 2302342
+[2026-03-01 22:55:32] [INFO ] [scraping_utils] Last Trade Number: 2331409
+[2026-03-01 22:55:34] [INFO ] [scraping_utils] Last Trade Number: 2349283
+[2026-03-01 22:55:36] [INFO ] [scraping_utils] Last Trade Number: 2372523
+[2026-03-01 22:55:38] [INFO ] [scraping_utils] Last Trade Number: 2379756
+[2026-03-01 22:55:41] [INFO ] [scraping_utils] Last Trade Number: 2380677
+[2026-03-01 22:55:43] [INFO ] [scraping_utils] Last Trade Number: 2390799
+[2026-03-01 22:55:46] [INFO ] [scraping_utils] Last Trade Number: 2420878
+[2026-03-01 22:55:48] [INFO ] [scraping_utils] Last Trade Number: 2442409
+[2026-03-01 22:55:51] [INFO ] [scraping_utils] Last Trade Number: 2445798
+[2026-03-01 22:55:54] [INFO ] [scraping_utils] Last Trade Number: 2462283
+[2026-03-01 22:55:56] [INFO ] [scraping_utils] Last Trade Number: 2463726
+[2026-03-01 22:55:58] [INFO ] [scraping_utils] Last Trade Number: 2463839
+[2026-03-01 22:56:00] [INFO ] [scraping_utils] Last Trade Number: 2463951
+[2026-03-01 22:56:03] [INFO ] [scraping_utils] Last Trade Number: 2457585
+[2026-03-01 22:56:05] [INFO ] [scraping_utils] Last Trade Number: 2494908
+[2026-03-01 22:56:07] [INFO ] [scraping_utils] Last Trade Number: 2476564
+[2026-03-01 22:56:09] [INFO ] [scraping_utils] Last Trade Number: 2464096
+[2026-03-01 22:56:12] [INFO ] [scraping_utils] Last Trade Number: 2464212
+[2026-03-01 22:56:14] [INFO ] [scraping_utils] Last Trade Number: 2472597
+[2026-03-01 22:56:16] [INFO ] [scraping_utils] Last Trade Number: 2476470
+[2026-03-01 22:56:19] [INFO ] [scraping_utils] Last Trade Number: 2469044
+[2026-03-01 22:56:21] [INFO ] [scraping_utils] Last Trade Number: 2499054
+[2026-03-01 22:56:23] [INFO ] [scraping_utils] Last Trade Number: 2505227
+[2026-03-01 22:56:25] [INFO ] [scraping_utils] Last Trade Number: 2520692
+[2026-03-01 22:56:28] [INFO ] [scraping_utils] Last Trade Number: 2526914
+[2026-03-01 22:56:30] [INFO ] [scraping_utils] Done fetching.
+[2026-03-01 22:56:52] [INFO ] [scraping_utils] Opening BUMI...
+[2026-03-01 22:57:14] [INFO ] [scraping_utils] Opening GOTO...
+[2026-03-01 22:57:36] [INFO ] [scraping_utils] Opening BNBR...
+[2026-03-01 22:57:58] [INFO ] [scraping_utils] Opening WMUU...
+[2026-03-01 22:58:21] [INFO ] [scraping_utils] Opening BIPI...
+[2026-03-01 22:58:43] [INFO ] [scraping_utils] Opening DEWA...
+[2026-03-01 22:59:07] [INFO ] [scraping_utils] Opening KOTA...
+[2026-03-01 22:59:30] [INFO ] [scraping_utils] Opening BULL...
+[2026-03-01 22:59:52] [INFO ] [scraping_utils] Opening INDF...
+[2026-03-01 23:00:14] [INFO ] [scraping_utils] Opening MDIA...
+[2026-03-01 23:00:38] [INFO ] [scraping_utils] Opening BKSL...
+[2026-03-01 23:01:00] [INFO ] [scraping_utils] Opening ACES...
+[2026-03-01 23:01:23] [INFO ] [scraping_utils] Opening PADI...
+[2026-03-01 23:01:54] [INFO ] [scraping_utils] Opening KAQI...
+[2026-03-01 23:02:17] [INFO ] [scraping_utils] Opening HOKI...
+[2026-03-01 23:02:40] [INFO ] [scraping_utils] Opening HGII...
+[2026-03-01 23:03:02] [INFO ] [scraping_utils] Opening BINA...
+[2026-03-01 23:03:24] [INFO ] [scraping_utils] Opening BRMS...
+[2026-03-01 23:03:47] [INFO ] [scraping_utils] Opening AVIA...
+[2026-03-01 23:04:09] [INFO ] [scraping_utils] Opening DSSA...
+[2026-03-01 23:04:31] [INFO ] [scraping_utils] Opening AHAP...
+[2026-03-01 23:04:53] [INFO ] [scraping_utils] Opening AMRT...
+[2026-03-01 23:05:17] [INFO ] [scraping_utils] Opening ASII...
+[2026-03-01 23:05:39] [INFO ] [scraping_utils] Opening BBNI...
+[2026-03-01 23:06:02] [INFO ] [scraping_utils] Opening BELL...
+[2026-03-01 23:06:26] [INFO ] [scraping_utils] Opening CLEO...
+[2026-03-01 23:06:50] [INFO ] [scraping_utils] Opening CUAN...
+[2026-03-01 23:07:14] [INFO ] [scraping_utils] Opening HUMI...
+[2026-03-01 23:07:38] [INFO ] [scraping_utils] Opening IBOS...
+[2026-03-01 23:08:01] [INFO ] [scraping_utils] Opening KIJA...
+[2026-03-01 23:08:25] [INFO ] [scraping_utils] Opening MSKY...
+[2026-03-01 23:08:49] [INFO ] [scraping_utils] Opening OASA...
+[2026-03-01 23:09:11] [INFO ] [scraping_utils] Opening PPRE...
+[2026-03-01 23:09:35] [INFO ] [scraping_utils] Opening PTRO...
+[2026-03-01 23:09:57] [INFO ] [scraping_utils] Opening TLKM...
+[2026-03-01 23:10:19] [INFO ] [scraping_utils] Opening WOWS...
+[2026-03-01 23:10:42] [INFO ] [scraping_utils] Opening APIC...
+[2026-03-01 23:11:04] [INFO ] [scraping_utils] Opening ASLI...
+[2026-03-01 23:11:26] [INFO ] [scraping_utils] Opening ASRI...
+[2026-03-01 23:11:48] [INFO ] [scraping_utils] Opening BIKE...
+[2026-03-01 23:12:11] [INFO ] [scraping_utils] Opening BSML...
+[2026-03-01 23:12:35] [INFO ] [scraping_utils] Opening CARE...
+[2026-03-01 23:12:57] [INFO ] [scraping_utils] Opening HATM...
+[2026-03-01 23:13:19] [INFO ] [scraping_utils] Opening HOMI...
+[2026-03-01 23:13:40] [INFO ] [scraping_utils] Opening KLBF...
+[2026-03-01 23:14:02] [INFO ] [scraping_utils] Opening MEJA...
+[2026-03-01 23:14:25] [INFO ] [scraping_utils] Opening NAYZ...
+[2026-03-01 23:14:47] [INFO ] [scraping_utils] Opening NIRO...
+[2026-03-01 23:15:09] [INFO ] [scraping_utils] Opening SFAN...
+[2026-03-01 23:15:32] [INFO ] [scraping_utils] Opening SGER...
+[2026-03-01 23:15:55] [INFO ] [scraping_utils] Opening SUPA...
+[2026-03-01 23:16:16] [INFO ] [scraping_utils] Opening TINS...
+[2026-03-01 23:16:38] [INFO ] [scraping_utils] Opening VISI...
+[2026-03-02 22:58:39] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-02 22:58:42] [INFO ] [scraping_utils] Last Trade Number: 27942
+[2026-03-02 22:58:44] [INFO ] [scraping_utils] Last Trade Number: 105953
+[2026-03-02 22:58:46] [INFO ] [scraping_utils] Last Trade Number: 136793
+[2026-03-02 22:58:48] [INFO ] [scraping_utils] Last Trade Number: 173442
+[2026-03-02 22:58:50] [INFO ] [scraping_utils] Last Trade Number: 198785
+[2026-03-02 22:58:53] [INFO ] [scraping_utils] Last Trade Number: 225285
+[2026-03-02 22:58:55] [INFO ] [scraping_utils] Last Trade Number: 258776
+[2026-03-02 22:58:57] [INFO ] [scraping_utils] Last Trade Number: 290285
+[2026-03-02 22:58:59] [INFO ] [scraping_utils] Last Trade Number: 328239
+[2026-03-02 22:59:02] [INFO ] [scraping_utils] Last Trade Number: 363288
+[2026-03-02 22:59:04] [INFO ] [scraping_utils] Last Trade Number: 396558
+[2026-03-02 22:59:06] [INFO ] [scraping_utils] Last Trade Number: 420472
+[2026-03-02 22:59:08] [INFO ] [scraping_utils] Last Trade Number: 439711
+[2026-03-02 22:59:11] [INFO ] [scraping_utils] Last Trade Number: 458865
+[2026-03-02 22:59:13] [INFO ] [scraping_utils] Last Trade Number: 477752
+[2026-03-02 22:59:15] [INFO ] [scraping_utils] Last Trade Number: 498602
+[2026-03-02 22:59:17] [INFO ] [scraping_utils] Last Trade Number: 524173
+[2026-03-02 22:59:19] [INFO ] [scraping_utils] Last Trade Number: 547014
+[2026-03-02 22:59:22] [INFO ] [scraping_utils] Last Trade Number: 588972
+[2026-03-02 22:59:24] [INFO ] [scraping_utils] Last Trade Number: 624296
+[2026-03-02 22:59:26] [INFO ] [scraping_utils] Last Trade Number: 651096
+[2026-03-02 22:59:28] [INFO ] [scraping_utils] Last Trade Number: 684576
+[2026-03-02 22:59:30] [INFO ] [scraping_utils] Last Trade Number: 711492
+[2026-03-02 22:59:33] [INFO ] [scraping_utils] Last Trade Number: 732802
+[2026-03-02 22:59:35] [INFO ] [scraping_utils] Last Trade Number: 761145
+[2026-03-02 22:59:37] [INFO ] [scraping_utils] Last Trade Number: 783991
+[2026-03-02 22:59:39] [INFO ] [scraping_utils] Last Trade Number: 820586
+[2026-03-02 22:59:42] [INFO ] [scraping_utils] Last Trade Number: 850842
+[2026-03-02 22:59:44] [INFO ] [scraping_utils] Last Trade Number: 878724
+[2026-03-02 22:59:46] [INFO ] [scraping_utils] Last Trade Number: 904201
+[2026-03-02 22:59:48] [INFO ] [scraping_utils] Last Trade Number: 939767
+[2026-03-02 22:59:51] [INFO ] [scraping_utils] Last Trade Number: 970410
+[2026-03-02 22:59:53] [INFO ] [scraping_utils] Last Trade Number: 1014699
+[2026-03-02 22:59:55] [INFO ] [scraping_utils] Last Trade Number: 1043898
+[2026-03-02 22:59:57] [INFO ] [scraping_utils] Last Trade Number: 1069717
+[2026-03-02 23:00:00] [INFO ] [scraping_utils] Last Trade Number: 1078946
+[2026-03-02 23:00:02] [INFO ] [scraping_utils] Last Trade Number: 1089124
+[2026-03-02 23:00:04] [INFO ] [scraping_utils] Last Trade Number: 1107941
+[2026-03-02 23:00:06] [INFO ] [scraping_utils] Last Trade Number: 1121868
+[2026-03-02 23:00:09] [INFO ] [scraping_utils] Last Trade Number: 1141922
+[2026-03-02 23:00:11] [INFO ] [scraping_utils] Last Trade Number: 1157921
+[2026-03-02 23:00:13] [INFO ] [scraping_utils] Last Trade Number: 1183863
+[2026-03-02 23:00:16] [INFO ] [scraping_utils] Last Trade Number: 1212156
+[2026-03-02 23:00:18] [INFO ] [scraping_utils] Last Trade Number: 1246134
+[2026-03-02 23:00:20] [INFO ] [scraping_utils] Last Trade Number: 1281589
+[2026-03-02 23:00:22] [INFO ] [scraping_utils] Last Trade Number: 1305922
+[2026-03-02 23:00:24] [INFO ] [scraping_utils] Last Trade Number: 1332424
+[2026-03-02 23:00:27] [INFO ] [scraping_utils] Last Trade Number: 1356449
+[2026-03-02 23:00:29] [INFO ] [scraping_utils] Last Trade Number: 1397662
+[2026-03-02 23:00:31] [INFO ] [scraping_utils] Last Trade Number: 1435458
+[2026-03-02 23:00:33] [INFO ] [scraping_utils] Last Trade Number: 1457117
+[2026-03-02 23:00:35] [INFO ] [scraping_utils] Last Trade Number: 1472094
+[2026-03-02 23:00:38] [INFO ] [scraping_utils] Last Trade Number: 1499609
+[2026-03-02 23:00:40] [INFO ] [scraping_utils] Last Trade Number: 1521462
+[2026-03-02 23:00:42] [INFO ] [scraping_utils] Last Trade Number: 1544535
+[2026-03-02 23:00:44] [INFO ] [scraping_utils] Last Trade Number: 1566429
+[2026-03-02 23:00:47] [INFO ] [scraping_utils] Last Trade Number: 1595010
+[2026-03-02 23:00:49] [INFO ] [scraping_utils] Last Trade Number: 1630282
+[2026-03-02 23:00:51] [INFO ] [scraping_utils] Last Trade Number: 1656722
+[2026-03-02 23:00:53] [INFO ] [scraping_utils] Last Trade Number: 1685870
+[2026-03-02 23:00:55] [INFO ] [scraping_utils] Last Trade Number: 1712859
+[2026-03-02 23:00:58] [INFO ] [scraping_utils] Last Trade Number: 1733111
+[2026-03-02 23:01:00] [INFO ] [scraping_utils] Last Trade Number: 1776123
+[2026-03-02 23:01:02] [INFO ] [scraping_utils] Last Trade Number: 1796049
+[2026-03-02 23:01:04] [INFO ] [scraping_utils] Last Trade Number: 1810530
+[2026-03-02 23:01:07] [INFO ] [scraping_utils] Last Trade Number: 1837659
+[2026-03-02 23:01:09] [INFO ] [scraping_utils] Last Trade Number: 1855905
+[2026-03-02 23:01:11] [INFO ] [scraping_utils] Last Trade Number: 1882485
+[2026-03-02 23:01:14] [INFO ] [scraping_utils] Last Trade Number: 1920203
+[2026-03-02 23:01:16] [INFO ] [scraping_utils] Last Trade Number: 1946990
+[2026-03-02 23:01:18] [INFO ] [scraping_utils] Last Trade Number: 1996243
+[2026-03-02 23:01:20] [INFO ] [scraping_utils] Last Trade Number: 2034176
+[2026-03-02 23:01:23] [INFO ] [scraping_utils] Last Trade Number: 2085163
+[2026-03-02 23:01:25] [INFO ] [scraping_utils] Last Trade Number: 2133734
+[2026-03-02 23:01:27] [INFO ] [scraping_utils] Last Trade Number: 2166874
+[2026-03-02 23:01:30] [INFO ] [scraping_utils] Last Trade Number: 2187822
+[2026-03-02 23:01:32] [INFO ] [scraping_utils] Last Trade Number: 2245696
+[2026-03-02 23:01:34] [INFO ] [scraping_utils] Last Trade Number: 2286530
+[2026-03-02 23:01:36] [INFO ] [scraping_utils] Last Trade Number: 2327235
+[2026-03-02 23:01:39] [INFO ] [scraping_utils] Last Trade Number: 2359822
+[2026-03-02 23:01:41] [INFO ] [scraping_utils] Last Trade Number: 2399284
+[2026-03-02 23:01:43] [INFO ] [scraping_utils] Last Trade Number: 2435762
+[2026-03-02 23:01:45] [INFO ] [scraping_utils] Last Trade Number: 2477547
+[2026-03-02 23:01:48] [INFO ] [scraping_utils] Last Trade Number: 2489163
+[2026-03-02 23:01:50] [INFO ] [scraping_utils] Last Trade Number: 2523952
+[2026-03-02 23:01:52] [INFO ] [scraping_utils] Last Trade Number: 2545838
+[2026-03-02 23:01:54] [INFO ] [scraping_utils] Last Trade Number: 2563139
+[2026-03-02 23:01:57] [INFO ] [scraping_utils] Last Trade Number: 2592005
+[2026-03-02 23:01:59] [INFO ] [scraping_utils] Last Trade Number: 2624302
+[2026-03-02 23:02:02] [INFO ] [scraping_utils] Last Trade Number: 2654002
+[2026-03-02 23:02:04] [INFO ] [scraping_utils] Last Trade Number: 2670360
+[2026-03-02 23:02:06] [INFO ] [scraping_utils] Last Trade Number: 2686266
+[2026-03-02 23:02:09] [INFO ] [scraping_utils] Last Trade Number: 2696558
+[2026-03-02 23:02:11] [INFO ] [scraping_utils] Last Trade Number: 2719013
+[2026-03-02 23:02:14] [INFO ] [scraping_utils] Last Trade Number: 2756315
+[2026-03-02 23:02:16] [INFO ] [scraping_utils] Last Trade Number: 2783953
+[2026-03-02 23:02:19] [INFO ] [scraping_utils] Last Trade Number: 2816655
+[2026-03-02 23:02:21] [INFO ] [scraping_utils] Last Trade Number: 2851185
+[2026-03-02 23:02:24] [INFO ] [scraping_utils] Last Trade Number: 2887157
+[2026-03-02 23:02:27] [INFO ] [scraping_utils] Last Trade Number: 2932001
+[2026-03-02 23:02:30] [INFO ] [scraping_utils] Last Trade Number: 2975939
+[2026-03-02 23:02:32] [INFO ] [scraping_utils] Last Trade Number: 3003962
+[2026-03-02 23:02:34] [INFO ] [scraping_utils] Last Trade Number: 3052805
+[2026-03-02 23:02:37] [INFO ] [scraping_utils] Last Trade Number: 3108846
+[2026-03-02 23:02:39] [INFO ] [scraping_utils] Last Trade Number: 3166442
+[2026-03-02 23:02:42] [INFO ] [scraping_utils] Last Trade Number: 3204937
+[2026-03-02 23:02:45] [INFO ] [scraping_utils] Last Trade Number: 3225359
+[2026-03-02 23:02:47] [INFO ] [scraping_utils] Last Trade Number: 3242474
+[2026-03-02 23:02:49] [INFO ] [scraping_utils] Last Trade Number: 3271418
+[2026-03-02 23:02:51] [INFO ] [scraping_utils] Last Trade Number: 3305797
+[2026-03-02 23:02:54] [INFO ] [scraping_utils] Last Trade Number: 3332055
+[2026-03-02 23:02:56] [INFO ] [scraping_utils] Last Trade Number: 3367786
+[2026-03-02 23:02:58] [INFO ] [scraping_utils] Last Trade Number: 3399008
+[2026-03-02 23:03:01] [INFO ] [scraping_utils] Last Trade Number: 3424045
+[2026-03-02 23:03:03] [INFO ] [scraping_utils] Last Trade Number: 3445191
+[2026-03-02 23:03:05] [INFO ] [scraping_utils] Last Trade Number: 3467219
+[2026-03-02 23:03:07] [INFO ] [scraping_utils] Last Trade Number: 3488172
+[2026-03-02 23:03:10] [INFO ] [scraping_utils] Last Trade Number: 3503525
+[2026-03-02 23:03:12] [INFO ] [scraping_utils] Last Trade Number: 3522087
+[2026-03-02 23:03:14] [INFO ] [scraping_utils] Last Trade Number: 3571781
+[2026-03-02 23:03:17] [INFO ] [scraping_utils] Last Trade Number: 3588270
+[2026-03-02 23:03:19] [INFO ] [scraping_utils] Last Trade Number: 3555654
+[2026-03-02 23:03:21] [INFO ] [scraping_utils] Last Trade Number: 3598843
+[2026-03-02 23:03:24] [INFO ] [scraping_utils] Last Trade Number: 3631510
+[2026-03-02 23:03:26] [INFO ] [scraping_utils] Last Trade Number: 3652157
+[2026-03-02 23:03:29] [INFO ] [scraping_utils] Done fetching.
+[2026-03-02 23:03:54] [INFO ] [scraping_utils] Opening BNBR...
+[2026-03-02 23:04:18] [INFO ] [scraping_utils] Opening BUMI...
+[2026-03-02 23:04:42] [INFO ] [scraping_utils] Opening BIPI...
+[2026-03-02 23:05:05] [INFO ] [scraping_utils] Opening WMUU...
+[2026-03-02 23:05:28] [INFO ] [scraping_utils] Opening COAL...
+[2026-03-02 23:05:51] [INFO ] [scraping_utils] Opening BKSL...
+[2026-03-02 23:06:15] [INFO ] [scraping_utils] Opening KAQI...
+[2026-03-02 23:06:39] [INFO ] [scraping_utils] Opening PADI...
+[2026-03-02 23:07:04] [INFO ] [scraping_utils] Opening DEWA...
+[2026-03-02 23:07:33] [INFO ] [scraping_utils] Opening LPKR...
+[2026-03-02 23:08:02] [INFO ] [scraping_utils] Opening JGLE...
+[2026-03-02 23:08:45] [INFO ] [scraping_utils] Opening BBKP...
+[2026-03-02 23:09:21] [INFO ] [scraping_utils] Opening ESSA...
+[2026-03-02 23:09:32] [ERROR] [scraping_utils] Error processing ESSA: 
+ Element {html} was not found after 7 seconds!
+[2026-03-02 23:09:32] [INFO ] [scraping_utils] Opening WOWS...
+[2026-03-02 23:10:13] [INFO ] [scraping_utils] Opening INET...
+[2026-03-02 23:10:44] [INFO ] [scraping_utils] Opening GOTO...
+[2026-03-02 23:11:10] [INFO ] [scraping_utils] Opening MEDC...
+[2026-03-02 23:11:36] [INFO ] [scraping_utils] Opening CARE...
+[2026-03-02 23:11:59] [INFO ] [scraping_utils] Opening CPRO...
+[2026-03-02 23:12:30] [INFO ] [scraping_utils] Opening CUAN...
+[2026-03-02 23:13:06] [INFO ] [scraping_utils] Opening DOOH...
+[2026-03-02 23:13:41] [INFO ] [scraping_utils] Opening GMFI...
+[2026-03-02 23:14:21] [INFO ] [scraping_utils] Opening GRPH...
+[2026-03-02 23:14:34] [ERROR] [scraping_utils] Error processing GRPH: 
+ Element {html} was not found after 7 seconds!
+[2026-03-02 23:14:34] [INFO ] [scraping_utils] Opening IBOS...
+[2026-03-02 23:15:01] [INFO ] [scraping_utils] Opening LEAD...
+[2026-03-02 23:15:34] [INFO ] [scraping_utils] Opening MNCN...
+[2026-03-02 23:16:07] [INFO ] [scraping_utils] Opening NCKL...
+[2026-03-02 23:16:37] [INFO ] [scraping_utils] Opening PPRE...
+[2026-03-02 23:17:03] [INFO ] [scraping_utils] Opening SUPA...
+[2026-03-02 23:17:25] [INFO ] [scraping_utils] Opening TLKM...
+[2026-03-02 23:17:48] [INFO ] [scraping_utils] Opening TRUE...
+[2026-03-02 23:18:09] [INFO ] [scraping_utils] Opening APIC...
+[2026-03-02 23:18:31] [INFO ] [scraping_utils] Opening BRPT...
+[2026-03-02 23:18:53] [INFO ] [scraping_utils] Opening GRPM...
+[2026-03-02 23:19:15] [INFO ] [scraping_utils] Opening GZCO...
+[2026-03-02 23:19:38] [INFO ] [scraping_utils] Opening INDY...
+[2026-03-02 23:20:00] [INFO ] [scraping_utils] Opening LAPD...
+[2026-03-02 23:20:23] [INFO ] [scraping_utils] Opening MEDCBQCH6A...
+[2026-03-02 23:20:39] [ERROR] [scraping_utils] Error processing MEDCBQCH6A: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-02 23:20:39] [INFO ] [scraping_utils] Opening MTEL...
+[2026-03-02 23:21:01] [INFO ] [scraping_utils] Opening OMED...
+[2026-03-02 23:21:22] [INFO ] [scraping_utils] Opening RSCH...
+[2026-03-02 23:21:44] [INFO ] [scraping_utils] Opening RUIS...
+[2026-03-02 23:22:06] [INFO ] [scraping_utils] Opening SGER...
+[2026-03-02 23:22:29] [INFO ] [scraping_utils] Opening SIMP...
+[2026-03-02 23:22:51] [INFO ] [scraping_utils] Opening TAMA...
+[2026-03-02 23:23:14] [INFO ] [scraping_utils] Opening WINS...
+[2026-03-02 23:23:37] [INFO ] [scraping_utils] Opening YULE...
+[2026-03-03 22:09:46] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-03 22:09:49] [INFO ] [scraping_utils] Last Trade Number: 38507
+[2026-03-03 22:09:51] [INFO ] [scraping_utils] Last Trade Number: 61882
+[2026-03-03 22:09:53] [INFO ] [scraping_utils] Last Trade Number: 91891
+[2026-03-03 22:09:55] [INFO ] [scraping_utils] Last Trade Number: 116277
+[2026-03-03 22:09:58] [INFO ] [scraping_utils] Last Trade Number: 134983
+[2026-03-03 22:10:00] [INFO ] [scraping_utils] Last Trade Number: 159855
+[2026-03-03 22:10:02] [INFO ] [scraping_utils] Last Trade Number: 181148
+[2026-03-03 22:10:04] [INFO ] [scraping_utils] Last Trade Number: 200592
+[2026-03-03 22:10:07] [INFO ] [scraping_utils] Last Trade Number: 225731
+[2026-03-03 22:10:10] [INFO ] [scraping_utils] Last Trade Number: 257923
+[2026-03-03 22:10:12] [INFO ] [scraping_utils] Last Trade Number: 288293
+[2026-03-03 22:10:15] [INFO ] [scraping_utils] Last Trade Number: 312759
+[2026-03-03 22:10:17] [INFO ] [scraping_utils] Last Trade Number: 333458
+[2026-03-03 22:10:19] [INFO ] [scraping_utils] Last Trade Number: 359705
+[2026-03-03 22:10:22] [INFO ] [scraping_utils] Last Trade Number: 381456
+[2026-03-03 22:10:25] [INFO ] [scraping_utils] Last Trade Number: 412677
+[2026-03-03 22:10:28] [INFO ] [scraping_utils] Last Trade Number: 440484
+[2026-03-03 22:10:30] [INFO ] [scraping_utils] Last Trade Number: 473175
+[2026-03-03 22:10:32] [INFO ] [scraping_utils] Last Trade Number: 498378
+[2026-03-03 22:10:35] [INFO ] [scraping_utils] Last Trade Number: 528957
+[2026-03-03 22:10:37] [INFO ] [scraping_utils] Last Trade Number: 560316
+[2026-03-03 22:10:39] [INFO ] [scraping_utils] Last Trade Number: 586907
+[2026-03-03 22:10:42] [INFO ] [scraping_utils] Last Trade Number: 616528
+[2026-03-03 22:10:45] [INFO ] [scraping_utils] Last Trade Number: 637456
+[2026-03-03 22:10:47] [INFO ] [scraping_utils] Last Trade Number: 676581
+[2026-03-03 22:10:49] [INFO ] [scraping_utils] Last Trade Number: 713338
+[2026-03-03 22:10:52] [INFO ] [scraping_utils] Last Trade Number: 744482
+[2026-03-03 22:10:54] [INFO ] [scraping_utils] Last Trade Number: 774733
+[2026-03-03 22:10:57] [INFO ] [scraping_utils] Last Trade Number: 796784
+[2026-03-03 22:10:59] [INFO ] [scraping_utils] Last Trade Number: 822733
+[2026-03-03 22:11:01] [INFO ] [scraping_utils] Last Trade Number: 850049
+[2026-03-03 22:11:04] [INFO ] [scraping_utils] Last Trade Number: 867588
+[2026-03-03 22:11:06] [INFO ] [scraping_utils] Last Trade Number: 900768
+[2026-03-03 22:11:09] [INFO ] [scraping_utils] Last Trade Number: 932695
+[2026-03-03 22:11:11] [INFO ] [scraping_utils] Last Trade Number: 963315
+[2026-03-03 22:11:14] [INFO ] [scraping_utils] Last Trade Number: 1011313
+[2026-03-03 22:11:16] [INFO ] [scraping_utils] Last Trade Number: 1058305
+[2026-03-03 22:11:18] [INFO ] [scraping_utils] Last Trade Number: 1105406
+[2026-03-03 22:11:21] [INFO ] [scraping_utils] Last Trade Number: 1142162
+[2026-03-03 22:11:24] [INFO ] [scraping_utils] Last Trade Number: 1173162
+[2026-03-03 22:11:26] [INFO ] [scraping_utils] Last Trade Number: 1228927
+[2026-03-03 22:11:29] [INFO ] [scraping_utils] Last Trade Number: 1274119
+[2026-03-03 22:11:32] [INFO ] [scraping_utils] Last Trade Number: 1292665
+[2026-03-03 22:11:34] [INFO ] [scraping_utils] Last Trade Number: 1328606
+[2026-03-03 22:11:36] [INFO ] [scraping_utils] Last Trade Number: 1360827
+[2026-03-03 22:11:39] [INFO ] [scraping_utils] Last Trade Number: 1391665
+[2026-03-03 22:11:41] [INFO ] [scraping_utils] Last Trade Number: 1426312
+[2026-03-03 22:11:43] [INFO ] [scraping_utils] Last Trade Number: 1463896
+[2026-03-03 22:11:46] [INFO ] [scraping_utils] Last Trade Number: 1494973
+[2026-03-03 22:11:48] [INFO ] [scraping_utils] Last Trade Number: 1537522
+[2026-03-03 22:11:51] [INFO ] [scraping_utils] Last Trade Number: 1565010
+[2026-03-03 22:11:53] [INFO ] [scraping_utils] Last Trade Number: 1589678
+[2026-03-03 22:11:55] [INFO ] [scraping_utils] Last Trade Number: 1632737
+[2026-03-03 22:11:58] [INFO ] [scraping_utils] Last Trade Number: 1657975
+[2026-03-03 22:12:00] [INFO ] [scraping_utils] Last Trade Number: 1695843
+[2026-03-03 22:12:02] [INFO ] [scraping_utils] Last Trade Number: 1748398
+[2026-03-03 22:12:05] [INFO ] [scraping_utils] Last Trade Number: 1805734
+[2026-03-03 22:12:07] [INFO ] [scraping_utils] Last Trade Number: 1849182
+[2026-03-03 22:12:10] [INFO ] [scraping_utils] Last Trade Number: 1908877
+[2026-03-03 22:12:12] [INFO ] [scraping_utils] Last Trade Number: 1924341
+[2026-03-03 22:12:14] [INFO ] [scraping_utils] Last Trade Number: 1980122
+[2026-03-03 22:12:18] [INFO ] [scraping_utils] Last Trade Number: 2029349
+[2026-03-03 22:12:20] [INFO ] [scraping_utils] Last Trade Number: 2064932
+[2026-03-03 22:12:23] [INFO ] [scraping_utils] Last Trade Number: 2085459
+[2026-03-03 22:12:25] [INFO ] [scraping_utils] Last Trade Number: 2119329
+[2026-03-03 22:12:28] [INFO ] [scraping_utils] Last Trade Number: 2169472
+[2026-03-03 22:12:30] [INFO ] [scraping_utils] Last Trade Number: 2223830
+[2026-03-03 22:12:33] [INFO ] [scraping_utils] Last Trade Number: 2282903
+[2026-03-03 22:12:36] [INFO ] [scraping_utils] Last Trade Number: 2351874
+[2026-03-03 22:12:38] [INFO ] [scraping_utils] Last Trade Number: 2397439
+[2026-03-03 22:12:41] [INFO ] [scraping_utils] Last Trade Number: 2431362
+[2026-03-03 22:12:43] [INFO ] [scraping_utils] Last Trade Number: 2453551
+[2026-03-03 22:12:46] [INFO ] [scraping_utils] Last Trade Number: 2488313
+[2026-03-03 22:12:48] [INFO ] [scraping_utils] Last Trade Number: 2542810
+[2026-03-03 22:12:50] [INFO ] [scraping_utils] Last Trade Number: 2592526
+[2026-03-03 22:12:53] [INFO ] [scraping_utils] Last Trade Number: 2611054
+[2026-03-03 22:12:55] [INFO ] [scraping_utils] Last Trade Number: 2645767
+[2026-03-03 22:12:58] [INFO ] [scraping_utils] Last Trade Number: 2692213
+[2026-03-03 22:13:00] [INFO ] [scraping_utils] Last Trade Number: 2722583
+[2026-03-03 22:13:02] [INFO ] [scraping_utils] Last Trade Number: 2748392
+[2026-03-03 22:13:04] [INFO ] [scraping_utils] Last Trade Number: 2792442
+[2026-03-03 22:13:07] [INFO ] [scraping_utils] Last Trade Number: 2837646
+[2026-03-03 22:13:10] [INFO ] [scraping_utils] Last Trade Number: 2885060
+[2026-03-03 22:13:13] [INFO ] [scraping_utils] Last Trade Number: 2917824
+[2026-03-03 22:13:15] [INFO ] [scraping_utils] Last Trade Number: 2921778
+[2026-03-03 22:13:18] [INFO ] [scraping_utils] Last Trade Number: 2949389
+[2026-03-03 22:13:20] [INFO ] [scraping_utils] Last Trade Number: 2956412
+[2026-03-03 22:13:22] [INFO ] [scraping_utils] Done fetching.
+[2026-03-03 22:13:46] [INFO ] [scraping_utils] Opening BUMI...
+[2026-03-03 22:13:57] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:14:11] [ERROR] [scraping_utils] Error processing BUMI: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:14:11] [INFO ] [scraping_utils] Opening BNBR...
+[2026-03-03 22:14:22] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:14:37] [ERROR] [scraping_utils] Error processing BNBR: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:14:37] [INFO ] [scraping_utils] Opening BIPI...
+[2026-03-03 22:14:47] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:15:01] [ERROR] [scraping_utils] Error processing BIPI: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:15:01] [INFO ] [scraping_utils] Opening BULL...
+[2026-03-03 22:15:12] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:15:27] [ERROR] [scraping_utils] Error processing BULL: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:15:27] [INFO ] [scraping_utils] Opening BKSL...
+[2026-03-03 22:15:37] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:15:52] [ERROR] [scraping_utils] Error processing BKSL: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:15:52] [INFO ] [scraping_utils] Opening IATA...
+[2026-03-03 22:16:02] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:16:17] [ERROR] [scraping_utils] Error processing IATA: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:16:17] [INFO ] [scraping_utils] Opening ESSA...
+[2026-03-03 22:16:28] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:16:43] [ERROR] [scraping_utils] Error processing ESSA: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:16:43] [INFO ] [scraping_utils] Opening PADI...
+[2026-03-03 22:16:54] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:17:08] [ERROR] [scraping_utils] Error processing PADI: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:17:08] [INFO ] [scraping_utils] Opening HUMI...
+[2026-03-03 22:17:19] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:17:34] [ERROR] [scraping_utils] Error processing HUMI: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:17:34] [INFO ] [scraping_utils] Opening WMUU...
+[2026-03-03 22:17:45] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:17:59] [ERROR] [scraping_utils] Error processing WMUU: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:17:59] [INFO ] [scraping_utils] Opening DEWA...
+[2026-03-03 22:18:10] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:18:25] [ERROR] [scraping_utils] Error processing DEWA: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:18:25] [INFO ] [scraping_utils] Opening MINA...
+[2026-03-03 22:18:36] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:18:51] [ERROR] [scraping_utils] Error processing MINA: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:18:51] [INFO ] [scraping_utils] Opening GTSI...
+[2026-03-03 22:19:02] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:19:16] [ERROR] [scraping_utils] Error processing GTSI: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:19:16] [INFO ] [scraping_utils] Opening KOTA...
+[2026-03-03 22:19:27] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:19:42] [ERROR] [scraping_utils] Error processing KOTA: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:19:42] [INFO ] [scraping_utils] Opening KAQI...
+[2026-03-03 22:19:53] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:20:08] [ERROR] [scraping_utils] Error processing KAQI: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:20:08] [INFO ] [scraping_utils] Opening SGRO...
+[2026-03-03 22:20:18] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:20:33] [ERROR] [scraping_utils] Error processing SGRO: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:20:33] [INFO ] [scraping_utils] Opening GOTO...
+[2026-03-03 22:20:44] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:20:59] [ERROR] [scraping_utils] Error processing GOTO: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:20:59] [INFO ] [scraping_utils] Opening ARCI...
+[2026-03-03 22:21:10] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:21:25] [ERROR] [scraping_utils] Error processing ARCI: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:21:25] [INFO ] [scraping_utils] Opening BELL...
+[2026-03-03 22:21:35] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:21:50] [ERROR] [scraping_utils] Error processing BELL: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:21:50] [INFO ] [scraping_utils] Opening HOKI...
+[2026-03-03 22:22:01] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:22:16] [ERROR] [scraping_utils] Error processing HOKI: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:22:16] [INFO ] [scraping_utils] Opening IRSX...
+[2026-03-03 22:22:33] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:22:48] [ERROR] [scraping_utils] Error processing IRSX: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:22:48] [INFO ] [scraping_utils] Opening JGLE...
+[2026-03-03 22:22:58] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:23:13] [ERROR] [scraping_utils] Error processing JGLE: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:23:13] [INFO ] [scraping_utils] Opening KLBF...
+[2026-03-03 22:23:23] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:23:38] [ERROR] [scraping_utils] Error processing KLBF: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:23:38] [INFO ] [scraping_utils] Opening NETV...
+[2026-03-03 22:23:49] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:24:03] [ERROR] [scraping_utils] Error processing NETV: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:24:03] [INFO ] [scraping_utils] Opening SCMA...
+[2026-03-03 22:24:25] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:24:39] [ERROR] [scraping_utils] Error processing SCMA: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:24:39] [INFO ] [scraping_utils] Opening BATR...
+[2026-03-03 22:24:50] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:25:05] [ERROR] [scraping_utils] Error processing BATR: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:25:05] [INFO ] [scraping_utils] Opening BIKE...
+[2026-03-03 22:25:15] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:25:30] [ERROR] [scraping_utils] Error processing BIKE: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:25:30] [INFO ] [scraping_utils] Opening BKDP...
+[2026-03-03 22:25:40] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:25:55] [ERROR] [scraping_utils] Error processing BKDP: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:25:55] [INFO ] [scraping_utils] Opening CARE...
+[2026-03-03 22:26:05] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:26:19] [ERROR] [scraping_utils] Error processing CARE: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:26:19] [INFO ] [scraping_utils] Opening CBDK...
+[2026-03-03 22:26:32] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:26:47] [ERROR] [scraping_utils] Error processing CBDK: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:26:47] [INFO ] [scraping_utils] Opening GPRA...
+[2026-03-03 22:26:58] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:27:12] [ERROR] [scraping_utils] Error processing GPRA: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:27:12] [INFO ] [scraping_utils] Opening GPSO...
+[2026-03-03 22:27:23] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:27:38] [ERROR] [scraping_utils] Error processing GPSO: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:27:38] [INFO ] [scraping_utils] Opening HATM...
+[2026-03-03 22:27:49] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:28:04] [ERROR] [scraping_utils] Error processing HATM: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:28:04] [INFO ] [scraping_utils] Opening LAJU...
+[2026-03-03 22:28:18] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:28:32] [ERROR] [scraping_utils] Error processing LAJU: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:28:32] [INFO ] [scraping_utils] Opening LAPD...
+[2026-03-03 22:28:47] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:29:02] [ERROR] [scraping_utils] Error processing LAPD: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:29:02] [INFO ] [scraping_utils] Opening NTBK...
+[2026-03-03 22:29:12] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:29:27] [ERROR] [scraping_utils] Error processing NTBK: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:29:27] [INFO ] [scraping_utils] Opening OMED...
+[2026-03-03 22:29:38] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:29:52] [ERROR] [scraping_utils] Error processing OMED: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:29:52] [INFO ] [scraping_utils] Opening PMUI...
+[2026-03-03 22:30:03] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:30:18] [ERROR] [scraping_utils] Error processing PMUI: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:30:18] [INFO ] [scraping_utils] Opening SGER...
+[2026-03-03 22:30:28] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:30:43] [ERROR] [scraping_utils] Error processing SGER: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:30:43] [INFO ] [scraping_utils] Opening TAMA...
+[2026-03-03 22:30:53] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:31:08] [ERROR] [scraping_utils] Error processing TAMA: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:31:08] [INFO ] [scraping_utils] Opening TOBA...
+[2026-03-03 22:31:18] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-03 22:31:33] [ERROR] [scraping_utils] Error processing TOBA: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-03 22:36:52] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-03 22:36:56] [INFO ] [scraping_utils] Last Trade Number: 38507
+[2026-03-03 22:36:58] [INFO ] [scraping_utils] Last Trade Number: 61882
+[2026-03-03 22:37:01] [INFO ] [scraping_utils] Last Trade Number: 91891
+[2026-03-03 22:37:03] [INFO ] [scraping_utils] Last Trade Number: 116277
+[2026-03-03 22:37:05] [INFO ] [scraping_utils] Last Trade Number: 134983
+[2026-03-03 22:37:07] [INFO ] [scraping_utils] Last Trade Number: 159855
+[2026-03-03 22:37:10] [INFO ] [scraping_utils] Last Trade Number: 181148
+[2026-03-03 22:37:12] [INFO ] [scraping_utils] Last Trade Number: 200592
+[2026-03-03 22:37:14] [INFO ] [scraping_utils] Last Trade Number: 225731
+[2026-03-03 22:37:17] [INFO ] [scraping_utils] Last Trade Number: 257923
+[2026-03-03 22:37:19] [INFO ] [scraping_utils] Last Trade Number: 288293
+[2026-03-03 22:37:21] [INFO ] [scraping_utils] Last Trade Number: 312759
+[2026-03-03 22:37:24] [INFO ] [scraping_utils] Last Trade Number: 333458
+[2026-03-03 22:37:26] [INFO ] [scraping_utils] Last Trade Number: 359705
+[2026-03-03 22:37:28] [INFO ] [scraping_utils] Last Trade Number: 381456
+[2026-03-03 22:37:30] [INFO ] [scraping_utils] Last Trade Number: 412677
+[2026-03-03 22:37:33] [INFO ] [scraping_utils] Last Trade Number: 440484
+[2026-03-03 22:37:35] [INFO ] [scraping_utils] Last Trade Number: 473175
+[2026-03-03 22:37:38] [INFO ] [scraping_utils] Last Trade Number: 498378
+[2026-03-03 22:37:40] [INFO ] [scraping_utils] Last Trade Number: 528957
+[2026-03-03 22:37:42] [INFO ] [scraping_utils] Last Trade Number: 560316
+[2026-03-03 22:37:44] [INFO ] [scraping_utils] Last Trade Number: 586907
+[2026-03-03 22:37:47] [INFO ] [scraping_utils] Last Trade Number: 616528
+[2026-03-03 22:37:51] [INFO ] [scraping_utils] Last Trade Number: 637456
+[2026-03-03 22:37:54] [INFO ] [scraping_utils] Last Trade Number: 676581
+[2026-03-03 22:37:57] [INFO ] [scraping_utils] Last Trade Number: 713338
+[2026-03-03 22:38:00] [INFO ] [scraping_utils] Last Trade Number: 744482
+[2026-03-03 22:38:03] [INFO ] [scraping_utils] Last Trade Number: 774733
+[2026-03-03 22:38:05] [INFO ] [scraping_utils] Last Trade Number: 796784
+[2026-03-03 22:38:08] [INFO ] [scraping_utils] Last Trade Number: 822733
+[2026-03-03 22:38:10] [INFO ] [scraping_utils] Last Trade Number: 850049
+[2026-03-03 22:38:12] [INFO ] [scraping_utils] Last Trade Number: 867588
+[2026-03-03 22:38:15] [INFO ] [scraping_utils] Last Trade Number: 900768
+[2026-03-03 22:38:17] [INFO ] [scraping_utils] Last Trade Number: 932695
+[2026-03-03 22:38:19] [INFO ] [scraping_utils] Last Trade Number: 963315
+[2026-03-03 22:38:22] [INFO ] [scraping_utils] Last Trade Number: 1011313
+[2026-03-03 22:38:24] [INFO ] [scraping_utils] Last Trade Number: 1058305
+[2026-03-03 22:38:27] [INFO ] [scraping_utils] Last Trade Number: 1105406
+[2026-03-03 22:38:29] [INFO ] [scraping_utils] Last Trade Number: 1142162
+[2026-03-03 22:38:32] [INFO ] [scraping_utils] Last Trade Number: 1173162
+[2026-03-03 22:38:35] [INFO ] [scraping_utils] Last Trade Number: 1228927
+[2026-03-03 22:38:37] [INFO ] [scraping_utils] Last Trade Number: 1274119
+[2026-03-03 22:38:39] [INFO ] [scraping_utils] Last Trade Number: 1292665
+[2026-03-03 22:38:41] [INFO ] [scraping_utils] Last Trade Number: 1328606
+[2026-03-03 22:38:44] [INFO ] [scraping_utils] Last Trade Number: 1360827
+[2026-03-03 22:38:46] [INFO ] [scraping_utils] Last Trade Number: 1391665
+[2026-03-03 22:38:48] [INFO ] [scraping_utils] Last Trade Number: 1426312
+[2026-03-03 22:38:51] [INFO ] [scraping_utils] Last Trade Number: 1463896
+[2026-03-03 22:38:53] [INFO ] [scraping_utils] Last Trade Number: 1494973
+[2026-03-03 22:38:56] [INFO ] [scraping_utils] Last Trade Number: 1537522
+[2026-03-03 22:38:58] [INFO ] [scraping_utils] Last Trade Number: 1565010
+[2026-03-03 22:39:01] [INFO ] [scraping_utils] Last Trade Number: 1589678
+[2026-03-03 22:39:03] [INFO ] [scraping_utils] Last Trade Number: 1632737
+[2026-03-03 22:39:06] [INFO ] [scraping_utils] Last Trade Number: 1657975
+[2026-03-03 22:39:09] [INFO ] [scraping_utils] Last Trade Number: 1695843
+[2026-03-03 22:39:12] [INFO ] [scraping_utils] Last Trade Number: 1748398
+[2026-03-03 22:39:14] [INFO ] [scraping_utils] Last Trade Number: 1805734
+[2026-03-03 22:39:17] [INFO ] [scraping_utils] Last Trade Number: 1849182
+[2026-03-03 22:39:19] [INFO ] [scraping_utils] Last Trade Number: 1908877
+[2026-03-03 22:39:21] [INFO ] [scraping_utils] Last Trade Number: 1924341
+[2026-03-03 22:39:24] [INFO ] [scraping_utils] Last Trade Number: 1980122
+[2026-03-03 22:39:26] [INFO ] [scraping_utils] Last Trade Number: 2029349
+[2026-03-03 22:39:28] [INFO ] [scraping_utils] Last Trade Number: 2064932
+[2026-03-03 22:39:31] [INFO ] [scraping_utils] Last Trade Number: 2085459
+[2026-03-03 22:39:33] [INFO ] [scraping_utils] Last Trade Number: 2119329
+[2026-03-03 22:39:36] [INFO ] [scraping_utils] Last Trade Number: 2169472
+[2026-03-03 22:39:38] [INFO ] [scraping_utils] Last Trade Number: 2223830
+[2026-03-03 22:39:40] [INFO ] [scraping_utils] Last Trade Number: 2282903
+[2026-03-03 22:39:43] [INFO ] [scraping_utils] Last Trade Number: 2351874
+[2026-03-03 22:39:45] [INFO ] [scraping_utils] Last Trade Number: 2397439
+[2026-03-03 22:39:48] [INFO ] [scraping_utils] Last Trade Number: 2431362
+[2026-03-03 22:39:50] [INFO ] [scraping_utils] Last Trade Number: 2453551
+[2026-03-03 22:39:52] [INFO ] [scraping_utils] Last Trade Number: 2488313
+[2026-03-03 22:39:55] [INFO ] [scraping_utils] Last Trade Number: 2542810
+[2026-03-03 22:39:58] [INFO ] [scraping_utils] Last Trade Number: 2592526
+[2026-03-03 22:40:00] [INFO ] [scraping_utils] Last Trade Number: 2611054
+[2026-03-03 22:40:02] [INFO ] [scraping_utils] Last Trade Number: 2645767
+[2026-03-03 22:40:05] [INFO ] [scraping_utils] Last Trade Number: 2692213
+[2026-03-03 22:40:07] [INFO ] [scraping_utils] Last Trade Number: 2722583
+[2026-03-03 22:40:10] [INFO ] [scraping_utils] Last Trade Number: 2748392
+[2026-03-03 22:40:12] [INFO ] [scraping_utils] Last Trade Number: 2792442
+[2026-03-03 22:40:15] [INFO ] [scraping_utils] Last Trade Number: 2837646
+[2026-03-03 22:40:17] [INFO ] [scraping_utils] Last Trade Number: 2885060
+[2026-03-03 22:40:20] [INFO ] [scraping_utils] Last Trade Number: 2917824
+[2026-03-03 22:40:22] [INFO ] [scraping_utils] Last Trade Number: 2921778
+[2026-03-03 22:40:25] [INFO ] [scraping_utils] Last Trade Number: 2949389
+[2026-03-03 22:40:27] [INFO ] [scraping_utils] Last Trade Number: 2956412
+[2026-03-03 22:40:30] [INFO ] [scraping_utils] Done fetching.
+[2026-03-03 22:40:53] [INFO ] [scraping_utils] Opening BUMI...
+[2026-03-03 22:41:18] [INFO ] [scraping_utils] Opening BNBR...
+[2026-03-03 22:41:40] [INFO ] [scraping_utils] Opening BIPI...
+[2026-03-03 22:42:12] [INFO ] [scraping_utils] Opening BULL...
+[2026-03-03 22:42:35] [INFO ] [scraping_utils] Opening BKSL...
+[2026-03-03 22:42:57] [INFO ] [scraping_utils] Opening IATA...
+[2026-03-03 22:43:21] [INFO ] [scraping_utils] Opening ESSA...
+[2026-03-03 22:43:43] [INFO ] [scraping_utils] Opening PADI...
+[2026-03-03 22:44:06] [INFO ] [scraping_utils] Opening HUMI...
+[2026-03-03 22:44:30] [INFO ] [scraping_utils] Opening WMUU...
+[2026-03-03 22:44:54] [INFO ] [scraping_utils] Opening DEWA...
+[2026-03-03 22:45:18] [INFO ] [scraping_utils] Opening MINA...
+[2026-03-03 22:45:42] [INFO ] [scraping_utils] Opening GTSI...
+[2026-03-03 22:46:05] [INFO ] [scraping_utils] Opening KOTA...
+[2026-03-03 22:46:30] [INFO ] [scraping_utils] Opening KAQI...
+[2026-03-03 22:46:52] [INFO ] [scraping_utils] Opening SGRO...
+[2026-03-03 22:47:16] [INFO ] [scraping_utils] Opening GOTO...
+[2026-03-03 22:47:39] [INFO ] [scraping_utils] Opening ARCI...
+[2026-03-03 22:48:01] [INFO ] [scraping_utils] Opening BELL...
+[2026-03-03 22:48:25] [INFO ] [scraping_utils] Opening HOKI...
+[2026-03-03 22:48:48] [INFO ] [scraping_utils] Opening IRSX...
+[2026-03-03 22:49:11] [INFO ] [scraping_utils] Opening JGLE...
+[2026-03-03 22:49:34] [INFO ] [scraping_utils] Opening KLBF...
+[2026-03-03 22:49:56] [INFO ] [scraping_utils] Opening NETV...
+[2026-03-03 22:50:20] [INFO ] [scraping_utils] Opening SCMA...
+[2026-03-03 22:50:44] [INFO ] [scraping_utils] Opening BATR...
+[2026-03-03 22:51:07] [INFO ] [scraping_utils] Opening BIKE...
+[2026-03-03 22:51:31] [INFO ] [scraping_utils] Opening BKDP...
+[2026-03-03 22:51:55] [INFO ] [scraping_utils] Opening CARE...
+[2026-03-03 22:52:18] [INFO ] [scraping_utils] Opening CBDK...
+[2026-03-03 22:52:40] [INFO ] [scraping_utils] Opening GPRA...
+[2026-03-03 22:53:06] [INFO ] [scraping_utils] Opening GPSO...
+[2026-03-03 22:53:28] [INFO ] [scraping_utils] Opening HATM...
+[2026-03-03 22:53:51] [INFO ] [scraping_utils] Opening LAJU...
+[2026-03-03 22:54:13] [INFO ] [scraping_utils] Opening LAPD...
+[2026-03-03 22:54:36] [INFO ] [scraping_utils] Opening NTBK...
+[2026-03-03 22:54:58] [INFO ] [scraping_utils] Opening OMED...
+[2026-03-03 22:55:20] [INFO ] [scraping_utils] Opening PMUI...
+[2026-03-03 22:55:44] [INFO ] [scraping_utils] Opening SGER...
+[2026-03-03 22:56:08] [INFO ] [scraping_utils] Opening TAMA...
+[2026-03-03 22:56:30] [INFO ] [scraping_utils] Opening TOBA...
+[2026-03-05 05:23:37] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-05 05:23:39] [INFO ] [scraping_utils] Last Trade Number: 30612
+[2026-03-05 05:23:42] [INFO ] [scraping_utils] Last Trade Number: 88488
+[2026-03-05 05:23:44] [INFO ] [scraping_utils] Last Trade Number: 104030
+[2026-03-05 05:23:46] [INFO ] [scraping_utils] Last Trade Number: 133766
+[2026-03-05 05:23:48] [INFO ] [scraping_utils] Last Trade Number: 158841
+[2026-03-05 05:23:50] [INFO ] [scraping_utils] Last Trade Number: 188787
+[2026-03-05 05:23:52] [INFO ] [scraping_utils] Last Trade Number: 212612
+[2026-03-05 05:23:54] [INFO ] [scraping_utils] Last Trade Number: 248868
+[2026-03-05 05:23:57] [INFO ] [scraping_utils] Last Trade Number: 286988
+[2026-03-05 05:23:59] [INFO ] [scraping_utils] Last Trade Number: 332105
+[2026-03-05 05:24:01] [INFO ] [scraping_utils] Last Trade Number: 374767
+[2026-03-05 05:24:03] [INFO ] [scraping_utils] Last Trade Number: 419243
+[2026-03-05 05:24:05] [INFO ] [scraping_utils] Last Trade Number: 466301
+[2026-03-05 05:24:07] [INFO ] [scraping_utils] Last Trade Number: 499245
+[2026-03-05 05:24:09] [INFO ] [scraping_utils] Last Trade Number: 513975
+[2026-03-05 05:24:12] [INFO ] [scraping_utils] Last Trade Number: 545435
+[2026-03-05 05:24:14] [INFO ] [scraping_utils] Last Trade Number: 580827
+[2026-03-05 05:24:16] [INFO ] [scraping_utils] Last Trade Number: 605130
+[2026-03-05 05:24:18] [INFO ] [scraping_utils] Last Trade Number: 645439
+[2026-03-05 05:24:20] [INFO ] [scraping_utils] Last Trade Number: 698065
+[2026-03-05 05:24:22] [INFO ] [scraping_utils] Last Trade Number: 725460
+[2026-03-05 05:24:24] [INFO ] [scraping_utils] Last Trade Number: 756035
+[2026-03-05 05:24:27] [INFO ] [scraping_utils] Last Trade Number: 816530
+[2026-03-05 05:24:29] [INFO ] [scraping_utils] Last Trade Number: 861769
+[2026-03-05 05:24:31] [INFO ] [scraping_utils] Last Trade Number: 923753
+[2026-03-05 05:24:33] [INFO ] [scraping_utils] Last Trade Number: 971013
+[2026-03-05 05:24:35] [INFO ] [scraping_utils] Last Trade Number: 1002814
+[2026-03-05 05:24:37] [INFO ] [scraping_utils] Last Trade Number: 1032634
+[2026-03-05 05:24:40] [INFO ] [scraping_utils] Last Trade Number: 1048331
+[2026-03-05 05:24:42] [INFO ] [scraping_utils] Last Trade Number: 1076652
+[2026-03-05 05:24:44] [INFO ] [scraping_utils] Last Trade Number: 1101077
+[2026-03-05 05:24:46] [INFO ] [scraping_utils] Last Trade Number: 1121410
+[2026-03-05 05:24:48] [INFO ] [scraping_utils] Last Trade Number: 1134410
+[2026-03-05 05:24:50] [INFO ] [scraping_utils] Last Trade Number: 1150718
+[2026-03-05 05:24:53] [INFO ] [scraping_utils] Last Trade Number: 1175833
+[2026-03-05 05:24:55] [INFO ] [scraping_utils] Last Trade Number: 1205240
+[2026-03-05 05:24:57] [INFO ] [scraping_utils] Last Trade Number: 1231915
+[2026-03-05 05:24:59] [INFO ] [scraping_utils] Last Trade Number: 1265555
+[2026-03-05 05:25:01] [INFO ] [scraping_utils] Last Trade Number: 1288296
+[2026-03-05 05:25:03] [INFO ] [scraping_utils] Last Trade Number: 1308618
+[2026-03-05 05:25:06] [INFO ] [scraping_utils] Last Trade Number: 1332473
+[2026-03-05 05:25:08] [INFO ] [scraping_utils] Last Trade Number: 1357869
+[2026-03-05 05:25:10] [INFO ] [scraping_utils] Last Trade Number: 1396806
+[2026-03-05 05:25:12] [INFO ] [scraping_utils] Last Trade Number: 1420653
+[2026-03-05 05:25:14] [INFO ] [scraping_utils] Last Trade Number: 1451383
+[2026-03-05 05:25:16] [INFO ] [scraping_utils] Last Trade Number: 1468007
+[2026-03-05 05:25:19] [INFO ] [scraping_utils] Last Trade Number: 1486711
+[2026-03-05 05:25:21] [INFO ] [scraping_utils] Last Trade Number: 1502412
+[2026-03-05 05:25:23] [INFO ] [scraping_utils] Last Trade Number: 1524418
+[2026-03-05 05:25:25] [INFO ] [scraping_utils] Last Trade Number: 1542031
+[2026-03-05 05:25:28] [INFO ] [scraping_utils] Last Trade Number: 1564006
+[2026-03-05 05:25:30] [INFO ] [scraping_utils] Last Trade Number: 1595232
+[2026-03-05 05:25:32] [INFO ] [scraping_utils] Last Trade Number: 1611981
+[2026-03-05 05:25:34] [INFO ] [scraping_utils] Last Trade Number: 1632164
+[2026-03-05 05:25:36] [INFO ] [scraping_utils] Last Trade Number: 1659552
+[2026-03-05 05:25:39] [INFO ] [scraping_utils] Last Trade Number: 1678159
+[2026-03-05 05:25:41] [INFO ] [scraping_utils] Last Trade Number: 1710171
+[2026-03-05 05:25:43] [INFO ] [scraping_utils] Last Trade Number: 1765396
+[2026-03-05 05:25:45] [INFO ] [scraping_utils] Last Trade Number: 1805767
+[2026-03-05 05:25:47] [INFO ] [scraping_utils] Last Trade Number: 1858155
+[2026-03-05 05:25:50] [INFO ] [scraping_utils] Last Trade Number: 1914575
+[2026-03-05 05:25:52] [INFO ] [scraping_utils] Last Trade Number: 1946431
+[2026-03-05 05:25:54] [INFO ] [scraping_utils] Last Trade Number: 1981829
+[2026-03-05 05:25:56] [INFO ] [scraping_utils] Last Trade Number: 2007402
+[2026-03-05 05:25:59] [INFO ] [scraping_utils] Last Trade Number: 2029259
+[2026-03-05 05:26:01] [INFO ] [scraping_utils] Last Trade Number: 2043105
+[2026-03-05 05:26:03] [INFO ] [scraping_utils] Last Trade Number: 2068585
+[2026-03-05 05:26:05] [INFO ] [scraping_utils] Last Trade Number: 2100175
+[2026-03-05 05:26:07] [INFO ] [scraping_utils] Last Trade Number: 2124319
+[2026-03-05 05:26:10] [INFO ] [scraping_utils] Last Trade Number: 2173396
+[2026-03-05 05:26:12] [INFO ] [scraping_utils] Last Trade Number: 2199807
+[2026-03-05 05:26:14] [INFO ] [scraping_utils] Last Trade Number: 2218818
+[2026-03-05 05:26:17] [INFO ] [scraping_utils] Last Trade Number: 2234191
+[2026-03-05 05:26:19] [INFO ] [scraping_utils] Last Trade Number: 2261760
+[2026-03-05 05:26:21] [INFO ] [scraping_utils] Last Trade Number: 2270249
+[2026-03-05 05:26:23] [INFO ] [scraping_utils] Last Trade Number: 2283637
+[2026-03-05 05:26:26] [INFO ] [scraping_utils] Last Trade Number: 2301931
+[2026-03-05 05:26:28] [INFO ] [scraping_utils] Last Trade Number: 2328850
+[2026-03-05 05:26:30] [INFO ] [scraping_utils] Last Trade Number: 2374125
+[2026-03-05 05:26:32] [INFO ] [scraping_utils] Last Trade Number: 2400876
+[2026-03-05 05:26:35] [INFO ] [scraping_utils] Last Trade Number: 2429989
+[2026-03-05 05:26:37] [INFO ] [scraping_utils] Last Trade Number: 2459360
+[2026-03-05 05:26:39] [INFO ] [scraping_utils] Last Trade Number: 2503909
+[2026-03-05 05:26:41] [INFO ] [scraping_utils] Last Trade Number: 2546257
+[2026-03-05 05:26:44] [INFO ] [scraping_utils] Last Trade Number: 2583272
+[2026-03-05 05:26:46] [INFO ] [scraping_utils] Last Trade Number: 2614284
+[2026-03-05 05:26:48] [INFO ] [scraping_utils] Last Trade Number: 2646911
+[2026-03-05 05:26:50] [INFO ] [scraping_utils] Last Trade Number: 2681247
+[2026-03-05 05:26:52] [INFO ] [scraping_utils] Last Trade Number: 2723545
+[2026-03-05 05:26:55] [INFO ] [scraping_utils] Last Trade Number: 2785659
+[2026-03-05 05:26:57] [INFO ] [scraping_utils] Last Trade Number: 2825973
+[2026-03-05 05:26:59] [INFO ] [scraping_utils] Last Trade Number: 2851274
+[2026-03-05 05:27:01] [INFO ] [scraping_utils] Last Trade Number: 2903435
+[2026-03-05 05:27:03] [INFO ] [scraping_utils] Last Trade Number: 2938956
+[2026-03-05 05:27:06] [INFO ] [scraping_utils] Last Trade Number: 2990728
+[2026-03-05 05:27:08] [INFO ] [scraping_utils] Last Trade Number: 3033540
+[2026-03-05 05:27:10] [INFO ] [scraping_utils] Last Trade Number: 3066460
+[2026-03-05 05:27:13] [INFO ] [scraping_utils] Last Trade Number: 3114118
+[2026-03-05 05:27:15] [INFO ] [scraping_utils] Last Trade Number: 3165916
+[2026-03-05 05:27:17] [INFO ] [scraping_utils] Last Trade Number: 3213674
+[2026-03-05 05:27:19] [INFO ] [scraping_utils] Last Trade Number: 3264725
+[2026-03-05 05:27:22] [INFO ] [scraping_utils] Last Trade Number: 3269369
+[2026-03-05 05:27:24] [INFO ] [scraping_utils] Last Trade Number: 3281096
+[2026-03-05 05:27:26] [INFO ] [scraping_utils] Last Trade Number: 3298253
+[2026-03-05 05:27:28] [INFO ] [scraping_utils] Last Trade Number: 3302230
+[2026-03-05 05:27:31] [INFO ] [scraping_utils] Done fetching.
+[2026-03-05 05:27:53] [INFO ] [scraping_utils] Opening BUMI...
+[2026-03-05 05:28:16] [INFO ] [scraping_utils] Opening BNBR...
+[2026-03-05 05:28:38] [INFO ] [scraping_utils] Opening BIPI...
+[2026-03-05 05:29:00] [INFO ] [scraping_utils] Opening DEWA...
+[2026-03-05 05:29:23] [INFO ] [scraping_utils] Opening BKSL...
+[2026-03-05 05:29:44] [INFO ] [scraping_utils] Opening IATA...
+[2026-03-05 05:30:06] [INFO ] [scraping_utils] Opening WMUU...
+[2026-03-05 05:30:29] [INFO ] [scraping_utils] Opening BULL...
+[2026-03-05 05:30:51] [INFO ] [scraping_utils] Opening BBKP...
+[2026-03-05 05:31:14] [INFO ] [scraping_utils] Opening PADI...
+[2026-03-05 05:31:36] [INFO ] [scraping_utils] Opening LPKR...
+[2026-03-05 05:31:58] [INFO ] [scraping_utils] Opening BRMS...
+[2026-03-05 05:32:20] [INFO ] [scraping_utils] Opening INET...
+[2026-03-05 05:32:42] [INFO ] [scraping_utils] Opening HUMI...
+[2026-03-05 05:33:04] [INFO ] [scraping_utils] Opening ENRG...
+[2026-03-05 05:33:27] [INFO ] [scraping_utils] Opening KOTA...
+[2026-03-05 05:33:50] [INFO ] [scraping_utils] Opening SMGA...
+[2026-03-05 05:34:12] [INFO ] [scraping_utils] Opening AMRT...
+[2026-03-05 05:34:34] [INFO ] [scraping_utils] Opening ANTM...
+[2026-03-05 05:34:56] [INFO ] [scraping_utils] Opening ASHA...
+[2026-03-05 05:35:19] [INFO ] [scraping_utils] Opening ELSA...
+[2026-03-05 05:35:41] [INFO ] [scraping_utils] Opening ERAA...
+[2026-03-05 05:36:04] [INFO ] [scraping_utils] Opening IRSX...
+[2026-03-05 05:36:25] [INFO ] [scraping_utils] Opening KAQI...
+[2026-03-05 05:36:47] [INFO ] [scraping_utils] Opening KIJA...
+[2026-03-05 05:37:10] [INFO ] [scraping_utils] Opening KPIG...
+[2026-03-05 05:37:34] [INFO ] [scraping_utils] Opening MBMA...
+[2026-03-05 05:37:56] [INFO ] [scraping_utils] Opening MEDC...
+[2026-03-05 05:38:20] [INFO ] [scraping_utils] Opening PSKT...
+[2026-03-05 05:38:43] [INFO ] [scraping_utils] Opening SMDR...
+[2026-03-05 05:39:04] [INFO ] [scraping_utils] Opening STRK...
+[2026-03-05 05:39:26] [INFO ] [scraping_utils] Opening VKTR...
+[2026-03-05 05:39:50] [INFO ] [scraping_utils] Opening YELO...
+[2026-03-05 05:40:12] [INFO ] [scraping_utils] Opening BIKE...
+[2026-03-05 05:40:35] [INFO ] [scraping_utils] Opening BKDP...
+[2026-03-05 05:40:58] [INFO ] [scraping_utils] Opening GPRA...
+[2026-03-05 05:41:21] [INFO ] [scraping_utils] Opening GULA...
+[2026-03-05 05:41:44] [INFO ] [scraping_utils] Opening HATM...
+[2026-03-05 05:42:05] [INFO ] [scraping_utils] Opening LAPD...
+[2026-03-05 05:42:27] [INFO ] [scraping_utils] Opening MAPA...
+[2026-03-05 05:42:51] [INFO ] [scraping_utils] Opening NIRO...
+[2026-03-05 05:43:12] [INFO ] [scraping_utils] Opening OMED...
+[2026-03-05 05:43:34] [INFO ] [scraping_utils] Opening RSCH...
+[2026-03-05 21:54:26] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-05 21:54:29] [INFO ] [scraping_utils] Last Trade Number: 21965
+[2026-03-05 21:54:31] [INFO ] [scraping_utils] Last Trade Number: 35961
+[2026-03-05 21:54:33] [INFO ] [scraping_utils] Last Trade Number: 57450
+[2026-03-05 21:54:35] [INFO ] [scraping_utils] Last Trade Number: 73296
+[2026-03-05 21:54:38] [INFO ] [scraping_utils] Last Trade Number: 85783
+[2026-03-05 21:54:40] [INFO ] [scraping_utils] Last Trade Number: 104738
+[2026-03-05 21:54:42] [INFO ] [scraping_utils] Last Trade Number: 123803
+[2026-03-05 21:54:44] [INFO ] [scraping_utils] Last Trade Number: 148823
+[2026-03-05 21:54:46] [INFO ] [scraping_utils] Last Trade Number: 176248
+[2026-03-05 21:54:49] [INFO ] [scraping_utils] Last Trade Number: 198239
+[2026-03-05 21:54:51] [INFO ] [scraping_utils] Last Trade Number: 217149
+[2026-03-05 21:54:53] [INFO ] [scraping_utils] Last Trade Number: 243501
+[2026-03-05 21:54:55] [INFO ] [scraping_utils] Last Trade Number: 261561
+[2026-03-05 21:54:58] [INFO ] [scraping_utils] Last Trade Number: 281160
+[2026-03-05 21:55:00] [INFO ] [scraping_utils] Last Trade Number: 306317
+[2026-03-05 21:55:03] [INFO ] [scraping_utils] Last Trade Number: 334119
+[2026-03-05 21:55:05] [INFO ] [scraping_utils] Last Trade Number: 363733
+[2026-03-05 21:55:07] [INFO ] [scraping_utils] Last Trade Number: 376394
+[2026-03-05 21:55:10] [INFO ] [scraping_utils] Last Trade Number: 402950
+[2026-03-05 21:55:12] [INFO ] [scraping_utils] Last Trade Number: 438630
+[2026-03-05 21:55:14] [INFO ] [scraping_utils] Last Trade Number: 470255
+[2026-03-05 21:55:17] [INFO ] [scraping_utils] Last Trade Number: 501290
+[2026-03-05 21:55:19] [INFO ] [scraping_utils] Last Trade Number: 529419
+[2026-03-05 21:55:21] [INFO ] [scraping_utils] Last Trade Number: 589617
+[2026-03-05 21:55:24] [INFO ] [scraping_utils] Last Trade Number: 644004
+[2026-03-05 21:55:26] [INFO ] [scraping_utils] Last Trade Number: 669495
+[2026-03-05 21:55:28] [INFO ] [scraping_utils] Last Trade Number: 721991
+[2026-03-05 21:55:31] [INFO ] [scraping_utils] Last Trade Number: 767468
+[2026-03-05 21:55:33] [INFO ] [scraping_utils] Last Trade Number: 795263
+[2026-03-05 21:55:35] [INFO ] [scraping_utils] Last Trade Number: 803494
+[2026-03-05 21:55:38] [INFO ] [scraping_utils] Last Trade Number: 828262
+[2026-03-05 21:55:40] [INFO ] [scraping_utils] Last Trade Number: 849063
+[2026-03-05 21:55:43] [INFO ] [scraping_utils] Last Trade Number: 896838
+[2026-03-05 21:55:46] [INFO ] [scraping_utils] Last Trade Number: 937939
+[2026-03-05 21:55:48] [INFO ] [scraping_utils] Last Trade Number: 981727
+[2026-03-05 21:55:50] [INFO ] [scraping_utils] Last Trade Number: 1013265
+[2026-03-05 21:55:52] [INFO ] [scraping_utils] Last Trade Number: 1042005
+[2026-03-05 21:55:55] [INFO ] [scraping_utils] Last Trade Number: 1065356
+[2026-03-05 21:55:57] [INFO ] [scraping_utils] Last Trade Number: 1120514
+[2026-03-05 21:55:59] [INFO ] [scraping_utils] Last Trade Number: 1140161
+[2026-03-05 21:56:02] [INFO ] [scraping_utils] Last Trade Number: 1162152
+[2026-03-05 21:56:04] [INFO ] [scraping_utils] Last Trade Number: 1174067
+[2026-03-05 21:56:06] [INFO ] [scraping_utils] Last Trade Number: 1201112
+[2026-03-05 21:56:09] [INFO ] [scraping_utils] Last Trade Number: 1230809
+[2026-03-05 21:56:11] [INFO ] [scraping_utils] Last Trade Number: 1277732
+[2026-03-05 21:56:13] [INFO ] [scraping_utils] Last Trade Number: 1304474
+[2026-03-05 21:56:15] [INFO ] [scraping_utils] Last Trade Number: 1319130
+[2026-03-05 21:56:18] [INFO ] [scraping_utils] Last Trade Number: 1345626
+[2026-03-05 21:56:20] [INFO ] [scraping_utils] Last Trade Number: 1391181
+[2026-03-05 21:56:22] [INFO ] [scraping_utils] Last Trade Number: 1421616
+[2026-03-05 21:56:25] [INFO ] [scraping_utils] Last Trade Number: 1470126
+[2026-03-05 21:56:27] [INFO ] [scraping_utils] Last Trade Number: 1502853
+[2026-03-05 21:56:29] [INFO ] [scraping_utils] Last Trade Number: 1523144
+[2026-03-05 21:56:31] [INFO ] [scraping_utils] Last Trade Number: 1541035
+[2026-03-05 21:56:34] [INFO ] [scraping_utils] Last Trade Number: 1556116
+[2026-03-05 21:56:36] [INFO ] [scraping_utils] Last Trade Number: 1568420
+[2026-03-05 21:56:38] [INFO ] [scraping_utils] Last Trade Number: 1592187
+[2026-03-05 21:56:41] [INFO ] [scraping_utils] Last Trade Number: 1618787
+[2026-03-05 21:56:44] [INFO ] [scraping_utils] Last Trade Number: 1667274
+[2026-03-05 21:56:48] [INFO ] [scraping_utils] Last Trade Number: 1708709
+[2026-03-05 21:56:50] [INFO ] [scraping_utils] Last Trade Number: 1749115
+[2026-03-05 21:56:52] [INFO ] [scraping_utils] Last Trade Number: 1788368
+[2026-03-05 21:56:55] [INFO ] [scraping_utils] Last Trade Number: 1831201
+[2026-03-05 21:56:57] [INFO ] [scraping_utils] Last Trade Number: 1863190
+[2026-03-05 21:56:59] [INFO ] [scraping_utils] Last Trade Number: 1899020
+[2026-03-05 21:57:02] [INFO ] [scraping_utils] Last Trade Number: 1959384
+[2026-03-05 21:57:04] [INFO ] [scraping_utils] Last Trade Number: 2000302
+[2026-03-05 21:57:06] [INFO ] [scraping_utils] Last Trade Number: 2032458
+[2026-03-05 21:57:08] [INFO ] [scraping_utils] Last Trade Number: 2058246
+[2026-03-05 21:57:11] [INFO ] [scraping_utils] Last Trade Number: 2079070
+[2026-03-05 21:57:13] [INFO ] [scraping_utils] Last Trade Number: 2084437
+[2026-03-05 21:57:15] [INFO ] [scraping_utils] Done fetching.
+[2026-03-05 21:57:37] [INFO ] [scraping_utils] Opening BIPI...
+[2026-03-05 21:57:47] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-05 22:28:06] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-05 22:28:08] [INFO ] [scraping_utils] Last Trade Number: 21965
+[2026-03-05 22:28:10] [INFO ] [scraping_utils] Last Trade Number: 35961
+[2026-03-05 22:28:13] [INFO ] [scraping_utils] Last Trade Number: 57450
+[2026-03-05 22:28:15] [INFO ] [scraping_utils] Last Trade Number: 73296
+[2026-03-05 22:28:17] [INFO ] [scraping_utils] Last Trade Number: 85783
+[2026-03-05 22:28:19] [INFO ] [scraping_utils] Last Trade Number: 104738
+[2026-03-05 22:28:21] [INFO ] [scraping_utils] Last Trade Number: 123803
+[2026-03-05 22:28:23] [INFO ] [scraping_utils] Last Trade Number: 148823
+[2026-03-05 22:28:26] [INFO ] [scraping_utils] Last Trade Number: 176248
+[2026-03-05 22:28:28] [INFO ] [scraping_utils] Last Trade Number: 198239
+[2026-03-05 22:28:30] [INFO ] [scraping_utils] Last Trade Number: 217149
+[2026-03-05 22:28:32] [INFO ] [scraping_utils] Last Trade Number: 243501
+[2026-03-05 22:28:34] [INFO ] [scraping_utils] Last Trade Number: 261561
+[2026-03-05 22:28:36] [INFO ] [scraping_utils] Last Trade Number: 281160
+[2026-03-05 22:28:39] [INFO ] [scraping_utils] Last Trade Number: 306317
+[2026-03-05 22:28:41] [INFO ] [scraping_utils] Last Trade Number: 334119
+[2026-03-05 22:28:43] [INFO ] [scraping_utils] Last Trade Number: 363733
+[2026-03-05 22:28:45] [INFO ] [scraping_utils] Last Trade Number: 376394
+[2026-03-05 22:28:47] [INFO ] [scraping_utils] Last Trade Number: 402950
+[2026-03-05 22:28:50] [INFO ] [scraping_utils] Last Trade Number: 438630
+[2026-03-05 22:28:52] [INFO ] [scraping_utils] Last Trade Number: 470255
+[2026-03-05 22:28:54] [INFO ] [scraping_utils] Last Trade Number: 501290
+[2026-03-05 22:28:57] [INFO ] [scraping_utils] Last Trade Number: 529419
+[2026-03-05 22:28:59] [INFO ] [scraping_utils] Last Trade Number: 589617
+[2026-03-05 22:29:02] [INFO ] [scraping_utils] Last Trade Number: 644004
+[2026-03-05 22:29:04] [INFO ] [scraping_utils] Last Trade Number: 669495
+[2026-03-05 22:29:06] [INFO ] [scraping_utils] Last Trade Number: 721991
+[2026-03-05 22:29:08] [INFO ] [scraping_utils] Last Trade Number: 767468
+[2026-03-05 22:29:10] [INFO ] [scraping_utils] Last Trade Number: 795263
+[2026-03-05 22:29:13] [INFO ] [scraping_utils] Last Trade Number: 803494
+[2026-03-05 22:29:15] [INFO ] [scraping_utils] Last Trade Number: 828262
+[2026-03-05 22:29:17] [INFO ] [scraping_utils] Last Trade Number: 849063
+[2026-03-05 22:29:19] [INFO ] [scraping_utils] Last Trade Number: 896838
+[2026-03-05 22:29:22] [INFO ] [scraping_utils] Last Trade Number: 937939
+[2026-03-05 22:29:24] [INFO ] [scraping_utils] Last Trade Number: 981727
+[2026-03-05 22:29:26] [INFO ] [scraping_utils] Last Trade Number: 1013265
+[2026-03-05 22:29:28] [INFO ] [scraping_utils] Last Trade Number: 1042005
+[2026-03-05 22:29:31] [INFO ] [scraping_utils] Last Trade Number: 1065356
+[2026-03-05 22:29:33] [INFO ] [scraping_utils] Last Trade Number: 1120514
+[2026-03-05 22:29:36] [INFO ] [scraping_utils] Last Trade Number: 1140161
+[2026-03-05 22:29:38] [INFO ] [scraping_utils] Last Trade Number: 1162152
+[2026-03-05 22:29:40] [INFO ] [scraping_utils] Last Trade Number: 1174067
+[2026-03-05 22:29:42] [INFO ] [scraping_utils] Last Trade Number: 1201112
+[2026-03-05 22:29:44] [INFO ] [scraping_utils] Last Trade Number: 1230809
+[2026-03-05 22:29:47] [INFO ] [scraping_utils] Last Trade Number: 1277732
+[2026-03-05 22:29:49] [INFO ] [scraping_utils] Last Trade Number: 1304474
+[2026-03-05 22:29:51] [INFO ] [scraping_utils] Last Trade Number: 1319130
+[2026-03-05 22:29:53] [INFO ] [scraping_utils] Last Trade Number: 1345626
+[2026-03-05 22:29:56] [INFO ] [scraping_utils] Last Trade Number: 1391181
+[2026-03-05 22:29:58] [INFO ] [scraping_utils] Last Trade Number: 1421616
+[2026-03-05 22:30:00] [INFO ] [scraping_utils] Last Trade Number: 1470126
+[2026-03-05 22:30:02] [INFO ] [scraping_utils] Last Trade Number: 1502853
+[2026-03-05 22:30:04] [INFO ] [scraping_utils] Last Trade Number: 1523144
+[2026-03-05 22:30:06] [INFO ] [scraping_utils] Last Trade Number: 1541035
+[2026-03-05 22:30:09] [INFO ] [scraping_utils] Last Trade Number: 1556116
+[2026-03-05 22:30:11] [INFO ] [scraping_utils] Last Trade Number: 1568420
+[2026-03-05 22:30:13] [INFO ] [scraping_utils] Last Trade Number: 1592187
+[2026-03-05 22:30:15] [INFO ] [scraping_utils] Last Trade Number: 1618787
+[2026-03-05 22:30:18] [INFO ] [scraping_utils] Last Trade Number: 1667274
+[2026-03-05 22:30:20] [INFO ] [scraping_utils] Last Trade Number: 1708709
+[2026-03-05 22:30:22] [INFO ] [scraping_utils] Last Trade Number: 1749115
+[2026-03-05 22:30:24] [INFO ] [scraping_utils] Last Trade Number: 1788368
+[2026-03-05 22:30:27] [INFO ] [scraping_utils] Last Trade Number: 1831201
+[2026-03-05 22:30:29] [INFO ] [scraping_utils] Last Trade Number: 1863190
+[2026-03-05 22:30:31] [INFO ] [scraping_utils] Last Trade Number: 1899020
+[2026-03-05 22:30:33] [INFO ] [scraping_utils] Last Trade Number: 1959384
+[2026-03-05 22:30:36] [INFO ] [scraping_utils] Last Trade Number: 2000302
+[2026-03-05 22:30:38] [INFO ] [scraping_utils] Last Trade Number: 2032458
+[2026-03-05 22:30:40] [INFO ] [scraping_utils] Last Trade Number: 2058246
+[2026-03-05 22:30:43] [INFO ] [scraping_utils] Last Trade Number: 2079070
+[2026-03-05 22:30:46] [INFO ] [scraping_utils] Last Trade Number: 2084437
+[2026-03-05 22:30:48] [INFO ] [scraping_utils] Done fetching.
+[2026-03-05 22:33:49] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-05 22:33:52] [INFO ] [scraping_utils] Last Trade Number: 21965
+[2026-03-05 22:33:55] [INFO ] [scraping_utils] Last Trade Number: 35961
+[2026-03-05 22:33:58] [INFO ] [scraping_utils] Last Trade Number: 57450
+[2026-03-05 22:34:00] [INFO ] [scraping_utils] Last Trade Number: 73296
+[2026-03-05 22:34:02] [INFO ] [scraping_utils] Last Trade Number: 85783
+[2026-03-05 22:34:05] [INFO ] [scraping_utils] Last Trade Number: 104738
+[2026-03-05 22:34:07] [INFO ] [scraping_utils] Last Trade Number: 123803
+[2026-03-05 22:34:09] [INFO ] [scraping_utils] Last Trade Number: 148823
+[2026-03-05 22:34:12] [INFO ] [scraping_utils] Last Trade Number: 176248
+[2026-03-05 22:34:14] [INFO ] [scraping_utils] Last Trade Number: 198239
+[2026-03-05 22:34:16] [INFO ] [scraping_utils] Last Trade Number: 217149
+[2026-03-05 22:34:19] [INFO ] [scraping_utils] Last Trade Number: 243501
+[2026-03-05 22:34:21] [INFO ] [scraping_utils] Last Trade Number: 261561
+[2026-03-05 22:34:23] [INFO ] [scraping_utils] Last Trade Number: 281160
+[2026-03-05 22:34:25] [INFO ] [scraping_utils] Last Trade Number: 306317
+[2026-03-05 22:34:27] [INFO ] [scraping_utils] Last Trade Number: 334119
+[2026-03-05 22:34:29] [INFO ] [scraping_utils] Last Trade Number: 363733
+[2026-03-05 22:34:32] [INFO ] [scraping_utils] Last Trade Number: 376394
+[2026-03-05 22:34:34] [INFO ] [scraping_utils] Last Trade Number: 402950
+[2026-03-05 22:34:36] [INFO ] [scraping_utils] Last Trade Number: 438630
+[2026-03-05 22:34:38] [INFO ] [scraping_utils] Last Trade Number: 470255
+[2026-03-05 22:34:41] [INFO ] [scraping_utils] Last Trade Number: 501290
+[2026-03-05 22:34:43] [INFO ] [scraping_utils] Last Trade Number: 529419
+[2026-03-05 22:34:45] [INFO ] [scraping_utils] Last Trade Number: 589617
+[2026-03-05 22:34:47] [INFO ] [scraping_utils] Last Trade Number: 644004
+[2026-03-05 22:34:49] [INFO ] [scraping_utils] Last Trade Number: 669495
+[2026-03-05 22:34:52] [INFO ] [scraping_utils] Last Trade Number: 721991
+[2026-03-05 22:34:54] [INFO ] [scraping_utils] Last Trade Number: 767468
+[2026-03-05 22:34:56] [INFO ] [scraping_utils] Last Trade Number: 795263
+[2026-03-05 22:34:58] [INFO ] [scraping_utils] Last Trade Number: 803494
+[2026-03-05 22:35:00] [INFO ] [scraping_utils] Last Trade Number: 828262
+[2026-03-05 22:35:02] [INFO ] [scraping_utils] Last Trade Number: 849063
+[2026-03-05 22:35:05] [INFO ] [scraping_utils] Last Trade Number: 896838
+[2026-03-05 22:35:07] [INFO ] [scraping_utils] Last Trade Number: 937939
+[2026-03-05 22:35:09] [INFO ] [scraping_utils] Last Trade Number: 981727
+[2026-03-05 22:35:11] [INFO ] [scraping_utils] Last Trade Number: 1013265
+[2026-03-05 22:35:13] [INFO ] [scraping_utils] Last Trade Number: 1042005
+[2026-03-05 22:35:15] [INFO ] [scraping_utils] Last Trade Number: 1065356
+[2026-03-05 22:35:19] [INFO ] [scraping_utils] Last Trade Number: 1120514
+[2026-03-05 22:35:21] [INFO ] [scraping_utils] Last Trade Number: 1140161
+[2026-03-05 22:35:23] [INFO ] [scraping_utils] Last Trade Number: 1162152
+[2026-03-05 22:35:25] [INFO ] [scraping_utils] Last Trade Number: 1174067
+[2026-03-05 22:35:27] [INFO ] [scraping_utils] Last Trade Number: 1201112
+[2026-03-05 22:35:30] [INFO ] [scraping_utils] Last Trade Number: 1230809
+[2026-03-05 22:35:32] [INFO ] [scraping_utils] Last Trade Number: 1277732
+[2026-03-05 22:35:34] [INFO ] [scraping_utils] Last Trade Number: 1304474
+[2026-03-05 22:35:37] [INFO ] [scraping_utils] Last Trade Number: 1319130
+[2026-03-05 22:35:39] [INFO ] [scraping_utils] Last Trade Number: 1345626
+[2026-03-05 22:35:41] [INFO ] [scraping_utils] Last Trade Number: 1391181
+[2026-03-05 22:35:43] [INFO ] [scraping_utils] Last Trade Number: 1421616
+[2026-03-05 22:35:45] [INFO ] [scraping_utils] Last Trade Number: 1470126
+[2026-03-05 22:35:48] [INFO ] [scraping_utils] Last Trade Number: 1502853
+[2026-03-05 22:35:50] [INFO ] [scraping_utils] Last Trade Number: 1523144
+[2026-03-05 22:35:53] [INFO ] [scraping_utils] Last Trade Number: 1541035
+[2026-03-05 22:35:55] [INFO ] [scraping_utils] Last Trade Number: 1556116
+[2026-03-05 22:35:57] [INFO ] [scraping_utils] Last Trade Number: 1568420
+[2026-03-05 22:35:59] [INFO ] [scraping_utils] Last Trade Number: 1592187
+[2026-03-05 22:36:01] [INFO ] [scraping_utils] Last Trade Number: 1618787
+[2026-03-05 22:36:04] [INFO ] [scraping_utils] Last Trade Number: 1667274
+[2026-03-05 22:36:06] [INFO ] [scraping_utils] Last Trade Number: 1708709
+[2026-03-05 22:36:08] [INFO ] [scraping_utils] Last Trade Number: 1749115
+[2026-03-05 22:36:11] [INFO ] [scraping_utils] Last Trade Number: 1788368
+[2026-03-05 22:36:13] [INFO ] [scraping_utils] Last Trade Number: 1831201
+[2026-03-05 22:36:16] [INFO ] [scraping_utils] Last Trade Number: 1863190
+[2026-03-05 22:36:19] [INFO ] [scraping_utils] Last Trade Number: 1899020
+[2026-03-05 22:36:21] [INFO ] [scraping_utils] Last Trade Number: 1959384
+[2026-03-05 22:36:23] [INFO ] [scraping_utils] Last Trade Number: 2000302
+[2026-03-05 22:36:26] [INFO ] [scraping_utils] Last Trade Number: 2032458
+[2026-03-05 22:36:28] [INFO ] [scraping_utils] Last Trade Number: 2058246
+[2026-03-05 22:36:32] [INFO ] [scraping_utils] Last Trade Number: 2079070
+[2026-03-05 22:36:34] [INFO ] [scraping_utils] Last Trade Number: 2084437
+[2026-03-05 22:36:36] [INFO ] [scraping_utils] Done fetching.
+[2026-03-05 22:40:35] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-05 22:40:38] [INFO ] [scraping_utils] Last Trade Number: 21965
+[2026-03-05 22:40:40] [INFO ] [scraping_utils] Last Trade Number: 35961
+[2026-03-05 22:40:42] [INFO ] [scraping_utils] Last Trade Number: 57450
+[2026-03-05 22:40:44] [INFO ] [scraping_utils] Last Trade Number: 73296
+[2026-03-05 22:40:47] [INFO ] [scraping_utils] Last Trade Number: 85783
+[2026-03-05 22:40:49] [INFO ] [scraping_utils] Last Trade Number: 104738
+[2026-03-05 22:40:51] [INFO ] [scraping_utils] Last Trade Number: 123803
+[2026-03-05 22:40:53] [INFO ] [scraping_utils] Last Trade Number: 148823
+[2026-03-05 22:40:55] [INFO ] [scraping_utils] Last Trade Number: 176248
+[2026-03-05 22:40:58] [INFO ] [scraping_utils] Last Trade Number: 198239
+[2026-03-05 22:41:00] [INFO ] [scraping_utils] Last Trade Number: 217149
+[2026-03-05 22:41:02] [INFO ] [scraping_utils] Last Trade Number: 243501
+[2026-03-05 22:41:04] [INFO ] [scraping_utils] Last Trade Number: 261561
+[2026-03-05 22:41:08] [INFO ] [scraping_utils] Last Trade Number: 281160
+[2026-03-05 22:41:23] [INFO ] [scraping_utils] Last Trade Number: 306317
+[2026-03-05 22:41:25] [INFO ] [scraping_utils] Last Trade Number: 334119
+[2026-03-05 22:41:29] [INFO ] [scraping_utils] Last Trade Number: 363733
+[2026-03-05 22:41:31] [INFO ] [scraping_utils] Last Trade Number: 376394
+[2026-03-05 22:41:33] [INFO ] [scraping_utils] Last Trade Number: 402950
+[2026-03-05 22:41:35] [INFO ] [scraping_utils] Last Trade Number: 438630
+[2026-03-05 22:41:38] [INFO ] [scraping_utils] Last Trade Number: 470255
+[2026-03-05 22:41:42] [INFO ] [scraping_utils] Last Trade Number: 501290
+[2026-03-05 22:41:45] [INFO ] [scraping_utils] Last Trade Number: 529419
+[2026-03-05 22:41:47] [INFO ] [scraping_utils] Last Trade Number: 589617
+[2026-03-05 22:41:50] [INFO ] [scraping_utils] Last Trade Number: 644004
+[2026-03-05 22:41:54] [INFO ] [scraping_utils] Last Trade Number: 669495
+[2026-03-05 22:41:56] [INFO ] [scraping_utils] Last Trade Number: 721991
+[2026-03-05 22:41:59] [INFO ] [scraping_utils] Last Trade Number: 767468
+[2026-03-05 22:42:02] [INFO ] [scraping_utils] Last Trade Number: 795263
+[2026-03-05 22:42:04] [INFO ] [scraping_utils] Last Trade Number: 803494
+[2026-03-05 22:42:06] [INFO ] [scraping_utils] Last Trade Number: 828262
+[2026-03-05 22:42:09] [INFO ] [scraping_utils] Last Trade Number: 849063
+[2026-03-05 22:42:11] [INFO ] [scraping_utils] Last Trade Number: 896838
+[2026-03-05 22:42:13] [INFO ] [scraping_utils] Last Trade Number: 937939
+[2026-03-05 22:42:15] [INFO ] [scraping_utils] Last Trade Number: 981727
+[2026-03-05 22:42:17] [INFO ] [scraping_utils] Last Trade Number: 1013265
+[2026-03-05 22:42:20] [INFO ] [scraping_utils] Last Trade Number: 1042005
+[2026-03-05 22:42:22] [INFO ] [scraping_utils] Last Trade Number: 1065356
+[2026-03-05 22:42:24] [INFO ] [scraping_utils] Last Trade Number: 1120514
+[2026-03-05 22:42:27] [INFO ] [scraping_utils] Last Trade Number: 1140161
+[2026-03-05 22:42:29] [INFO ] [scraping_utils] Last Trade Number: 1162152
+[2026-03-05 22:42:31] [INFO ] [scraping_utils] Last Trade Number: 1174067
+[2026-03-05 22:42:33] [INFO ] [scraping_utils] Last Trade Number: 1201112
+[2026-03-05 22:42:36] [INFO ] [scraping_utils] Last Trade Number: 1230809
+[2026-03-05 22:42:38] [INFO ] [scraping_utils] Last Trade Number: 1277732
+[2026-03-05 22:42:40] [INFO ] [scraping_utils] Last Trade Number: 1304474
+[2026-03-05 22:42:42] [INFO ] [scraping_utils] Last Trade Number: 1319130
+[2026-03-05 22:42:45] [INFO ] [scraping_utils] Last Trade Number: 1345626
+[2026-03-05 22:42:47] [INFO ] [scraping_utils] Last Trade Number: 1391181
+[2026-03-05 22:42:49] [INFO ] [scraping_utils] Last Trade Number: 1421616
+[2026-03-05 22:42:51] [INFO ] [scraping_utils] Last Trade Number: 1470126
+[2026-03-05 22:42:54] [INFO ] [scraping_utils] Last Trade Number: 1502853
+[2026-03-05 22:42:57] [INFO ] [scraping_utils] Last Trade Number: 1523144
+[2026-03-05 22:42:59] [INFO ] [scraping_utils] Last Trade Number: 1541035
+[2026-03-05 22:43:01] [INFO ] [scraping_utils] Last Trade Number: 1556116
+[2026-03-05 22:43:03] [INFO ] [scraping_utils] Last Trade Number: 1568420
+[2026-03-05 22:43:05] [INFO ] [scraping_utils] Last Trade Number: 1592187
+[2026-03-05 22:43:08] [INFO ] [scraping_utils] Last Trade Number: 1618787
+[2026-03-05 22:43:10] [INFO ] [scraping_utils] Last Trade Number: 1667274
+[2026-03-05 22:43:13] [INFO ] [scraping_utils] Last Trade Number: 1708709
+[2026-03-05 22:43:15] [INFO ] [scraping_utils] Last Trade Number: 1749115
+[2026-03-05 22:43:17] [INFO ] [scraping_utils] Last Trade Number: 1788368
+[2026-03-05 22:43:19] [INFO ] [scraping_utils] Last Trade Number: 1831201
+[2026-03-05 22:43:21] [INFO ] [scraping_utils] Last Trade Number: 1863190
+[2026-03-05 22:43:24] [INFO ] [scraping_utils] Last Trade Number: 1899020
+[2026-03-05 22:43:26] [INFO ] [scraping_utils] Last Trade Number: 1959384
+[2026-03-05 22:43:29] [INFO ] [scraping_utils] Last Trade Number: 2000302
+[2026-03-05 22:43:31] [INFO ] [scraping_utils] Last Trade Number: 2032458
+[2026-03-05 22:43:33] [INFO ] [scraping_utils] Last Trade Number: 2058246
+[2026-03-05 22:43:35] [INFO ] [scraping_utils] Last Trade Number: 2079070
+[2026-03-05 22:43:38] [INFO ] [scraping_utils] Last Trade Number: 2084437
+[2026-03-05 22:43:40] [INFO ] [scraping_utils] Done fetching.
+[2026-03-05 22:47:06] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-05 22:47:08] [INFO ] [scraping_utils] Last Trade Number: 21965
+[2026-03-05 22:47:10] [INFO ] [scraping_utils] Last Trade Number: 35961
+[2026-03-05 22:47:59] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-05 22:48:03] [INFO ] [scraping_utils] Last Trade Number: 21965
+[2026-03-05 22:48:05] [INFO ] [scraping_utils] Last Trade Number: 35961
+[2026-03-05 22:48:07] [INFO ] [scraping_utils] Last Trade Number: 57450
+[2026-03-05 22:48:09] [INFO ] [scraping_utils] Last Trade Number: 73296
+[2026-03-05 22:48:11] [INFO ] [scraping_utils] Last Trade Number: 85783
+[2026-03-05 22:48:13] [INFO ] [scraping_utils] Last Trade Number: 104738
+[2026-03-05 22:48:15] [INFO ] [scraping_utils] Last Trade Number: 123803
+[2026-03-05 22:48:17] [INFO ] [scraping_utils] Last Trade Number: 148823
+[2026-03-05 22:48:20] [INFO ] [scraping_utils] Last Trade Number: 176248
+[2026-03-05 22:48:22] [INFO ] [scraping_utils] Last Trade Number: 198239
+[2026-03-05 22:48:24] [INFO ] [scraping_utils] Last Trade Number: 217149
+[2026-03-05 22:48:26] [INFO ] [scraping_utils] Last Trade Number: 243501
+[2026-03-05 22:48:28] [INFO ] [scraping_utils] Last Trade Number: 261561
+[2026-03-06 03:43:53] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-06 03:43:55] [INFO ] [scraping_utils] Last Trade Number: 21965
+[2026-03-06 03:43:57] [INFO ] [scraping_utils] Last Trade Number: 35961
+[2026-03-06 03:43:59] [INFO ] [scraping_utils] Last Trade Number: 57450
+[2026-03-06 03:44:01] [INFO ] [scraping_utils] Last Trade Number: 73296
+[2026-03-06 03:44:04] [INFO ] [scraping_utils] Last Trade Number: 85783
+[2026-03-06 03:44:06] [INFO ] [scraping_utils] Last Trade Number: 104738
+[2026-03-06 03:44:08] [INFO ] [scraping_utils] Last Trade Number: 123803
+[2026-03-06 03:44:10] [INFO ] [scraping_utils] Last Trade Number: 148823
+[2026-03-06 03:44:13] [INFO ] [scraping_utils] Last Trade Number: 176248
+[2026-03-06 03:44:15] [INFO ] [scraping_utils] Last Trade Number: 198239
+[2026-03-06 03:44:17] [INFO ] [scraping_utils] Last Trade Number: 217149
+[2026-03-06 03:44:19] [INFO ] [scraping_utils] Last Trade Number: 243501
+[2026-03-06 03:44:22] [INFO ] [scraping_utils] Last Trade Number: 261561
+[2026-03-06 03:44:24] [INFO ] [scraping_utils] Last Trade Number: 281160
+[2026-03-06 03:44:26] [INFO ] [scraping_utils] Last Trade Number: 306317
+[2026-03-06 03:44:28] [INFO ] [scraping_utils] Last Trade Number: 334119
+[2026-03-06 03:44:31] [INFO ] [scraping_utils] Last Trade Number: 363733
+[2026-03-06 03:44:33] [INFO ] [scraping_utils] Last Trade Number: 376394
+[2026-03-06 03:44:35] [INFO ] [scraping_utils] Last Trade Number: 402950
+[2026-03-06 03:44:38] [INFO ] [scraping_utils] Last Trade Number: 438630
+[2026-03-06 03:44:41] [INFO ] [scraping_utils] Last Trade Number: 470255
+[2026-03-06 03:44:43] [INFO ] [scraping_utils] Last Trade Number: 501290
+[2026-03-06 03:44:45] [INFO ] [scraping_utils] Last Trade Number: 529419
+[2026-03-06 03:44:47] [INFO ] [scraping_utils] Last Trade Number: 589617
+[2026-03-06 03:44:50] [INFO ] [scraping_utils] Last Trade Number: 644004
+[2026-03-06 03:44:52] [INFO ] [scraping_utils] Last Trade Number: 669495
+[2026-03-06 03:44:54] [INFO ] [scraping_utils] Last Trade Number: 721991
+[2026-03-06 03:44:56] [INFO ] [scraping_utils] Last Trade Number: 767468
+[2026-03-06 03:44:58] [INFO ] [scraping_utils] Last Trade Number: 795263
+[2026-03-06 03:45:01] [INFO ] [scraping_utils] Last Trade Number: 803494
+[2026-03-06 03:45:03] [INFO ] [scraping_utils] Last Trade Number: 828262
+[2026-03-06 03:45:05] [INFO ] [scraping_utils] Last Trade Number: 849063
+[2026-03-06 03:45:08] [INFO ] [scraping_utils] Last Trade Number: 896838
+[2026-03-06 03:45:10] [INFO ] [scraping_utils] Last Trade Number: 937939
+[2026-03-06 03:45:12] [INFO ] [scraping_utils] Last Trade Number: 981727
+[2026-03-06 03:45:15] [INFO ] [scraping_utils] Last Trade Number: 1013265
+[2026-03-06 03:45:17] [INFO ] [scraping_utils] Last Trade Number: 1042005
+[2026-03-06 03:45:19] [INFO ] [scraping_utils] Last Trade Number: 1065356
+[2026-03-06 03:45:21] [INFO ] [scraping_utils] Last Trade Number: 1120514
+[2026-03-06 03:45:23] [INFO ] [scraping_utils] Last Trade Number: 1140161
+[2026-03-06 03:45:26] [INFO ] [scraping_utils] Last Trade Number: 1162152
+[2026-03-06 03:45:30] [INFO ] [scraping_utils] Last Trade Number: 1174067
+[2026-03-06 03:45:32] [INFO ] [scraping_utils] Last Trade Number: 1201112
+[2026-03-06 03:45:34] [INFO ] [scraping_utils] Last Trade Number: 1230809
+[2026-03-06 03:45:37] [INFO ] [scraping_utils] Last Trade Number: 1277732
+[2026-03-06 03:45:39] [INFO ] [scraping_utils] Last Trade Number: 1304474
+[2026-03-06 03:45:42] [INFO ] [scraping_utils] Last Trade Number: 1319130
+[2026-03-06 03:45:44] [INFO ] [scraping_utils] Last Trade Number: 1345626
+[2026-03-06 03:45:47] [INFO ] [scraping_utils] Last Trade Number: 1391181
+[2026-03-06 03:45:50] [INFO ] [scraping_utils] Last Trade Number: 1421616
+[2026-03-06 03:45:52] [INFO ] [scraping_utils] Last Trade Number: 1470126
+[2026-03-06 03:45:55] [INFO ] [scraping_utils] Last Trade Number: 1502853
+[2026-03-06 03:45:57] [INFO ] [scraping_utils] Last Trade Number: 1523144
+[2026-03-06 03:46:01] [INFO ] [scraping_utils] Last Trade Number: 1541035
+[2026-03-06 03:46:03] [INFO ] [scraping_utils] Last Trade Number: 1556116
+[2026-03-06 03:46:06] [INFO ] [scraping_utils] Last Trade Number: 1568420
+[2026-03-06 03:46:09] [INFO ] [scraping_utils] Last Trade Number: 1592187
+[2026-03-06 03:46:11] [INFO ] [scraping_utils] Last Trade Number: 1618787
+[2026-03-06 03:46:13] [INFO ] [scraping_utils] Last Trade Number: 1667274
+[2026-03-06 03:46:16] [INFO ] [scraping_utils] Last Trade Number: 1708709
+[2026-03-06 03:46:18] [INFO ] [scraping_utils] Last Trade Number: 1749115
+[2026-03-06 03:46:20] [INFO ] [scraping_utils] Last Trade Number: 1788368
+[2026-03-06 03:46:23] [INFO ] [scraping_utils] Last Trade Number: 1831201
+[2026-03-06 03:46:25] [INFO ] [scraping_utils] Last Trade Number: 1863190
+[2026-03-06 03:46:27] [INFO ] [scraping_utils] Last Trade Number: 1899020
+[2026-03-06 03:46:29] [INFO ] [scraping_utils] Last Trade Number: 1959384
+[2026-03-06 03:46:31] [INFO ] [scraping_utils] Last Trade Number: 2000302
+[2026-03-06 03:46:34] [INFO ] [scraping_utils] Last Trade Number: 2032458
+[2026-03-06 03:46:36] [INFO ] [scraping_utils] Last Trade Number: 2058246
+[2026-03-06 03:46:39] [INFO ] [scraping_utils] Last Trade Number: 2079070
+[2026-03-06 03:46:41] [INFO ] [scraping_utils] Last Trade Number: 2084437
+[2026-03-06 03:46:44] [INFO ] [scraping_utils] Done fetching.
+[2026-03-06 03:47:06] [INFO ] [scraping_utils] Opening BIPI...
+[2026-03-06 03:47:31] [INFO ] [scraping_utils] Opening BUMI...
+[2026-03-06 03:47:55] [INFO ] [scraping_utils] Opening BNBR...
+[2026-03-06 03:48:17] [INFO ] [scraping_utils] Opening KOTA...
+[2026-03-06 03:48:40] [INFO ] [scraping_utils] Opening WMUU...
+[2026-03-06 03:49:02] [INFO ] [scraping_utils] Opening DEWA...
+[2026-03-06 03:49:24] [INFO ] [scraping_utils] Opening PADI...
+[2026-03-06 03:49:46] [INFO ] [scraping_utils] Opening BKSL...
+[2026-03-06 03:50:08] [INFO ] [scraping_utils] Opening MDIA...
+[2026-03-06 03:50:30] [INFO ] [scraping_utils] Opening BULL...
+[2026-03-06 03:50:53] [INFO ] [scraping_utils] Opening IATA...
+[2026-03-06 03:51:15] [INFO ] [scraping_utils] Opening LAND...
+[2026-03-06 03:51:37] [INFO ] [scraping_utils] Opening KIJA...
+[2026-03-06 03:51:59] [INFO ] [scraping_utils] Opening MBMA...
+[2026-03-06 03:52:21] [INFO ] [scraping_utils] Opening ESSA...
+[2026-03-06 03:52:42] [INFO ] [scraping_utils] Opening MTEL...
+[2026-03-06 03:53:04] [INFO ] [scraping_utils] Opening HEAL...
+[2026-03-06 03:53:26] [INFO ] [scraping_utils] Opening NIRO...
+[2026-03-06 03:53:48] [INFO ] [scraping_utils] Opening BBCA...
+[2026-03-06 03:54:11] [INFO ] [scraping_utils] Opening PSAB...
+[2026-03-06 03:54:32] [INFO ] [scraping_utils] Opening APIC...
+[2026-03-06 03:54:54] [INFO ] [scraping_utils] Opening ASLC...
+[2026-03-06 03:55:17] [INFO ] [scraping_utils] Opening BDKR...
+[2026-03-06 03:55:39] [INFO ] [scraping_utils] Opening BSBK...
+[2026-03-06 03:56:00] [INFO ] [scraping_utils] Opening FUJI...
+[2026-03-06 03:56:23] [INFO ] [scraping_utils] Opening GPRA...
+[2026-03-06 03:56:46] [INFO ] [scraping_utils] Opening HATM...
+[2026-03-06 03:57:07] [INFO ] [scraping_utils] Opening IRSX...
+[2026-03-06 03:57:29] [INFO ] [scraping_utils] Opening KEEN...
+[2026-03-06 03:57:50] [INFO ] [scraping_utils] Opening NICL...
+[2026-03-06 03:58:12] [INFO ] [scraping_utils] Opening OMED...
+[2026-03-06 03:58:33] [INFO ] [scraping_utils] Opening STRK...
+[2026-03-06 03:58:56] [INFO ] [scraping_utils] Opening TAMA...
+[2026-03-06 03:59:17] [INFO ] [scraping_utils] Opening ZATA...
+[2026-03-09 00:05:27] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-09 00:05:32] [INFO ] [scraping_utils] Last Trade Number: 43046
+[2026-03-09 00:05:34] [INFO ] [scraping_utils] Last Trade Number: 85693
+[2026-03-09 00:05:36] [INFO ] [scraping_utils] Last Trade Number: 108524
+[2026-03-09 00:05:38] [INFO ] [scraping_utils] Last Trade Number: 130422
+[2026-03-09 00:05:41] [INFO ] [scraping_utils] Last Trade Number: 169374
+[2026-03-09 00:05:43] [INFO ] [scraping_utils] Last Trade Number: 216641
+[2026-03-09 00:05:45] [INFO ] [scraping_utils] Last Trade Number: 256218
+[2026-03-09 00:05:48] [INFO ] [scraping_utils] Last Trade Number: 287068
+[2026-03-09 00:05:50] [INFO ] [scraping_utils] Last Trade Number: 318604
+[2026-03-09 00:06:34] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-09 00:06:39] [INFO ] [scraping_utils] Last Trade Number: 43046
+[2026-03-09 00:06:41] [INFO ] [scraping_utils] Last Trade Number: 85693
+[2026-03-09 00:06:44] [INFO ] [scraping_utils] Last Trade Number: 108524
+[2026-03-09 00:06:47] [INFO ] [scraping_utils] Last Trade Number: 130422
+[2026-03-09 00:06:49] [INFO ] [scraping_utils] Last Trade Number: 169374
+[2026-03-09 00:06:52] [INFO ] [scraping_utils] Last Trade Number: 216641
+[2026-03-09 00:06:55] [INFO ] [scraping_utils] Last Trade Number: 256218
+[2026-03-09 00:06:58] [INFO ] [scraping_utils] Last Trade Number: 287068
+[2026-03-09 00:07:00] [INFO ] [scraping_utils] Last Trade Number: 318604
+[2026-03-09 00:07:02] [INFO ] [scraping_utils] Last Trade Number: 348219
+[2026-03-09 00:07:04] [INFO ] [scraping_utils] Last Trade Number: 372239
+[2026-03-09 00:07:07] [INFO ] [scraping_utils] Last Trade Number: 426030
+[2026-03-09 00:07:09] [INFO ] [scraping_utils] Last Trade Number: 471441
+[2026-03-09 00:07:11] [INFO ] [scraping_utils] Last Trade Number: 507219
+[2026-03-09 00:07:13] [INFO ] [scraping_utils] Last Trade Number: 538976
+[2026-03-09 00:07:16] [INFO ] [scraping_utils] Last Trade Number: 562710
+[2026-03-09 00:07:18] [INFO ] [scraping_utils] Last Trade Number: 575469
+[2026-03-09 00:07:20] [INFO ] [scraping_utils] Last Trade Number: 597305
+[2026-03-09 00:07:23] [INFO ] [scraping_utils] Last Trade Number: 615910
+[2026-03-09 00:07:25] [INFO ] [scraping_utils] Last Trade Number: 635262
+[2026-03-09 00:07:27] [INFO ] [scraping_utils] Last Trade Number: 673287
+[2026-03-09 00:07:29] [INFO ] [scraping_utils] Last Trade Number: 725471
+[2026-03-09 00:07:32] [INFO ] [scraping_utils] Last Trade Number: 762912
+[2026-03-09 00:07:34] [INFO ] [scraping_utils] Last Trade Number: 800517
+[2026-03-09 00:07:36] [INFO ] [scraping_utils] Last Trade Number: 842710
+[2026-03-09 00:07:38] [INFO ] [scraping_utils] Last Trade Number: 862908
+[2026-03-09 00:07:40] [INFO ] [scraping_utils] Last Trade Number: 898727
+[2026-03-09 00:07:43] [INFO ] [scraping_utils] Last Trade Number: 936848
+[2026-03-09 00:07:45] [INFO ] [scraping_utils] Last Trade Number: 972280
+[2026-03-09 00:07:47] [INFO ] [scraping_utils] Last Trade Number: 1014515
+[2026-03-09 00:07:49] [INFO ] [scraping_utils] Last Trade Number: 1055687
+[2026-03-09 00:07:51] [INFO ] [scraping_utils] Last Trade Number: 1093441
+[2026-03-09 00:07:54] [INFO ] [scraping_utils] Last Trade Number: 1120493
+[2026-03-09 00:07:56] [INFO ] [scraping_utils] Last Trade Number: 1157617
+[2026-03-09 00:07:58] [INFO ] [scraping_utils] Last Trade Number: 1196620
+[2026-03-09 00:08:01] [INFO ] [scraping_utils] Last Trade Number: 1242682
+[2026-03-09 00:08:03] [INFO ] [scraping_utils] Last Trade Number: 1265367
+[2026-03-09 00:08:05] [INFO ] [scraping_utils] Last Trade Number: 1315124
+[2026-03-09 00:08:07] [INFO ] [scraping_utils] Last Trade Number: 1343414
+[2026-03-09 00:08:10] [INFO ] [scraping_utils] Last Trade Number: 1402933
+[2026-03-09 00:08:12] [INFO ] [scraping_utils] Last Trade Number: 1424956
+[2026-03-09 00:08:14] [INFO ] [scraping_utils] Last Trade Number: 1444240
+[2026-03-09 00:08:16] [INFO ] [scraping_utils] Last Trade Number: 1470032
+[2026-03-09 00:08:19] [INFO ] [scraping_utils] Last Trade Number: 1516352
+[2026-03-09 00:08:21] [INFO ] [scraping_utils] Last Trade Number: 1572468
+[2026-03-09 00:08:23] [INFO ] [scraping_utils] Last Trade Number: 1603518
+[2026-03-09 00:08:25] [INFO ] [scraping_utils] Last Trade Number: 1623034
+[2026-03-09 00:08:28] [INFO ] [scraping_utils] Last Trade Number: 1645932
+[2026-03-09 00:08:30] [INFO ] [scraping_utils] Last Trade Number: 1673555
+[2026-03-09 00:08:32] [INFO ] [scraping_utils] Last Trade Number: 1702457
+[2026-03-09 00:08:35] [INFO ] [scraping_utils] Last Trade Number: 1735850
+[2026-03-09 00:08:37] [INFO ] [scraping_utils] Last Trade Number: 1754917
+[2026-03-09 00:08:39] [INFO ] [scraping_utils] Last Trade Number: 1812247
+[2026-03-09 00:08:41] [INFO ] [scraping_utils] Last Trade Number: 1851931
+[2026-03-09 00:08:44] [INFO ] [scraping_utils] Last Trade Number: 1887089
+[2026-03-09 00:08:46] [INFO ] [scraping_utils] Last Trade Number: 1915483
+[2026-03-09 00:08:48] [INFO ] [scraping_utils] Last Trade Number: 1919898
+[2026-03-09 00:08:51] [INFO ] [scraping_utils] Last Trade Number: 1942309
+[2026-03-09 00:08:53] [INFO ] [scraping_utils] Last Trade Number: 1946837
+[2026-03-09 00:08:55] [INFO ] [scraping_utils] Done fetching.
+[2026-03-09 00:09:19] [INFO ] [scraping_utils] Opening BUMI...
+[2026-03-09 00:09:28] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-09 22:30:26] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-09 22:30:29] [INFO ] [scraping_utils] Last Trade Number: 55988
+[2026-03-09 22:32:55] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-09 22:32:57] [INFO ] [scraping_utils] Last Trade Number: 55988
+[2026-03-09 22:32:59] [INFO ] [scraping_utils] Last Trade Number: 50275
+[2026-03-09 22:33:01] [INFO ] [scraping_utils] Last Trade Number: 63108
+[2026-03-09 22:33:04] [INFO ] [scraping_utils] Last Trade Number: 91958
+[2026-03-09 22:33:06] [INFO ] [scraping_utils] Last Trade Number: 120291
+[2026-03-09 22:33:08] [INFO ] [scraping_utils] Last Trade Number: 133071
+[2026-03-09 22:33:10] [INFO ] [scraping_utils] Last Trade Number: 140253
+[2026-03-09 22:33:12] [INFO ] [scraping_utils] Last Trade Number: 165363
+[2026-03-09 22:33:15] [INFO ] [scraping_utils] Last Trade Number: 190895
+[2026-03-09 22:33:17] [INFO ] [scraping_utils] Last Trade Number: 217762
+[2026-03-09 22:33:19] [INFO ] [scraping_utils] Last Trade Number: 232112
+[2026-03-09 22:33:21] [INFO ] [scraping_utils] Last Trade Number: 246993
+[2026-03-09 22:33:23] [INFO ] [scraping_utils] Last Trade Number: 264729
+[2026-03-09 22:33:26] [INFO ] [scraping_utils] Last Trade Number: 276238
+[2026-03-09 22:33:28] [INFO ] [scraping_utils] Last Trade Number: 291322
+[2026-03-09 22:33:30] [INFO ] [scraping_utils] Last Trade Number: 310400
+[2026-03-09 22:33:32] [INFO ] [scraping_utils] Last Trade Number: 316833
+[2026-03-09 22:33:34] [INFO ] [scraping_utils] Last Trade Number: 334685
+[2026-03-09 22:33:36] [INFO ] [scraping_utils] Last Trade Number: 348467
+[2026-03-09 22:33:39] [INFO ] [scraping_utils] Last Trade Number: 362546
+[2026-03-09 22:33:41] [INFO ] [scraping_utils] Last Trade Number: 384459
+[2026-03-09 22:33:43] [INFO ] [scraping_utils] Last Trade Number: 403034
+[2026-03-09 22:33:45] [INFO ] [scraping_utils] Last Trade Number: 427447
+[2026-03-09 22:33:47] [INFO ] [scraping_utils] Last Trade Number: 458154
+[2026-03-09 22:33:49] [INFO ] [scraping_utils] Last Trade Number: 477377
+[2026-03-09 22:33:52] [INFO ] [scraping_utils] Last Trade Number: 493414
+[2026-03-09 22:33:54] [INFO ] [scraping_utils] Last Trade Number: 506378
+[2026-03-09 22:33:56] [INFO ] [scraping_utils] Last Trade Number: 524256
+[2026-03-09 22:33:58] [INFO ] [scraping_utils] Last Trade Number: 537512
+[2026-03-09 22:34:00] [INFO ] [scraping_utils] Last Trade Number: 550868
+[2026-03-09 22:34:03] [INFO ] [scraping_utils] Last Trade Number: 570018
+[2026-03-09 22:34:05] [INFO ] [scraping_utils] Last Trade Number: 596845
+[2026-03-09 22:34:07] [INFO ] [scraping_utils] Last Trade Number: 635019
+[2026-03-09 22:34:10] [INFO ] [scraping_utils] Last Trade Number: 659193
+[2026-03-09 22:34:12] [INFO ] [scraping_utils] Last Trade Number: 686031
+[2026-03-09 22:34:14] [INFO ] [scraping_utils] Last Trade Number: 717933
+[2026-03-09 22:34:16] [INFO ] [scraping_utils] Last Trade Number: 745213
+[2026-03-09 22:34:18] [INFO ] [scraping_utils] Last Trade Number: 786341
+[2026-03-09 22:34:21] [INFO ] [scraping_utils] Last Trade Number: 812920
+[2026-03-09 22:34:23] [INFO ] [scraping_utils] Last Trade Number: 841990
+[2026-03-09 22:34:26] [INFO ] [scraping_utils] Last Trade Number: 877105
+[2026-03-09 22:34:28] [INFO ] [scraping_utils] Last Trade Number: 900769
+[2026-03-09 22:34:30] [INFO ] [scraping_utils] Last Trade Number: 934245
+[2026-03-09 22:34:32] [INFO ] [scraping_utils] Last Trade Number: 956471
+[2026-03-09 22:34:34] [INFO ] [scraping_utils] Last Trade Number: 976671
+[2026-03-09 22:34:37] [INFO ] [scraping_utils] Last Trade Number: 1008834
+[2026-03-09 22:34:39] [INFO ] [scraping_utils] Last Trade Number: 1054542
+[2026-03-09 22:34:42] [INFO ] [scraping_utils] Last Trade Number: 1091755
+[2026-03-09 22:34:44] [INFO ] [scraping_utils] Last Trade Number: 1128930
+[2026-03-09 22:34:46] [INFO ] [scraping_utils] Last Trade Number: 1172279
+[2026-03-09 22:34:49] [INFO ] [scraping_utils] Last Trade Number: 1215833
+[2026-03-09 22:34:51] [INFO ] [scraping_utils] Last Trade Number: 1267747
+[2026-03-09 22:34:53] [INFO ] [scraping_utils] Last Trade Number: 1289681
+[2026-03-09 22:34:55] [INFO ] [scraping_utils] Last Trade Number: 1341871
+[2026-03-09 22:34:57] [INFO ] [scraping_utils] Last Trade Number: 1386198
+[2026-03-09 22:35:00] [INFO ] [scraping_utils] Last Trade Number: 1415253
+[2026-03-09 22:35:02] [INFO ] [scraping_utils] Last Trade Number: 1435881
+[2026-03-09 22:35:04] [INFO ] [scraping_utils] Last Trade Number: 1457997
+[2026-03-09 22:35:06] [INFO ] [scraping_utils] Last Trade Number: 1485388
+[2026-03-09 22:35:09] [INFO ] [scraping_utils] Last Trade Number: 1510128
+[2026-03-09 22:35:11] [INFO ] [scraping_utils] Last Trade Number: 1530754
+[2026-03-09 22:35:13] [INFO ] [scraping_utils] Last Trade Number: 1556130
+[2026-03-09 22:35:15] [INFO ] [scraping_utils] Last Trade Number: 1577732
+[2026-03-09 22:35:18] [INFO ] [scraping_utils] Last Trade Number: 1609896
+[2026-03-09 22:35:20] [INFO ] [scraping_utils] Last Trade Number: 1625653
+[2026-03-09 22:35:22] [INFO ] [scraping_utils] Last Trade Number: 1653878
+[2026-03-09 22:35:24] [INFO ] [scraping_utils] Last Trade Number: 1672122
+[2026-03-09 22:35:27] [INFO ] [scraping_utils] Last Trade Number: 1687853
+[2026-03-09 22:35:29] [INFO ] [scraping_utils] Last Trade Number: 1718426
+[2026-03-09 22:35:32] [INFO ] [scraping_utils] Last Trade Number: 1736763
+[2026-03-09 22:35:34] [INFO ] [scraping_utils] Last Trade Number: 1758780
+[2026-03-09 22:35:36] [INFO ] [scraping_utils] Last Trade Number: 1781469
+[2026-03-09 22:35:38] [INFO ] [scraping_utils] Last Trade Number: 1812290
+[2026-03-09 22:35:40] [INFO ] [scraping_utils] Last Trade Number: 1845689
+[2026-03-09 22:56:13] [INFO ] [scraping_utils] Getting data for minimum lot: 5000
+[2026-03-09 22:56:16] [INFO ] [scraping_utils] Last Trade Number: 55988
+[2026-03-09 22:56:18] [INFO ] [scraping_utils] Last Trade Number: 50275
+[2026-03-09 22:56:20] [INFO ] [scraping_utils] Last Trade Number: 63108
+[2026-03-09 22:56:22] [INFO ] [scraping_utils] Last Trade Number: 91958
+[2026-03-09 22:56:24] [INFO ] [scraping_utils] Last Trade Number: 120291
+[2026-03-09 22:56:27] [INFO ] [scraping_utils] Last Trade Number: 133071
+[2026-03-09 22:56:29] [INFO ] [scraping_utils] Last Trade Number: 140253
+[2026-03-09 22:56:31] [INFO ] [scraping_utils] Last Trade Number: 165363
+[2026-03-09 22:56:33] [INFO ] [scraping_utils] Last Trade Number: 190895
+[2026-03-09 22:56:35] [INFO ] [scraping_utils] Last Trade Number: 217762
+[2026-03-09 22:56:38] [INFO ] [scraping_utils] Last Trade Number: 232112
+[2026-03-09 22:56:40] [INFO ] [scraping_utils] Last Trade Number: 246993
+[2026-03-09 22:56:42] [INFO ] [scraping_utils] Last Trade Number: 264729
+[2026-03-09 22:56:44] [INFO ] [scraping_utils] Last Trade Number: 276238
+[2026-03-09 22:56:46] [INFO ] [scraping_utils] Last Trade Number: 291322
+[2026-03-09 22:56:49] [INFO ] [scraping_utils] Last Trade Number: 310400
+[2026-03-09 22:56:51] [INFO ] [scraping_utils] Last Trade Number: 316833
+[2026-03-09 22:56:53] [INFO ] [scraping_utils] Last Trade Number: 334685
+[2026-03-09 22:56:55] [INFO ] [scraping_utils] Last Trade Number: 348467
+[2026-03-09 22:56:58] [INFO ] [scraping_utils] Last Trade Number: 362546
+[2026-03-09 22:57:00] [INFO ] [scraping_utils] Last Trade Number: 384459
+[2026-03-09 22:57:02] [INFO ] [scraping_utils] Last Trade Number: 403034
+[2026-03-09 22:57:05] [INFO ] [scraping_utils] Last Trade Number: 427447
+[2026-03-09 22:57:07] [INFO ] [scraping_utils] Last Trade Number: 458154
+[2026-03-09 22:57:09] [INFO ] [scraping_utils] Last Trade Number: 477377
+[2026-03-09 22:57:11] [INFO ] [scraping_utils] Last Trade Number: 493414
+[2026-03-09 22:57:14] [INFO ] [scraping_utils] Last Trade Number: 506378
+[2026-03-09 22:57:16] [INFO ] [scraping_utils] Last Trade Number: 524256
+[2026-03-09 22:57:18] [INFO ] [scraping_utils] Last Trade Number: 537512
+[2026-03-09 22:57:20] [INFO ] [scraping_utils] Last Trade Number: 550868
+[2026-03-09 22:57:22] [INFO ] [scraping_utils] Last Trade Number: 570018
+[2026-03-09 22:57:25] [INFO ] [scraping_utils] Last Trade Number: 596845
+[2026-03-09 22:57:27] [INFO ] [scraping_utils] Last Trade Number: 635019
+[2026-03-09 22:57:29] [INFO ] [scraping_utils] Last Trade Number: 659193
+[2026-03-09 22:57:31] [INFO ] [scraping_utils] Last Trade Number: 686031
+[2026-03-09 22:57:33] [INFO ] [scraping_utils] Last Trade Number: 717933
+[2026-03-09 22:57:36] [INFO ] [scraping_utils] Last Trade Number: 745213
+[2026-03-09 22:57:38] [INFO ] [scraping_utils] Last Trade Number: 786341
+[2026-03-09 22:57:40] [INFO ] [scraping_utils] Last Trade Number: 812920
+[2026-03-09 22:57:42] [INFO ] [scraping_utils] Last Trade Number: 841990
+[2026-03-09 22:57:44] [INFO ] [scraping_utils] Last Trade Number: 877105
+[2026-03-09 22:57:47] [INFO ] [scraping_utils] Last Trade Number: 900769
+[2026-03-09 22:57:49] [INFO ] [scraping_utils] Last Trade Number: 934245
+[2026-03-09 22:57:51] [INFO ] [scraping_utils] Last Trade Number: 956471
+[2026-03-09 22:57:54] [INFO ] [scraping_utils] Last Trade Number: 976671
+[2026-03-09 22:57:56] [INFO ] [scraping_utils] Last Trade Number: 1008834
+[2026-03-09 22:57:58] [INFO ] [scraping_utils] Last Trade Number: 1054542
+[2026-03-09 22:58:00] [INFO ] [scraping_utils] Last Trade Number: 1091755
+[2026-03-09 22:58:02] [INFO ] [scraping_utils] Last Trade Number: 1128930
+[2026-03-09 22:58:05] [INFO ] [scraping_utils] Last Trade Number: 1172279
+[2026-03-09 22:58:07] [INFO ] [scraping_utils] Last Trade Number: 1215833
+[2026-03-09 22:58:09] [INFO ] [scraping_utils] Last Trade Number: 1267747
+[2026-03-09 22:58:11] [INFO ] [scraping_utils] Last Trade Number: 1289681
+[2026-03-09 22:58:14] [INFO ] [scraping_utils] Last Trade Number: 1341871
+[2026-03-09 22:58:16] [INFO ] [scraping_utils] Last Trade Number: 1386198
+[2026-03-09 22:58:18] [INFO ] [scraping_utils] Last Trade Number: 1415253
+[2026-03-09 22:58:21] [INFO ] [scraping_utils] Last Trade Number: 1435881
+[2026-03-09 22:58:23] [INFO ] [scraping_utils] Last Trade Number: 1457997
+[2026-03-09 22:58:26] [INFO ] [scraping_utils] Last Trade Number: 1485388
+[2026-03-09 22:58:28] [INFO ] [scraping_utils] Last Trade Number: 1510128
+[2026-03-09 22:58:30] [INFO ] [scraping_utils] Last Trade Number: 1530754
+[2026-03-09 22:58:32] [INFO ] [scraping_utils] Last Trade Number: 1556130
+[2026-03-09 22:58:35] [INFO ] [scraping_utils] Last Trade Number: 1577732
+[2026-03-09 22:58:37] [INFO ] [scraping_utils] Last Trade Number: 1609896
+[2026-03-09 22:58:39] [INFO ] [scraping_utils] Last Trade Number: 1625653
+[2026-03-09 22:58:41] [INFO ] [scraping_utils] Last Trade Number: 1653878
+[2026-03-09 22:58:44] [INFO ] [scraping_utils] Last Trade Number: 1672122
+[2026-03-09 22:58:46] [INFO ] [scraping_utils] Last Trade Number: 1687853
+[2026-03-09 22:58:48] [INFO ] [scraping_utils] Last Trade Number: 1718426
+[2026-03-09 22:58:51] [INFO ] [scraping_utils] Last Trade Number: 1736763
+[2026-03-09 22:58:53] [INFO ] [scraping_utils] Last Trade Number: 1758780
+[2026-03-09 22:58:55] [INFO ] [scraping_utils] Last Trade Number: 1781469
+[2026-03-09 22:58:58] [INFO ] [scraping_utils] Last Trade Number: 1812290
+[2026-03-09 22:59:00] [INFO ] [scraping_utils] Last Trade Number: 1845689
+[2026-03-09 22:59:02] [INFO ] [scraping_utils] Last Trade Number: 1882723
+[2026-03-09 22:59:04] [INFO ] [scraping_utils] Last Trade Number: 1931362
+[2026-03-09 22:59:07] [INFO ] [scraping_utils] Last Trade Number: 1978484
+[2026-03-09 22:59:09] [INFO ] [scraping_utils] Last Trade Number: 2005022
+[2026-03-09 22:59:11] [INFO ] [scraping_utils] Last Trade Number: 2058717
+[2026-03-09 22:59:14] [INFO ] [scraping_utils] Last Trade Number: 2118189
+[2026-03-09 22:59:16] [INFO ] [scraping_utils] Last Trade Number: 2146426
+[2026-03-09 22:59:18] [INFO ] [scraping_utils] Last Trade Number: 2197644
+[2026-03-09 22:59:20] [INFO ] [scraping_utils] Last Trade Number: 2241795
+[2026-03-09 22:59:23] [INFO ] [scraping_utils] Last Trade Number: 2279981
+[2026-03-09 22:59:25] [INFO ] [scraping_utils] Last Trade Number: 2323170
+[2026-03-09 22:59:28] [INFO ] [scraping_utils] Last Trade Number: 2373804
+[2026-03-09 22:59:30] [INFO ] [scraping_utils] Last Trade Number: 2409629
+[2026-03-09 22:59:32] [INFO ] [scraping_utils] Last Trade Number: 2420275
+[2026-03-09 22:59:35] [INFO ] [scraping_utils] Last Trade Number: 2442665
+[2026-03-09 22:59:37] [INFO ] [scraping_utils] Last Trade Number: 2473843
+[2026-03-09 22:59:39] [INFO ] [scraping_utils] Last Trade Number: 2474208
+[2026-03-09 22:59:41] [INFO ] [scraping_utils] Done fetching.
+[2026-03-09 23:00:04] [INFO ] [scraping_utils] Opening BUMI...
+[2026-03-09 23:00:14] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-09 23:00:28] [ERROR] [scraping_utils] Error processing BUMI: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-09 23:00:28] [INFO ] [scraping_utils] Opening BIPI...
+[2026-03-09 23:00:39] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-09 23:00:54] [ERROR] [scraping_utils] Error processing BIPI: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-09 23:00:54] [INFO ] [scraping_utils] Opening BNBR...
+[2026-03-09 23:01:04] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-09 23:01:18] [ERROR] [scraping_utils] Error processing BNBR: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-09 23:01:18] [INFO ] [scraping_utils] Opening DEWA...
+[2026-03-09 23:01:27] [WARNING] [scraping_utils] Error while collapsing sidebar: 
+ Element {a[id*="collapse-burger"]} was not found after 7 seconds!
+[2026-03-09 23:01:30] [ERROR] [scraping_utils] Error processing DEWA: 
+exceptionId: 1
+text: Uncaught
+lineNumber: 0
+columnNumber: 14
+scriptId: 65
+exception: 
+	type: object
+	subtype: error
+	className: TypeError
+	description: TypeError: Cannot read properties of null (reading 'style')
+    at <anonymous>:1:15
+	objectId: 8951451460514998869.7.2
+
+
+[2026-03-09 23:01:30] [INFO ] [scraping_utils] Opening BKSL...
+[2026-03-09 23:01:54] [INFO ] [scraping_utils] Opening BULL...
+[2026-03-09 23:02:17] [INFO ] [scraping_utils] Opening INET...
+[2026-03-09 23:02:39] [INFO ] [scraping_utils] Opening PADI...
+[2026-03-09 23:03:01] [INFO ] [scraping_utils] Opening WMUU...
+[2026-03-09 23:03:24] [INFO ] [scraping_utils] Opening IATA...
+[2026-03-09 23:03:47] [INFO ] [scraping_utils] Opening MINA...
+[2026-03-09 23:04:10] [INFO ] [scraping_utils] Opening LPKR...
+[2026-03-09 23:04:33] [INFO ] [scraping_utils] Opening ESSA...
+[2026-03-09 23:04:57] [INFO ] [scraping_utils] Opening ENRG...
+[2026-03-09 23:05:22] [INFO ] [scraping_utils] Opening BUVA...
+[2026-03-09 23:05:46] [INFO ] [scraping_utils] Opening APIC...
+[2026-03-09 23:06:09] [INFO ] [scraping_utils] Opening MBMA...
+[2026-03-09 23:06:31] [INFO ] [scraping_utils] Opening COIN...
+[2026-03-09 23:06:54] [INFO ] [scraping_utils] Opening BBKP...
+[2026-03-09 23:07:28] [INFO ] [scraping_utils] Opening ADHI...
+[2026-03-09 23:07:43] [ERROR] [scraping_utils] Error processing ADHI: 
+ Element {html} was not found after 7 seconds!
+[2026-03-09 23:07:43] [INFO ] [scraping_utils] Opening AHAP...
+[2026-03-09 23:08:10] [INFO ] [scraping_utils] Opening ASHA...
+[2026-03-09 23:08:39] [INFO ] [scraping_utils] Opening BBCA...
+[2026-03-09 23:09:03] [INFO ] [scraping_utils] Opening BBRI...
+[2026-03-09 23:09:26] [INFO ] [scraping_utils] Opening BMRI...
+[2026-03-09 23:09:49] [INFO ] [scraping_utils] Opening BRMS...
+[2026-03-09 23:10:12] [INFO ] [scraping_utils] Opening CNKO...
+[2026-03-09 23:10:36] [INFO ] [scraping_utils] Opening EXCL...
+[2026-03-09 23:10:58] [INFO ] [scraping_utils] Opening GTSI...
+[2026-03-09 23:11:21] [INFO ] [scraping_utils] Opening IRSX...
+[2026-03-09 23:11:43] [INFO ] [scraping_utils] Opening LEAD...
+[2026-03-09 23:12:07] [INFO ] [scraping_utils] Opening MDKA...
+[2026-03-09 23:12:30] [INFO ] [scraping_utils] Opening MLPL...
+[2026-03-09 23:12:53] [INFO ] [scraping_utils] Opening OASA...
+[2026-03-09 23:13:15] [INFO ] [scraping_utils] Opening PACK...
+[2026-03-09 23:13:37] [INFO ] [scraping_utils] Opening PSAB...
+[2026-03-09 23:13:59] [INFO ] [scraping_utils] Opening SCMA...
+[2026-03-09 23:14:22] [INFO ] [scraping_utils] Opening SOCI...
+[2026-03-09 23:14:45] [INFO ] [scraping_utils] Opening TRUE...
+[2026-03-09 23:15:07] [INFO ] [scraping_utils] Opening YELO...
+[2026-03-09 23:15:30] [INFO ] [scraping_utils] Opening BATR...
+[2026-03-09 23:15:53] [INFO ] [scraping_utils] Opening BIKE...
+[2026-03-09 23:16:17] [INFO ] [scraping_utils] Opening BOGA...
+[2026-03-09 23:16:40] [INFO ] [scraping_utils] Opening FUJI...
+[2026-03-09 23:17:03] [INFO ] [scraping_utils] Opening IMPC...
+[2026-03-09 23:17:26] [INFO ] [scraping_utils] Opening INCOHDCJ6A...
+[2026-03-09 23:17:42] [ERROR] [scraping_utils] Error processing INCOHDCJ6A: 
+ Element {#card-transaction-chart} was not found after 7 seconds!
+[2026-03-09 23:17:42] [INFO ] [scraping_utils] Opening INDF...
+[2026-03-09 23:18:05] [INFO ] [scraping_utils] Opening JATI...
+[2026-03-09 23:18:29] [INFO ] [scraping_utils] Opening KLAS...
+[2026-03-09 23:18:51] [INFO ] [scraping_utils] Opening MSIN...
+[2026-03-09 23:19:16] [INFO ] [scraping_utils] Opening RSCH...
+[2026-03-09 23:19:38] [INFO ] [scraping_utils] Opening STRK...
+[2026-03-09 23:20:02] [INFO ] [scraping_utils] Opening ZATA...
